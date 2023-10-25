@@ -1,6 +1,6 @@
 import React from 'react'
 import "../components/Institutes/Institutes.css";
-
+// shdhdbsdj
 const Institutes = () => {
   return (
     <div class="container mt-5 d-flex m-20px">
@@ -13,7 +13,7 @@ const Institutes = () => {
       <li class="menu-item" data-content="government">Government Agency</li>
     </ul>
   </div>
-  <div class="content">
+  <div class="content"> 
     <div class="default-content">
       <h2>Welcome to Institutes</h2>
       {/* <img src="default-image.jpg" alt="Default Image"> */}
