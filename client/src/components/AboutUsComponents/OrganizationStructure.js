@@ -22,13 +22,13 @@ const OrganizationStructureSection = () => {
           <div className="col-md-4" key={department}>
             <button 
               className="btn btn-success mb-2" 
-              style={{ marginLeft: '90px' }}
+              style={{ marginLeft: '32%' }}
               onClick={() => handleButtonClick(department)}
             >
               Department {department.charAt(4)}
             </button>
             {selectedButton === department && (
-              <ul>
+              <ul style={{marginLeft:"32%"}}>
                 <li>Point 1</li>
                 <li>Point 2</li>
                 <li>Point 3</li>
