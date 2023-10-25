@@ -12,6 +12,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Footer from './components/Footer';
 import Publications from './pages/Publications';
+import Institutes from './pages/Institutes';
 const ConditionalNavbar = () => {
   const navigate = useNavigate();
   const path = window.location.pathname;
@@ -41,10 +42,9 @@ const RoutesComponent = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/announcements" element={<Announcements />} />
-        <Route path="/resources" element={<Resources />} >
-          
-        </Route>
+        <Route path="/resources" element={<Resources />} ></Route>
         <Route  path='/resources/publications' element={<Publications/>}></Route>
+        <Route  path='/resources/institutes' element={<Institutes />}></Route>
         <Route path="/collaborations" element={<Collaborations />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/news" element={<News />} />

@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    margin: 20px;
+  }
+  
+  .menu {
+    width: 200px;
+    background-color: orange;
+    padding: 10px;
+  }
+  
+  .menu-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu-item {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .menu-item:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .menu-item.active {
+    background-color: #ccc;
+  }
+  
+  .content {
+    flex-grow: 1;
+    margin-left: 20px;
+  }
+  
+  .default-content {
+    text-align: center;
+  }
+  
+  .sub-content {
+    display: none;
+  }
+  
+  .sub-content.active {
+    display: block;
+  }
