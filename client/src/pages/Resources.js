@@ -3,6 +3,7 @@ import React from 'react';
 //import Publications from '../components/Publications'; // Import the Publications component
 import Publications from './Publications';
 import Institutes  from './Institutes';
+import ProjectDescription from './ProjectDescription';
 
 const Resources = () => {
   return (
@@ -34,6 +35,7 @@ const Resources = () => {
         <div id="publications" className="tab-pane fade">
           {/* Render the Publications component within the "Publications" tab */}
           <Publications />
+          <ProjectDescription/>
         </div>
         <div id="institutes" className="tab-pane fade">
           {/* Render the Publications component within the "Publications" tab */}

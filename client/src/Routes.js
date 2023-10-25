@@ -13,6 +13,7 @@ import Register from './pages/Register';
 import Footer from './components/Footer';
 import Publications from './pages/Publications';
 import Institutes from './pages/Institutes';
+import ProjectDescription from './pages/ProjectDescription';
 const ConditionalNavbar = () => {
   const navigate = useNavigate();
   const path = window.location.pathname;
@@ -50,7 +51,7 @@ const RoutesComponent = () => {
         <Route path="/news" element={<News />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-       
+       <Route path='/resources/publications/discription' element={<ProjectDescription/>}></Route>
 
       </Routes>
       <ConditionalFooter />
