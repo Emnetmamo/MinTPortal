@@ -32,12 +32,12 @@ const Footer = () => {
           <div className="col-lg-4 mb-4 text-center text-lg-start">
             <h5>Quick Links</h5>
             <ul className="list-unstyled">
-              <li><a href="/">Home</a></li>
-              <li><a href="./announcements">Announcements</a></li>
-              <li><a href="/resources">Resources</a></li>
-              <li><a href="/collaborations">Collaborations</a></li>
-              <li><a href="/aboutus">About Us</a></li>
-              <li><a href="/news">News</a></li>
+              <li><a href="/" style={{color:"white"}}>Home</a></li>
+              <li><a href="./announcements" style={{color:"white"}}>Announcements</a></li>
+              <li><a href="/resources" style={{color:"white"}}>Resources</a></li>
+              <li><a href="/collaborations" style={{color:"white"}}>Collaborations</a></li>
+              <li><a href="/aboutus" style={{color:"white"}}>About Us</a></li>
+              <li><a href="/news" style={{color:"white"}}>News</a></li>
             </ul>
           </div>
 
@@ -52,9 +52,9 @@ const Footer = () => {
               <li><RiMailFill /> contact@mint.gov.et</li>
               <li><RiMapPin2Fill /> Addis Ababa, Ethiopia</li>
               <div className="mt-3">
-                <a href="https://www.facebook.com/MInT.Ethiopia/" className="me-2"><FaFacebook /></a>
-                <a href="https://twitter.com/ministryofinno2?lang=en" className="me-2"><FaTwitter /></a>
-                <a href="https://www.linkedin.com/company/ministry-of-innovation-and-technology-ethiopia/?originalSubdomain=et" className="me-2"><FaLinkedin /></a>
+                <a href="https://www.facebook.com/MInT.Ethiopia/" className="me-2" style={{color:"orange"}}><FaFacebook /></a>
+                <a href="https://twitter.com/ministryofinno2?lang=en" className="me-2" style={{color:"orange"}}><FaTwitter /></a>
+                <a href="https://www.linkedin.com/company/ministry-of-innovation-and-technology-ethiopia/?originalSubdomain=et" className="me-2" style={{color:"orange"}}><FaLinkedin /></a>
                 <a href={GoogleMapLocation}><img src={GoogleMapLocation} alt="Google Map" style={{ maxWidth: '30px', cursor: 'pointer' }} /></a>
               </div>
             </ul>
