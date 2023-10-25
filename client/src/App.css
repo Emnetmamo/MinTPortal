@@ -1,0 +1,75 @@
+/* Apply fixed position and box-shadow to the Navbar */
+.navbar {
+  position: fixed;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.navbar-nav .nav-link {
+  color: #11676d; /* Set the default color */
+  font-size: 16px;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  background-color: #FF8F00;
+  color: white;
+  border-radius: 10px;
+}
+
+
+
+/* Add some padding to the body to compensate for the fixed Navbar */
+body {
+  padding-top: 80px; /* Adjust as needed */
+}
+
+/* home page discover section  */
+
+.discover{
+  background-color: #2b2b2b;
+  color: white;
+}
+
+.aboutBtn{
+  background-color: white;
+  color: orange;
+  border-color: black;
+  border-width: 3px;
+}
+
+
+/* ethical evaluation  */
+
+/* EthicalEvaluation.css */
+
+.disclaimer {
+  color: #000000;
+  animation: popAnimation 2s infinite; /* Use the defined animation */
+}
+
+.question-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #888686;
+}
+
+.question-text {
+  color: #423f3f;
+}
+
+@keyframes popAnimation {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+}
