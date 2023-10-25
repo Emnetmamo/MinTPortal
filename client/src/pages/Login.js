@@ -1,17 +1,33 @@
 // src/components/pages/Login.js
-
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Logo from '../images/Logo.jpg';
+
+import { Link, useNavigate } from 'react-router-dom'; // Updated import
+import AdminRoutes from '../pages/admin/adminRoutes'; // Import the AdminRoutes component
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+
+
+  const [role, setRole] = useState(''); // Add role state
+  const history = useNavigate(); // Initialize useHistory
+
   const handleLogin = (e) => {
     e.preventDefault();
     // Add login logic here (using email and password states)
+    
+    // Check the selected role and navigate accordingly
+    if (role === 'admin') {
+      history('/admin'); // Redirect to admin page
+    } else if (role === 'user') {
+      history('/user'); // Redirect to user page
+    }
   }
+
+
 
   return (
     <div className="container mt-5">
@@ -25,6 +41,35 @@ const Login = () => {
         </div>
         <div className="col-md-6">
           <h1 className="mb-4 ">Log in</h1>
+
+
+
+          <div className="form-check form-check-inline">
+        <input
+          className="form-check-input"
+          type="radio"
+          name="role"
+          id="adminRadio"
+          value="admin"
+          onChange={(e) => setRole(e.target.value)}
+        />
+        <label className="form-check-label" htmlFor="adminRadio">Admin</label>
+      </div>
+      <div className="form-check form-check-inline">
+        <input
+          className="form-check-input"
+          type="radio"
+          name="role"
+          id="userRadio"
+          value="user"
+          onChange={(e) => setRole(e.target.value)}
+        />
+        <label className="form-check-label" htmlFor="userRadio">User</label>
+      </div>
+
+
+
+
           <form onSubmit={handleLogin}>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">Email</label>

@@ -1,0 +1,71 @@
+.user-icon{
+  width: 40px;
+  height: 40px;
+  color: #11676d;
+
+}
+.user-name{
+  font-size: 30px;
+  color: #11676d;
+}
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: white;
+}
+
+.logo{
+  width: 120px;
+  
+}
+
+.post-links-container{
+  background-color: #11676d;
+  border-radius: 10px;
+  max-height: 410px;
+  
+}
+.post-links{
+  border-radius: 7px;
+  border: none;
+  background-color: #ffa525;
+  transition: opacity 0.15s;
+
+}
+.post-links:hover, .dropzone:hover{
+  cursor: pointer;
+  opacity: 0.8;
+}
+.post-links:active, .dropzone:active{
+  opacity: 0.3;
+}
+.links{
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+}
+
+label, p{
+  color: #11676d;
+  font-size: 20px;
+  font-weight: 500;
+}
+    
+input::placeholder {
+  color: #11676d;
+}
+button.submit{
+  background-color: #11676d;
+}
+button.dropzone {
+  width: 25px;
+  height: 25px;
+  background: rgb(240, 78, 78);
+}
+
+li.rejected-list{
+  min-width: auto;
+}
