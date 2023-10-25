@@ -16,7 +16,7 @@ const BasicPersonalInfo = ({ nextStep }) => {
          to="/" className="btn btn-primary">Back to Home</Link>
       </div>
       <h1 className="text-center">Registration Form</h1>
-      <div>
+      <div style={{marginTop:"20px"}}>
         <h5 style={{color:"red"}}><b>Note</b>: There are 3 sections to this registration</h5>
         <h6 style={{color:"red"}}>Fill out each section carefully</h6>
       </div>
