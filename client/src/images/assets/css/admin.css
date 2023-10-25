@@ -28,6 +28,17 @@
   max-height: 410px;
   
 }
+.post-links-container-user-status{
+  background-color: #11676d;
+  border-radius: 10px;
+  max-height: 450px;
+  
+}post-links-container{
+  background-color: #11676d;
+  border-radius: 10px;
+  max-height: 410px;
+  
+}
 .post-links{
   border-radius: 7px;
   border: none;
