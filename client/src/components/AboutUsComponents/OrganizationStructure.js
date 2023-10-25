@@ -1,6 +1,7 @@
 // src/components/AboutUsComponents/OrganizationStructureSection.js
 
 import React, { useState } from 'react';
+import imgPath from "../../images/AboutUs/arm.png";
 
 const OrganizationStructureSection = () => {
   const [selectedButton, setSelectedButton] = useState(null);
@@ -16,6 +17,9 @@ const OrganizationStructureSection = () => {
         <button className="btn btn-primary" onClick={() => handleButtonClick('viewDepartments')}>
           View Departments
         </button>
+      </div>
+      <div style={{textAlign:"center"}}>
+      <img src={imgPath} alt="" width={"80%"} height={"100px"}/>
       </div>
       <div className="row">
         {['dept1', 'dept2', 'dept3'].map((department) => (
