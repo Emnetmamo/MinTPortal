@@ -11,7 +11,8 @@ const Publications = () => {
 
   return (
     <div>
-      <h2>Publications</h2>
+      <h2 className='p-3 mt-20% mr-20%'>Here you can find Publications and scientific journals published by people all around this country</h2>
+      <label  >Sereach by catogory:</label>
       <ul>
         {publications.map((publication, index) => (
           <li key={index}>
