@@ -1,42 +1,44 @@
-// src/components/Publications.js
 import React from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import ProjectDescription from './ProjectDescription';
+import news from '../images/News/news9.webp'
+import new8 from '../images/News/news8.jpeg'
+import new7 from '../images/News/news7.jpeg'
 const Publications = () => {
- 
- 
-
   return (
-    <div>
-      <h2 className='p-3 mt-20% mr-20%'>Here you can find Publications and scientific journals published by people all around this country</h2>
-      <label  >Search by catogory:</label> 
-      <input type='text' placeholder='catagories'></input>
-      <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">No_</th>
-      <th scope="col">Principal investigators name</th>
-      <th scope="col">Project title</th>
-      <th scope="col">Project Description</th>
-      <th>catagory</th>
-      <th>Publication date</th>
-      <th>Download PDT</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Tomas Mores</td>
-      <td>Ai Bycle</td>
-      <td> <Link to='/resources/publications/discription' className='btn bg-info'> Description</Link> </td>
-      <td>Agricalture</td>
-      <td>10/12/2012</td>
-      <button className='btn bg-success'>Download</button>
-    </tr>
-   
-      
-  </tbody>
-</table>
+    <div className="">
+     <div className='' style={{height:'70pt'}}>
+     <h1 className='bg-dark text-white' style={{
+        fontSize: '50px',  
+        textAlign: 'center'
+       
+      }}>Publications</h1>
+     </div>
+     <div className='container'>
+      <div className='container card'>
+        <h2 className=''>Solar energy for rural area</h2>
+        <img src={new7} style={{width:'90%'}}/>
+        <p>Discoved by doctor TOmas more who is the collaborator of the ....</p>
+      </div>
+      <div className='row jusifty-content-center'>
+
+        <div className='col'>
+          <div className='row card'>
+            <h2>Ai chat system</h2>
+            <img src={news}/>
+            <p>this is software system used to chat online</p>
+            
+          </div>
+          <div className='row'>
+            
+          </div>
+        </div>
+        <div className='col'>
+          <div className='row'><img src={new8}></img></div>
+          <div className='row'>dkfjsdj</div>
+        </div>
+      </div>
+     </div>
     </div>
   );
 };
