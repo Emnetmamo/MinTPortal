@@ -1,5 +1,6 @@
 import React from 'react'
-import "../components/Institutes/Institutes.css";
+// import "../components/Institutes/Institutes.css";
+import value from "../images/Institutes/default-image.jpg";
 // shdhdbsdj
 const Institutes = () => {
   return (
@@ -16,7 +17,7 @@ const Institutes = () => {
   <div class="content"> 
     <div class="default-content">
       <h2>Welcome to Institutes</h2>
-      {/* <img src="default-image.jpg" alt="Default Image"> */}
+      <img src={value} alt="Default Image" />
     </div>
     <div class="sub-content" id="institutes">
       <h2>Institutes Links</h2>
