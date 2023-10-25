@@ -11,7 +11,7 @@ import News from './pages/News';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Footer from './components/Footer';
-
+import Publications from './pages/Publications';
 const ConditionalNavbar = () => {
   const navigate = useNavigate();
   const path = window.location.pathname;
@@ -41,12 +41,17 @@ const RoutesComponent = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/announcements" element={<Announcements />} />
-        <Route path="/resources" element={<Resources />} />
+        <Route path="/resources" element={<Resources />} >
+          
+        </Route>
+        <Route  path='/resources/publications' element={<Publications/>}></Route>
         <Route path="/collaborations" element={<Collaborations />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/news" element={<News />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+       
+
       </Routes>
       <ConditionalFooter />
     </Router>
