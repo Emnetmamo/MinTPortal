@@ -15,6 +15,7 @@ import Publications from './pages/Publications';
 import Institutes from './pages/Institutes';
 import ProjectDescription from './pages/ProjectDescription';
 import AcceptedProjects from './pages/AcceptedProjects';
+
 const ConditionalNavbar = () => {
   const navigate = useNavigate();
   const path = window.location.pathname;

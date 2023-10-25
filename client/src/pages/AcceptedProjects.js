@@ -1,4 +1,4 @@
-/ src/components/pages/AcceptedProjects.js
+// src/components/pages/AcceptedProjects.js
 
 import React from 'react';
 import { Link } from 'react-router-dom';
