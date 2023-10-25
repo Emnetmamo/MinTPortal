@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ProjectDescription from './ProjectDescription';
+
 import news from '../images/News/news9.webp'
 import new8 from '../images/News/news8.jpeg'
 import new7 from '../images/News/news7.jpeg'
