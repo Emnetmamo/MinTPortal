@@ -21,6 +21,7 @@ const Institutes = () => {
     <div class="sub-content" id="institutes">
       <h2>Institutes Links</h2>
       <ul>
+        <li><a href="#">Institute 1</a></li>
         <li><a href="#">Institute 2</a></li>
         <li><a href="#">Institute 3</a></li>
       </ul>
