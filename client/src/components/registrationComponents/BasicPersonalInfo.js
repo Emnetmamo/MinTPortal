@@ -1,13 +1,24 @@
 // BasicPersonalInfo.js
 import React from 'react';
+import { useState } from 'react';
 import countryOptions from './countryOptions';
 import { Link } from 'react-router-dom';
+import {VscEyeClosed,VscEye} from 'react-icons/vsc'
+import { Form, FormGroup } from 'react-bootstrap';
 
 const BasicPersonalInfo = ({ nextStep }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     nextStep();
   };
+
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
 
   return (
     <div className="container mt-5">
@@ -31,10 +42,22 @@ const BasicPersonalInfo = ({ nextStep }) => {
                 <input type="text" className="form-control" id="lastName" name="lastName" placeholder="Last Name" required />
               </div>
             </div>
-            <div className="mb-3">
+            {/* <div className="mb-3">
               <label htmlFor="password" className="form-label">Your Password</label>
-              <input type="password" className="form-control" id="password" name="password" placeholder="******" required />
-            </div>
+              <input type="password" className="form-control" id="password" name="password" placeholder="******" required  />
+            </div> */}
+     <div className='mb-3'>
+      <Form.Group controlId="password">
+        <Form.Label>Password</Form.Label>
+        <Form.Control
+          type={showPassword ? 'text' : 'password'}
+          placeholder="Enter your password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+       button= {showPassword ? <VscEyeClosed/>:<VscEye/> }
+        />
+      </Form.Group>
+    </div>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">Email</label>
               <input type="email" className="form-control" id="email" name="email" placeholder="sample@gmail.com" required />
