@@ -11,7 +11,6 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
 
-
   const [role, setRole] = useState(''); // Add role state
   const history = useNavigate(); // Initialize useHistory
 
@@ -21,7 +20,7 @@ const Login = () => {
     
     // Check the selected role and navigate accordingly
     if (role === 'admin') {
-      history('/admin'); // Redirect to admin page
+      history('/admin/news/add-news'); // Redirect to admin page
     } else if (role === 'user') {
       history('/user'); // Redirect to user page
     }

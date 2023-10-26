@@ -15,7 +15,7 @@ import Publications from './pages/Publications';
 import Institutes from './pages/Institutes';
 import ProjectDescription from './pages/ProjectDescription';
 import AcceptedProjects from './pages/AcceptedProjects';
-
+import adminRoutes from './pages/admin/adminRoutes';
 const ConditionalNavbar = () => {
   const navigate = useNavigate();
   const path = window.location.pathname;
@@ -31,9 +31,9 @@ const ConditionalFooter = () => {
   const navigate = useNavigate();
   const path = window.location.pathname;
 
-  if (path === '/login' || path === '/register') {
-    return null; // Render nothing for Login and Register pages
-  }
+  // if (path === '/login' || path === '/register') {
+  //   return null; // Render nothing for Login and Register pages
+  // }
 
   return <Footer />;
 }
@@ -43,6 +43,7 @@ const RoutesComponent = () => {
     <Router>
       <ConditionalNavbar />
       <Routes>
+      
         <Route path="/" element={<Home />} />
         <Route path="/announcements" element={<Announcements />} />
         <Route path="/resources" element={<Resources />} ></Route>
