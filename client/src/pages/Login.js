@@ -1,14 +1,21 @@
 // src/components/pages/Login.js
 import React, { useState } from 'react';
 import Logo from '../images/Logo.jpg';
+import {VscEyeClosed,VscEye} from 'react-icons/vsc'
 
 import { Link, useNavigate } from 'react-router-dom'; // Updated import
 import AdminRoutes from '../pages/admin/adminRoutes'; // Import the AdminRoutes component
+import { Form, FormGroup } from 'react-bootstrap';
 
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
 
   const [role, setRole] = useState(''); // Add role state
@@ -74,10 +81,22 @@ const Login = () => {
               <label htmlFor="email" className="form-label">Email</label>
               <input type="email"  placeholder='Enter Your Email' className="form-control" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
-            <div className="mb-3">
+            {/* <div className="mb-3">
               <label htmlFor="password" className="form-label">Password</label>
               <input type="password" placeholder='Enter Your Password' className="form-control" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            </div>
+            </div> */}
+     <div className='mb-3'>
+      <Form.Group controlId="password">
+        <Form.Label>Password</Form.Label>
+        <Form.Control
+          type={showPassword ? 'text' : 'password'}
+          placeholder="Enter your password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+       button= {showPassword ? <VscEyeClosed/>:<VscEye/> }
+        />
+      </Form.Group>
+    </div>
             <button style={{marginBottom: "20px", marginLeft:'400px', backgroundColor:"orange", border: "none", fontSize:"20px"}} type="submit" className="btn btn-primary">Login</button>
           </form>
           {/* <div className="mt-3">
