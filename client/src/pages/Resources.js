@@ -6,10 +6,12 @@ import Institutes  from './Institutes';
 
 import AcceptedProjects from './AcceptedProjects';
 import ProjectDescription from './ProjectDescription';
-
-
 import Laboratories from '../components/Institutes/Laboratories';
 import GovernmentAgencies from '../components/Institutes/GovernmentAgencies';
+
+{/*<<<<<<< Updated upstream*/}
+{/*=======*/}
+{/*>>>>>>> Stashed changes*/}
 
 const Resources = () => {
   return (
