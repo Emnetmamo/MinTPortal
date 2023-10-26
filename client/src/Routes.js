@@ -59,7 +59,7 @@ const RoutesComponent = () => {
         <Route path="/news" element={<News />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-<<<<<<< HEAD
+{/* <<<<<<< HEAD */}
 {/*<<<<<<< Updated upstream*/}
         <Route path='/resources/publications/description' element={<ProjectDescription/>}/>
 {/*=======*/}
@@ -67,16 +67,16 @@ const RoutesComponent = () => {
 
         <Route path='/resources/publications/description' element={<ProjectDescription/>}/>
 
->>>>>>> 793a834cd50bdec0aceed799d3becb7e5294faf9
+{/* >>>>>>> 793a834cd50bdec0aceed799d3becb7e5294faf9 */}
         <Route  path='/resources/institutes/research' element={<ResearchInstitutes />}></Route>
         <Route  path='/resources/institutes/labs' element={<Laboratories />}></Route>
         <Route  path='/resources/institutes/ict' element={<IctPartners />}></Route>
         <Route  path='/resources/institutes/government' element={<GovernmentAgencies />}></Route>
-<<<<<<< HEAD
+{/* <<<<<<< HEAD */}
 {/*>>>>>>> Stashed changes*/}
-=======
+{/* ======= */}
 
->>>>>>> 793a834cd50bdec0aceed799d3becb7e5294faf9
+{/* >>>>>>> 793a834cd50bdec0aceed799d3becb7e5294faf9 */}
 
       </Routes>
       <ConditionalFooter />
