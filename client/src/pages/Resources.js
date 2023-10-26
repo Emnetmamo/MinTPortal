@@ -3,11 +3,9 @@ import React from 'react';
 //import Publications from '../components/Publications'; // Import the Publications component
 import Publications from './Publications';
 import AcceptedProjects from './AcceptedProjects';
-import ProjectDescription from './ProjectDescription';
+// import ProjectDescription from './ProjectDescription';
 
-{/*<<<<<<< Updated upstream*/}
-{/*=======*/}
-{/*>>>>>>> Stashed changes*/}
+
 
 const Resources = () => {
   return (
