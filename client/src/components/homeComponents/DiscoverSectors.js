@@ -5,7 +5,7 @@ import "../../App.css";
 import { Link } from 'react-router-dom';
 
 
- // import video1 from "../../images/home/potential7.mp4";
+// import video1 from "../../images/home/potential7.gif";
 // import video2 from "../../images/home/potential8.gif";
 // import video3 from "../../images/home/potential9.gif";
 
@@ -30,12 +30,20 @@ const DiscoverSectors = () => {
           <div style={videoContainerStyle}>
 
             
-         
+          {/* <img src={video1} alt="Potential Sector Image 1" style={videoStyle} height="300px" width="220px"/>
+          </div>
+          <div style={{ ...videoContainerStyle, marginLeft: '70px' }}>
+          <img src={video2} alt="Potential Sector Image 2" style={videoStyle} height="300px" width="220px"/>
+          </div>
+          <div style={{ ...videoContainerStyle, marginLeft: '150px' }}>
+          <img src={video3} alt="Potential Sector Image 3" style={{...videoStyle, marginBottom:"50px"}} height="300px" width="220px"/>
+          </div> */}
+
 
 
            
           <div style={videoContainerStyle}>
-          <img src="../../images/home/potential7.mp4" alt="Potential Sector Image 1" style={videoStyle} height="300px" width="220px"/>
+          <img src="../../images/home/potential7.gif" alt="Potential Sector Image 1" style={videoStyle} height="300px" width="220px"/>
           </div>
           <div style={{ ...videoContainerStyle, marginLeft: '70px' }}>
           <img src="../../images/home/potential8.gif" alt="Potential Sector Image 2" style={videoStyle} height="300px" width="220px"/>
