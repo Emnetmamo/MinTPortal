@@ -4,7 +4,7 @@ import '../../images/assets/css/admin.css'
 import AdminHeader from '../../components/AdminComponents/AdminHeader'
 import Dropzone from '../../components/AdminComponents/Dropzone'
 
-function PostCalls() {
+function PostPublications() {
   return (
     <div className="">
       <AdminHeader />
@@ -20,13 +20,13 @@ function PostCalls() {
                   <li className="list-group-item post-links "><Link className='links'
                   to="/admin/appointments/add-appointment">Set Appointment Date</Link></li>
                   <br/>
-                  <li className="list-group-item active post-links "><Link className='links' 
+                  <li className="list-group-item  post-links "><Link className='links' 
                   to="/admin/user-status/add-user-status">Update User Status</Link></li>
                   <br/>
                   <li className="list-group-item post-links "><Link className='links' 
                   to="/admin/calls/add-call">Post Calls</Link></li>
                   <br/>
-                  <li className="list-group-item post-links "><Link className='links' 
+                  <li className="list-group-item active post-links "><Link className='links' 
                   to="/admin/publications/add-publication">Post Publications</Link></li>
                   <br/>
                   <li className="list-group-item post-links "><Link className='links' 
@@ -38,9 +38,9 @@ function PostCalls() {
           <div class="col-xs-12 col-md-7 mb-5">
             <form method="post" action="/admin/news/add-news">
                 <br/><br/>
-                <h1>Post a Call</h1>
+                <h1>Post a Publication</h1>
                 <div class="form-group ">
-                    <label className='form-label'>Announcement Title:</label>
+                    <label className='form-label'>Project Title:</label>
                     <input type="text" name="title" class="form-control " placeholder="Title"/>                  
                 </div>
                 <div class="form-group">
@@ -117,7 +117,7 @@ function PostCalls() {
                     <button type="submit" className=" form-control my-3 fs-5 btn btn-warning fw-bold">Submit</button>
                 </div>
             </form>
-            
+            <Dropzone/>            
           </div>
       </div>
     </div>
@@ -126,4 +126,4 @@ function PostCalls() {
   )
 }
 
-export default PostCalls
+export default PostPublications

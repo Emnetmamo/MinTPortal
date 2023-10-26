@@ -31,7 +31,7 @@ function Post_News() {
                 </li>
                 <br/>
                 <li class="list-group-item post-links "><Link className='links' 
-                to="/admin/Publications/add-publication">Post Publications</Link>
+                to="/admin/publications/add-publication">Post Publications</Link>
                 </li>
                 <br/>
                 <li class="list-group-item post-links "><Link className='links' 
