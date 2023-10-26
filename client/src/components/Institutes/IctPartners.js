@@ -1,5 +1,6 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom'; 
 
 import partner from "../../images/Institutes/Ict-partners.png";
 import partner1 from "../../images/Institutes/Ict-partners1.png";
@@ -9,8 +10,36 @@ import partner4 from "../../images/Institutes/Ict-partners4.png";
 import partner5 from "../../images/Institutes/Ict-partners5.png";
 
 const IctPartners = () => {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(true);
+  }
     return (
-      <div >
+
+<container>
+<div className='row'>
+<div className='col-sm-2 mt-5' style={{ position: 'fixed', marginRight: '80px' }}>
+  <div className="menu" style={{ backgroundColor: '#11676d', marginBottom: '80px', borderRadius: '10px' }}>
+    <ul className="menu-items" style={{ listStyleType: 'none', padding: '40px' }}>
+      <li className="menu-item active" data-content="institutes">Institutes</li>
+      <li className="menu-item" data-content="research" style={{ width: '100%', marginBottom: '10px' }}>
+        <Link to='/resources/institutes/research' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>Research Institutes</Link>
+      </li>
+      <li className="menu-item" data-content="labs" style={{ width: '100%', marginBottom: '10px' }}>
+        <Link to='/resources/institutes/labs' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>Laboratories</Link>
+      </li>
+      <li className="menu-item" data-content="ict" style={{ width: '100%', marginBottom: '10px' }}>
+        <Link to='/resources/institutes/ict' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>ICT Partners</Link>
+      </li>
+      <li className="menu-item" data-content="government" style={{ width: '100%', marginBottom: '10px' }}>
+        <Link to='/resources/institutes/government' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>Government Agency</Link>
+      </li>
+    </ul>
+  </div>
+</div>
+<div className='col'>
+<div >
         <br /><br />
          <Container className='w-60%'>
       {/* Carousel */}
@@ -35,7 +64,7 @@ const IctPartners = () => {
             <img src={partner1} alt="Chicago" className="d-block w-100" />
             <div className="carousel-caption">
               <h1 style={{ color: 'black', textAlign: 'center' }}>Affordable - Our aim is to provide affordable solutions and services </h1>
-              <p>Slide 2 Description</p>
+              {/* <p>Slide 2 Description</p> */}
             </div>
           </div>
           <div className="carousel-item">
@@ -111,6 +140,14 @@ const IctPartners = () => {
       </div>
       <br />
       </div>
+</div>
+
+</div>
+
+</container>
+
+
+     
     );
   };
   
