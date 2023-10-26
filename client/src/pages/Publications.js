@@ -387,7 +387,12 @@ const Publications = () => {
      <br/>
     
     
-    
+     <div className="d-flex justify-content-end" style={{ marginRight: '50px' }}>
+        <button className="btn btn-primary">
+          <a href="/" style={{ color: 'white', textDecoration: 'none' }}>Next Page</a>
+        </button>
+      </div> 
+      <br/> 
     </div>
   );
 };
