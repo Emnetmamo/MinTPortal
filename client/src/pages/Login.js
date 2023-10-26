@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Logo from '../images/Logo.jpg';
 
-import { Link, useNavigate } from 'react-router-dom'; // Updated import
+import { Link, redirect, useNavigate } from 'react-router-dom'; // Updated import
 import AdminRoutes from '../pages/admin/adminRoutes'; // Import the AdminRoutes component
 
 
@@ -16,12 +16,13 @@ const Login = () => {
   const history = useNavigate(); // Initialize useHistory
 
   const handleLogin = (e) => {
-    e.preventDefault();
+    
     // Add login logic here (using email and password states)
     
     // Check the selected role and navigate accordingly
     if (role === 'admin') {
-      history('/admin'); // Redirect to admin page
+      history('/admin/news/add-news');
+       // Redirect to admin page
     } else if (role === 'user') {
       history('/user'); // Redirect to user page
     }
@@ -70,7 +71,7 @@ const Login = () => {
 
 
 
-          <form onSubmit={handleLogin}>
+          <form onSubmit={() => handleLogin()}>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">Email</label>
               <input type="email"  placeholder='Enter Your Email' className="form-control" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />

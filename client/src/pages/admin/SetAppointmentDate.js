@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import '../../images/assets/css/admin.css';
 import AdminHeader from '../../components/AdminComponents/AdminHeader';
 
@@ -13,23 +14,29 @@ function SetAppointmentDate() {
           <div class="col-xs-12 col-md-3 post-links-container mt-5">
               <ul class="list-group">
                 <br/>
-                <li class="list-group-item post-links "><a className='links' 
-                href="/admin/news/add-news">Post News</a></li>
+                <li class="list-group-item post-links "><Link className='links' 
+                to="/admin/news/add-news">Post News</Link>
+                </li>
                 <br/>
-                <li class="list-group-item post-links "><a className='links'
-                href="/admin/appointments/add-appointment">Set Appointment Date</a></li>
+                <li class="list-group-item active post-links "><Link className='links'
+                to="/admin/appointments/add-appointment">Set Appointment Date</Link>
+                </li>
                 <br/>
-                <li class="list-group-item post-links "><a className='links' 
-                href="/admin/user-status/add-user-status">Update User Status</a></li>
+                <li class="list-group-item post-links "><Link className='links' 
+                to="/admin/user-status/add-user-status">Update User Status</Link>
+                </li>
                 <br/>
-                <li class="list-group-item post-links "><a className='links' 
-                href="/admin/calls/add-call">Post Calls</a></li>
+                <li class="list-group-item post-links "><Link className='links' 
+                to="/admin/calls/add-call">Post Calls</Link>
+                </li>
                 <br/>
-                <li class="list-group-item post-links "><a className='links' 
-                href="/admin/Publications/add-publication">Post Publications</a></li>
+                <li class="list-group-item post-links "><Link className='links' 
+                to="/admin/Publications/add-publication">Post Publications</Link>
+                </li>
                 <br/>
-                <li class="list-group-item post-links "><a className='links' 
-                href="/admin/accepted-projects/add-accepted-project">Post Accepted Projects</a></li>
+                <li class="list-group-item post-links "><Link className='links' 
+                to="/admin/accepted-projects/add-accepted-project">Post Accepted Projects</Link>
+                </li>
                 <br/>
               </ul>
           </div>
