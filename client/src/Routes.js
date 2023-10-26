@@ -46,16 +46,16 @@ const RoutesComponent = () => {
       
         <Route path="/" element={<Home />} />
         <Route path="/announcements" element={<Announcements />} />
-        <Route path="/resources" element={<Resources />} ></Route>
-        <Route  path='/resources/acceptedProjects' element={<AcceptedProjects/>}></Route>
-        <Route  path='/resources/publications' element={<Publications/>}></Route>
-        <Route  path='/resources/institutes' element={<Institutes />}></Route>
+        <Route path="/resources" element={<Resources />} />
+        <Route  path='/resources/acceptedProjects' element={<AcceptedProjects/>}/>
+        <Route  path='/resources/publications' element={<Publications/>}/>
+        <Route  path='/resources/institutes' element={<Institutes />}/>
         <Route path="/collaborations" element={<Collaborations />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/news" element={<News />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path='/resources/publications/description'/>
+        <Route path='/resources/publications/description' element={<ProjectDescription/>}/>
 
       </Routes>
       <ConditionalFooter />
