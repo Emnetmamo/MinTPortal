@@ -3,9 +3,14 @@ import React from 'react';
 //import Publications from '../components/Publications'; // Import the Publications component
 import Publications from './Publications';
 import Institutes  from './Institutes';
+<<<<<<< Updated upstream
 import AcceptedProjects from './AcceptedProjects';
 import ProjectDescription from './ProjectDescription';
 
+=======
+import Laboratories from '../components/Institutes/Laboratories';
+import GovernmentAgencies from '../components/Institutes/GovernmentAgencies';
+>>>>>>> Stashed changes
 const Resources = () => {
   return (
     <div className="container">

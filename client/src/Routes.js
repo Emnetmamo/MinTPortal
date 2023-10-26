@@ -11,6 +11,10 @@ import News from './pages/News';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Footer from './components/Footer';
+import ResearchInstitutes from './components/Institutes/ResearchInstitutes';
+import Laboratories from './components/Institutes/Laboratories';
+import GovernmentAgencies from './components/Institutes/GovernmentAgencies';
+import IctPartners from './components/Institutes/IctPartners';
 import Publications from './pages/Publications';
 import Institutes from './pages/Institutes';
 import ProjectDescription from './pages/ProjectDescription';
@@ -55,7 +59,14 @@ const RoutesComponent = () => {
         <Route path="/news" element={<News />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+<<<<<<< Updated upstream
         <Route path='/resources/publications/description' element={<ProjectDescription/>}/>
+=======
+        <Route  path='/resources/institutes/research' element={<ResearchInstitutes />}></Route>
+        <Route  path='/resources/institutes/labs' element={<Laboratories />}></Route>
+        <Route  path='/resources/institutes/ict' element={<IctPartners />}></Route>
+        <Route  path='/resources/institutes/government' element={<GovernmentAgencies />}></Route>
+>>>>>>> Stashed changes
 
       </Routes>
       <ConditionalFooter />
