@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Logo from '../images/Logo.jpg';
 import {VscEyeClosed,VscEye} from 'react-icons/vsc'
 
-import { Link, useNavigate } from 'react-router-dom'; // Updated import
+import { Link, redirect, useNavigate } from 'react-router-dom'; // Updated import
 import AdminRoutes from '../pages/admin/adminRoutes'; // Import the AdminRoutes component
 import { Form, FormGroup } from 'react-bootstrap';
 
@@ -23,12 +23,14 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-   
- 
+    // Add login logic here (using email and password states)
+    
+    // Check the selected role and navigate accordingly
     if (role === 'admin') {
-      history('/admin/news/add-news'); // Redirect to admin page
+      history('/admin/news/add-news');
+      window.location.reload(); // Redirect to admin page
     } else if (role === 'user') {
-      history('/'); // Redirect to user page
+      history('/user'); // Redirect to user page
     }
   }
 

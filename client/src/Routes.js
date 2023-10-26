@@ -24,7 +24,7 @@ const ConditionalNavbar = () => {
   const navigate = useNavigate();
   const path = window.location.pathname;
 
-  if (path === '/login' || path === '/register') {
+  if (path === '/login' || path === '/register'|| path==='/admin/news/add-news') {
     return null; // Render nothing for Login and Register pages
   }
 

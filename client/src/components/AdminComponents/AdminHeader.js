@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { BsFillPersonFill } from "react-icons/bs";
 import '../../images/assets/css/admin.css';
 import logo from '../../images/Logo.jpg';
@@ -8,12 +9,12 @@ function AdminHeader() {
     <div className='header'>
       <nav className="navbar navbar-expand-xxs ">
         <div className="container-fluid">
-          <a className="navbar-brand " href="/">
+          <Link className="navbar-brand " to="/">
             <img className='ms-4 logo' src= {logo} alt='logo' />
-          </a>
+          </Link>
           <div className="d-inline-flex  align-items-center">
             <div className=" me-2" ><BsFillPersonFill  className='user-icon'/></div>
-            <span className="me-3 user-name">Admin</span>
+            <Link to='/admin/news/add-news' className="me-3 user-name">Admin</Link>
           </div>
         </div>
       </nav>

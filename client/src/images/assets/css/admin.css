@@ -7,6 +7,7 @@
 .user-name{
   font-size: 30px;
   color: #11676d;
+  text-decoration: none;
 }
 .header{
   position: fixed;
