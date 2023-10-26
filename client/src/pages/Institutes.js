@@ -32,7 +32,7 @@ const Institutes = () => {
           </li>
         </ul>
       </div>
-      {/* <div className="content">
+      <div className="content">
         {!isClicked && (
           <div className="default-content">
             <h2>Welcome to Institutes</h2>
@@ -42,7 +42,7 @@ const Institutes = () => {
       </div>
       <div>
         {isClicked && <ResearchInstitutes />}
-      </div> */}
+      </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import news from '../images/News/news9.webp';
 import new8 from '../images/News/news8.jpeg';
 import new7 from '../images/News/news7.jpeg';
+
 import ProjectDescription from './ProjectDescription';
 
 const Publications = () => {
@@ -56,10 +57,7 @@ const Publications = () => {
     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
     nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
  
-</div>
-
-
-          
+</div>    
         </div>
         <div className='mx-auto d-block'> <b>do you want to download the file?</b>
           <button href="" download="downloaded-file-name.pdf"
@@ -76,6 +74,14 @@ const Publications = () => {
       </div>
 
 
+   
+
+     
+
+
+
+
+
 
 
 
@@ -84,6 +90,7 @@ const Publications = () => {
       <div className="row justify-content-center mt-5 ">
         <div className="col p-5">
           <div className="row card">
+            
             <img src={news} alt="AI chat system" />
             <h2>Ai chat system</h2>
             <p class="mb-0">Author: Dr. Mekonnen Yilma</p>
@@ -170,7 +177,7 @@ const Publications = () => {
 >
   See description
 </button>
-<div class="content2" style={{ display: "none", padding: "0 18px", overflow: "hidden", backgroundColor: "#f1f1f1" }} id="content2">
+<div class="content2" style={{ display: "none", padding: "0 18px", overflow: "hidden", backgroundColor: "#f1f1f1",  width:'25%'}} id="content2">
   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 </div>
@@ -198,6 +205,15 @@ const Publications = () => {
 
       </div>
       <button className='mb-5 p-3 mr-5 bg-primary b-rounded'>  Veiw More</button>
+    
+    
+
+
+
+     
+    
+    
+    
     </div>
   );
 };

@@ -1,17 +1,37 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Container, ListGroup } from 'react-bootstrap';
-
+import { Link } from 'react-router-dom'; 
 const GovernmentAgencies = () => {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(true);
+  }
   return (
     <Container>
-      <br /><br />
-      <h1 style={{ color: 'orange'}}>What are government agencies?</h1>
-      <p style={{ fontSize: '20px'}}>
-        A government agency is a permanent or semi-permanent organization within a national or state government.
-        These agencies are responsible for oversight or administration of a specific sector, field, or area of study.
-        Most government agencies are meant to be non-political but the direction and intention of their work may change
-        depending on which political party makes up the majority of elected officials.
-      </p>
+      <div className='row'>
+      <div className="col-sm-3 mt-5" style={{ position: 'fixed', zIndex: '1' }}>
+  <div className="menu" style={{ backgroundColor: '#11676d', marginBottom: '80px', borderRadius: '10px' }}>
+    <ul className="menu-items" style={{ listStyleType: 'none', padding: '40px' }}>
+      <li className="menu-item active" data-content="institutes">Institutes</li>
+      <li className="menu-item" data-content="research" style={{ width: '100%', marginBottom: '10px' }}>
+        <Link to='/resources/institutes/research' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>Research Institutes</Link>
+      </li>
+      <li className="menu-item" data-content="labs" style={{ width: '100%', marginBottom: '10px' }}>
+        <Link to='/resources/institutes/labs' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>Laboratories</Link>
+      </li>
+      <li className="menu-item" data-content="ict" style={{ width: '100%', marginBottom: '10px' }}>
+        <Link to='/resources/institutes/ict' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>ICT Partners</Link>
+      </li>
+      <li className="menu-item" data-content="government" style={{ width: '100%', marginBottom: '10px' }}>
+        <Link to='/resources/institutes/government' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>Government Agency</Link>
+      </li>
+    </ul>
+  </div>
+</div>
+        <div className='col' >
+        <br /><br />
+      <h1 style={{ color: 'orange'}}>Governmental Agencies</h1>
 
       <p style={{ fontSize: '20px'}}>
         On this page, you will find contact information for Ethiopian federal government departments and agencies including
@@ -44,6 +64,9 @@ const GovernmentAgencies = () => {
         {/* Add more items for other agencies */}
       </ListGroup>
       <br/><br/>
+        </div>
+      </div>
+     
     </Container>
   );
 };
