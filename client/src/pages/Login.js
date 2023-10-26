@@ -23,13 +23,12 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Add login logic here (using email and password states)
-    
-    // Check the selected role and navigate accordingly
+   
+ 
     if (role === 'admin') {
       history('/admin/news/add-news'); // Redirect to admin page
     } else if (role === 'user') {
-      history('/user'); // Redirect to user page
+      history('/'); // Redirect to user page
     }
   }
 
