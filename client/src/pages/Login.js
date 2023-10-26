@@ -4,7 +4,7 @@ import Logo from '../images/Logo.jpg';
 import {VscEyeClosed,VscEye} from 'react-icons/vsc'
 
 import { Link, redirect, useNavigate } from 'react-router-dom'; // Updated import
-import AdminRoutes from '../pages/admin/adminRoutes'; // Import the AdminRoutes component
+ // Import the AdminRoutes component
 import { Form, FormGroup } from 'react-bootstrap';
 
 

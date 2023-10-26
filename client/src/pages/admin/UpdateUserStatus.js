@@ -9,27 +9,39 @@ function UpdateUserStatus() {
       <AdminHeader />
       <div className='container mt-5'>
         <br/><br/>
-        <div className="row ms-0">
-          <div className="col-xs-12 col-md-2 post-links-container-user-status mt-5" style={{overflow: 'hidden'}}>
-              <ul className="list-group" >
+          <div className="row ms-0">
+            <div className="col-xs-12 col-md-2 post-links-container-user-status mt-5" style={{overflow: 'hidden', backgroundColor:'#11676d', maxHeight: '450px', borderRadius: '10px'}}>
+              <ul class="list-group">
                 <br/>
-                <li className="list-group-item post-links "><Link className='links' 
-                to="/admin/news/add-news">Post News</Link></li>
+                <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', borderRadius: '10px', border: "none"}} >
+                  <Link className='links' to="/admin/news/add-news">
+                  Post News <span style={{color: '#ffa525'}}>AAAAA</span> </Link>
+                </li>
                 <br/>
-                <li className="list-group-item post-links "><Link className='links'
-                to="/admin/appointments/add-appointment">Set Appointment Date</Link></li>
+                <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', borderRadius: '10px', border: "none"}}>
+                  <Link className='links' to="/admin/appointments/add-appointment">
+                    Set Appointment Date<span style={{color: '#ffa525'}}>AAAA</span> </Link>
+                </li>
                 <br/>
-                <li className="list-group-item active post-links "><Link className='links' 
-                to="/admin/user-status/add-user-status">Update User Status</Link></li>
+                <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', borderRadius: '10px', border: "none"}}
+                ><Link className='links' to="/admin/user-status/add-user-status">
+                  Update User Status </Link>
+                </li>
                 <br/>
-                <li className="list-group-item post-links "><Link className='links' 
-                to="/admin/calls/add-call">Post Calls</Link></li>
+                <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', borderRadius: '10px', border: "none"}}>
+                  <Link className='links' to="/admin/calls/add-call">
+                    Post Calls <span style={{color: '#ffa525'}}>AAAAAAA</span></Link>
+                </li>
                 <br/>
-                <li className="list-group-item post-links "><Link className='links' 
-                to="/admin/Publications/add-publication">Post Publications</Link></li>
+                <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', borderRadius: '10px', border: "none"}}>
+                  <Link className='links' to="/admin/publications/add-publication">
+                    Post Publications <span style={{color: '#ffa525'}}>AA</span></Link>
+                </li>
                 <br/>
-                <li className="list-group-item post-links "><Link className='links' 
-                to="/admin/accepted-projects/add-accepted-project">Post Accepted Projects</Link></li>
+                <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', borderRadius: '10px', border: "none"}}>
+                  <Link className='links' to="/admin/accepted-projects/add-accepted-project">
+                    Post Accepted<span style={{color: '#ffa525'}}>AAAA</span> Projects<span style={{color: '#ffa525'}}>AAAAAAAAA</span> </Link>
+                </li>
                 <br/>
               </ul>
           </div>
@@ -74,7 +86,7 @@ function UpdateUserStatus() {
                     <td><input type="number" style={{width: '40px'}} name="no"/></td>
                     <td><input type="text"  name="user-id"/></td>
                     <td><input type="text"  name="title"/></td>
-                    <td><textarea  name="description" rows="6" cols="50" style={{overflow: 'scroll'}}></textarea></td>
+                    <td><textarea  name="description" rows="6" cols="40" style={{overflow: 'scroll'}}></textarea></td>
                     <td>
                     <select  name="category" size={0}>
                         <option > None</option>

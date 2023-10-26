@@ -29,7 +29,6 @@ const Navbar = () => {
         <Link className="navbar-brand mr-auto" to="/">
           <img src={Logo} alt="Logo" style={{ maxWidth: '80px' }} />
         </Link>
-
         <button
           className="navbar-toggler"
           type="button"

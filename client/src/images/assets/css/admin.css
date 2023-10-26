@@ -19,34 +19,15 @@
 }
 
 .logo{
-  width: 120px;
-  
+  width: 120px;  
 }
 
 .post-links-container{
   background-color: #11676d;
   border-radius: 10px;
-  max-height: 410px;
-  
-}
-.post-links-container-user-status{
-  background-color: #11676d;
-  border-radius: 10px;
-  max-height: 450px;
-  
-}post-links-container{
-  background-color: #11676d;
-  border-radius: 10px;
-  max-height: 410px;
-  
-}
-.post-links{
-  border-radius: 7px;
-  border: none;
-  background-color: #ffa525;
-  transition: opacity 0.15s;
+  max-height: 420px;
+}zz
 
-}
 .post-links:hover, .dropzone:hover{
   cursor: pointer;
   opacity: 0.8;
@@ -66,9 +47,6 @@ label, p{
   font-weight: 500;
 }
     
-input::placeholder {
-  color: #11676d;
-}
 button.submit{
   background-color: #11676d;
 }
