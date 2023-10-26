@@ -6,12 +6,6 @@ import new7 from '../images/News/news7.jpeg';
 import ProjectDescription from './ProjectDescription';
 
 const Publications = () => {
-  const [Description, setShowMore] = useState(false);
-
-  const toggleReadMore = () => {
-    setShowMore(!Description);
-  };
-
   return (
     <div >
         <div className='' style={{height:'80pt'}}>
@@ -32,23 +26,40 @@ const Publications = () => {
         }}>Wind Energy For Rural Area</h2>
         <p class="mb-0">Author: Tomas Mores</p>
 <p>Date published: December 4, 2003</p>
+<button className=''
 
-          <p>
-            <button
-              className="btn btn-primary"
-              type="button"
-              onClick={toggleReadMore}
-            >
-              {Description? 'Close' : 'See Description'}
-            </button>
-          </p>
-        
-          {Description && (
-            <div >
-              Solar energy is one of the main energy sources in Ethiopia. As Ethiopia is an underdeveloped country, it mainly depends on natural power. Dr. John is the inventor of such energy-converting devices.
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-            </div>
-          )}
+  type="button"
+  style={{
+    backgroundColor: "blue",
+    borderRadius: '8px', 
+    cursor: "pointer",
+    padding: "18px",
+    width: "30%",
+    border: "rounded",
+    textAlign: "left",
+    outline: "none",
+    fontSize: "15px"
+  }}
+  onClick={() => {
+    const content = document.getElementById('content');
+    if (content.style.display === 'none' || content.style.display === '') {
+      content.style.display = 'block';
+    } else {
+      content.style.display = 'none';
+    }
+  }}
+>
+ See description
+</button>
+<div class="content" style={{ display: "none", padding: "0 18px", overflow: "hidden", backgroundColor: "#f1f1f1" }} id="content">
+ 
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+ 
+</div>
+
+
+          
         </div>
         <div className='mx-auto d-block'> <b>do you want to download the file?</b>
           <button href="" download="downloaded-file-name.pdf"
@@ -77,22 +88,37 @@ const Publications = () => {
             <h2>Ai chat system</h2>
             <p class="mb-0">Author: Dr. Mekonnen Yilma</p>
             <p>Date published: December 4, 2009</p>
-            <p>
+            
+
+
             <button
-              className="btn btn-primary"
-              type="button"
-              onClick={toggleReadMore}
-            >
-              {Description? 'Close' : 'See Description'}
-            </button>
-          </p>
-        
-          {Description && (
-            <div >
-              Solar energy is one of the main energy sources in Ethiopia. As Ethiopia is an underdeveloped country, it mainly depends on natural power. Dr. John is the inventor of such energy-converting devices.
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-            </div>
-          )}
+  type="button"
+  style={{
+    backgroundColor: "blue",
+    borderRadius: '8px',
+    cursor: "pointer",
+    padding: "18px",
+    width: "50%",
+    border: "1px solid black", // Specify the border style here
+    textAlign: "left",
+    outline: "none",
+  }}
+  onClick={() => {
+    const content1 = document.getElementById('content1');
+    if (content1.style.display === 'none' || content1.style.display === '') {
+      content1.style.display = 'block';
+    } else {
+      content1.style.display = 'none';
+    }
+  }}
+>
+  See description
+</button>
+<div class="content1" style={{ display: "none", padding: "0 18px", overflow: "hidden", backgroundColor: "#f1f1f1" }} id="content1">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</div>
+
            <div className='mx-auto d-block'> <b>do you want to download the file?</b>
           <button href="" download="downloaded-file-name.pdf"
              className="btn btn-success"
@@ -118,22 +144,38 @@ const Publications = () => {
             <h2 className="row">Solar Energy</h2>
             <p class="mb-0">Author: Tomas Mores</p>
             <p>Date published: December 4, 2003</p>
-            <p>
+           
+
+
             <button
-              className="btn btn-primary"
-              type="button"
-              onClick={toggleReadMore}
-            >
-              {Description? 'Close' : 'See Description'}
-            </button>
-          </p>
-        
-          {Description && (
-            <div >
-              Solar energy is one of the main energy sources in Ethiopia. As Ethiopia is an underdeveloped country, it mainly depends on natural power. Dr. John is the inventor of such energy-converting devices.
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-            </div>
-          )}
+  type="button"
+  style={{
+    backgroundColor: "blue",
+    borderRadius: '8px',
+    cursor: "pointer",
+    padding: "18px",
+    width: "50%",
+    border: "1px solid black", // Specify the border style here
+    textAlign: "left",
+    outline: "none",
+  }}
+  onClick={() => {
+    const content2 = document.getElementById('content2');
+    if (content2.style.display === 'none' || content2.style.display === '') {
+      content2.style.display = 'block';
+    } else {
+      content2.style.display = 'none';
+    }
+  }}
+>
+  See description
+</button>
+<div class="content2" style={{ display: "none", padding: "0 18px", overflow: "hidden", backgroundColor: "#f1f1f1" }} id="content2">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</div>
+
+
             <div className='mx-auto d-block'> <b>do you want to download the file?</b>
           <button href="" download="downloaded-file-name.pdf"
   className="btn btn-success"
@@ -155,7 +197,7 @@ const Publications = () => {
        
 
       </div>
- 
+      <button className='mb-5 p-3 mr-5 bg-primary b-rounded'>  Veiw More</button>
     </div>
   );
 };
