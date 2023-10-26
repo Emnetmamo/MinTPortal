@@ -5,6 +5,7 @@ import SetAppointmentDate from './SetAppointmentDate'
 import UpdateUserStatus from './UpdateUserStatus'
 import PostCalls from './PostCalls'
 
+
 import { BrowserRouter as Router, Routes,Route, Switch, Link } from 'react-router-dom';
 
 const adminRoutes = () => {
@@ -12,10 +13,12 @@ const adminRoutes = () => {
   <div >
     <Router>
       <Routes>
+        
         <Route path='/admin/news/add-news' element={<PostNews/>}></Route>
         <Route path='/admin/appointments/add-appointment' element={<SetAppointmentDate/>}></Route>
         <Route path='/admin/user-status/add-user-status' element={<UpdateUserStatus/>}></Route>
         <Route path='/admin/calls/add-call' element={<PostCalls/>}></Route>
+        
       </Routes>
     </Router>
     

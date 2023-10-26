@@ -10,8 +10,8 @@ function UpdateUserStatus() {
       <div className='container mt-5'>
         <br/><br/>
         <div className="row ms-0">
-          <div className="col-xs-12 col-md-2 post-links-container-user-status mt-5">
-              <ul className="list-group">
+          <div className="col-xs-12 col-md-2 post-links-container-user-status mt-5" style={{overflow: 'hidden'}}>
+              <ul className="list-group" >
                 <br/>
                 <li className="list-group-item post-links "><Link className='links' 
                 to="/admin/news/add-news">Post News</Link></li>

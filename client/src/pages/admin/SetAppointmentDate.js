@@ -11,7 +11,7 @@ function SetAppointmentDate() {
       <div className='container mt-5'>
         <br/><br/><br/>
         <div class="row">
-          <div class="col-xs-12 col-md-3 post-links-container mt-5">
+          <div class="col-xs-12 col-md-3 post-links-container mt-5" style={{overflow: 'hidden'}}>
               <ul class="list-group">
                 <br/>
                 <li class="list-group-item post-links "><Link className='links' 
