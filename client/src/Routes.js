@@ -59,14 +59,14 @@ const RoutesComponent = () => {
         <Route path="/news" element={<News />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-<<<<<<< Updated upstream
+
         <Route path='/resources/publications/description' element={<ProjectDescription/>}/>
-=======
+
         <Route  path='/resources/institutes/research' element={<ResearchInstitutes />}></Route>
         <Route  path='/resources/institutes/labs' element={<Laboratories />}></Route>
         <Route  path='/resources/institutes/ict' element={<IctPartners />}></Route>
         <Route  path='/resources/institutes/government' element={<GovernmentAgencies />}></Route>
->>>>>>> Stashed changes
+
 
       </Routes>
       <ConditionalFooter />

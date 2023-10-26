@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 // import "../components/Institutes/Institutes.css";
 import ResearchInstitutes from '../components/Institutes/ResearchInstitutes'; // Import the ResearchInstitutes component
 import Laboratories from '../components/Institutes/Laboratories';
@@ -19,10 +20,10 @@ const Institutes = () => {
   <div class="menu">
     <ul class="menu-items">
       <li class="menu-item active" data-content="institutes">Institutes</li>
-      <li class="menu-item" data-content="research"><a href='/resources/institutes/research' onClick={handleClick}>Research Institutes</a></li>
-      <li class="menu-item" data-content="labs"><a href='/resources/institutes/labs' onClick={handleClick}>Laboratories</a></li>
-      <li class="menu-item" data-content="ict"><a href='/resources/institutes/ict' onClick={handleClick}>ICT Partners</a></li>
-      <li class="menu-item" data-content="government"><a href='/resources/institutes/government' onClick={handleClick}>Government Agency</a></li>
+      <li class="menu-item" data-content="research"><Link to='/resources/institutes/research' onClick={handleClick}>Research Institutes</Link></li>
+      <li class="menu-item" data-content="labs"><Link to='/resources/institutes/labs' onClick={handleClick}>Laboratories</Link></li>
+      <li class="menu-item" data-content="ict"><Link to='/resources/institutes/ict' onClick={handleClick}>ICT Partners</Link></li>
+      <li class="menu-item" data-content="government"><Link to='/resources/institutes/government' onClick={handleClick}>Government Agency</Link></li>
     </ul>
   </div>
   <div class="content">
