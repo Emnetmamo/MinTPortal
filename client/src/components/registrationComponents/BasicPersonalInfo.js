@@ -21,7 +21,7 @@ const BasicPersonalInfo = ({ nextStep }) => {
 
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-1">
        <div className="text-right mt-3">
         <Link style={{marginBottom: "20px", backgroundColor:"#11676d", border: "none", fontSize:"20px"}}
          to="/" className="btn btn-primary">Back to Home</Link>
