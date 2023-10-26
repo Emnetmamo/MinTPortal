@@ -110,7 +110,7 @@ const AcceptedProjects = () => {
           </div>
         ))}
       </div>
-      <div className="text-left mt-3 mx-end">
+      <div className="text-left mt-3 mx-5">
         <Link style={{ marginBottom: "30px" }} to="/view-more" className="btn btn-primary">View More</Link>
       </div>
     </div>
