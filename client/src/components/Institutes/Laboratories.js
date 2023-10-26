@@ -33,7 +33,7 @@ function Laboratories() {
   return (
 <container>
 <div className='row'>
-<div className='col-sm-4 mt-5' >
+<div className='col-sm-3 mt-5' >
   <div className="menu" style={{ backgroundColor: '#11676d', marginBottom: '80px', borderRadius: '10px' }}>
     <ul className="menu-items" style={{ listStyleType: 'none', padding: '40px' }}>
       <li className="menu-item active" data-content="institutes">Institutes</li>
