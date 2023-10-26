@@ -68,7 +68,7 @@ const AcceptedProjectsData = [
 const AcceptedProjects = () => {
   return (
     <div className="container m-10" >
-      <h1 className="mb-4 font-weight-bold text-center">Accepted Projects</h1>
+      <h1 className="mb-4 mt-3 font-weight-bold text-center">Accepted Projects</h1>
       <div className="input-group mb-3">
         <input
           type="text"
@@ -100,7 +100,8 @@ const AcceptedProjects = () => {
                     <h6 className="card-Investigator my-2 ">Principal Investigator: {AcceptedProjectsItem.Investigator}</h6>
                     <h6 className="card-category my-2 ">Category: {AcceptedProjectsItem.category}</h6>
                     <h6 className="col card-Description d-flex " >Description: </h6>
-                    <p className="col card-text text-muted">{AcceptedProjectsItem.description}</p>
+                    {/* <p className="col card-text text-muted">{AcceptedProjectsItem.description}</p> */}
+                    {AcceptedProjectsItem.description}
                     <h6 className="card-PublicationDate my-2 ">PublicationDate: {AcceptedProjectsItem.PublicationDate}</h6>
                     <Link to={`/AcceptedProjects/${index}`} className="btn btn-primary my-2">Download</Link>
                   </div>
@@ -110,7 +111,7 @@ const AcceptedProjects = () => {
           </div>
         ))}
       </div>
-      <div className="text-left mt-3 mx-end">
+      <div className="text-left mt-3 mx-5">
         <Link style={{ marginBottom: "30px" }} to="/view-more" className="btn btn-primary">View More</Link>
       </div>
     </div>

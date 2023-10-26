@@ -4,7 +4,15 @@ import React from 'react';
 import Publications from './Publications';
 import Institutes  from './Institutes';
 
+import AcceptedProjects from './AcceptedProjects';
 import ProjectDescription from './ProjectDescription';
+import Laboratories from '../components/Institutes/Laboratories';
+import GovernmentAgencies from '../components/Institutes/GovernmentAgencies';
+
+{/*<<<<<<< Updated upstream*/}
+{/*=======*/}
+{/*>>>>>>> Stashed changes*/}
+
 const Resources = () => {
   return (
     <div className="container">
@@ -31,11 +39,12 @@ const Resources = () => {
       <div className="tab-content">
         <div id="acceptedProjects" className="tab-pane fade show active">
           {/* Content for the "Accepted Projects" tab */}
+          <AcceptedProjects/>
         </div>
         <div id="publications" className="tab-pane fade">
           {/* Render the Publications component within the "Publications" tab */}
           <Publications />
-           <ProjectDescription/>
+         
         </div>
         <div id="institutes" className="tab-pane fade">
           {/* Render the Publications component within the "Publications" tab */}
