@@ -97,7 +97,7 @@ const Login = () => {
         />
       </Form.Group>
     </div>
-            <button style={{marginBottom: "20px", marginLeft:'400px', backgroundColor:"orange", border: "none", fontSize:"20px"}} type="submit" className="btn btn-primary">Login</button>
+            <button style={{marginBottom: "90px", marginLeft:'563px', backgroundColor:"orange", border: "none", fontSize:"20px"}} type="submit" className="btn btn-primary">Login</button>
           </form>
           {/* <div className="mt-3">
             <span>or</span>
