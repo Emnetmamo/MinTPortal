@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Container } from 'react-bootstrap';
 import news from '../images/News/news9.webp';
 import new8 from '../images/News/news8.jpeg';
 import new7 from '../images/News/news7.jpeg';
@@ -198,16 +198,64 @@ const Publications = () => {
 
           </div>
         </div>
-       
-
+  
       </div>
-      <button className='mb-5 p-3 mr-5 bg-primary b-rounded'>  Veiw More</button>
+   
     
     
 
 
+      <Container className='w-60%'>
+      {/* Carousel */}
+      <div id="demo" className="carousel slide" data-bs-ride="carousel">
+        {/* Indicators/dots */}
+        <div className="carousel-indicators">
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="0" className="active"></button>
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+        </div>
 
-     
+        {/* The slideshow/carousel */}
+        <div className="carousel-inner">
+          <div className="carousel-item active">
+            <img src={news} alt="Los Angeles" className="d-block w-100 " />
+            <div className="carousel-caption">
+              <h1 style={{ color: 'blue', textAlign: 'center' }}>
+              <h2 className="row">Solar Energy</h2>
+            <h3 class="mb-0">Author: Tomas Mores</h3>
+            <h3>Date published: December 4, 2003</h3>
+               </h1>
+              {/* <p>Slide 1 Description</p> */}
+            </div>
+          </div>
+          <div className="carousel-item">
+            <img src={new7} alt="Chicago" className="d-block w-100" />
+            <div className="carousel-caption">
+              <h1 style={{ color: 'black', textAlign: 'center' }}>Affordable - Our aim is to provide affordable solutions and services </h1>
+              {/* <p>Slide 2 Description</p> */}
+            </div>
+          </div>
+          <div className="carousel-item">
+            <img src={new8} alt="New York" className="d-block w-100 " />
+            <div className="carousel-caption">
+              <h1 style={{ color: 'black', textAlign: 'center' }}>Reliable - Our team is highly skilled and highly professiona services </h1>
+              {/* <p>Slide 3 Description</p> */}
+            </div>
+          </div>
+        </div>
+
+        {/* Left and right controls/icons */}
+        <button className="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon"></span>
+        </button>
+        <button className="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+          <span className="carousel-control-next-icon"></span>
+        </button>
+      </div>
+
+    </Container>
+     <br></br>
+     <br/>
     
     
     

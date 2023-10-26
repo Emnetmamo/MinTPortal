@@ -89,10 +89,11 @@ function ResearchInstitutes() {
         </Row>
       </Container>
       <br /><br />
-      <div className="d-flex justify-content-end">
+      <div className="d-flex justify-content-end me-5 mt-3">
         <button className="btn btn-primary">
           <a href="/" style={{ color: 'white', textDecoration: 'none'}}>Next Page</a>
         </button>
+      
       </div>
       </>
 
@@ -100,7 +101,7 @@ function ResearchInstitutes() {
 </div>
 
 </div>
-
+<br/>
 </container>
 
    
