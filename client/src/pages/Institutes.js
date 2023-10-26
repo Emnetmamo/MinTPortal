@@ -20,16 +20,16 @@ const Institutes = () => {
     <ul className="menu-items" style={{ listStyleType: 'none', padding: '40px' }}>
       <li className="menu-item active" data-content="institutes">Institutes</li>
       <li className="menu-item" data-content="research" style={{ width: '100%', marginBottom: '10px' }}>
-        <Link to='/resources/institutes/research' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>Research Institutes</Link>
+        <Link to='/institutes/research' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>Research Institutes</Link>
       </li>
       <li className="menu-item" data-content="labs" style={{ width: '100%', marginBottom: '10px' }}>
-        <Link to='/resources/institutes/labs' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>Laboratories</Link>
+        <Link to='/institutes/labs' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>Laboratories</Link>
       </li>
       <li className="menu-item" data-content="ict" style={{ width: '100%', marginBottom: '10px' }}>
-        <Link to='/resources/institutes/ict' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>ICT Partners</Link>
+        <Link to='/institutes/ict' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>ICT Partners</Link>
       </li>
       <li className="menu-item" data-content="government" style={{ width: '100%', marginBottom: '10px' }}>
-        <Link to='/resources/institutes/government' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>Government Agency</Link>
+        <Link to='/institutes/government' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>Government Agency</Link>
       </li>
     </ul>
   </div>

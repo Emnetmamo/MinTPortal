@@ -64,9 +64,9 @@ const Navbar = () => {
               <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`} aria-labelledby="resourcesDropdown">
                 <Link className="dropdown-item" to="/resources/acceptedProjects" onClick={closeDropdown} style={{ color: '#11676d' }}>Accepted Projects</Link>
                 <Link className="dropdown-item" to="/resources/publications" onClick={closeDropdown} style={{ color: '#11676d' }}>Publications</Link>
-                <Link className="dropdown-item" to="/resources/institutes" onClick={closeDropdown} style={{ color: '#11676d' }}>Institutes</Link>
               </div>
             </div>
+            <Link className="nav-link" to="/institutes" onClick={closeMenu} style={{ color: '#11676d' }}>Institutes</Link>
             <Link className="nav-link" to="/collaborations" onClick={closeMenu} style={{ color: '#11676d' }}>Collaborations</Link>
             <Link className="nav-link" to="/aboutus" onClick={closeMenu} style={{ color: '#11676d' }}>About Us</Link>
             <Link className="nav-link" to="/news" onClick={closeMenu} style={{ color: '#11676d' }}>News</Link>

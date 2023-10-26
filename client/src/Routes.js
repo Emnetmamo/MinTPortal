@@ -53,7 +53,7 @@ const RoutesComponent = () => {
         <Route path="/resources" element={<Resources />} />
         <Route  path='/resources/acceptedProjects' element={<AcceptedProjects/>}/>
         <Route  path='/resources/publications' element={<Publications/>}/>
-        <Route  path='/resources/institutes' element={<Institutes />}/>
+        <Route  path='/institutes' element={<Institutes />}/>
         <Route path="/collaborations" element={<Collaborations />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/news" element={<News />} />
@@ -68,10 +68,10 @@ const RoutesComponent = () => {
         <Route path='/resources/publications/description' element={<ProjectDescription/>}/>
 
 {/* >>>>>>> 793a834cd50bdec0aceed799d3becb7e5294faf9 */}
-        <Route  path='/resources/institutes/research' element={<ResearchInstitutes />}></Route>
-        <Route  path='/resources/institutes/labs' element={<Laboratories />}></Route>
-        <Route  path='/resources/institutes/ict' element={<IctPartners />}></Route>
-        <Route  path='/resources/institutes/government' element={<GovernmentAgencies />}></Route>
+        <Route  path='/institutes/research' element={<ResearchInstitutes />}></Route>
+        <Route  path='/institutes/labs' element={<Laboratories />}></Route>
+        <Route  path='/institutes/ict' element={<IctPartners />}></Route>
+        <Route  path='/institutes/government' element={<GovernmentAgencies />}></Route>
 {/* <<<<<<< HEAD */}
 {/*>>>>>>> Stashed changes*/}
 {/* ======= */}
