@@ -16,70 +16,80 @@ const LatestUpdates = () => {
     objectFit: 'cover', // Ensure the image covers the entire container
   };
   return (
-    <div>
-       <h1 className="text-center mb-4">Latest Updates</h1>
-       <Carousel>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={image1}
-          alt="First slide"
-          style={carouselImageStyle}
-        />
-        <Carousel.Caption>
-          <h3>Slide 1 Title</h3>
-          <p>Slide 1 Description</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={image2}
-          alt="Second slide"
-          style={carouselImageStyle}
-        />
-        <Carousel.Caption>
-          <h3>Slide 2 Title</h3>
-          <p>Slide 2 Description</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={image3}
-          alt="Third slide"
-          style={carouselImageStyle}
-        />
-        <Carousel.Caption>
-          <h3>Slide 3 Title</h3>
-          <p>Slide 3 Description</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={image4}
-          alt="Fourth slide"
-          style={carouselImageStyle}
-        />
-        <Carousel.Caption>
-          <h3>Slide 4 Title</h3>
-          <p>Slide 4 Description</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={image5}
-          alt="Fifth slide"
-          style={carouselImageStyle}
-        />
-        <Carousel.Caption>
-          <h3>Slide 5 Title</h3>
-          <p>Slide 5 Description</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+  <div>
+    <h1 className="text-center mb-4">Latest Updates</h1>
+      <Carousel>        
+        <Carousel.Item>
+          <a href="/news" >
+            <img
+              className="d-block w-100"
+              src={image1}
+              alt="First slide"
+              style={carouselImageStyle}
+            />
+            <Carousel.Caption>
+              <h3>Slide 1 Title</h3>
+              <p>Slide 1 Description</p>
+            </Carousel.Caption>
+          </a>
+        </Carousel.Item>
+        <Carousel.Item>
+         <a href="/news" >
+            <img
+              className="d-block w-100"
+              src={image2}
+              alt="Second slide"
+              style={carouselImageStyle}
+            />
+            <Carousel.Caption>
+              <h3>Slide 2 Title</h3>
+              <p>Slide 2 Description</p>
+            </Carousel.Caption>
+          </a>
+        </Carousel.Item>
+        <Carousel.Item>
+          <a href="/news" >
+            <img
+              className="d-block w-100"
+              src={image3}
+              alt="Third slide"
+              style={carouselImageStyle}
+            />
+            <Carousel.Caption>
+              <h3>Slide 3 Title</h3>
+              <p>Slide 3 Description</p>
+            </Carousel.Caption>
+          </a>
+        </Carousel.Item>
+        <Carousel.Item>
+          <a href="/news" >
+            <img
+              className="d-block w-100"
+              src={image4}
+              alt="Fourth slide"
+              style={carouselImageStyle}
+            />
+            <Carousel.Caption>
+              <h3>Slide 4 Title</h3>
+              <p>Slide 4 Description</p>
+            </Carousel.Caption>
+          </a>
+        </Carousel.Item>
+        <Carousel.Item>
+          <a href="/news" >
+            <img
+              className="d-block w-100"
+              src={image5}
+              alt="Fifth slide"
+              style={carouselImageStyle}
+            />
+            <Carousel.Caption>
+              <h3>Slide 5 Title</h3>
+              <p>Slide 5 Description</p>
+            </Carousel.Caption>
+          </a>
+        </Carousel.Item>
+      </Carousel>
     <div className="text-center mt-4">
         <Link to="/news" className="btn btn-warning">Go to our News page for more</Link>
       </div>

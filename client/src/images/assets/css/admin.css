@@ -19,15 +19,20 @@
 }
 
 .logo{
-  width: 120px;  
+  width: 120px; 
+  margin-left: 110px; 
 }
 
 .post-links-container{
   background-color: #11676d;
   border-radius: 10px;
-  max-height: 420px;
-}zz
-
+  height: 410px;
+}
+.post-links{
+  background-color: #ffa525;
+  border-radius: 10px;
+  border: none;
+}
 .post-links:hover, .dropzone:hover{
   cursor: pointer;
   opacity: 0.8;

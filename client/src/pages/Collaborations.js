@@ -48,7 +48,7 @@ const Collaborations = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 700,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
@@ -66,6 +66,7 @@ const Collaborations = () => {
 
   return (
     <div className="container mt-4 mb-4 text-center"> {/* Added text-center class */}
+    <br/><br/>
       <h1 className="mb-4 font-weight-bold">Collaborations</h1> {/* Added h1 title */}
       <Slider {...settings}>
         {collaborationData.map(collaboration => (

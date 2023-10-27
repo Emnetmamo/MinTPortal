@@ -6,11 +6,11 @@ import logo from '../../images/Logo.jpg';
 
 function AdminHeader() {
   return (
-    <div className='header'>
+    <div className='header  shadow'>
       <nav className="navbar navbar-expand-xxs ">
         <div className="container-fluid">
           <Link className="navbar-brand " to="/">
-            <img className='ms-4 logo' src= {logo} alt='logo' />
+            <img className=' logo' src= {logo} alt='logo' />
           </Link>
           <div className="d-inline-flex  align-items-center">
             <div className=" me-2" ><BsFillPersonFill  className='user-icon'/></div>
@@ -18,7 +18,7 @@ function AdminHeader() {
           </div>
         </div>
       </nav>
-      <hr/>
+      
     </div>
   );
 }

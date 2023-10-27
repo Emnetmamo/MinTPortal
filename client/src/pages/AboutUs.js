@@ -8,6 +8,7 @@ import Leaders from '../components/AboutUsComponents/Leaders';
 const AboutUs = () => {
   return (
     <div>
+      <br/><br/>
       <AboutUsSection />
       <OrganizationStructure />
       <Leaders />

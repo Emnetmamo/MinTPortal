@@ -1,4 +1,5 @@
 /* Apply fixed position and box-shadow to the Navbar */
+
 .navbar {
   position: fixed;
   width: 100%;

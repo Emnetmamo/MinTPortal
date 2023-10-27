@@ -24,10 +24,11 @@ const Dropzone = ({className}) => {
   }, [])
   const {getRootProps, getInputProps, isDragActive} = useDropzone({
     accept: {
-      'image/*': []
+      
+      'text/*': ['.pdf'],
     },
     onDrop,
-    maxSize: 1024*10
+    maxSize: 1024*1000
   })
     useEffect(() => {
       // Revoke the data uris to avoid memory leaks
@@ -57,43 +58,33 @@ const Dropzone = ({className}) => {
         }
       </div>
       <section className='mt-5'>
-        <div className='mb-3 d-flex  '>
+        <div className='mb-3 d-flex   '>
           <h2 className='me-3   fw-bold text-secondary'>
             Preview
           </h2>
-            <button
-            onClick={removeAll}
-              className='ms-4 btn btn-white border border-secondary fw-bold text-secondary'
-            >
-              Remove all files
-            </button>
+          <button
+          onClick={removeAll}
+            className='ms-4 btn btn-white border border-secondary fw-bold text-secondary'
+          >
+            Remove all files
+          </button>
           
         </div>
         <h2 class=" fw-bold text-secondary my- text-center">Accepted Files</h2>
-        <ul className='mt-4 '>
+        <ul className='mt-4 d-flex'>
           {files.map(file => (
-            <li key={file.name} className=' p-2 position-relative  d-inline-flex flex-shrink-1 
-            flex-column  rounded-md shadow'>
-              <img
-                src={file.preview}
-                alt={file.name}
-                width={100}
-                height={100}
-                onLoad={() => {
-                  URL.revokeObjectURL(file.preview)
-                }}
-                className='me-1   w-5 object-cover rounded-md'
-              />
-              <button
-                className='dropzone d-inline-flex align-items-center  position-absolute  rounded-circle border border-secondary 
-                top-0 end-0 transition '
-                onClick={() => removeFile(file.name)}
-              >
-                <HiXMark  />
-              </button>
-              <p className='mt-2 text-neutral-500 fs-6 fw-medium'>
+            <li key={file.name} className=' p-2  d-flex   rounded-md shadow'>
+             
+              <p className='m-2 text-neutral-500 fs-6 fw-medium'>
                 {file.name}
               </p>
+              
+              <button
+                className='btn btn-secondary     border border-secondary transition '
+                onClick={() => removeFile(file.name)}
+              >
+                Remve
+              </button>
             </li>
           ))}
         </ul>

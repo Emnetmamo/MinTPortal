@@ -68,6 +68,7 @@ const AcceptedProjectsData = [
 const AcceptedProjects = () => {
   return (
     <div className="container m-10" >
+      <br/><br/>
       <h1 className="mb-4 mt-3 font-weight-bold text-center">Accepted Projects</h1>
       <div className="input-group mb-3">
         <input
