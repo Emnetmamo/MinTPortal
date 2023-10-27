@@ -10,6 +10,7 @@ const AboutUs = () => {
   return (
     <div>
       <br/><br/>
+      <MapContainer/>
       <AboutUsSection />
       <OrganizationStructure />
       <Leaders />
