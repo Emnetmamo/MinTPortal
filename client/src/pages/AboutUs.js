@@ -9,11 +9,10 @@ import Leaders from '../components/AboutUsComponents/Leaders';
 const AboutUs = () => {
   return (
     <div>
-<<<<<<< HEAD
        <br /> <br /> 
-      // <div className="container shadow p-4 mb-4 bg-white rounded">
-      // <h1>Use Google Map Here About Our Location</h1> </ div>
-      //  <MapContainer /> 
+      <div className="container shadow p-4 mb-4 bg-white rounded">
+      <h1>Use Google Map Here About Our Location</h1> </ div>
+      <MapContainer /> 
       <AboutUsSection />
       <OrganizationStructure />
       <Leaders />
