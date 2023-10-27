@@ -3,7 +3,7 @@
 import React from 'react';
 import './App.css';
 import RoutesComponent from './Routes';
-import AdminRoutesComponent from './pages/admin/AdminRoutes'
+import AdminRoutesComponent from './pages/admin/adminRoutes'
 
 function App() {
   return (
