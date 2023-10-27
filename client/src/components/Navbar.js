@@ -29,7 +29,7 @@ const Navbar = () => {
       <div className="container">
         <Link className="navbar-brand mr-auto" to="/">
          
-          <img src={Logo} alt="Logo" style={{ maxWidth: '140px' }} />
+          <img src={Logo} alt="Logo" style={{ maxWidth: '120px' }} />
         </Link>
         <button
           className="navbar-toggler"
@@ -46,11 +46,11 @@ const Navbar = () => {
 
         <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="navbarNav">
           <div className="navbar-nav mx-auto">
-            <Link className="nav-link fs-3 fw-bold" to="/" onClick={closeMenu} style={{ color: '#11676d' }}> <AiTwotoneHome/>Home</Link>
-            <Link className="nav-link fs-3 fw-bold" to="/announcements" onClick={closeMenu} style={{ color: '#11676d' }}>Announcements</Link>
+            <Link className="nav-link fs-5 fw-bold d-flex align-items-center" to="/" onClick={closeMenu} style={{ color: '#11676d' }}> <AiTwotoneHome/>Home</Link>
+            <Link className="nav-link fs-5 fw-bold" to="/announcements" onClick={closeMenu} style={{ color: '#11676d' }}>Announcements</Link>
             <div className={`nav-item dropdown ${isDropdownOpen ? 'show' : ''}`}>
               <Link
-                className="nav-link dropdown-toggle fs-4 fw-bold"
+                className="nav-link dropdown-toggle fs-5 fw-bold"
                 to="#"
                 id="resourcesDropdown"
                 role="button"
@@ -67,10 +67,10 @@ const Navbar = () => {
                 <Link className="dropdown-item" to="/resources/publications" onClick={closeDropdown} style={{ color: '#11676d' }}>Publications</Link>
               </div>
             </div>
-            <Link className="nav-link fs-3 fw-bold" to="/institutes" onClick={closeMenu} style={{ color: '#11676d' }}>Institutes</Link>
-            <Link className="nav-link fs-3 fw-bold" to="/collaborations" onClick={closeMenu} style={{ color: '#11676d' }}>Collaborations</Link>
-            <Link className="nav-link fs-3 fw-bold" to="/aboutus" onClick={closeMenu} style={{ color: '#11676d' }}>About Us</Link>
-            <Link className="nav-link fs-3 fw-bold" to="/news" onClick={closeMenu} style={{ color: '#11676d' }}>News</Link>
+            <Link className="nav-link fs-5 fw-bold" to="/institutes" onClick={closeMenu} style={{ color: '#11676d' }}>Institutes</Link>
+            <Link className="nav-link fs-5 fw-bold" to="/collaborations" onClick={closeMenu} style={{ color: '#11676d' }}>Collaborations</Link>
+            <Link className="nav-link fs-5 fw-bold" to="/aboutus" onClick={closeMenu} style={{ color: '#11676d' }}>About Us</Link>
+            <Link className="nav-link fs-5 fw-bold" to="/news" onClick={closeMenu} style={{ color: '#11676d' }}>News</Link>
           </div>
           <div className="navbar-nav ml-auto">
               <Link className="nav-link d-none d-lg-inline fs-4 fw-bold" to="/login" style={{ color: '#11676d' }}>Login</Link>

@@ -9,39 +9,39 @@ function SetAppointmentDate() {
     <div className="">
       <AdminHeader />
       <div className='container mt-5'>
-        <br/><br/><br/>
+        
           <div class="row">
             <div class="col-xs-12 col-md-3 post-links-container mt-5" style={{overflow: 'hidden'}}>
-              <ul class="list-group">
+             <ul class="list-group text-center fs-5 display-6">
                 <br/>
-                <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', borderRadius: '10px', border: "none"}} >
+                <li class="list-group-item  post-links " >
                   <Link className='links' to="/admin/news/add-news">
-                  Post News <span style={{color: '#ffa525'}}>AAAAAAAAAAAAAAAA</span> </Link>
+                  Post News </Link>
                 </li>
                 <br/>
-                <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', borderRadius: '10px', border: "none"}}>
+                <li class="list-group-item active post-links " >
                   <Link className='links' to="/admin/appointments/add-appointment">
-                    Set Appointment Date <span style={{color: '#ffa525'}}>AAAAAAAaa</span></Link>
+                    Set Appointment Date </Link>
                 </li>
                 <br/>
-                <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', borderRadius: '10px', border: "none"}}
+                <li class="list-group-item post-links " 
                 ><Link className='links' to="/admin/user-status/add-user-status">
-                  Update User Status <span style={{color: '#ffa525'}}>AAAAAAAaaaaa</span></Link>
+                  Update User Status</Link>
                 </li>
                 <br/>
-                <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', borderRadius: '10px', border: "none"}}>
+                <li class="list-group-item post-links " >
                   <Link className='links' to="/admin/calls/add-call">
-                    Post Calls <span style={{color: '#ffa525'}}>AAAAAAAAAAAAAAAA</span></Link>
+                    Post Calls </Link>
                 </li>
                 <br/>
-                <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', borderRadius: '10px', border: "none"}}>
+                <li class="list-group-item post-links " >
                   <Link className='links' to="/admin/publications/add-publication">
-                    Post Publications <span style={{color: '#ffa525'}}>AAAAAAAAAAaA</span></Link>
+                    Post Publications </Link>
                 </li>
                 <br/>
-                <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', borderRadius: '10px', border: "none"}}>
+                <li class="list-group-item post-links " >
                   <Link className='links' to="/admin/accepted-projects/add-accepted-project">
-                    Post Accepted Projects <span style={{color: '#ffa525'}}>AAAAAaaa</span></Link>
+                    Post Accepted Projects </Link>
                 </li>
               </ul>
           </div>

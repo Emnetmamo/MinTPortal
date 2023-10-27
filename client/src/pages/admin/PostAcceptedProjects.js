@@ -5,7 +5,7 @@ import AdminHeader from '../../components/AdminComponents/AdminHeader'
 import DropzoneImage from '../../components/AdminComponents/Dropzone'
 import DropzoneText from '../../components/AdminComponents/DropzoneText'
 
-function PostPublications() {
+function PostAcceptedProjects() {
   return (
     <div className="">
       <AdminHeader />
@@ -34,12 +34,12 @@ function PostPublications() {
                     Post Calls </Link>
                 </li>
                 <br/>
-                <li class="list-group-item active post-links " >
+                <li class="list-group-item  post-links " >
                   <Link className='links' to="/admin/publications/add-publication">
                     Post Publications </Link>
                 </li>
                 <br/>
-                <li class="list-group-item post-links " >
+                <li class="list-group-item active post-links " >
                   <Link className='links' to="/admin/accepted-projects/add-accepted-project">
                     Post Accepted Projects </Link>
                 </li>
@@ -49,13 +49,17 @@ function PostPublications() {
           <div class="col-xs-12 col-md-7 mb-5">
             <form method="post" action="/admin/news/add-news">
                 <br/> <br/>
-                <h1>Post a Publication</h1>
+                <h1>Post an Accepted Project</h1>
+                <div class="form-group ">
+                    <label className='form-label'>Principal Investigator's Name:</label>
+                    <input type="text" name="title" class="form-control " placeholder="Name"/>                  
+                </div>
                 <div class="form-group ">
                     <label className='form-label'>Project Title:</label>
                     <input type="text" name="title" class="form-control " placeholder="Title"/>                  
                 </div>
                 <div class="form-group ">
-                    <label className='form-label'>Author:</label>
+                    <label className='form-label'>Funding Sources multiple input:</label>
                     <input type="text" name="title" class="form-control " placeholder="Title"/>                  
                 </div>
                 <div class="form-group">
@@ -113,4 +117,4 @@ function PostPublications() {
   )
 }
 
-export default PostPublications
+export default PostAcceptedProjects

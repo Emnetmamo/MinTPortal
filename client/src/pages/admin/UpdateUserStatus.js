@@ -8,45 +8,45 @@ function UpdateUserStatus() {
     <div className="">
       <AdminHeader />
       <div className='container mt-5'>
-        <br/><br/>
+        
           <div className="row ms-0">
             <div className="col-xs-12 col-md-2 post-links-container-user-status mt-5" style={{overflow: 'hidden', backgroundColor:'#11676d', maxHeight: '450px', borderRadius: '10px'}}>
-              <ul class="list-group">
+            <ul class="list-group text-center fs-5 display-6">
                 <br/>
-                <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', borderRadius: '10px', border: "none"}} >
+                <li class="list-group-item  post-links " >
                   <Link className='links' to="/admin/news/add-news">
-                  Post News <span style={{color: '#ffa525'}}>AAAAA</span> </Link>
+                  Post News </Link>
                 </li>
                 <br/>
-                <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', borderRadius: '10px', border: "none"}}>
+                <li class="list-group-item post-links " >
                   <Link className='links' to="/admin/appointments/add-appointment">
-                    Set Appointment Date<span style={{color: '#ffa525'}}>AAAA</span> </Link>
+                    Set Appointment Date </Link>
                 </li>
                 <br/>
-                <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', borderRadius: '10px', border: "none"}}
+                <li class="list-group-item active post-links " 
                 ><Link className='links' to="/admin/user-status/add-user-status">
-                  Update User Status </Link>
+                  Update User Status</Link>
                 </li>
                 <br/>
-                <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', borderRadius: '10px', border: "none"}}>
+                <li class="list-group-item post-links " >
                   <Link className='links' to="/admin/calls/add-call">
-                    Post Calls <span style={{color: '#ffa525'}}>AAAAAAA</span></Link>
+                    Post Calls </Link>
                 </li>
                 <br/>
-                <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', borderRadius: '10px', border: "none"}}>
+                <li class="list-group-item post-links " >
                   <Link className='links' to="/admin/publications/add-publication">
-                    Post Publications <span style={{color: '#ffa525'}}>AA</span></Link>
+                    Post Publications </Link>
                 </li>
                 <br/>
-                <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', borderRadius: '10px', border: "none"}}>
+                <li class="list-group-item post-links " >
                   <Link className='links' to="/admin/accepted-projects/add-accepted-project">
-                    Post Accepted<span style={{color: '#ffa525'}}>AAAA</span> Projects<span style={{color: '#ffa525'}}>AAAAAAAAA</span> </Link>
+                    Post Accepted Projects </Link>
                 </li>
-                <br/>
               </ul>
           </div>
           <div className="col-xs-12 col-md-1"></div>
           <div className="col-xs-12 col-md-9 mb-5">
+            <br/>
             <h1 className='mb-3'>Update a User Status</h1>  
             <form method="post" action="/admin/user-status/add-user-status">
               <table class="table">

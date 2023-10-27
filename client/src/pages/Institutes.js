@@ -15,6 +15,7 @@ const Institutes = () => {
 
   return (
     <div className="container row mt-3 d-flex m-20px">
+      <br/><br/><br/>
       <div className="col-sm-3 mt-5" >
   <div className="menu" style={{ backgroundColor: '#11676d', marginBottom: '80px', borderRadius: '10px' }}>
     <ul className="menu-items" style={{ listStyleType: 'none', padding: '40px' }}>
