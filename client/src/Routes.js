@@ -59,21 +59,12 @@ const RoutesComponent = () => {
         <Route path="/news" element={<News />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
         <Route path='/resources/publications/description' element={<ProjectDescription/>}/>
-
-
         <Route path='/resources/publications/description' element={<ProjectDescription/>}/>
-
-
         <Route  path='/institutes/research' element={<ResearchInstitutes />}></Route>
         <Route  path='/institutes/labs' element={<Laboratories />}></Route>
         <Route  path='/institutes/ict' element={<IctPartners />}></Route>
         <Route  path='/institutes/government' element={<GovernmentAgencies />}></Route>
-
-
-
-
       </Routes>
       <ConditionalFooter />
     </Router>
