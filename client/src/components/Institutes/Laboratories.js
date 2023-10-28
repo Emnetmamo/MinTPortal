@@ -33,21 +33,21 @@ function Laboratories() {
   return (
 <container>
 <div className='row'>
-<div className='col-sm-3 mt-5' >
+<div className="col-sm-3 mt-5" >
   <div className="menu" style={{ backgroundColor: '#11676d', marginBottom: '80px', borderRadius: '10px' }}>
-    <ul className="menu-items" style={{ listStyleType: 'none', padding: '40px' }}>
-      <li className="menu-item active" data-content="institutes">Institutes</li>
-      <li className="menu-item" data-content="research" style={{ width: '100%', marginBottom: '10px' }}>
-        <Link to='/institutes/research' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>Research Institutes</Link>
+    <ul className=" list-group" style={{ listStyleType: 'none', padding: '40px' }}>
+      
+      <li className="list-group-item list-group-item-dark" data-content="research" style={{ width: '100%', marginBottom: '10px' ,backgroundColor: 'orange', borderRadius: '5px'}}>
+        <Link to='/institutes/research' style={{ textDecoration: 'none', width: '100%', color:'white'}} onClick={handleClick}>Research Institutes</Link>
       </li>
-      <li className="menu-item" data-content="labs" style={{ width: '100%', marginBottom: '10px' }}>
-        <Link to='/institutes/labs' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>Laboratories</Link>
+      <li className=" list-group-item list-group-item-dark" data-content="labs" style={{ width: '100%', marginBottom: '10px',backgroundColor: 'orange', borderRadius: '5px' }}>
+        <Link to='/institutes/labs' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>Laboratories</Link>
       </li>
-      <li className="menu-item" data-content="ict" style={{ width: '100%', marginBottom: '10px' }}>
-        <Link to='/institutes/ict' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>ICT Partners</Link>
+      <li className=" list-group-item list-group-item-dark" data-content="ict" style={{ width: '100%', marginBottom: '10px',backgroundColor: 'orange', borderRadius: '5px' }}>
+        <Link to='/institutes/ict' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>ICT Partners</Link>
       </li>
-      <li className="menu-item" data-content="government" style={{ width: '100%', marginBottom: '10px' }}>
-        <Link to='/institutes/government' style={{ textDecoration: 'none', backgroundColor: 'orange', borderRadius: '5px', width: '100%' }} onClick={handleClick}>Government Agency</Link>
+      <li className=" list-group-item list-group-item-dark" data-content="government" style={{ width: '100%', marginBottom: '10px' ,backgroundColor: 'orange', borderRadius: '5px'}}>
+        <Link to='/institutes/government' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>Government Agency</Link>
       </li>
     </ul>
   </div>
