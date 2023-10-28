@@ -27,7 +27,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top">
-      <div className="container">
+      <div className="container-fluid">
         <Link className="navbar-brand mr-auto" to="/">
          
           <img src={Logo} alt="Logo" style={{ maxWidth: '120px' }} />
