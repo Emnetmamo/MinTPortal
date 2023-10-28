@@ -13,12 +13,12 @@ const Publications = () => {
       <div className="" style={{ height: "100pt" }}>
         <h1
           className="bg-dark text-white"
-          style={{ fontSize: "50px", textAlign: "center" }}
+          style={{ fontSize: "70px", textAlign: "center" }}
         >
           Publications
         </h1>
       </div>
-      <div className="row justify-content-center mt-5 ">
+      <div className=" d-flex row justify-content-center mt-5 ms-5 me-5 align-items- center ">
         <div className="col p-5">
           <div className="row card">
             <img src={news} alt="AI chat system" />
