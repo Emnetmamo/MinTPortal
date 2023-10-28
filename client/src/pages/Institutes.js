@@ -35,9 +35,11 @@ const Institutes = () => {
     </ul>
   </div>
 </div>
+
       <div className="content col">
         {!isClicked && (
           <div className="default-content">
+            <br /> <br />
             <h2>Welcome to Institutes</h2>
             <img src={value} className="img-fluid" alt="Default Image" />
           </div>
