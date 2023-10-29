@@ -1,7 +1,8 @@
 // src/components/pages/News.js
 
-import React from 'react';
+import React, {useState, useEffect}  from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 import { FaSearch } from 'react-icons/fa'; // Importing the search icon
 import news1 from "../images/News/news1.png";
 import news2 from "../images/News/news2.jpeg";
@@ -66,6 +67,19 @@ const newsData = [
 
 
 const News = () => {
+  const [news, setNews] = useState([]);
+
+  useEffect(() => {
+    // Fetch data when the component mounts
+    axios.get('http://localhost:5000/news')
+      .then(response => {
+        const parsedData = typeof response.data === 'string' ? JSON.parse(response.data) : response.data;
+        setNews(parsedData); // Update the state with fetched news
+      })
+      .catch(error => {
+        console.error('Error fetching news:', error);
+      });
+  }, []);
   return (
     <div className="container mt-5">
       <h1 className="mb-4 font-weight-bold text-center">News</h1>
@@ -83,17 +97,13 @@ const News = () => {
         </div>
       </div>
       <div className="row">
-        {newsData.map((newsItem, index) => (
+        {news.map((newsItem, index) => (
           <div key={index} className="col-md-4 mb-4">
             <div className="card rounded shadow grow-on-hover"> {/* Added grow-on-hover class */}
-              <img
-                src={newsItem.imageUrl}
-                className="card-img-top rounded-top"
-                alt={`News ${index + 1}`}
-              />
+             
               <div className="card-body text-center">
                 <h5 className="card-title">{newsItem.title}</h5>
-                <p className="card-text text-muted">{newsItem.description}</p>
+                <p className="card-text text-muted">{newsItem.content}</p>
                 <Link to={`/news/${index}`} className="btn btn-primary">Read More</Link>
               </div>
             </div>

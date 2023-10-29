@@ -3,7 +3,7 @@ import express from 'express'
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors'
-
+import News from './models/news.js'
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,33 +23,38 @@ async function main() {
 
 main();
 
-const news = mongoose.model('news', new mongoose.Schema({
-  title: String,
-  author: String,
-  content: String,
-  category: String,
-  date: Date,
-}));
 
 
-app.post('/admin/news/add-news', async (req, res) => {
-  try {
+  app.post('/admin/news/add-news', async (req, res) => {
+    try {
     const { title, author, content, category, date } = req.body;
 
-    const newNews = new news({
+    const newNews = new News({
       title,
       author,
       content,
       category,
       date,
     });
-
+ 
     const savedNews = await newNews.save();
     res.json(savedNews);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
+
+
+  app.get('/news', async (req, res) => {
+    try {
+      const news = await News.find(); // Fetch all news from the MongoDB collection
+      res.json(news);
+    } catch (error) {
+      console.log('error')
+      res.status(500).json({ error: 'Server error' });
+    }
+  });
+
 
 
 app.listen(PORT, () => {
