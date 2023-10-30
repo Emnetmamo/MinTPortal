@@ -43,9 +43,9 @@ const RegistrationSteps = () => {
             </p>
           </div>
           <div className="text-end">
-            <Link to="/announcements" className="btn btn-link" style={{ color: '#777' }}>
+            <a href="/announcements" className="btn btn-link" style={{ color: '#777' }}>
               Go to the announcement page to find the calls and registration
-            </Link>
+            </a>
           </div>
         </div>
       </div>
