@@ -3,7 +3,7 @@ const express=require('express')
 const mongoose=require('mongoose');
 const bodyParser =require('body-parser');
 const cors =require('cors')
-
+require('dotenv').config();
 //user defined routes
 const News =require('./models/news.js')
 const UserModel=require('./models/users.js')
@@ -14,8 +14,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 const url=''
- const CONNECTION_URL = "mongodb+srv://adaneeshete:adaneeshete@cluster0.9qj7xxi.mongodb.net/Mint" 
-const PORT = process.env.PORT || 5000;
+ const CONNECTION_URL = process.env.CONNECTION_URL
+const PORT = process.env.PORT;
 mongoose.connect(CONNECTION_URL)
 .then(()=>{console.log('mongdb is conncted')})
 .catch(error=>{console.log('error occure  during connection'+error)})
