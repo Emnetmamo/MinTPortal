@@ -1,21 +1,20 @@
-// BasicPersonalInfo.js
-import React, { useEffect,useState } from "react";
-
+import React, { useState } from "react";
 import countryOptions from "./countryOptions";
 import { Link } from "react-router-dom";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
 import { Form, FormGroup } from "react-bootstrap";
-import { First } from "react-bootstrap/esm/PageItem";
-import axios from 'axios'
+import axios from 'axios';
+
 const BasicPersonalInfo = ({ nextStep }) => {
   const [fName, SetFname] = useState("");
   const [LName, SetLname] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const[email,SetEmail]=useState('')
-  const[phone,SetPhone]=useState('')
-  const[country,SetCountry]=useState('')
-  const[address,SetAdress]=useState('')
+  const [email, SetEmail] = useState('');
+  const [phone, SetPhone] = useState('');
+  const [country, SetCountry] = useState('');
+  const [address, SetAdress] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post('http://localhost:5000/auth/register', {
@@ -28,16 +27,13 @@ const BasicPersonalInfo = ({ nextStep }) => {
       address,
     })
       .then((response) => {
-        console.log(response + 'response from registration');
+        console.log(response.data); // Corrected log statement
         nextStep();
       })
       .catch((error) => {
-        console.log('error from registration' + error);
+        console.log('error from registration', error);
       });
-      nextStep()
   };
-  
-
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);

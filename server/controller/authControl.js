@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const UserModel = require('../models/users');
 
 const register = async (req, res) => {
-  const { Fname, LName, password, email, phone, country, address } = req.body;
+  const { fName, LName, password, email, phone, country, address } = req.body;
   try {
     const user = await UserModel.find({ email: email });
     if (user.length > 0) {
@@ -10,7 +10,7 @@ const register = async (req, res) => {
     } else {
       const hash = await bcrypt.hash(password, 12);
       const newUser = await UserModel.create({
-        Fname,
+        fName,
         LName,
         password: hash,
         email,
