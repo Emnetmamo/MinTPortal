@@ -26,7 +26,7 @@ function Post_News() {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/admin/news/add-news', formData);
+      const response = await axios.post('http://localhost:5000/adminr/admin/news/add-news', formData);
       console.log(response.data); // Handle the response from the server
       alert('heloo')
     } catch (error) {
