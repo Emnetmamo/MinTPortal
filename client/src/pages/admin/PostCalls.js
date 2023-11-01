@@ -61,7 +61,15 @@ function PostCalls() {
                 </div>
                 <div class="form-group">
                   <label className='form-label'>Field of Study:</label>
-                  <form>
+                  <select name="field" id="field" style={{marginLeft: "20px"}}>
+                  <option value="" disabled selected>Select a field</option>
+                    <option value="agriculture">Agriculture</option>
+                    <option value="envenergy">Environment and Energy</option>
+                    <option value="health">Health</option>
+                    <option value="industry">Industry</option>
+                    <option value="other">Other</option>
+                  </select>
+                  {/* <form>
                     <div className="d-flex align-items-center">
                       <input className="form-check-input me-2" type="radio"  name="fieldofstudy"   id="agri" value="agriculture"    />                     
                       <label className="form-check-label" htmlFor="agri">Agriculture</label>
@@ -86,23 +94,15 @@ function PostCalls() {
                       <input className="form-check-input me-2" type="radio"  name="fieldofstudy"   id="other" value="other"    />                     
                       <label className="form-check-label" htmlFor="other">Other</label>
                     </div>
-                  </form>
+                  </form> */}
                 </div>
                 <div class="form-group">
-                    <label className='form-label'>Competition Start Date:</label>
-                    <input  type="date" name="date" className="form-control form-input"/>
-                </div>
-                <div class="form-group">
-                    <label className='form-label'>Competition End Date:</label>
+                    <label className='form-label'>Application Kickoff Date:</label>
                     <input  type="date" name="date" className="form-control form-input"/>
                 </div>
                 <div class="form-group">
                     <label className='form-label'>Application Deadline Date:</label>
                     <input  type="date" name="date" className="form-control form-input"/>
-                </div>
-                <div class="form-group">
-                    <label className='form-label'>Application Deadline Time:</label>
-                    <input  type="time" name="date" className="form-control form-input"/>
                 </div>              
                 <div class="form-group">
                   <label for="">Prizes:</label>
@@ -115,14 +115,6 @@ function PostCalls() {
                 <div class="form-group">
                   <label for="">Upload Guideline :</label>
                   <textarea name="description" class="form-control" id="ta" cols="63" rows="10" placeholder="Description"></textarea>
-                </div>
-                <div class="form-group ">
-                    <label className='form-label'>Admin Phone Number:</label>
-                    <input type="number" name="title" class="form-control " placeholder="Title"/>                  
-                </div>
-                <div class="form-group ">
-                    <label className='form-label'>Admin Email:</label>
-                    <input type="email" name="title" class="form-control " placeholder="Title"/>                  
                 </div>
                 <br/>                
                 <div class="form-group">
