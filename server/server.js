@@ -2,14 +2,14 @@ import fileUpload from 'express-fileupload';
 import express from 'express'
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import cors from 'cors'
+import cors from 'cors';
 import multer from 'multer'; 
 import dotenv from 'dotenv';
 import fs from  'fs';
 import path from 'path';
 dotenv.config();
 //import user defined middlware
-import auth from './routes/authRoute.js'
+import auth from './controller/authControl.js'
 import admin from  './routes/adminRoute.js'
 const app = express();
 
@@ -23,7 +23,7 @@ mongoose.connect(CONNECTION_URL)
 .catch(error=>{console.log('error occure  during connection'+error)})
    
 //user routes
-  app.use('/auth',auth)
+  app.use('/auth/:page',auth)
   app.use('/adminr',admin)
 
 
