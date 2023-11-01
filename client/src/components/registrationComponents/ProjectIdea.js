@@ -1,6 +1,6 @@
 // ProjectIdea.js
 import React from 'react';
-
+import { useState,useEffect,createRef } from 'react';
 const ProjectIdea = ({ nextStep, prevStep }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,7 +12,8 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
       <div className="card">
         <div className="card-body">
           <h1  style={{ backgroundColor: "orange", color:"white"}}  className="card-title  text-white p-2 rounded text-center mb-4">Project Idea Section</h1>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} >
+
             <div className="mb-3">
               <label htmlFor="projectTitle" className="form-label">Project Title*</label>
               <input type="text" className="form-control" id="projectTitle" name="projectTitle" required />
