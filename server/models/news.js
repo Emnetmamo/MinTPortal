@@ -1,4 +1,4 @@
-const mongoose=require('mongoose')
+import mongoose from 'mongoose'
 let news_schema = new mongoose.Schema({
     title:{type: String, required: true},
     author: {type: String, required: true},
@@ -8,4 +8,4 @@ let news_schema = new mongoose.Schema({
   });
   
   const News = mongoose.model('news', news_schema);
-  module.exports=News
+  export default News

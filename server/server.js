@@ -1,17 +1,16 @@
-const fileUpload = require('express-fileupload');
-const express=require('express')
-const mongoose=require('mongoose');
-const bodyParser =require('body-parser');
-const cors =require('cors')
-const multer = require('multer'); // For handling file uploads
-const upload = multer({ dest: 'uploads/' }); // Set the destination folder for file uploads
-require('dotenv').config();
-const fs = require('fs');
-const path = require('path');
-//user defined routes
-const News =require('./models/news.js')
-const UserModel=require('./models/users.js')
-const authRoute=require('./routes/authRoute.js')
+import fileUpload from 'express-fileupload';
+import express from 'express'
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import cors from 'cors'
+import multer from 'multer'; 
+import dotenv from 'dotenv';
+import fs from  'fs';
+import path from 'path';
+dotenv.config();
+//import user defined middlware
+import auth from './routes/authRoute.js'
+import admin from  './routes/adminRoute.js'
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,8 +23,8 @@ mongoose.connect(CONNECTION_URL)
 .catch(error=>{console.log('error occure  during connection'+error)})
    
 //user routes
-  app.use('/auth',require('./routes/authRoute.js'))
-  app.use('/adminr',require('./routes/adminRoute.js'))
+  app.use('/auth',auth)
+  app.use('/adminr',admin)
 
 
 

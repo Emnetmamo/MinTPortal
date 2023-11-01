@@ -1,5 +1,5 @@
-const bcrypt = require('bcrypt');
-const UserModel = require('../models/users');
+import bcrypt from 'bcrypt';
+import UserModel from '../models/users.js';
 
 const register = async (req, res) => {
   const { fName, LName, password, email, phone, country, address } = req.body;
@@ -28,4 +28,4 @@ const register = async (req, res) => {
 const login=(req,res)=>{
 //login code here
 }
-module.exports={register,login}
+export default {register,login}

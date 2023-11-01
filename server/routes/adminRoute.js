@@ -1,6 +1,7 @@
-const express=require('express')
+import express from 'express'
 const adminRoute=express.Router()
-const {addNews,getNews}=require('../controller/adminControl')
+import {addNews,getNews} from'../controller/adminControl.js'
 adminRoute.post('/admin/news/add-news',addNews)
 adminRoute.get('/news',getNews)
-module.exports=adminRoute
+
+export default adminRoute

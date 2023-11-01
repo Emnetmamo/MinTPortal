@@ -1,4 +1,4 @@
-const News=require('../models/news')
+import News from '../models/news.js'
 const addNews=async(req,res)=>{
     try {
         const { title, author, content, category, date } = req.body;
@@ -26,4 +26,4 @@ const getNews=async(req,res)=>{
         res.status(500).json({ error: 'Server error' });
       }
     }
-module.exports={addNews,getNews};
+    export default {addNews,getNews};
