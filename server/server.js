@@ -9,8 +9,8 @@ import fs from  'fs';
 import path from 'path';
 dotenv.config();
 //import user defined middlware
-import auth from './routes/authRoute.js'
-import admin from  './routes/adminRoute.js'
+import register from './controller/authControl.js'
+import addNews from  './controller/adminControl.js'
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,8 +23,8 @@ mongoose.connect(CONNECTION_URL)
 .catch(error=>{console.log('error occure  during connection'+error)})
    
 //user routes
-  app.use('/auth',auth)
-  app.use('/adminr',admin)
+  app.use('/auth/:page',register)
+  app.use('/admin/:page',addNews)
 
 
 
