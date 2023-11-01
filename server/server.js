@@ -11,6 +11,7 @@ dotenv.config();
 //import user defined middlware
 import register from './controller/authControl.js'
 import addNews from  './controller/adminControl.js'
+import publication from './controller/publication.js'
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,6 +26,7 @@ mongoose.connect(CONNECTION_URL)
 //user routes
   app.use('/auth/:page',register)
   app.use('/admin/:page',addNews)
+  app.use('/publication',publication)
 
 
 
