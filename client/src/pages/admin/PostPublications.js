@@ -1,11 +1,28 @@
-import React from "react";
+import React, { createRef } from "react";
 import { Link } from "react-router-dom";
 import "../../images/assets/css/admin.css";
 import AdminHeader from "../../components/AdminComponents/AdminHeader";
 import DropzoneImage from "../../components/AdminComponents/Dropzone";
 import DropzoneText from "../../components/AdminComponents/DropzoneText";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function PostPublications() {
+  const inputfile=createRef();
+  const [titel, SetTitle] = useState("");
+  const [author, SetAuthor] = useState("");
+  const [category, SetCategory] = useState("");
+  const [description, SetDescription] = useState("");
+  const HandleSumit = () => {
+    const formData=new FormData()
+    formData('document',inputfile.current.value)
+    try {
+      axios.post("http://localhost:5000/publication", {titel,author,category,description});
+      
+    } catch {
+      console.log("error occure during posting publications");
+    }
+  };
   return (
     <div className="">
       <AdminHeader />
@@ -62,7 +79,7 @@ function PostPublications() {
           </div>
           <div class="col-xs-12 col-md-2"></div>
           <div class="col-xs-12 col-md-7 mb-5">
-            <form method="post" action="/admin/news/add-news">
+            <form onSubmit={HandleSumit}>
               <br /> <br />
               <h1>Post a Publication</h1>
               <div class="form-group ">
@@ -72,6 +89,10 @@ function PostPublications() {
                   name="title"
                   class="form-control "
                   placeholder="Title"
+                  value={titel}
+                  onChange={(e) => {
+                    SetTitle(e.target.value);
+                  }}
                 />
               </div>
               <div class="form-group ">
@@ -81,6 +102,10 @@ function PostPublications() {
                   name="title"
                   class="form-control "
                   placeholder="Title"
+                  value={author}
+                  onChange={(e) => {
+                    SetAuthor(e.target.value);
+                  }}
                 />
               </div>
               <div class="form-group">
@@ -92,84 +117,26 @@ function PostPublications() {
                   cols="63"
                   rows="10"
                   placeholder="Description"
+                  value={description}
+                  onChange={(e) => {
+                    SetDescription(e.target.value);
+                  }}
                 ></textarea>
               </div>
-              <div class="form-group">
+              <div
+               className="form-group"
+               value={category}
+               onChange={(e)=>{SetCategory(e.target.value)}}
+               >
                 <label className="form-label">Field of Study:</label>
-                <form>
-                  <div className="d-flex align-items-center">
-                    <input
-                      className="form-check-input me-2"
-                      type="radio"
-                      name="fieldofstudy"
-                      id="agri"
-                      value="agriculture"
-                    />
-                    <label className="form-check-label" htmlFor="agri">
-                      Agriculture
-                    </label>
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <input
-                      className="form-check-input me-2"
-                      type="radio"
-                      name="fieldofstudy"
-                      id="envnenergy"
-                      value="envnenergy"
-                    />
-                    <label className="form-check-label" htmlFor="envnenergy">
-                      Environment and Energy
-                    </label>
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <input
-                      className="form-check-input me-2"
-                      type="radio"
-                      name="fieldofstudy"
-                      id="health"
-                      value="health"
-                    />
-                    <label className="form-check-label" htmlFor="health">
-                      Health
-                    </label>
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <input
-                      className="form-check-input me-2"
-                      type="radio"
-                      name="fieldofstudy"
-                      id="industrial"
-                      value="industrial"
-                    />
-                    <label className="form-check-label" htmlFor="industrial">
-                      Industrial
-                    </label>
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <input
-                      className="form-check-input me-2"
-                      type="radio"
-                      name="fieldofstudy"
-                      id="technology"
-                      value="technology"
-                    />
-                    <label className="form-check-label" htmlFor="technology">
-                      Technology
-                    </label>
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <input
-                      className="form-check-input me-2"
-                      type="radio"
-                      name="fieldofstudy"
-                      id="other"
-                      value="other"
-                    />
-                    <label className="form-check-label" htmlFor="other">
-                      Other
-                    </label>
-                  </div>
-                </form>
+                <select className="form-select" name="fieldofstudy">
+                  <option value="agriculture">Agriculture</option>
+                  <option value="envnenergy">Environment and Energy</option>
+                  <option value="health">Health</option>
+                  <option value="industrial">Industrial</option>
+                  <option value="technology">Technology</option>
+                  <option value="other">Other</option>
+                </select>
               </div>
               <div class="form-group">
                 <label className="form-label">Publication Date:</label>
@@ -180,19 +147,41 @@ function PostPublications() {
                 />
               </div>
               <br />
-              <div class="form-group">
-                <button
-                  type="submit"
-                  className=" form-control my-3 fs-5 btn btn-warning fw-bold"
-                >
-                  Submit
-                </button>
+              <div class="form-group"></div>
+              <div className="row">
+                <div className="col">
+                  <p>Upload Images:</p>
+                  {/* <DropzoneImage className="py-5 mt-10 border border-neutral-200" /> */}
+                  <input
+                    type="file"
+                    className="form-control"
+                    id="image"
+                    name="image"
+                    // accept=".image"
+                    required
+                  />
+                </div>
+                <div className="col">
+                  <p>Upload document</p>
+                  {/* <DropzoneText className="py-5 mt-10 border border-neutral-200" /> */}
+                  <input
+                    type="file"
+                    className="form-control"
+                    id="dicument"
+                    name="document"
+                    accept=".pdf,.doc,.docx"
+                    ref={inputfile}
+                    required
+                  />
+                </div>
               </div>
+              <button
+                type="submit"
+                className=" form-control my-3 fs-5 btn btn-warning fw-bold"
+              >
+                Submit
+              </button>
             </form>
-            <p>Upload Images:</p>
-            <DropzoneImage className="py-5 mt-10 border border-neutral-200" />
-            <p>Upload Files</p>
-            <DropzoneText className="py-5 mt-10 border border-neutral-200" />
           </div>
         </div>
       </div>

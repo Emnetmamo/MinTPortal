@@ -13,7 +13,7 @@ const PubSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    fieldOfStudy: {
+    category: {
         type: String,
         required: true
     },
