@@ -4,6 +4,7 @@ const announcementSchema = new mongoose.Schema({
     title: String,
     description: String,
     field: String,
+    callType: String,
     startDate: Date,
     endDate: Date,
     prizes: String,

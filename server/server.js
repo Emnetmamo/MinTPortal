@@ -19,7 +19,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
  const CONNECTION_URL = process.env.CONNECTION_URL
-const PORT = process.env.PORT;
+// const PORT = process.env.PORT;
+const PORT = 4000;
+//I changed the port so that we can write it in our paths. If the port number is not specified, we won't be able to
+//write the path like http://127.0.0.1:4000 since we would not know the port number for sure.
 mongoose.connect(CONNECTION_URL)
 .then(()=>{console.log('mongdb is connected')})
 .catch(error=>{console.log('error occure  during connection'+error)})

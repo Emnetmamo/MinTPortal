@@ -20,7 +20,12 @@ function announcementPost(req, res){
         }
     }
     else if(req.params.page === "fetchCalls"){
-        const 
+        const nowDate = Date.now();
+        const today = (new Date(today)).toISOString().split('T')[0];
+        //the previous line returns the current date in yyyy-mm-dd format, this is the format of Dates in mongodb
+        const results = announcementModel.find({endDate: {$gt: today}})
+        .then(result => res.json(result))
+        .catch(err => console.log(err));
     }
 }
 
