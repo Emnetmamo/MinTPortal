@@ -60,7 +60,7 @@ function PostAcceptedProjects() {
                 </div>
                 <div class="form-group ">
                     <label className='form-label'>Funding Sources multiple input:</label>
-                    <input type="text" name="title" class="form-control " placeholder="Title"/>                  
+                    <input type="text" name="title" class="form-control " placeholder="Title" multiple/>                  
                 </div>
                 <div class="form-group">
                   <label for="">Project Description:</label>

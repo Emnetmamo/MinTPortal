@@ -32,6 +32,7 @@
   background-color: #ffa525;
   border-radius: 10px;
   border: none;
+
 }
 .post-links:hover, .dropzone:hover{
   cursor: pointer;

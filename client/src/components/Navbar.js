@@ -67,11 +67,11 @@ const Navbar = () => {
                 <Link className="dropdown-item " to="/resources/acceptedProjects" onClick={closeDropdown} style={{ color: '#11676d' }}>Accepted Projects</Link>
                 <Link className="dropdown-item" to="/resources/publications" onClick={closeDropdown} style={{ color: '#11676d' }}>Publications</Link>
               </div>
-            </div>
-            <Link className={`nav-link fs-5 fw-bold ${window.location.pathname === '/institutes' ? 'active' : ''}`} to="/institutes" onClick={closeMenu} style={{ color: '#11676d' }}>Institutes</Link>
-            <Link className={`nav-link fs-5 fw-bold ${window.location.pathname === '/collaborations' ? 'active' : ''}`} to="/collaborations" onClick={closeMenu} style={{ color: '#11676d' }}>Collaborations</Link>
-            <Link className={`nav-link fs-5 fw-bold ${window.location.pathname === '/aboutus' ? 'active' : ''}`}  to="/aboutus" onClick={closeMenu} style={{ color: '#11676d' }}>About Us</Link>
-            <Link className={`nav-link fs-5 fw-bold ${window.location.pathname === '/news' ? 'active' : ''}`} to="/news" onClick={closeMenu} style={{ color: '#11676d' }}>News</Link>
+              </div>
+              <Link className={`nav-link fs-5 fw-bold ${window.location.pathname === '/institutes' ? 'active' : ''}`} to="/institutes" onClick={closeMenu} style={{ color: '#11676d' }}>Institutes</Link>
+              <Link className={`nav-link fs-5 fw-bold ${window.location.pathname === '/collaborations' ? 'active' : ''}`} to="/collaborations" onClick={closeMenu} style={{ color: '#11676d' }}>Collaborations</Link>
+              <Link className={`nav-link fs-5 fw-bold ${window.location.pathname === '/aboutus' ? 'active' : ''}`}  to="/aboutus" onClick={closeMenu} style={{ color: '#11676d' }}>About Us</Link>
+              <Link className={`nav-link fs-5 fw-bold ${window.location.pathname === '/news' ? 'active' : ''}`} to="/news" onClick={closeMenu} style={{ color: '#11676d' }}>News</Link>
           </div>
           <div className="navbar-nav ml-auto">
               <Link className="nav-link d-none d-lg-inline fs-4 fw-bold" to="/login" style={{ color: '#11676d' }}>Login</Link>

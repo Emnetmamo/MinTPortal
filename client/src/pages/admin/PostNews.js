@@ -5,15 +5,41 @@ import AdminHeader from '../../components/AdminComponents/AdminHeader';
 import Dropzone from '../../components/AdminComponents/Dropzone';
 import axios from 'axios';
 
-function Post_News() {
-  const [formData, setFormData] = useState({
-    title: '',
-    author: '',
-    content: '',
-    category: '',
-    date: '',
-  });
+axios.defaults.withCredentials=true;
 
+function Post_News() {
+    const [formData, setFormData] = useState({
+      title: '',
+      author: '',
+      content: '',
+      category: '',
+      date: '',
+      image: null
+      
+    });
+
+    
+    const [imagePreview, setImagePreview] = useState(""); // State variable to store the image preview URL
+   
+
+    const handleFileSelect = (event) => {
+      const selectedFile = event.target.files[0];
+  
+      if (selectedFile) {
+
+
+        setFormData({
+          ...formData,
+          image: selectedFile,
+        });               
+        // Preview the selected image
+        const reader = new FileReader();
+        reader.onload = () => {
+          setImagePreview(reader.result); // Set the image preview URL in state
+        };
+        reader.readAsDataURL(selectedFile); // Read the selected file as a data URL
+      }
+    };
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -21,18 +47,36 @@ function Post_News() {
       [name]: value,
     });
   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+    const data = new FormData();
+    data.append('title', formData.title);
+    data.append('author', formData.author);
+    data.append('content', formData.content);
+    data.append('category', formData.category);
+    data.append('date', formData.date);    
+   // data.append('newNewsId', formData.newNewsId);
+    data.append('image', formData.image);
+
 
     try {
-      const response = await axios.post('http://localhost:5000/admin/news/add-news', formData);
-      console.log(response.data); // Handle the response from the server
-      alert('heloo')
+      
+      const response =  axios.post('http://localhost:5001/admin/news/add-news', data);
+      
+        // Handle success - HTTP status 200
+        console.log(response.data);
+        alert('do you want to submit')
+        window.location.reload()
+     
     } catch (error) {
-      console.error('Error:', error);
+      // Handle error
+      console.error('Error:', error.message);
+      // Perform actions like showing an error message to the user
     }
   };
+
+  
 
   return (
     <div className="">
@@ -76,7 +120,7 @@ function Post_News() {
           </div>
           <div className="col-xs-12 col-md-2"></div>
           <div className="col-xs-12 col-md-7 mb-5">
-            <form onSubmit={handleSubmit}>
+            <form method='POST' action='/admin/news/add-news' onSubmit={handleSubmit} encType='multipart/form-data' >
               <br /><br />
               <h1>Post a News</h1>
               <div className="form-group">
@@ -119,11 +163,15 @@ function Post_News() {
                   className="form-control"
                   value={formData.category}
                   onChange={handleChange}
-                >
-                  <option>Category one</option>
-                  <option>Category two</option>
-                  <option>Category three</option>
-                  <option>Category four</option>
+                >                  
+                  <option>National News</option>
+                  <option>Foreign News</option>
+                  <option>Technology</option>
+                  <option>Science</option>
+                  <option>Health</option>
+                  <option>Entertainment</option>
+                  <option>Finance</option>                               
+                  <option>Sports</option>
                 </select>
               </div>
               <div className="form-group">
@@ -135,6 +183,21 @@ function Post_News() {
                   value={formData.date}
                   onChange={handleChange}
                 />
+              </div>  
+                          
+              <div className="form-group">
+                <label className='form-label'>Upload Image:</label>
+                <input
+                  type="file"
+                  name="image"
+                  className="form-control form-input mb-2"             
+                  onChange={handleFileSelect}
+                  
+                />                                
+                {/* Display the image preview */}
+                {imagePreview && (
+                  <img src={imagePreview} alt="Preview" style={{ maxWidth: '100px', maxHeight: '100px' }} />
+                )}
               </div>
               <br />
               <div className="form-group">
