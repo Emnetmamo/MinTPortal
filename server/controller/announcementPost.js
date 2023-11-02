@@ -1,4 +1,4 @@
-import announcementModel from "../models/announcements";
+import announcementModel from "../models/announcements.js";
 
 function announcementPost(req, res){
     if(req.params.page === "addCall")
@@ -13,7 +13,10 @@ function announcementPost(req, res){
             instructions,
             guideline} = req.body;
         try{
-            announcementModel.create({title, description, field, callType, startDate, endDate, prizes, instructions, guideline});
+            console.log("Posting")
+            announcementModel.create({title, description, field, callType, startDate, endDate, prizes, instructions, guideline})
+            .then(result=> res.json(result))
+            .catch(err=> res.json(err))
         }
         catch(err){
             console.log(err);
@@ -21,7 +24,7 @@ function announcementPost(req, res){
     }
     else if(req.params.page === "fetchCalls"){
         const nowDate = Date.now();
-        const today = (new Date(today)).toISOString().split('T')[0];
+        const today = (new Date(today)).toISOString();
         //the previous line returns the current date in yyyy-mm-dd format, this is the format of Dates in mongodb
         const results = announcementModel.find({endDate: {$gt: today}})
         .then(result => res.json(result))
