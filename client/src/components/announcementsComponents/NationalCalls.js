@@ -31,6 +31,8 @@ const NationalCalls = () => {
     {
       let data = [];
     for(let i=0; i<calls.length; i++){
+      if(calls[i].callType=="national")
+      {
       data.push(
         <div className="card mb-3" key={calls[i]._id}>
           <div className="card-body">
@@ -44,6 +46,7 @@ const NationalCalls = () => {
           </div>
         </div>
       );
+      }
     }
     return data;
   }
