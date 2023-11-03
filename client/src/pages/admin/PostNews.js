@@ -12,6 +12,7 @@ function Post_News() {
     content: '',
     category: '',
     date: '',
+<<<<<<< Updated upstream
   });
 
   const handleChange = (event) => {
@@ -21,19 +22,84 @@ function Post_News() {
       [name]: value,
     });
   };
+=======
+    image: null
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  });
 
+
+  const [imagePreview, setImagePreview] = useState(""); // State variable to store the image preview URL
+>>>>>>> Stashed changes
+
+
+<<<<<<< Updated upstream
     try {
       const response = await axios.post('http://localhost:5000/adminr/admin/news/add-news', formData);
       console.log(response.data); // Handle the response from the server
       alert('heloo')
     } catch (error) {
       console.error('Error:', error);
+=======
+  const handleFileSelect = (event) => {
+    const selectedFile = event.target.files[0];
+
+    if (selectedFile) {
+
+
+      setFormData({
+        ...formData,
+        image: selectedFile,
+      });               
+      // Preview the selected image
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImagePreview(reader.result); // Set the image preview URL in state
+      };
+      reader.readAsDataURL(selectedFile); // Read the selected file as a data URL
+>>>>>>> Stashed changes
     }
   };
+const handleChange = (event) => {
+  const { name, value } = event.target;
+  setFormData({
+    ...formData,
+    [name]: value,
+  });
+};
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
+  const data = new FormData();
+  data.append('title', formData.title);
+  data.append('author', formData.author);
+  data.append('content', formData.content);
+  data.append('category', formData.category);
+  data.append('date', formData.date);    
+ // data.append('newNewsId', formData.newNewsId);
+  data.append('image', formData.image);
+
+
+  try {
+
+    const response =  axios.post('http://localhost:5001/admin/news/add-news', data);
+
+      // Handle success - HTTP status 200
+      console.log(response.data);
+      alert('do you want to submit')
+      window.location.reload()
+
+  } catch (error) {
+    // Handle error
+    console.error('Error:', error.message);
+    // Perform actions like showing an error message to the user
+  }
+};
+
+
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
   return (
     <div className="">
       <AdminHeader />
