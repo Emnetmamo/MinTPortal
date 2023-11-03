@@ -7,10 +7,10 @@ const projectIdea=new mongoose.Schema({
       type:String,
       required:true
   },
-  cvPath:{
-      type:String,
-      required:true
-  },
+//   cvPath:{
+//       type:String,
+//       required:true
+//   },
   teamMembers:{
       type:String,
       required:true
@@ -22,11 +22,11 @@ const projectIdea=new mongoose.Schema({
   description:{
       type:String,
       required:true
-  },
-  proposalPath:{
-      type:String,
-      required:true
-  },
+  }
+//   proposalPath:{
+//       type:String,
+//       required:true
+//   },
 
 })
 
@@ -35,4 +35,4 @@ const ProjectModel=mongoose.model('projectfiles',projectIdea)
 
 
 
-export default   {ProjectModel};
+export default   ProjectModel;

@@ -19,6 +19,7 @@ const BasicPersonalInfo = ({ nextStep }) => {
   const [address, SetAdress] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
+    axios.defaults.withCredentials=true
   
     if (password !== confirmpassword) {
       toast.error('Password confirmation error');

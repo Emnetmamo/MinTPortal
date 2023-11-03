@@ -9,7 +9,7 @@ const NationalCalls = () => {
   const[calls, setCalls] = useState([]);
   const[loaded, setLoaded] = useState(false);
   useEffect(function(){
-    axios.get("http://localhost:4000/announcements/fetchCalls")
+    axios.get("http://localhost:5000/announcements/fetchCalls")
     .then(result=>setCalls(result.data))
     .then(result=>console.log(result))
     .catch(err=>console.log(err))

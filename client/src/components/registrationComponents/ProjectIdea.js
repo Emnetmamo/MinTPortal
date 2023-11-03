@@ -1,9 +1,10 @@
 // ProjectIdea.js
 import React from 'react';
 import { useState,useEffect,createRef } from 'react';
+import axios from 'axios'
 const ProjectIdea = ({ nextStep, prevStep }) => {
   const[projectTitle,SetProjectTitle]=useState('')
-  const[teamMember,SetTeamMember]=useState('')
+  const[teamMembers,SetTeamMember]=useState('')
   const[projectCategory,SetProjectCategory]=useState('')
   const[description,SetDescription]=useState('')
   const[cvFile,SetCvfile]=useState(null)
@@ -11,7 +12,14 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-
+         axios.post('http://localhost:5000/auth/submitProject',{
+          projectTitle,
+          projectCategory,
+          teamMembers,
+          description
+         })
+         .then((response)=>{console.log(response)})
+         .catch((error)=>{console.log('error ocure during sent project file'+error)})
 
     nextStep();
   };
@@ -45,7 +53,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
                className="form-control"
                 id="teamMembers"
                 name="teamMembers"
-                value={teamMember}
+                value={teamMembers}
                 onChange={(e)=>{SetTeamMember(e.target.value)}}
                  placeholder="List your team members ..." 
                  required />

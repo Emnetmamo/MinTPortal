@@ -15,37 +15,11 @@ let userschema = new mongoose.Schema({
   }
 });
 
-const projectIdea=new mongoose.Schema({
-  projectTitle:{
-      type:String,
-      required:true
-  },
-  cvPath:{
-      type:String,
-      required:true
-  },
-  teamMembers:{
-      type:String,
-      required:true
-  },
-  projectCategory:{
-      type:String,
-      required:true
-  },
-  description:{
-      type:String,
-      required:true
-  },
-  proposalPath:{
-      type:String,
-      required:true
-  },
 
-})
 const UserModel = mongoose.model("users", userschema);
-const ProjectModel=mongoose.model('projectIdeas',projectIdea)
 
 
 
 
-export default   {UserModel,ProjectModel};
+
+export default   UserModel;
