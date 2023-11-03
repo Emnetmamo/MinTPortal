@@ -1,39 +1,56 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import countryOptions from "./countryOptions";
 import { Link } from "react-router-dom";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
 import { Form, FormGroup } from "react-bootstrap";
-import axios from 'axios';
+import axios from "axios";
 
 const BasicPersonalInfo = ({ nextStep }) => {
   const [fName, SetFname] = useState("");
   const [LName, SetLname] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmpassword, setComfirmPassword] = useState();
   const [showPassword, setShowPassword] = useState(false);
-  const [email, SetEmail] = useState('');
-  const [phone, SetPhone] = useState('');
-  const [country, SetCountry] = useState('');
-  const [address, SetAdress] = useState('');
-
+  const [email, SetEmail] = useState("");
+  const [phone, SetPhone] = useState("");
+  const [country, SetCountry] = useState("");
+  const [address, SetAdress] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/auth/register', {
-      fName,
-      LName,
-      password,
-      email,
-      phone,
-      country,
-      address,
-    })
-      .then((response) => {
-        console.log(response.data); // Corrected log statement
-        nextStep();
-      })
-      .catch((error) => {
-        console.log('error from registration', error);
-      });
+  
+    if (password !== confirmpassword) {
+      toast.error('Password confirmation error');
+    }
+    if (password.length < 6) {
+      toast.error('Password length must be greater than six');
+    }
+    if (!/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{6,}/.test(password)) {
+      toast.error('Password must contain at least one uppercase, one lowercase, one special character, and one number');
+    }
+  
+    if (password === confirmpassword && password.length >= 6 && /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{6,}/.test(password)) {
+      axios
+        .post("http://localhost:5000/auth/register", {
+          fName,
+          LName,
+          password,
+          email,
+          phone,
+          country,
+          address,
+        })
+        .then((response) => {
+          console.log(response.data);
+          nextStep();
+        })
+        .catch((error) => {
+          console.log("error from registration", error);
+        });
+    }
   };
+  
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -96,7 +113,9 @@ const BasicPersonalInfo = ({ nextStep }) => {
                   name="lastName"
                   placeholder="Last Name"
                   value={LName}
-                  onChange={((e)=>{SetLname(e.target.value)})}
+                  onChange={(e) => {
+                    SetLname(e.target.value);
+                  }}
                   required
                 />
               </div>
@@ -117,6 +136,25 @@ const BasicPersonalInfo = ({ nextStep }) => {
                 />
               </Form.Group>
             </div>
+
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                confirmpassword
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                name="password"
+                placeholder="confrimpassword"
+                value={confirmpassword}
+                onChange={(e) => {
+                  setComfirmPassword(e.target.value);
+                }}
+                required
+              />
+            </div>
+
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
                 Email
@@ -128,7 +166,9 @@ const BasicPersonalInfo = ({ nextStep }) => {
                 name="email"
                 placeholder="sample@gmail.com"
                 value={email}
-                onChange={((e)=>{SetEmail(e.target.value)})}
+                onChange={(e) => {
+                  SetEmail(e.target.value);
+                }}
                 required
               />
             </div>
@@ -143,7 +183,9 @@ const BasicPersonalInfo = ({ nextStep }) => {
                 name="contactNumber"
                 placeholder="(000)-000-000"
                 value={phone}
-                onChange={((e)=>{SetPhone(e.target.value)})}
+                onChange={(e) => {
+                  SetPhone(e.target.value);
+                }}
                 required
               />
             </div>
@@ -156,7 +198,9 @@ const BasicPersonalInfo = ({ nextStep }) => {
                 id="country"
                 name="country"
                 value={country}
-                onChange={((e)=>{SetCountry(e.target.value)})}
+                onChange={(e) => {
+                  SetCountry(e.target.value);
+                }}
                 required
               >
                 <option value="" disabled selected>
@@ -178,7 +222,9 @@ const BasicPersonalInfo = ({ nextStep }) => {
                 id="address"
                 name="address"
                 value={address}
-                onChange={((e)=>{SetAdress(e.target.value)})}
+                onChange={(e) => {
+                  SetAdress(e.target.value);
+                }}
                 required
               ></textarea>
             </div>
@@ -192,6 +238,7 @@ const BasicPersonalInfo = ({ nextStep }) => {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
