@@ -11,35 +11,20 @@ function Post_News() {
     author: '',
     content: '',
     category: '',
-    date: '',
-<<<<<<< Updated upstream
-  });
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-=======
     image: null
 
   });
-
+ 
 
   const [imagePreview, setImagePreview] = useState(""); // State variable to store the image preview URL
->>>>>>> Stashed changes
 
 
-<<<<<<< Updated upstream
     try {
       const response = await axios.post('http://localhost:5000/adminr/admin/news/add-news', formData);
       console.log(response.data); // Handle the response from the server
       alert('heloo')
     } catch (error) {
       console.error('Error:', error);
-=======
   const handleFileSelect = (event) => {
     const selectedFile = event.target.files[0];
 
@@ -56,7 +41,6 @@ function Post_News() {
         setImagePreview(reader.result); // Set the image preview URL in state
       };
       reader.readAsDataURL(selectedFile); // Read the selected file as a data URL
->>>>>>> Stashed changes
     }
   };
 const handleChange = (event) => {
@@ -96,10 +80,7 @@ const handleSubmit = async (e) => {
 };
 
 
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
   return (
     <div className="">
       <AdminHeader />
