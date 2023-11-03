@@ -9,6 +9,8 @@ let userschema = new mongoose.Schema({
   country: { type: String, required: true },
   address: { type: String, required: true },
   uniqueID:{type: String, required: true},
+  posts: [{ type: mongoose.Types.ObjectId, ref: 'projectfile' }]
+  ,
   role:{
     type:String,
     default:'user'

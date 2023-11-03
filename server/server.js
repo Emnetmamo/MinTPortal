@@ -6,6 +6,7 @@ import cors from 'cors'
 import multer from 'multer'; 
 import dotenv from 'dotenv';
 import fs from  'fs';
+import cookieParser from 'cookie-parser'
 import path from 'path';
 dotenv.config();
 //import user defined middlware
@@ -17,6 +18,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser())
 app.use(cors({
   origin:"http://localhost:3000",
   credentials:true

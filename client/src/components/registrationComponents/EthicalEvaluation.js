@@ -2,11 +2,44 @@
 import React from 'react';
 import "../../App.css";
 
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const EthicalEvaluation = ({ prevStep }) => {
+  const navigate=useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle submission logic if needed
+    const answers = questions.map((item, index) => {
+      const value = document.querySelector(`input[name="question${index}"]:checked`);
+      return { question: item.question, answer: value ? value.value : null };
+    });
+    
+    let value = '';
+    for (let i = 0; i < answers.length; i++) {
+      // Access each answer from the 'answers' array and concatenate "yes" or "no" to 'value'
+      value += answers[i].answer || ''; // Use 'answer' property from 'answers' array
+    }
+    
+    console.log(value);
+    axios.post('http://localhost:5000/auth/ethicalEvalution', value)
+    .then(response=>{
+      if(response==='failed'){
+        toast.error('failed to apply go back to home please try next year')
+        setTimeout(() => {
+          navigate('/home')
+        }, 6000);
+      }
+      else{
+        toast.success('congratulation you passed the process wait until appontment date is set')
+        setTimeout(() => {
+          navigate('/home')
+        }, 6000);
+      }
+    })
+    .catch(error=>{toast.error('please try again something want wrong')})
+    
   };
 
   const questions = [
