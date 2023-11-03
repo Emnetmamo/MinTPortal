@@ -1,7 +1,7 @@
 // src/components/announcementsComponents/NationalCalls.js
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 
 const NationalCalls = () => {
@@ -47,10 +47,10 @@ const NationalCalls = () => {
             <h5 className="card-title">{call.title}</h5>
             <p className="card-text">Category: {call.category}</p>
             <p className="card-text">{call.description}</p>
-            <Link  style={{ backgroundColor: "orange", color:"white"}}
-            to="/register" className="btn ">
+            <a href='/register' style={{ backgroundColor: "orange", color:"white"}}
+           className="btn ">
               Start your application
-            </Link>
+            </a>
           </div>
         </div>
       ))}

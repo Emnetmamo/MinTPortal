@@ -7,18 +7,26 @@
 }
 
 
+
 .navbar-nav .nav-link {
   color: #11676d; /* Set the default color */
-  font-size: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: "15px"  !important;
+
 }
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
   background-color: #FF8F00;
-  color: white;
+  color: white !important;
   border-radius: 10px;
 }
-
+ 
+.btn:hover, .btn.active{
+  background-color: #FF8F00 !important;
+  color: white !important;
+}
 
 
 /* Add some padding to the body to compensate for the fixed Navbar */

@@ -47,28 +47,14 @@ function Post_News() {
       [name]: value,
     });
   };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
 
-    const data = new FormData();
-    data.append('title', formData.title);
-    data.append('author', formData.author);
-    data.append('content', formData.content);
-    data.append('category', formData.category);
-    data.append('date', formData.date);    
-   // data.append('newNewsId', formData.newNewsId);
-    data.append('image', formData.image);
-
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
     try {
-      
-      const response =  axios.post('http://localhost:5001/admin/news/add-news', data);
-      
-        // Handle success - HTTP status 200
-        console.log(response.data);
-        alert('do you want to submit')
-        window.location.reload()
-     
+      const response = await axios.post('http://localhost:5000/admin/news/add-news', formData);
+      console.log(response.data); // Handle the response from the server
+      alert('heloo')
     } catch (error) {
       // Handle error
       console.error('Error:', error.message);

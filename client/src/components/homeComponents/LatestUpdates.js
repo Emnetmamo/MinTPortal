@@ -14,6 +14,7 @@ const LatestUpdates = () => {
   const carouselImageStyle = {
     maxHeight: '400px', // Adjust the value as needed to maintain a consistent height
     objectFit: 'cover', // Ensure the image covers the entire container
+  
   };
   return (
   <div>
@@ -28,8 +29,11 @@ const LatestUpdates = () => {
               style={carouselImageStyle}
             />
             <Carousel.Caption>
-              <h3>Slide 1 Title</h3>
-              <p>Slide 1 Description</p>
+              <h3>Innovation, Technology Ministry to Develop Digital Platform for Coffee</h3>
+              <p style={{color:"white"}}>Addis Ababa July 21/2020(ENA)
+                 Ministry of Innovation and Technology and Ministry of Agriculture have 
+                 signed today a Memorandum of Understanding (MoU) to develop digital platform
+                  that promotes Ethiopian coffee globally.</p>
             </Carousel.Caption>
           </a>
         </Carousel.Item>
@@ -42,8 +46,12 @@ const LatestUpdates = () => {
               style={carouselImageStyle}
             />
             <Carousel.Caption>
-              <h3>Slide 2 Title</h3>
-              <p>Slide 2 Description</p>
+              <h3>Scientists Develop New Method to Create Stable, 
+                Efficient Next-Gen Solar Cells</h3>
+              <p style={{color:"white"}}>Next-generation solar materials are cheaper and more 
+              sustainable to produce than traditional silicon solar cells,
+               but hurdles remain in making the devices
+                durable.</p>
             </Carousel.Caption>
           </a>
         </Carousel.Item>
@@ -56,8 +64,11 @@ const LatestUpdates = () => {
               style={carouselImageStyle}
             />
             <Carousel.Caption>
-              <h3>Slide 3 Title</h3>
-              <p>Slide 3 Description</p>
+              <h3>The Ministry of Innovation and Technology and the
+                Internet Society Sign New Pact to Advance Digital Economy in Ethiopia</h3>
+              <p style={{color:"white"}}> The Ministry of Innovation and Technology (MINT) of Ethiopia and the Internet Society 
+                announced a new collaboration agreement today 
+                that will help advance the digital economy and drive economic transformation.</p>
             </Carousel.Caption>
           </a>
         </Carousel.Item>
@@ -70,8 +81,13 @@ const LatestUpdates = () => {
               style={carouselImageStyle}
             />
             <Carousel.Caption>
-              <h3>Slide 4 Title</h3>
-              <p>Slide 4 Description</p>
+              <h3>UNDP signed MoU with Ministry of Innovation 
+                and Technology to support Ethiopian innovators and tech sector</h3>
+              <p style={{color:"white"}}>A challenge grant will be jointly launched to identify local
+                 innovators capable to co-design, experiment and implement technology-driven 
+                 solutions to monitor the outbreak, and advance preventive
+                 measures including awareness-raising, disease surveillance
+                  and citizen action, among others.</p>
             </Carousel.Caption>
           </a>
         </Carousel.Item>
@@ -84,15 +100,15 @@ const LatestUpdates = () => {
               style={carouselImageStyle}
             />
             <Carousel.Caption>
-              <h3>Slide 5 Title</h3>
-              <p>Slide 5 Description</p>
+              <h3>Ministry Says Working to Create Favorable Environment for Innovation, 
+                Technology Investment</h3>
+              <p style={{color:"white"}}>The Government of Ethiopia is creating favorable
+               business environment for investors interested in the innovation and technology sector,
+               according to Ministry of Innovation and Technology.</p>
             </Carousel.Caption>
           </a>
         </Carousel.Item>
       </Carousel>
-    <div className="text-center mt-4">
-        <Link to="/news" className="btn btn-warning">Go to our News page for more</Link>
-      </div>
     </div>
    
   );

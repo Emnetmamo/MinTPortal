@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import Logo from '../images/Logo.jpg';
 import { AiTwotoneHome } from "react-icons/ai";
 import "../App.css";
-import Announcements from '../pages/Announcements';
+// import Announcements from '../pages/Announcements';
+
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -77,9 +78,10 @@ const Navbar = () => {
               <Link className="nav-link d-none d-lg-inline fs-4 fw-bold" to="/login" style={{ color: '#11676d' }}>Login</Link>
               <Link className="nav-link d-none d-lg-inline fs-4 fw-bold" to="/register" style={{ color: '#11676d' }}>Register</Link>
             </div>
+
             <div className="navbar-nav ml-auto d-inline d-lg-none">
-              <Link className="nav-link" to="/login" style={{ color: '#11676d' }}>Login</Link>
-              <Link className="nav-link" to="/register" style={{ color: '#11676d' }}>Register</Link>
+              <Link className="nav-link btn" to="/login" >Login</Link>
+              <Link className="nav-link btn" to="/register" >Register</Link>
             </div>
         </div>
       </div>

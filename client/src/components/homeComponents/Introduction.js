@@ -21,8 +21,8 @@ const Introduction = () => {
 
       <div className="col-md-6">
         <h1 style={{fontSize: "50px"}}>Our Mission is to bring change through Researches and Innovation</h1>
-        <Link style={{background: "white", color: "black", borderColor:"black",  margin: '50px'}} to="/aboutus" className="btn btn-primary ">About Us</Link>  
-        <Link style={{background: "orange", color: "white", border: 'none'}} to="/announcements" className="btn btn-secondary  ms-2">See open Research Calls</Link>
+        <a href= "/aboutus" style={{background: "white", color: "black", borderColor:"black",  margin: '50px'}}  className="btn btn-primary ">About Us</a>  
+        <a href="/announcements" style={{background: "orange", color: "white", border: 'none'}} className="btn btn-secondary  ms-2">See open Research Calls</a>
       </div>
       <div className="col-md-6">
         <div id="imageCarousel" className="carousel slide" data-bs-ride="carousel">

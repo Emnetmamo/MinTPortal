@@ -1,50 +1,65 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import '../../images/assets/css/admin.css'
-import AdminHeader from '../../components/AdminComponents/AdminHeader'
-import DropzoneImage from '../../components/AdminComponents/Dropzone'
-import DropzoneText from '../../components/AdminComponents/DropzoneText'
+import React from "react";
+import { Link } from "react-router-dom";
+import "../../images/assets/css/admin.css";
+import AdminHeader from "../../components/AdminComponents/AdminHeader";
+import DropzoneImage from "../../components/AdminComponents/Dropzone";
+import DropzoneText from "../../components/AdminComponents/DropzoneText";
 
 function PostAcceptedProjects() {
   return (
     <div className="">
       <AdminHeader />
-      <div className='container mt-5'>       
-          <div class="row">
-            <div className="col-xs-12 col-md-3 my-5 post-links-container" >
+      <div className="container mt-5">
+        <div class="row">
+          <div className="col-xs-12 col-md-3 my-5 post-links-container">
             <ul class="list-group text-center fs-5 display-6">
-                <br/>
-                <li class="list-group-item  post-links " >
-                  <Link className='links' to="/admin/news/add-news">
-                  Post News </Link>
-                </li>
-                <br/>
-                <li class="list-group-item post-links " >
-                  <Link className='links' to="/admin/appointments/add-appointment">
-                    Set Appointment Date </Link>
-                </li>
-                <br/>
-                <li class="list-group-item post-links " 
-                ><Link className='links' to="/admin/user-status/add-user-status">
-                  Update User Status</Link>
-                </li>
-                <br/>
-                <li class="list-group-item post-links " >
-                  <Link className='links' to="/admin/calls/add-call">
-                    Post Calls </Link>
-                </li>
-                <br/>
-                <li class="list-group-item  post-links " >
-                  <Link className='links' to="/admin/publications/add-publication">
-                    Post Publications </Link>
-                </li>
-                <br/>
-                <li class="list-group-item active post-links " >
-                  <Link className='links' to="/admin/accepted-projects/add-accepted-project">
-                    Post Accepted Projects </Link>
-                </li>
-              </ul>
-            </div>
+              <br />
+              <li class="list-group-item  post-links ">
+                <Link className="links" to="/admin/news/add-news">
+                  Post News{" "}
+                </Link>
+              </li>
+              <br />
+              <li class="list-group-item post-links ">
+                <Link
+                  className="links"
+                  to="/admin/appointments/add-appointment"
+                >
+                  Set Appointment Date{" "}
+                </Link>
+              </li>
+              <br />
+              <li class="list-group-item post-links ">
+                <Link className="links" to="/admin/user-status/add-user-status">
+                  Update User Status
+                </Link>
+              </li>
+              <br />
+              <li class="list-group-item post-links ">
+                <Link className="links" to="/admin/calls/add-call">
+                  Post Calls{" "}
+                </Link>
+              </li>
+              <br />
+              <li class="list-group-item  post-links ">
+                <Link
+                  className="links"
+                  to="/admin/publications/add-publication"
+                >
+                  Post Publications{" "}
+                </Link>
+              </li>
+              <br />
+              <li class="list-group-item active post-links ">
+                <Link
+                  className="links"
+                  to="/admin/accepted-projects/add-accepted-project"
+                >
+                  Post Accepted Projects{" "}
+                </Link>
+              </li>
+            </ul>
+          </div>
           <div class="col-xs-12 col-md-2"></div>
           <div class="col-xs-12 col-md-7 mb-5">
             <form method="post" action="/admin/news/add-news">
@@ -60,7 +75,7 @@ function PostAcceptedProjects() {
                 </div>
                 <div class="form-group ">
                     <label className='form-label'>Funding Sources multiple input:</label>
-                    <input type="text" name="title" class="form-control " placeholder="Title" multiple/>                  
+                    <input type="text" name="title" class="form-control " placeholder="Title"/>                  
                 </div>
                 <div class="form-group">
                   <label for="">Project Description:</label>
@@ -106,15 +121,14 @@ function PostAcceptedProjects() {
                 </div>
             </form>
             <p>Upload Images:</p>
-            <DropzoneImage className='py-5 mt-10 border border-neutral-200'/>            
+            <DropzoneImage className="py-5 mt-10 border border-neutral-200" />
             <p>Upload Files</p>
-            <DropzoneText className='py-5 mt-10 border border-neutral-200'/>
+            <DropzoneText className="py-5 mt-10 border border-neutral-200" />
           </div>
+        </div>
       </div>
     </div>
-  </div>
-   
-  )
+  );
 }
 
-export default PostAcceptedProjects
+export default PostAcceptedProjects;

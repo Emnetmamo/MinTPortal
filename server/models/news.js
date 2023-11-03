@@ -1,13 +1,10 @@
-import mongoose from "mongoose";
-
+const mongoose=require('mongoose')
 let news_schema = new mongoose.Schema({
   title:{type: String, required: true},
   author: {type: String, required: true},
   content: {type: String, required: true},
-  category: {type: String, },
+  category: {type: String, required: true},
   date: {type: Date, required: true},
-  imagePath: {type: String, },
-  
 });
 
 const News = mongoose.model('News', news_schema);
