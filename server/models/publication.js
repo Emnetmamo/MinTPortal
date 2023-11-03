@@ -1,36 +1,17 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const PubSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    author: {
-        type: String,
-        required: true
-    },
-    description: {
-        type: String,
-        required: true
-    },
-    category: {
-        type: String,
-        required: true
-    },
-    publicationDate: {
-        type: Date,
-        required: true
-    },
-    cvFilePath: {
-        type: String,
-        required: true
-    },
-    proposalPath: {
-        type: String,
-        required: true
-    }
+let publication_schema = new mongoose.Schema({
+  title:{type: String, required: true},
+  p_investigator: {type: String, required: true},
+  author: {type: String, required: true},
+  description: {type: String, required: true},
+  field_of_study: {type: String, required: true },
+  date: {type: Date, required: true},
+  imagePath: {type: String, },
+  filePath: {type: String, },
+  
 });
 
-const publicationModel = mongoose.model('publications', PubSchema);
+const Publication = mongoose.model('Publicaiton', publication_schema);
 
-export default publicationModel;
+export default Publication

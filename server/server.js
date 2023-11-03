@@ -20,7 +20,7 @@ import adminPublications from './routes/adminPublications.js'
 const app = express();
 const CONNECTION_URL = process.env.CONNECTION_URL
 //const CONNECTION_URL = 'mongodb+srv://adaneeshete:adaneeshete@cluster0.9qj7xxi.mongodb.net/Mint?retryWrites=true&w=majority';
- const PORT = process.env.PORT2;
+ const PORT = process.env.PORT_2;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
@@ -44,15 +44,13 @@ async function main() {
   }
 }
 
-mongoose.connect(CONNECTION_URL)
-.then(()=>{console.log('mongdb is connected')})
-.catch(error=>{console.log('error occure  during connection'+error)})
+main()
    
 //user routes
-  app.use('/auth/:page',register)
-  app.use('/admin/:page',addNews)
-  app.use('/publication',publication)
-  app.use('/announcements/:page', announcementPost);
+app.use('/auth/:page',register)
+app.use('/admin/:page',addNews)
+app.use('/publication',publication)
+app.use('/announcements/:page', announcementPost);
 
 //middleware to  admin  routes
 app.use('/news', news);
