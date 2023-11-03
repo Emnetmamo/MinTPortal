@@ -12,6 +12,6 @@ let publication_schema = new mongoose.Schema({
   
 });
 
-const Publication = mongoose.model('Publicaiton', publication_schema);
+const Publication = mongoose.model('Publication', publication_schema);
 
 export default Publication

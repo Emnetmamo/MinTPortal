@@ -67,7 +67,7 @@ const handleSubmit = async (e) => {
       // Handle success - HTTP status 200
       console.log(response.data);
       alert('do you want to submit')
-      window.location.reload()
+      // window.location.reload()
 
   } catch (error) {
     // Handle error

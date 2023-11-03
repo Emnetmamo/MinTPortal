@@ -7,8 +7,6 @@ import path from 'path';
 dotenv.config();
 //import user defined middlware
 import register from './controller/authControl.js'
-import addNews from  './controller/adminControl.js'
-import publication from './controller/publication.js'
 import announcementPost from './controller/announcementPost.js';
 
 //routes imports 
@@ -46,8 +44,6 @@ main()
    
 //user routes
 app.use('/auth/:page',register)
-app.use('/admin/:page',addNews)
-app.use('/publication',publication)
 app.use('/announcements/:page', announcementPost);
 
 //middleware to  admin  routes
