@@ -1,11 +1,8 @@
-import fileUpload from 'express-fileupload';
 import express from 'express'
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors'
-import multer from 'multer'; 
 import dotenv from 'dotenv';
-import fs from  'fs';
 import path from 'path';
 dotenv.config();
 //import user defined middlware
@@ -23,7 +20,7 @@ import adminPublications from './routes/adminPublications.js'
 const app = express();
 const CONNECTION_URL = process.env.CONNECTION_URL
 //const CONNECTION_URL = 'mongodb+srv://adaneeshete:adaneeshete@cluster0.9qj7xxi.mongodb.net/Mint?retryWrites=true&w=majority';
- const PORT = process.env.PORT;
+ const PORT = process.env.PORT2;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
