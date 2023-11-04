@@ -23,18 +23,18 @@ const EthicalEvaluation = ({ prevStep }) => {
     }
     
     console.log(value);
-    axios.post('http://localhost:5000/auth/ethicalEvalution', value)
+    axios.post('http://localhost:5001/auth/ethicalEvaluation', value)
     .then(response=>{
       if(response==='failed'){
         toast.error('failed to apply go back to home please try next year')
         setTimeout(() => {
-          navigate('/home')
+          navigate('/')
         }, 6000);
       }
       else{
         toast.success('congratulation you passed the process wait until appontment date is set')
         setTimeout(() => {
-          navigate('/home')
+          navigate('/')
         }, 6000);
       }
     })

@@ -33,7 +33,7 @@ const BasicPersonalInfo = ({ nextStep }) => {
   
     if (password === confirmpassword && password.length >= 6 && /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{6,}/.test(password)) {
       axios
-        .post("http://localhost:5000/auth/register", {
+        .post("http://localhost:5001/auth/register", {
           fName,
           LName,
           password,
@@ -50,6 +50,7 @@ const BasicPersonalInfo = ({ nextStep }) => {
           console.log("error from registration", error);
         });
     }
+  
   };
   
 

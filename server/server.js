@@ -3,11 +3,10 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors'
 import dotenv from 'dotenv';
-<<<<<<< HEAD
+
 import fs from  'fs';
 import cookieParser from 'cookie-parser'
-=======
->>>>>>> a1b7807895f3a2ba991ce0bca310b952a6a033a6
+
 import path from 'path';
 dotenv.config();
 //import user defined middlware

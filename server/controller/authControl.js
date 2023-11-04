@@ -6,7 +6,8 @@ import bcrypt from 'bcrypt'
 
 import { v4 as uuidv4 } from "uuid";
 
-const SECRET_KEY='adaneshtee'
+//const SECRET_KEY=process.env.SECRET_KEY
+const SECRET_KEY='miint'
 const verifyToken = async (req, res, next) => {
 
   const token = req.cookies.token;
@@ -112,20 +113,28 @@ const register = async (req, res) => {
     } catch (error) {
       return res.json({ message: 'Error occurred during project idea submission' + error });
     }
-  }else if(req.params.page==='ethicalEvalution'){
-    const result=req.body;
-    for(let i=0;i<=result.length;i++){
-      if(result[i]==='no'){
-        const decoded =await jwt.verify(token, SECRET_KEY);
-       const user= req.user = await decoded.user;
-       UserModel.findByIdAndDelete(user._id)
-       res.json('failed')
-      }
-      else{
-        res.json('user proposal approved')
-      }
+  }else if (req.params.page === 'ethicalEvaluation') {
+    const result = req.body;
+    let deleteUser = false;
+    console.log(result)
+    for (let i = 0; i < result.length; i++) {
+        if (result[i] === 'no') {
+            deleteUser = true;
+            break;  // If 'no' is found, exit the loop early
+        }
     }
-  }
+
+    if (deleteUser) {
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const user = req.user = await decoded.user;
+        console.log(user)
+        await UserModel.findByIdAndDelete(user._id);
+        res.json('failed');
+    } else {
+        res.json('User proposal approved');
+    }
+}
+
       else if (req.params.page === "login") {
     // login code here
   }
