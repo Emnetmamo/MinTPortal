@@ -25,6 +25,24 @@ const verifyToken = async (req, res, next) => {
     res.status(401).json({ message: 'Invalid token' });
   }
 };
+function Verify(req, res, next) {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.status(401).json('Missing token');
+  } else {
+    jwt.verify(token, 'adane', (error, decode) => {
+      if (error) {
+        return res.status(401).json('Unauthorized: Error during token verification');
+      } else {
+        if (decode.role === 'admin') {
+          next();
+        } else {
+          return res.status(403).json('Forbidden: Not an admin');
+        }
+      }
+    });
+  }
+}
 const register = async (req, res) => {
   const uniqueID = uuidv4();
   let user; // Define user variable outside the if-else block
@@ -95,11 +113,20 @@ const register = async (req, res) => {
       return res.json({ message: 'Error occurred during project idea submission' + error });
     }
   }else if(req.params.page==='ethicalEvalution'){
-    console.log(req.body)
+    const result=req.body;
+    for(let i=0;i<=result.length;i++){
+      if(result[i]==='no'){
+        const decoded =await jwt.verify(token, SECRET_KEY);
+       const user= req.user = await decoded.user;
+       UserModel.findByIdAndDelete(user._id)
+       res.json('failed')
+      }
+      else{
+        res.json('user proposal approved')
+      }
+    }
   }
-      
-  
-  else if (req.params.page === "login") {
+      else if (req.params.page === "login") {
     // login code here
   }
 };
