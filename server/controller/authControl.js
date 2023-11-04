@@ -26,24 +26,24 @@ const verifyToken = async (req, res, next) => {
     res.status(401).json({ message: 'Invalid token' });
   }
 };
-function Verify(req, res, next) {
-  const token = req.cookies.token;
-  if (!token) {
-    return res.status(401).json('Missing token');
-  } else {
-    jwt.verify(token, 'adane', (error, decode) => {
-      if (error) {
-        return res.status(401).json('Unauthorized: Error during token verification');
-      } else {
-        if (decode.role === 'admin') {
-          next();
-        } else {
-          return res.status(403).json('Forbidden: Not an admin');
-        }
-      }
-    });
-  }
-}
+// function Verify(req, res, next) {
+//   const token = req.cookies.token;
+//   if (!token) {
+//     return res.status(401).json('Missing token');
+//   } else {
+//     jwt.verify(token, 'adane', (error, decode) => {
+//       if (error) {
+//         return res.status(401).json('Unauthorized: Error during token verification');
+//       } else {
+//         if (decode.role === 'admin') {
+//           next();
+//         } else {
+//           return res.status(403).json('Forbidden: Not an admin');
+//         }
+//       }
+//     });
+//   }
+// }
 const register = async (req, res) => {
   const uniqueID = uuidv4();
   let user; // Define user variable outside the if-else block
@@ -77,9 +77,6 @@ const register = async (req, res) => {
     } catch (error) {
       res.status(500).json({ error: 'Error during registration: ' + error });
     }
-
-  
-   
     
   } else if (req.params.page === "submitProject") {
     try {
@@ -116,26 +113,32 @@ const register = async (req, res) => {
   }else if (req.params.page === 'ethicalEvaluation') {
     const result = req.body;
     let deleteUser = false;
-    console.log(result)
+    console.log(result);
+  
     for (let i = 0; i < result.length; i++) {
-        if (result[i] === 'no') {
-            deleteUser = true;
-            break;  // If 'no' is found, exit the loop early
-        }
+      if (result[i] === 'no') {
+        deleteUser = true;
+        break; // If 'no' is found, exit the loop early
+      }
     }
-
+  
     if (deleteUser) {
-        const decoded = jwt.verify(token, SECRET_KEY);
-        const user = req.user = await decoded.user;
-        console.log(user)
-        await UserModel.findByIdAndDelete(user._id);
-        res.json('failed');
+      verifyToken(req, res, async () => {
+        try {
+          const user = await UserModel.findById(req.user);
+          console.log('User found:', user);
+          await UserModel.findByIdAndDelete(user._id);
+          res.json('failed');
+        } catch (error) {
+          console.error('Error while processing user deletion:', error);
+          res.status(500).json('Internal Server Error');
+        }
+      });
     } else {
-        res.json('User proposal approved');
+      res.json('User proposal approved');
     }
-}
-
-      else if (req.params.page === "login") {
+  }
+  else if (req.params.page === "login") {
     // login code here
   }
 };

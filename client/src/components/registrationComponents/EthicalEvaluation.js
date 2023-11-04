@@ -28,13 +28,13 @@ const EthicalEvaluation = ({ prevStep }) => {
       if(response==='failed'){
         toast.error('failed to apply go back to home please try next year')
         setTimeout(() => {
-          navigate('/')
+         // navigate('/')
         }, 6000);
       }
       else{
         toast.success('congratulation you passed the process wait until appontment date is set')
         setTimeout(() => {
-          navigate('/')
+        //  navigate('/')
         }, 6000);
       }
     })
