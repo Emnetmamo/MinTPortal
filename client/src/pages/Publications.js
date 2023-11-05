@@ -14,10 +14,14 @@ const Publications = () => {
     axios.get('http://localhost:5001/resources/publications')
       .then(response => {
         const parsedData = typeof response.data === 'string' ? JSON.parse(response.data) : response.data;
-        setPublication(parsedData); // Update the state with fetched news
+
+        // Sort the publications by date before setting the state
+        const sortedPublications = parsedData.sort((a, b) => new Date(a.date) - new Date(b.date));
+        
+        setPublication(sortedPublications); // Update the state with the sorted publications
       })
       .catch(error => {
-        console.error('Error fetching news:', error);
+        console.error('Error fetching publications:', error);
       });
   }, []);
 // get file name

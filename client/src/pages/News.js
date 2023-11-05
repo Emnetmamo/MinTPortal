@@ -16,7 +16,12 @@ const News = () => {
     axios.get('http://localhost:5001/news')
       .then(response => {
         const parsedData = typeof response.data === 'string' ? JSON.parse(response.data) : response.data;
-        setNews(parsedData); // Update the state with fetched news
+        console.log(parsedData.date)
+
+         // Sort the publications by date before setting the state
+        const sortedPublications = parsedData.sort((a, b) => new Date(a.date) - new Date(b.date));
+        
+        setNews(sortedPublications); // Update the state with the sorted publicationssetNews(parsedData); // Update the state with fetched news
       })
       .catch(error => {
         console.error('Error fetching news:', error);
@@ -47,7 +52,8 @@ const News = () => {
               <div className="card-body text-center">
                 <h6 className="mb-0" style={{color: '#11676d', fontSize: '20px'}}
                 >Author:  {newsItem.author}</h6>
-                <div className='d-flex'>               
+                <div className='d-flex'>     
+                          
                   <h6 className='mx-1' style={{color: '#ffa525'}}>{newsItem.date} </h6> <h6>| </h6> <h6 className='ms-1' style={{color: '#ffa525'}}> {newsItem.category}</h6>
                 </div>                
                 <h5 className="card-title fw-bold fs-3">{newsItem.title}</h5>

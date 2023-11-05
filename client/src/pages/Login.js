@@ -27,7 +27,7 @@ const Login = () => {
     
     // Check the selected role and navigate accordingly
     if (role === 'admin') {
-      history('/admin/news/add-news');
+      history('/admin');
       window.location.reload(); // Redirect to admin page
     } else if (role === 'user') {
       history('/user'); // Redirect to user page

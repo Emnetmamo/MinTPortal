@@ -28,11 +28,16 @@
   border-radius: 10px;
   height: 410px;
 }
+.list-group-item{
+  background-color: #ffa525;
+}
 .post-links{
   background-color: #ffa525;
-  border-radius: 10px;
+  border-radius: '10px';
   border: none;
 }
+
+
 .post-links:hover, .dropzone:hover{
   cursor: pointer;
   opacity: 0.8;
@@ -42,7 +47,7 @@
 }
 .links{
   text-decoration: none;
-  color: white;
+  color: white !important;
   font-weight: 700;
 }
 
@@ -63,4 +68,8 @@ button.dropzone {
 
 li.rejected-list{
   min-width: auto;
+}
+.active{
+  background-color: rgb(108, 108, 141) !important;
+  
 }

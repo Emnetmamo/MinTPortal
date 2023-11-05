@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 import '../../images/assets/css/admin.css'
 import AdminHeader from '../../components/AdminComponents/AdminHeader'
 import DropzoneImage from '../../components/AdminComponents/Dropzone'
 import DropzoneText from '../../components/AdminComponents/DropzoneText'
-import axios from 'axios';
+
 
 axios.defaults.withCredentials=true;
 
@@ -21,13 +23,13 @@ function PostPublications() {
       
     });
 
-    const [imagePreview, setImagePreview] = useState(""); // State variable to store the image preview URL
-  
+    const defaultImageURL = 'http://localhost:5001/images/noimage.png'
+    const [imagePreview, setImagePreview] = useState(defaultImageURL);
+    
     const handleFileSelect = (event) => {
       const selectedFile = event.target.files[0];
   
-      if (selectedFile) {
-        //setFileName(selectedFile.name); // Update the file name in the state
+      if (selectedFile) {        
 
         setFormData({
           ...formData,
@@ -39,6 +41,13 @@ function PostPublications() {
           setImagePreview(reader.result); // Set the image preview URL in state
         };
         reader.readAsDataURL(selectedFile); // Read the selected file as a data URL
+      } else {
+        // If no file is selected, revert to default image
+        setImagePreview(defaultImageURL);
+        setFormData({
+          ...formData,
+          image: null,
+        });
       }
     };
     //text file
@@ -76,21 +85,17 @@ function PostPublications() {
     data.append('date', formData.date);   
     data.append('image', formData.image);
     data.append('file', formData.file);
-
-
+      
+    
     try {
-      
       const response =  axios.post('http://localhost:5001/admin/publications/add-publication', data);
-      
-        // Handle success - HTTP status 200
-        console.log(response.data);
-        alert('do you want to submit')
-       // window.location.reload()
-     
-    } catch (error) {
-      // Handle error
-      console.error('Errorrrr:', error.message);
-      // Perform actions like showing an error message to the user
+      console.log(response.data);
+      alert('Do you want to submit')
+      toast.info('News submitted successfully!');
+      // await  window.location.reload()
+    } catch (errors) {
+      console.error('Error:', errors.message);
+      toast.error('An error occurred while submitting news.');
     }
   };
 
@@ -98,42 +103,57 @@ function PostPublications() {
 
   return (
     <div className="">
-      <AdminHeader />
+      
       <div className='container mt-5'>       
           <div class="row">
             <div className="col-xs-12 col-md-3 my-5 post-links-container" >
             <ul class="list-group text-center fs-5 display-6">
-                <br/>
-                <li class="list-group-item  post-links " >
-                  <Link className='links' to="/admin/news/add-news">
-                  Post News </Link>
-                </li>
-                <br/>
-                <li class="list-group-item post-links " >
-                  <Link className='links' to="/admin/appointments/add-appointment">
-                    Set Appointment Date </Link>
-                </li>
-                <br/>
-                <li class="list-group-item post-links " 
-                ><Link className='links' to="/admin/user-status/add-user-status">
-                  Update User Status</Link>
-                </li>
-                <br/>
-                <li class="list-group-item post-links " >
-                  <Link className='links' to="/admin/calls/add-call">
-                    Post Calls </Link>
-                </li>
-                <br/>
-                <li class="list-group-item active post-links " >
-                  <Link className='links' to="/admin/publications/add-publication">
-                    Post Publications </Link>
-                </li>
-                <br/>
-                <li class="list-group-item post-links " >
-                  <Link className='links' to="/admin/accepted-projects/add-accepted-project">
-                    Post Accepted Projects </Link>
-                </li>
-              </ul>
+              <br />
+              <li class="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link className="links" to="/admin/news/add-news">
+                  Post News{" "}
+                </Link>
+              </li>
+              <br />
+              <li class="list-group-item" style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link
+                  className="links"
+                  to="/admin/appointments/add-appointment"
+                >
+                  Set Appointment Date{" "}
+                </Link>
+              </li>
+              <br />
+              <li class="list-group-item "style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link className="links" to="/admin/user-status/add-user-status">
+                  Update User Status
+                </Link>
+              </li>
+              <br />
+              <li class="list-group-item  " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link className="links" to="/admin/calls/add-call">
+                  Post Calls
+                </Link>
+              </li>
+              <br />
+              <li class="list-group-item active " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link
+                  className="links"
+                  to="/admin/publications/add-publication"
+                >
+                  Post Publications
+                </Link>
+              </li>
+              <br />
+              <li class="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link
+                  className="links"
+                  to="/admin/accepted-projects/add-accepted-project"
+                >
+                  Post Accepted Projects
+                </Link>
+              </li>
+            </ul>
             </div>
           <div class="col-xs-12 col-md-2"></div>
           <div class="col-xs-12 col-md-7 mb-5">
@@ -145,8 +165,8 @@ function PostPublications() {
                     <input type="text" name="title" class="form-control " placeholder="Title" onChange={handleChange}/>                  
                 </div>
                 <div class="form-group ">
-                    <label className='form-label'>Principal Investigator:</label>
-                    <input type="text" name="p_investigator" class="form-control " placeholder="Author" onChange={handleChange}/>                  
+                    <label className='form-label'>Principal Investigator's Name:</label>
+                    <input type="text" name="p_investigator" class="form-control " placeholder="Name" onChange={handleChange}/>                  
                 </div>
                 <div class="form-group ">
                     <label className='form-label'>Author:</label>
@@ -212,13 +232,14 @@ function PostPublications() {
                   onChange={handleTextFileSelect}
                   
                 />                                               
-                </div>
+              </div>
 
                 <br/>                
                 <div class="form-group">
                     <button type="submit" className=" form-control my-3 fs-5 btn btn-warning fw-bold">Submit</button>
                 </div>
             </form>
+            <ToastContainer />
             <p>Upload Images:</p>
             <DropzoneImage className='py-5 mt-10 border border-neutral-200'/>            
             <p>Upload Files</p>
@@ -226,6 +247,7 @@ function PostPublications() {
           </div>
       </div>
     </div>
+   
   </div>
    
   )

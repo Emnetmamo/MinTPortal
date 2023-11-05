@@ -25,13 +25,13 @@ const BasicPersonalInfo = ({ nextStep }) => {
       toast.error('Password confirmation error');
     }
     if (password.length < 6) {
-      toast.error('Password length must be greater than six');
+      toast.error('Password length must be above ');
     }
-    if (!/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{6,}/.test(password)) {
+    if (!/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!.])[A-Za-z\d@#$%^&*!.]{8,}/.test(password)) {
       toast.error('Password must contain at least one uppercase, one lowercase, one special character, and one number');
     }
   
-    if (password === confirmpassword && password.length >= 6 && /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{6,}/.test(password)) {
+    if (password === confirmpassword && password.length >= 8 && /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!.])[A-Za-z\d@#$%^&*!.]{8,}/.test(password)) {
       axios
         .post("http://localhost:5000/auth/register", {
           fName,
@@ -58,7 +58,7 @@ const BasicPersonalInfo = ({ nextStep }) => {
   };
 
   return (
-    <div className="container mt-1">
+    <div className="container">
       <div className="text-right mt-3">
         <Link
           style={{
@@ -222,7 +222,7 @@ const BasicPersonalInfo = ({ nextStep }) => {
                 className="form-control"
                 id="address"
                 name="address"
-                value={address}
+                value={address}                
                 onChange={(e) => {
                   SetAdress(e.target.value);
                 }}

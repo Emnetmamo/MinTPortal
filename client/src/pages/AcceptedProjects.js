@@ -1,71 +1,58 @@
-// src/components/pages/AcceptedProjects.js
-
-import React from 'react';
+import React, { useState ,useEffect } from "react";
+import axios from "axios";
 import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa'; // Importing the search icon
-import news1 from "../images/News/news1.png";
-import news2 from "../images/News/news2.jpeg";
-import news3 from "../images/News/news3.jpeg";
-import news4 from "../images/News/news4.jpeg";
-import news5 from "../images/News/news5.jpeg";
-import news6 from "../images/News/news6.jpeg";
+
+axios.defaults.withCredentials=true
 
 
+const Publications = () => {
+  const [acceptedProject, setAcceptedProject] = useState([]);
 
+  useEffect(() => {
+    // Fetch data when the component mounts
+    axios.get('http://localhost:5001/resources/accepted-projects')
+      .then(response => {
+        const parsedData = typeof response.data === 'string' ? JSON.parse(response.data) : response.data;
 
-const AcceptedProjectsData = [
-  {
-    imageUrl: news1,
-    title: 'Exciting Discovery in Agriculture',
-    Investigator: 'Dr. Jane Smith',
-    category:'Health',
-    description: 'Innovation in technology is a relentless pursuit of progress and improvement, a driving force that shapes and reshapes our world at an accelerating pace. It encompasses the development of groundbreaking solutions, products, and processes that revolutionize industries, enhance our daily lives, and tackle complex global challenges...',
-    PublicationDate: 'October 15, 2023'
-  },
-  {
-    imageUrl: news2,
-    title: 'Breakthrough in Renewable Energy',
-    Investigator: 'Dr. Jane Smith',
-    category:'Agriculture',
-    description: 'Innovation in technology is a relentless pursuit of progress and improvement, a driving force that shapes and reshapes our world at an accelerating pace. It encompasses the development of groundbreaking solutions, products, and processes that revolutionize industries, enhance our daily lives, and tackle complex global challenges...',
-    PublicationDate: 'October 15, 2023'
-  },
-  {
-    imageUrl: news3,
-    title: 'New Advances in Healthcare',
-    Investigator: 'Dr. Jane Smith',
-    category:'Industrial',
-    description: 'Innovation in technology is a relentless pursuit of progress and improvement, a driving force that shapes and reshapes our world at an accelerating pace. It encompasses the development of groundbreaking solutions, products, and processes that revolutionize industries, enhance our daily lives, and tackle complex global challenges...',
-    PublicationDate: 'October 15, 2023'
-  },
-  {
-    imageUrl: news4,
-    title: 'Innovations in Technology Sector',
-    Investigator: 'Dr. Jane Smith',
-    category:'Invironment and Energy',
-    description: 'Innovation in technology is a relentless pursuit of progress and improvement, a driving force that shapes and reshapes our world at an accelerating pace. It encompasses the development of groundbreaking solutions, products, and processes that revolutionize industries, enhance our daily lives, and tackle complex global challenges...',
-    PublicationDate: 'October 15, 2023'
-  },
-  {
-    imageUrl: news5,
-    title: 'Environmental Conservation Initiatives',
-    Investigator: 'Dr. Jane Smith',
-    category:'Health',
-    description: 'Innovation in technology is a relentless pursuit of progress and improvement, a driving force that shapes and reshapes our world at an accelerating pace. It encompasses the development of groundbreaking solutions, products, and processes that revolutionize industries, enhance our daily lives, and tackle complex global challenges...',
-    PublicationDate: 'October 15, 2023'
-  },
-  {
-    imageUrl: news6,
-    title: 'Advancements in Artificial Intelligence',
-    Investigator: 'Dr. Jane Smith',
-    category:'Industrial',
-    description: 'Innovation in technology is a relentless pursuit of progress and improvement, a driving force that shapes and reshapes our world at an accelerating pace. It encompasses the development of groundbreaking solutions, products, and processes that revolutionize industries, enhance our daily lives, and tackle complex global challenges...',
-    PublicationDate: 'October 15, 2023'
-  }
-];
+        // Sort the publications by date before setting the state
+        const sortedAcceptedProjects = parsedData.sort((a, b) => new Date(a.date) - new Date(b.date));
+        
+        setAcceptedProject( sortedAcceptedProjects ); // Update the state with the sorted publications
+      })
+      .catch(error => {
+        console.error('Error fetching accepted projects:', error);
+      });
+  }, []);
+// get file name
+function getFileNameFromPath(filePath) {
+  const parts = filePath.split(/[\\/]/); // Split the path using either / or \
+  return parts[parts.length - 1]; // Get the last part, which is the file name
+}
+  
+  // handle dowload
 
+  const handleDownload = (fileUrl,fileName) => {
+  
+    axios({
+      url: fileUrl,
+      method: 'GET',
+      responseType: 'blob', // Ensure the response type is set to blob
+    })
+      .then(response => {
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download',  fileName ); // Set the file name and extension
+        document.body.appendChild(link);
+        link.click();
+      })
+      .catch(error => {
+        console.error('Error downloading file:', error);
+        // Handle the error, maybe show a message to the user
+      });
+  };
 
-const AcceptedProjects = () => {
   return (
     <div className="container m-10" >
       <br/><br/>
@@ -84,27 +71,37 @@ const AcceptedProjects = () => {
         </div>
       </div>
       <div className="row">
-        {AcceptedProjectsData.map((AcceptedProjectsItem, index) => (
+        {acceptedProject.map((AcceptedProjectItem, index) => (
+          
           <div key={index} className="mb-5">
             <div className="card rounded shadow grow-on-hover d-flex" > {/* Added grow-on-hover class */}
               <div className="row g-0">
-                <div className="col-lg-6">
+                <div className="col-lg-6">                
                   <img
-                    src={AcceptedProjectsItem.imageUrl}
+                    src={`${AcceptedProjectItem.imagePath.replace(/\//g, '\\').split('public\\').join('')}`}
                     className="card-img-top rounded-top"
-                    alt={`AcceptedProjects ${index + 1}`}
+                    alt={`Accepted Project ${index + 1}`}
                   />
+                  
                 </div>
                 <div className="col  mx-5 my-2 ">
                   <div className="card-body">
-                    <h4 className="card-title my-3 ">{AcceptedProjectsItem.title}</h4>
-                    <h6 className="card-Investigator my-2 ">Principal Investigator: {AcceptedProjectsItem.Investigator}</h6>
-                    <h6 className="card-category my-2 ">Category: {AcceptedProjectsItem.category}</h6>
-                    <h6 className="col card-Description d-flex " >Description: </h6>
-                    {/* <p className="col card-text text-muted">{AcceptedProjectsItem.description}</p> */}
-                    {AcceptedProjectsItem.description}
-                    <h6 className="card-PublicationDate my-2 ">PublicationDate: {AcceptedProjectsItem.PublicationDate}</h6>
-                    <Link to={`/AcceptedProjects/${index}`} className="btn btn-primary my-2">Download</Link>
+                    <h4 className="card-title my-3 text-primary">{AcceptedProjectItem.title}</h4>
+                    <h6 className="card-Investigator my-2 "><b>Principal Investigator</b>: {AcceptedProjectItem.p_investigator}</h6>                    
+                    <p className="col card-text text-muted">{AcceptedProjectItem.description}</p> 
+                    <h6 className="card-Investigator my-2 "><b>Funding Source(s):</b> {AcceptedProjectItem.funding_source}</h6>  
+                    <h6 className="card-Investigator my-2 "><b>Author:</b> {AcceptedProjectItem.author}</h6>                     
+                    <div className='d-flex align-items-end'>               
+                    
+                  <h6 className='card-PublicationDate my-2 mx-1 ' style={{color: '#ffa525'}}>{AcceptedProjectItem.date} </h6> <h6>| </h6> <h6 className='ms-1' style={{color: '#ffa525'}}> {AcceptedProjectItem.field_of_study}</h6>
+                </div>
+                <Link
+                  to="#"
+                  onClick={() => handleDownload(AcceptedProjectItem.filePath.replace(/\//g, '\\').split('public\\').join(''), getFileNameFromPath(AcceptedProjectItem.filePath.replace(/\//g, '\\').split('public\\').join('')))}
+                  className="btn btn-primary my-2"
+                >
+                  Download
+                </Link>
                   </div>
                 </div>
               </div>
@@ -119,4 +116,4 @@ const AcceptedProjects = () => {
   );
 }
 
-export default AcceptedProjects;
+export default Publications;

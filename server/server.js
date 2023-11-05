@@ -11,9 +11,10 @@ import announcementPost from './controller/announcementPost.js';
 
 //routes imports 
 import news from './routes/news.js'
-import publications from './routes/publications.js'
-import adminNews from './routes/adminNews.js'
-import adminPublications from './routes/adminPublications.js'
+import resources from './routes/resources.js'
+import adminNews from './routes/admin/adminNews.js'
+import adminPublications from './routes/admin/adminPublications.js'
+import adminAcceptedProjects from './routes/admin/adminAcceptedProjects.js'
 
 const app = express();
 const CONNECTION_URL = process.env.CONNECTION_URL
@@ -48,9 +49,11 @@ app.use('/announcements/:page', announcementPost);
 
 //middleware to  admin  routes
 app.use('/news', news);
-app.use('/resources', publications);
+app.use('/resources', resources);
 app.use('/admin/news', adminNews);
 app.use('/admin/publications', adminPublications)
+app.use('/admin/accepted-projects', adminAcceptedProjects)
+app.use('/upload-files', adminAcceptedProjects)
 
 
 app.listen(PORT, () => {

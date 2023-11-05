@@ -1,7 +1,7 @@
 import express from 'express';
 import multer from 'multer';
 import fs from 'fs';
-import Publication from '../models/publication.js';
+import Publication from '../../models/publications.js';
 
 const router = express.Router();
 
@@ -38,8 +38,16 @@ router.post('/add-publication', (req, res) => {
       res.status(500).json({ error: 'An error occurred while uploading' });
     } else {
       const { title, p_investigator, author, description, field_of_study, date } = req.body;
-      const imagePath = req.files['image'][0].path; // Multer saves the image path
-      const filePath = req.files['file'][0].path; // Multer saves the file path
+      const filePath = ''
+      if(req.file) {
+         filePath = req.files['file'][0].path; // Multer saves the file path
+      }
+      
+
+      let imagePath = 'public\\images\\noimage.png'
+      if (req.file){ imagePath =  req.files['image'][0].path; // Multer saves the image path
+      console.log(imagePath)  }
+
 
       const serverUrl = 'http://localhost:5001'; // Replace this with your server URL
 

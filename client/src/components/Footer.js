@@ -42,7 +42,7 @@ const Footer = () => {
               <ul className="list-unstyled">
                 <li><a href="/" style={{color:"white"}}>Home</a></li>
                 <li><a href="/announcements" style={{color:"white"}}>Announcements</a></li>
-                <li><a href="/resources/acceptedProjects" style={{color:"white"}}>Accepted Projects</a></li>
+                <li><a href="/resources/accepted-projects" style={{color:"white"}}>Accepted Projects</a></li>
                 <li><a href="/resources/publications" style={{color:"white"}}>Publications</a></li>
                 <li><a href="/institutes" style={{color:"white"}}>Institutes</a></li>
                 <li><a href="/collaborations" style={{color:"white"}}>Collaborations</a></li>

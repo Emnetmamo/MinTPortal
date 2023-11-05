@@ -64,7 +64,7 @@ const Navbar = () => {
       Resources
     </Link>
     <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`} aria-labelledby="resourcesDropdown">
-      <Link className="dropdown-item" to="/resources/acceptedProjects" onClick={closeDropdown}>Accepted Projects</Link>
+      <Link className="dropdown-item" to="/resources/accepted-projects" onClick={closeDropdown}>Accepted Projects</Link>
       <Link className="dropdown-item" to="/resources/publications" onClick={closeDropdown}>Publications</Link>
     </div>
   </div>

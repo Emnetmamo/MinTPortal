@@ -2,7 +2,7 @@ import express from "express";
 import multer from 'multer'
 import fs from 'fs'
 import path from 'path'
-import News from '../models/news.js'
+import News from '../../models/news.js'
 
 const router = express.Router()
 
@@ -34,7 +34,7 @@ const upload = multer({
 }).single('image');
 
 
-// ZPOST add-news
+// POST add-news
 router.post('/add-news', (req, res) => {
   upload(req, res, async (err) => {
     if (err) {
@@ -42,7 +42,10 @@ router.post('/add-news', (req, res) => {
       res.status(500).json({ error: 'An error occurred while uploading' });
     } else {
       const { title, author, content, category, date,  } = req.body;
-      const imagePath = req.file.path; // Multer saves uploaded file path     
+      let imagePath = 'public\\images\\noimage.png'
+      if (req.file){ imagePath = req.file.path; 
+      console.log(imagePath)  }
+         
       const serverUrl = 'http://localhost:5001'; // Replace this with your server URL
       
       //   Remove 'public' from the path
