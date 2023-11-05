@@ -3,7 +3,10 @@ import UserModel from '../models/users.js';
 import ProjectModel from "../models/projects.js";
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
-
+import path from 'path';
+import multer from 'multer'
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 import { v4 as uuidv4 } from "uuid";
 
 //const SECRET_KEY=process.env.SECRET_KEY
@@ -11,7 +14,7 @@ const SECRET_KEY='miint'
 const verifyToken = async (req, res, next) => {
 
   const token = req.cookies.token;
-  console.log(token)
+  //console.log(token)
   if (!token) {
     return res.status(401).json({ message: 'Unauthorized' });
   }
@@ -78,69 +81,72 @@ const register = async (req, res) => {
       res.status(500).json({ error: 'Error during registration: ' + error });
     }
     
-  } else if (req.params.page === "submitProject") {
-    try {
-      
-      verifyToken(req, res, async () => {
-       const User=await req.user;
-        if (!User) {
-          return res.json({ message: 'User not found. Please register or log in.' });
-        }
-     
-      
-        const { projectTitle, teamMembers, projectCategory, description } = req.body;
-        const projectIdea = await ProjectModel.findOne({ projectTitle });
-  
-        if (projectIdea) {
-          return res.json({ message: 'The project topic is already chosen or done by someone else' });
-        } else {
-          const newProjectIdea = await ProjectModel.create({
-            projectTitle,
-            teamMembers,
-            projectCategory,
-            description,
-          });
-          
-         User.posts.push(newProjectIdea);
-          await User.save();
-  
-          return res.json({ message: 'Project idea is submitted successfully: ' + newProjectIdea });
-        }
-      });
-    } catch (error) {
-      return res.json({ message: 'Error occurred during project idea submission' + error });
+  }
+
+else if (req.params.page === "submitProject") {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+  const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, path.join(__dirname, 'uploads'));
+    },
+    filename: (req, file, cb) => {
+      cb(null, Date.now() + path.extname(file.originalname));
     }
-  }else if (req.params.page === 'ethicalEvaluation') {
-    const result = req.body;
-    let deleteUser = false;
-    console.log(result);
-  
-    for (let i = 0; i < result.length; i++) {
-      if (result[i] === 'no') {
-        deleteUser = true;
-        break; // If 'no' is found, exit the loop early
+  });
+
+  const upload = multer({ storage });
+
+  try {
+    verifyToken(req, res, async () => {
+      const User = await req.user;
+     // console.log(User);
+      if (!User) {
+        return res.json({ message: 'User not found. Please register or log in.' });
       }
-    }
-  
-    if (deleteUser) {
-      verifyToken(req, res, async () => {
-        try {
-          const user = await UserModel.findById(req.user);
-          console.log('User found:', user);
-          await UserModel.findByIdAndDelete(user._id);
-          res.json('failed');
-        } catch (error) {
-          console.error('Error while processing user deletion:', error);
-          res.status(500).json('Internal Server Error');
+      upload.fields([
+        { name: 'cvFile', maxCount: 1 },
+        { name: 'proposalFile', maxCount: 2 },
+      ])(req, res, async (err) => {
+        if (err) {
+          console.log('Error occurred during file upload: ' + err);
+          return res.json({ message: 'Error occurred during file upload' });
         }
+
+        const projectTitle = req.body.projectTitle;
+        const teamMembers = req.body.teamMembers;
+        const projectCategory = req.body.projectCategory;
+        const description = req.body.description;
+        console.log('Project Title:', projectTitle);
+
+        const cvPath = req.files['cvFile'][0].path;
+        const proposalPath = req.files['proposalFile'][0].path;
+        // console.log(cvPath);
+        // console.log(proposalPath);
+
+   const projects=   await   ProjectModel.create({
+          projectTitle:projectTitle,
+          teamMembers:teamMembers,
+          projectCategory:projectCategory,
+          description:description,
+          cvPath:cvPath,
+          proposalPath:proposalPath
+
+        })
+        .then((projects)=>{res.json('project is stored in database')+projects})
+        .catch(error=>{res.json('error during created projects'+error)})
       });
-    } else {
-      res.json('User proposal approved');
-    }
+    });
+  } catch (error) { 
+    return res.json({ message: 'Error occurred during project idea submission: ' + error });
   }
-  else if (req.params.page === "login") {
-    // login code here
-  }
+}
+
+
+
+ 
+  
+
 };
 
 export default register;

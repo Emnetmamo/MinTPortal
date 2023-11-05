@@ -58,7 +58,7 @@ const handleSubmit = async (e) => {
   data.append('date', formData.date);    
  // data.append('newNewsId', formData.newNewsId);
   data.append('image', formData.image);
-
+ 
 
   try {
 

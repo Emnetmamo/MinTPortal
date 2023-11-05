@@ -1,5 +1,5 @@
 // EthicalEvaluation.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import "../../App.css";
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,36 +10,11 @@ const EthicalEvaluation = ({ prevStep }) => {
   const navigate=useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle submission logic if needed
-    const answers = questions.map((item, index) => {
-      const value = document.querySelector(`input[name="question${index}"]:checked`);
-      return { question: item.question, answer: value ? value.value : null };
-    });
-    
-    let value = '';
-    for (let i = 0; i < answers.length; i++) {
-      // Access each answer from the 'answers' array and concatenate "yes" or "no" to 'value'
-      value += answers[i].answer || ''; // Use 'answer' property from 'answers' array
-    }
-    
-    console.log(value);
-    axios.post('http://localhost:5001/auth/ethicalEvaluation', value)
-    .then(response=>{
-      if(response==='failed'){
-        toast.error('failed to apply go back to home please try next year')
-        setTimeout(() => {
-         // navigate('/')
-        }, 6000);
-      }
-      else{
-        toast.success('congratulation you passed the process wait until appontment date is set')
-        setTimeout(() => {
-        //  navigate('/')
-        }, 6000);
-      }
-    })
-    .catch(error=>{toast.error('please try again something want wrong')})
-    
+   setTimeout(() => {
+    toast.success('congratulation your project idea is submited successfully you will recieve notificaton soon for the next process.')
+  
+   }, 6000);
+    navigate('/')
   };
 
   const questions = [
@@ -102,7 +77,7 @@ const EthicalEvaluation = ({ prevStep }) => {
         <div className="card-body">
           <h1 style={{ backgroundColor: "orange", color:"white"}}  className="card-title  text-white p-2 rounded text-center mb-4">Ethical Evaluation Section</h1>
           <div className="disclaimer mb-4">
-            <p className="text-center">Please give focused attention to each question and answer truthfully.</p>
+            <p className="text-center">Please give focused attention to each question and onsider your project fullfill the createria</p>
           </div>
           <form onSubmit={handleSubmit}>
             {questions.map((item, index) => (
@@ -111,14 +86,7 @@ const EthicalEvaluation = ({ prevStep }) => {
                   {index + 1}. <span className="question-title">{item.title}</span>
                 </p>
                 <p className="question-text">{item.question}</p>
-                <div className="form-check">
-                  <input type="radio" className="form-check-input" name={`question${index}`} value="yes" id={`yes${index}`} />
-                  <label className="form-check-label" htmlFor={`yes${index}`}>Yes</label>
-                </div>
-                <div className="form-check">
-                  <input type="radio" className="form-check-input" name={`question${index}`} value="no" id={`no${index}`} />
-                  <label className="form-check-label" htmlFor={`no${index}`}>No</label>
-                </div>
+              
               </div>
             ))}
             <div className="d-flex justify-content-end">
