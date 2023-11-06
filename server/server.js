@@ -18,7 +18,7 @@ import adminNews from './routes/admin/adminNews.js'
 import adminPublications from './routes/admin/adminPublications.js'
 import adminAcceptedProjects from './routes/admin/adminAcceptedProjects.js'
 import login from './controller/login.js';
-
+import dashboardRoute from './middleware/dashboard.js';
 const app = express();
 const CONNECTION_URL = process.env.CONNECTION_URL
  const PORT = process.env.PORT_2;
@@ -50,6 +50,7 @@ main()
 app.use('/auth/:page',register)
 app.use('/announcements/:page', announcementPost);
 app.use('/authl',login)
+app.use('/admind',dashboardRoute)
 app.use('/news', news);
 app.use('/resources', resources);
 

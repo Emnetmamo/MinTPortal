@@ -23,16 +23,7 @@ const Login = () => {
   const history = useNavigate(); // Initialize useHistory
 
   const handleLogin = (e) => {
-    // e.preventDefault();
-    // // Add login logic here (using email and password states)
     
-    // // Check the selected role and navigate accordingly
-    // if (role === 'admin') {
-    //   history('/admin');
-    //   window.location.reload(); // Redirect to admin page
-    // } else if (role === 'user') {
-    //   history('/user'); // Redirect to user page
-    // {
       e.preventDefault();
       axios.post('http://localhost:5001/authl/login', {  email, password })
         .then((result) => {
