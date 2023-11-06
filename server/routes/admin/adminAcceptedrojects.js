@@ -1,25 +1,26 @@
 import express from 'express';
 import multer from 'multer';
 import fs from 'fs';
-import Publication from '../../models/publications.js';
+import AcceptedProject from '../../models/acceptedProjects.js';
 
 const router = express.Router();
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const newPublicationId = 'publication-' + Date.now();
-    const publicationsPath = `public/publications_images/${newPublicationId}`;
 
-    fs.mkdirSync(publicationsPath, { recursive: true });
+const storage = multer.diskStorage({
+  destination: (req, file, cb) =>  {
+    const Id = Date.now();
+    const acceptedProjectsPath = `public/acceptedProjectsfile/${Id}`
+
+    fs.mkdirSync(acceptedProjectsPath, { recursive: true });
     //, (err) => {
     //   if (err) {
     //     console.error('Error creating directory:', err);
     //   } else {
     //     console.log('Directory created successfully:', publicationsPath);
-        cb(null, publicationsPath);
-  //     }
+    cb(null, acceptedProjectsPath);
+    //     }
   //   });
-   },
+  } ,
   filename: (req, file, cb) => {
     cb(null, file.originalname);
   },
@@ -33,23 +34,24 @@ const upload = multer({
   { name: 'file', maxCount: 1 },
 ]);
 
-router.post('/add-publication', (req, res) => {
+router.post('/add-accepted-project', (req, res) => {
   upload(req, res, async (err) => {
     if (err) {
       res.status(500).json({ error: 'An error occurred while uploading' });
     } else {
-      const { title, p_investigator, author, description, field_of_study, date } = req.body;
-      // const filePath = ''
+      const { title, p_investigator, author, funding_source, description, field_of_study, date } = req.body;
+      
+      // let filePath = ''
       // if(req.file) {
-       const   filePath = req.files['file'][0].path; // Multer saves the file path
+       const  filePath = req.files['file'][0].path; // Multer saves the file path
        console.log(filePath)
       // }
       
 
-      // let imagePath = 'public\\images\\noimage.png'
-      // if (req.file){ 
+      // let //imagePath = 'public\\images\\noimage.png'
+      // if ( req.file){ 
        const imagePath =  req.files['image'][0].path; // Multer saves the image path
-       console.log(imagePath) // }
+       console.log(imagePath)  //}
 
       const serverUrl = 'http://localhost:5001'; // Replace this with your server URL
 
@@ -60,16 +62,17 @@ router.post('/add-publication', (req, res) => {
       const imagePaths = imageUrl.replace(/\//g, '\\');
 
       // Process file path
-      const partsFile = filePath.split('public\\');
+      const partsFile = filePath.split('public/');
       const cleanFilePath = partsFile.join('');
       const fileUrl = serverUrl + '/' + cleanFilePath;
       const filePaths = fileUrl.replace(/\//g, '\\');
 
       try {
-        const newPublication = new Publication({
+        const newAcceptedProject = new AcceptedProject({
           title,
           p_investigator,
           author,
+          funding_source,
           description,
           field_of_study,
           date,
@@ -77,8 +80,22 @@ router.post('/add-publication', (req, res) => {
           filePath: filePaths,
         });
 
-        const savedPublication = await newPublication.save();
-        res.json(savedPublication);
+        const savedAcceptedProject = await newAcceptedProject.save();   
+        res.json(savedAcceptedProject);     
+        // Once the project is saved, create a directory with the project ID
+        // const newPublicationId = savedAcceptedProject._id;
+        // const acceptedProjectsPath = `public/acceptedProjectsfile/${newPublicationId}`;                        
+        
+
+        // fs.mkdir(acceptedProjectsPath, { recursive: true }, (err) => {
+        //   if (err) {
+        //     console.error('Error creating directory:', err);
+        //     res.status(500).json({ error: 'Error creating directory' });
+        //   } else {
+        //     console.log('Directory created successfully:', acceptedProjectsPath);
+        //     res.json(savedAcceptedProject);
+        //   }
+        // });
       } catch (error) {
         console.error('An error occurred while saving to the database:', error);
         res.status(500).json({ error: 'An error occurred while saving to the database' });
@@ -88,3 +105,4 @@ router.post('/add-publication', (req, res) => {
 });
 
 export default router;
+

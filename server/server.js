@@ -13,17 +13,11 @@ import announcementPost from './controller/announcementPost.js';
 
 //routes imports 
 import news from './routes/news.js'
-<<<<<<< HEAD
 import resources from './routes/resources.js'
 import adminNews from './routes/admin/adminNews.js'
 import adminPublications from './routes/admin/adminPublications.js'
 import adminAcceptedProjects from './routes/admin/adminAcceptedProjects.js'
-=======
-import publications from './routes/publications.js'
-import adminNews from './routes/adminNews.js'
-import adminPublications from './routes/adminPublications.js'
 import login from './controller/login.js';
->>>>>>> 4353cd7a3740bde2406aea6d625cbb4ab76ce715
 
 const app = express();
 const CONNECTION_URL = process.env.CONNECTION_URL
@@ -55,12 +49,11 @@ main()
 //user routes
 app.use('/auth/:page',register)
 app.use('/announcements/:page', announcementPost);
-// app.use('/authl',login)
-
-//middleware to  admin  routes
-
+app.use('/authl',login)
 app.use('/news', news);
 app.use('/resources', resources);
+
+//middleware to  admin  routes
 app.use('/admin/news', adminNews);
 app.use('/admin/publications', adminPublications)
 app.use('/admin/accepted-projects', adminAcceptedProjects)

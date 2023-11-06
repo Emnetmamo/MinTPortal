@@ -5,12 +5,20 @@ import AcceptedProject from '../../models/acceptedProjects.js';
 
 const router = express.Router();
 
-
 const storage = multer.diskStorage({
-  destination: (req, file, cb) =>  {
-    const Id = Date.now()
-    cb(null, `public/acceptedProjectsfile/${Id}/`);
-  } ,
+  destination: (req, file, cb) => {
+    const newPublicationId = 'accepted-' + Date.now();
+    const publicationsPath = `public/accepted-projectsfiles/${newPublicationId}`;
+
+    fs.mkdir(publicationsPath, { recursive: true }, (err) => {
+      if (err) {
+        console.error('Error creating directory:', err);
+      } else {
+        console.log('Directory created successfully:', publicationsPath);
+        cb(null, publicationsPath);
+      }
+    });
+  },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
   },
@@ -30,21 +38,22 @@ router.post('/add-accepted-project', (req, res) => {
       res.status(500).json({ error: 'An error occurred while uploading' });
     } else {
       const { title, p_investigator, author, funding_source, description, field_of_study, date } = req.body;
-      
-      let filePath = ''
-      if(req.files['file'][0]) {
-         filePath = req.files['file'][0].path; // Multer saves the file path
-      }
+      // const filePath = ''
+      // if(req.file) {
+       const  filePath = req.files['file'][0].path; // Multer saves the file path
+      // }
       
 
-      let imagePath = 'public\\images\\noimage.png'
-      if ( req.files['image'][0]){ imagePath =  req.files['image'][0].path; // Multer saves the image path
-      console.log(imagePath)  }
+      // let imagePath = 'public\\images\\noimage.png'
+      // if (req.file){ 
+        const imagePath =  req.files['image'][0].path; // Multer saves the image path
+      // console.log(imagePath)  }
+
 
       const serverUrl = 'http://localhost:5001'; // Replace this with your server URL
 
       // Process image path
-      const partsImage = imagePath.split('public/');
+      const partsImage = imagePath.split('public\\');
       const cleanImagePath = partsImage.join('');
       const imageUrl = serverUrl + '/' + cleanImagePath;
       const imagePaths = imageUrl.replace(/\//g, '\\');
@@ -56,7 +65,7 @@ router.post('/add-accepted-project', (req, res) => {
       const filePaths = fileUrl.replace(/\//g, '\\');
 
       try {
-        const newAcceptedProject = new AcceptedProject({
+        const newPublication = new AcceptedProject({
           title,
           p_investigator,
           author,
@@ -68,22 +77,8 @@ router.post('/add-accepted-project', (req, res) => {
           filePath: filePaths,
         });
 
-        const savedAcceptedProject = await newAcceptedProject.save();   
-        res.json(savedAcceptedProject);     
-        // Once the project is saved, create a directory with the project ID
-        // const newPublicationId = savedAcceptedProject._id;
-        // const acceptedProjectsPath = `public/acceptedProjectsfile/${newPublicationId}`;                        
-        
-
-        // fs.mkdir(acceptedProjectsPath, { recursive: true }, (err) => {
-        //   if (err) {
-        //     console.error('Error creating directory:', err);
-        //     res.status(500).json({ error: 'Error creating directory' });
-        //   } else {
-        //     console.log('Directory created successfully:', acceptedProjectsPath);
-        //     res.json(savedAcceptedProject);
-        //   }
-        // });
+        const savedPublication = await newPublication.save();
+        res.json(savedPublication);
       } catch (error) {
         console.error('An error occurred while saving to the database:', error);
         res.status(500).json({ error: 'An error occurred while saving to the database' });
@@ -93,4 +88,3 @@ router.post('/add-accepted-project', (req, res) => {
 });
 
 export default router;
-
