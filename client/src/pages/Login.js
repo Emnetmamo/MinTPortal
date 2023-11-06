@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Logo from '../images/Logo.jpg';
 import {VscEyeClosed,VscEye} from 'react-icons/vsc'
-
+import axios from 'axios';
 import { Link, redirect, useNavigate } from 'react-router-dom'; // Updated import
  // Import the AdminRoutes component
 import { Form, FormGroup } from 'react-bootstrap';
@@ -31,9 +31,30 @@ const Login = () => {
       window.location.reload(); // Redirect to admin page
     } else if (role === 'user') {
       history('/user'); // Redirect to user page
+    {
+      e.preventDefault();
+      axios.post('http://localhost:5001/authl/login', {  email, password })
+        .then((result) => {
+          console.log(result.data);
+          if(result.data.message==='ok'){
+            if(result.data.role==='admin'){
+              history('/admin/news/add-news');
+            }
+            else{
+              history('/')
+            }
+          }
+         
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
-  }
 
+  
+    
+  
+  }
 
 
   return (
@@ -48,35 +69,6 @@ const Login = () => {
         </div>
         <div className="col-md-6">
           <h1 className="mb-4 ">Log in</h1>
-
-
-
-          <div className="form-check form-check-inline">
-        <input
-          className="form-check-input"
-          type="radio"
-          name="role"
-          id="adminRadio"
-          value="admin"
-          onChange={(e) => setRole(e.target.value)}
-        />
-        <label className="form-check-label" htmlFor="adminRadio">Admin</label>
-      </div>
-      <div className="form-check form-check-inline">
-        <input
-          className="form-check-input"
-          type="radio"
-          name="role"
-          id="userRadio"
-          value="user"
-          onChange={(e) => setRole(e.target.value)}
-        />
-        <label className="form-check-label" htmlFor="userRadio">User</label>
-      </div>
-
-
-
-
           <form onSubmit={handleLogin}>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">Email</label>
