@@ -1,15 +1,15 @@
 import mongoose from 'mongoose';
 
 const announcementSchema = new mongoose.Schema({
-    title: String,
-    description: String,
-    field: String,
-    callType: String,
-    startDate: Date,
-    endDate: Date,
-    prizes: String,
-    instructions: String,
-    guideline: String
+    title: {type:String,required:true},
+    description: {type:String,required:true},
+    field: {type:String,required:true},
+    callType:{type:String,required:true},
+    startDate: {type:Date,required:true},
+    endDate:{type:Date,required:true},
+    prizes: {type:String,required:true},
+    instructions:{type:String,required:true},
+    guideline: {type:String,required:true}
 });
 
 const announcementModel = mongoose.model("announcements", announcementSchema);

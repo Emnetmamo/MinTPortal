@@ -1,6 +1,6 @@
 import announcementModel from "../models/announcements.js";
 
-function announcementPost(req, res){
+const announcementPost=async (req, res)=>{
     if(req.params.page === "addCall")
     {
         const {title,
@@ -15,23 +15,31 @@ function announcementPost(req, res){
         try{
             console.log("Posting")
             announcementModel.create({title, description, field, callType, startDate, endDate, prizes, instructions, guideline})
-            .then(result=> res.json(result))
+            .then(result=>{ 
+               console.log(result)
+                res.json(result)})
             .catch(err=> res.json(err))
         }
         catch(err){
             console.log(err);
         }
     }
-    else if(req.params.page === "fetchCalls"){
-        const nowDate = Date.now();
-        const today = (new Date(nowDate)).toISOString();
-        console.log(today);
-        //the previous line returns the current date in yyyy-mm-dd format, this is the format of Dates in mongodb
-        const results = announcementModel.find({endDate: {$gt: today}})
-        // .then(results=>console.log(results))
-        .then(result=>res.json(result))
-        .catch(err => console.log(err));
-    }
+    else if (req.params.page === "fetchCalls") {
+        const nowDate = new Date();
+        const twentyFourHoursAgo = new Date(nowDate - 24 * 60 * 60 * 1000);
+      
+      await  announcementModel
+          .find({ endDate: { $gt: twentyFourHoursAgo } })
+          .then((result) => {
+            console.log(result)
+            res.json(result);
+          })
+          .catch((err) => {
+            console.error(err);
+            res.status(500).json({ error: 'An error occurred while fetching data.' });
+          });
+      }
+      
 }
 
 export default announcementPost;
