@@ -37,6 +37,7 @@ const Announcements = () => {
       </ul>
       <div style={{ width: "100%", textAlign: "center", marginTop: "10px" }}>
         <select name="category" id="category" style={{ borderRadius: "5px" }}>
+          <option value="Agriculture">Select a Field</option>
           <option value="Agriculture">Agriculture</option>
           <option value="Environment">Environment and Energy</option>
           <option value="Health">Health</option>

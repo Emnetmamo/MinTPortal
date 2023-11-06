@@ -38,16 +38,17 @@ router.post('/add-accepted-project', (req, res) => {
       res.status(500).json({ error: 'An error occurred while uploading' });
     } else {
       const { title, p_investigator, author, funding_source, description, field_of_study, date } = req.body;
-      // const filePath = ''
-      // if(req.file) {
-       const  filePath = req.files['file'][0].path; // Multer saves the file path
-      // }
-      
+      let filePath = '';
+      let imagePath = 'public\\images\\noimage.png';
 
-      // let imagePath = 'public\\images\\noimage.png'
-      // if (req.file){ 
-        const imagePath =  req.files['image'][0].path; // Multer saves the image path
-      // console.log(imagePath)  }
+      if(req.files['file']) {
+        filePath = req.files['file'][0].path; // Multer saves the file path
+       console.log(filePath)
+       }
+                   
+       if (req.files['image']){ 
+       imagePath =  req.files['image'][0].path; // Multer saves the image path
+       console.log(imagePath) }
 
 
       const serverUrl = 'http://localhost:5001'; // Replace this with your server URL

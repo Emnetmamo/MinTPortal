@@ -39,17 +39,17 @@ router.post('/add-publication', (req, res) => {
       res.status(500).json({ error: 'An error occurred while uploading' });
     } else {
       const { title, p_investigator, author, description, field_of_study, date } = req.body;
-      // const filePath = ''
-      // if(req.file) {
-       const   filePath = req.files['file'][0].path; // Multer saves the file path
-       console.log(filePath)
-      // }
-      
+      let filePath = '';
+      let imagePath = 'public\\images\\noimage.png';
 
-      // let imagePath = 'public\\images\\noimage.png'
-      // if (req.file){ 
-       const imagePath =  req.files['image'][0].path; // Multer saves the image path
-       console.log(imagePath) // }
+      if(req.files['file']) {
+        filePath = req.files['file'][0].path; // Multer saves the file path
+       console.log(filePath)
+       }
+                   
+       if (req.files['image']){ 
+       imagePath =  req.files['image'][0].path; // Multer saves the image path
+       console.log(imagePath) }
 
       const serverUrl = 'http://localhost:5001'; // Replace this with your server URL
 
@@ -63,7 +63,8 @@ router.post('/add-publication', (req, res) => {
       const partsFile = filePath.split('public\\');
       const cleanFilePath = partsFile.join('');
       const fileUrl = serverUrl + '/' + cleanFilePath;
-      const filePaths = fileUrl.replace(/\//g, '\\');
+      const filePaths = fileUrl.replace(/\//g, '\\');      
+
 
       try {
         const newPublication = new Publication({
