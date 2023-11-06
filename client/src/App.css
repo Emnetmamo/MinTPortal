@@ -82,3 +82,48 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
 }
+/* aboutus*/
+.cid-tpSYzF1kmL .title-wrapper .mbr-section-btn {
+  position: relative;
+}
+.mbr-section-btn {
+  margin-left: -0.6rem;
+  margin-right: -0.6rem;
+  font-size: 0;
+}
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+.cid-tpSYzF1kmL .title-wrapper .mbr-section-btn::before {
+  
+  content: '';
+  position: absolute;
+  left: 3rem;
+  top: -3rem;
+  border-radius: 100%;
+  width: 200px;
+  height: 200px;
+  filter: blur(25px) blur(25px);
+  background-color: #eafa72;
+}
+.cid-tpSYzF1kmL .title-wrapper .mbr-section-title {
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 1;
+}
+.cid-tpSYzF1kmL .mbr-section-title {
+    color: #101511;
+}
+
+.display-1 {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 3.5rem;
+    line-height: 76px;
+}
+h1, h2, h3, h4, h5, h6, .display-1, .display-2, .display-4, .display-5, .display-7, span, p, a {
+    line-height: 1;
+    word-break: break-word;
+    word-wrap: break-word;
+    font-weight: 400;
+}
