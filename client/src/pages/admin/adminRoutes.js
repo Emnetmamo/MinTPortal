@@ -13,7 +13,7 @@ const adminRoutes = () => {
   <div >
     <Router>
       <Routes>
-        
+      
         <Route path='/admin/news/add-news' element={<PostNews/>}></Route>
         <Route path='/admin/appointments/add-appointment' element={<SetAppointmentDate/>}></Route>
         <Route path='/admin/user-status/add-user-status' element={<UpdateUserStatus/>}></Route>

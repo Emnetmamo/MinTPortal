@@ -3,13 +3,11 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors'
 import dotenv from 'dotenv';
-
-import fs from  'fs';
 import cookieParser from 'cookie-parser'
 
 import path from 'path';
 dotenv.config();
-//import user defined middlware
+
 import register from './controller/authControl.js'
 import announcementPost from './controller/announcementPost.js';
 
@@ -18,10 +16,10 @@ import news from './routes/news.js'
 import publications from './routes/publications.js'
 import adminNews from './routes/adminNews.js'
 import adminPublications from './routes/adminPublications.js'
+import login from './controller/login.js';
 
 const app = express();
 const CONNECTION_URL = process.env.CONNECTION_URL
-//const CONNECTION_URL = 'mongodb+srv://adaneeshete:adaneeshete@cluster0.9qj7xxi.mongodb.net/Mint?retryWrites=true&w=majority';
  const PORT = process.env.PORT_2;
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -50,13 +48,14 @@ main()
 //user routes
 app.use('/auth/:page',register)
 app.use('/announcements/:page', announcementPost);
+// app.use('/authl',login)
 
 //middleware to  admin  routes
 app.use('/news', news);
 app.use('/resources', publications);
 app.use('/admin/news', adminNews);
 app.use('/admin/publications', adminPublications)
-
+app.use('/authl',login)
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
