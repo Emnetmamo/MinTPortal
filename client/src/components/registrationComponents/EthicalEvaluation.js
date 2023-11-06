@@ -1,12 +1,20 @@
 // EthicalEvaluation.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import "../../App.css";
 
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const EthicalEvaluation = ({ prevStep }) => {
+  const navigate=useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle submission logic if needed
+   setTimeout(() => {
+    toast.success('congratulation your project idea is submited successfully you will recieve notificaton soon for the next process.')
+  
+   }, 6000);
+    navigate('/')
   };
 
   const questions = [
@@ -69,7 +77,7 @@ const EthicalEvaluation = ({ prevStep }) => {
         <div className="card-body">
           <h1 style={{ backgroundColor: "orange", color:"white"}}  className="card-title  text-white p-2 rounded text-center mb-4">Ethical Evaluation Section</h1>
           <div className="disclaimer mb-4">
-            <p className="text-center">Please give focused attention to each question and answer truthfully.</p>
+            <p className="text-center">Please give focused attention to each question and onsider your project fullfill the createria</p>
           </div>
           <form onSubmit={handleSubmit}>
             {questions.map((item, index) => (
@@ -78,14 +86,7 @@ const EthicalEvaluation = ({ prevStep }) => {
                   {index + 1}. <span className="question-title">{item.title}</span>
                 </p>
                 <p className="question-text">{item.question}</p>
-                <div className="form-check">
-                  <input type="radio" className="form-check-input" name={`question${index}`} value="yes" id={`yes${index}`} />
-                  <label className="form-check-label" htmlFor={`yes${index}`}>Yes</label>
-                </div>
-                <div className="form-check">
-                  <input type="radio" className="form-check-input" name={`question${index}`} value="no" id={`no${index}`} />
-                  <label className="form-check-label" htmlFor={`no${index}`}>No</label>
-                </div>
+              
               </div>
             ))}
             <div className="d-flex justify-content-end">

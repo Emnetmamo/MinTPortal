@@ -3,6 +3,10 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors'
 import dotenv from 'dotenv';
+
+import fs from  'fs';
+import cookieParser from 'cookie-parser'
+
 import path from 'path';
 dotenv.config();
 //import user defined middlware
@@ -23,6 +27,7 @@ const CONNECTION_URL = process.env.CONNECTION_URL
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser())
 app.use(cors({
   origin: "http://localhost:3000",
   methods: ['GET', 'POST'],
