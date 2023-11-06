@@ -182,6 +182,7 @@ function PostCalls() {
                   value={field}
                   onChange={(e) => setField(e.target.value)}
                 >
+                  <option >Select Field of Study</option>
                   <option value="agriculture">Agriculture</option>
                   <option value="envenergy">Environment and Energy</option>
                   <option value="health">Health</option>
@@ -199,6 +200,7 @@ function PostCalls() {
                   value={callType}
                   onChange={(e) => setCallType(e.target.value)}
                 >
+                  <option >Select Type of Call</option>
                   <option value="national">National</option>
                   <option value="foreign">Foreign</option>
                 </select>
