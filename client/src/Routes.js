@@ -8,7 +8,7 @@ import Resources from './pages/Resources';
 import Collaborations from './pages/Collaborations';
 import AboutUs from './pages/AboutUs';
 import News from './pages/News';
-import Login from './pages/Login';
+import Login from './pages/Login.js';
 import Register from './pages/Register';
 import Footer from './components/Footer';
 import ResearchInstitutes from './components/Institutes/ResearchInstitutes';
