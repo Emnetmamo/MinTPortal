@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import {useNavigate}  from "react-router-dom";
 import "../../images/assets/css/admin.css";
 import AdminHeader from "../../components/AdminComponents/AdminHeader";
 import axios from "axios";
@@ -15,7 +16,7 @@ function PostCalls() {
   const [prizes, setPrizes] = useState('');
   const [instructions, setInstructions] = useState('');
   const [guideline, setGuideline] = useState('');
-
+const navigate=useNavigate()
   function handleSubmit(e) {
     e.preventDefault();
     axios
@@ -30,7 +31,10 @@ function PostCalls() {
         instructions,
         guideline,
       })
-      .then((result) => console.log(result))
+      .then((result) =>{
+        console.log(result)
+        navigate('/admin')
+      })
       .catch((err) => console.log(err));
     console.log({
       title,

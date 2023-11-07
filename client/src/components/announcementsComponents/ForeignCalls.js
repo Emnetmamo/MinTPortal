@@ -34,6 +34,10 @@ const ForeignCalls = () => {
             <p className='card-text'>filed of study:{calls[i].field}</p>
             <p className='card-text'>start Date: {calls[i].startDate}</p>
             <p className='card-text'>end Date:{calls[i].endDate}</p>
+            <p className='card-text'>prizes:{calls[i].prizes}</p>
+            <p className='card-text'>follow this  instructions:{calls[i]. instructions}</p>
+            <p className='card-text'>guideline how to fill:{calls[i].guideline}</p>
+           
             <a href='/register' style={{ backgroundColor: "orange", color:"white"}}
            className="btn ">
               Start your application
