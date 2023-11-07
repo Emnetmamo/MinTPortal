@@ -29,24 +29,7 @@ const verifyToken = async (req, res, next) => {
     res.status(401).json({ message: 'Invalid token' });
   }
 };
-// function Verify(req, res, next) {
-//   const token = req.cookies.token;
-//   if (!token) {
-//     return res.status(401).json('Missing token');
-//   } else {
-//     jwt.verify(token, 'adane', (error, decode) => {
-//       if (error) {
-//         return res.status(401).json('Unauthorized: Error during token verification');
-//       } else {
-//         if (decode.role === 'admin') {
-//           next();
-//         } else {
-//           return res.status(403).json('Forbidden: Not an admin');
-//         }
-//       }
-//     });
-//   }
-// }
+
 const register = async (req, res) => {
   const uniqueID = uuidv4();
   let user; // Define user variable outside the if-else block
