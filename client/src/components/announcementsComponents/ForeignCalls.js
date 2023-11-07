@@ -7,10 +7,13 @@ import axios from 'axios';
 const ForeignCalls = () => {
   const[calls, setCalls] = useState([]);
   const[loaded, setLoaded] = useState(false);
-  useEffect(function(){
+ 
+  useEffect(()=>{
     axios.get("http://localhost:5001/announcements/fetchCalls")
-    .then(result=>setCalls(result.data))
-    .then(result=>console.log(result))
+    .then(result=>{
+      console.log(result.data)
+      setCalls(result.data)
+    })
     .catch(err=>console.log(err))
     setLoaded(true);
    
@@ -25,9 +28,12 @@ const ForeignCalls = () => {
       data.push(
         <div className="card mb-3" key={calls[i]._id}>
           <div className="card-body">
-            <h5 className="card-title">{calls[i].title}</h5>
-            <p className="card-text">Category: {calls[i].callType}</p>
-            <p className="card-text">{calls[i].description}</p>
+          <h3 className="card-title">{calls[i].title}</h3>
+            <p className="card-text">Category: {calls[i].callType} calls</p>
+            <p className="card-text">descriptions:{calls[i].description}</p>
+            <p className='card-text'>filed of study:{calls[i].field}</p>
+            <p className='card-text'>start Date: {calls[i].startDate}</p>
+            <p className='card-text'>end Date:{calls[i].endDate}</p>
             <a href='/register' style={{ backgroundColor: "orange", color:"white"}}
            className="btn ">
               Start your application

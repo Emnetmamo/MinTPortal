@@ -26,9 +26,12 @@ const NationalCalls = () => {
       data.push(
         <div className="card mb-3" key={calls[i]._id}>
           <div className="card-body">
-            <h5 className="card-title">{calls[i].title}</h5>
-            <p className="card-text">Category: {calls[i].callType}</p>
-            <p className="card-text">{calls[i].description}</p>
+            <h3 className="card-title">{calls[i].title}</h3>
+            <p className="card-text">Category: {calls[i].callType} calls</p>
+            <p className="card-text">descriptions:{calls[i].description}</p>
+            <p className='card-text'>filed of study:{calls[i].field}</p>
+            <p className='card-text'>start Date: {calls[i].startDate}</p>
+            <p className='card-text'>end Date:{calls[i].endDate}</p>
             <a href='/register' style={{ backgroundColor: "orange", color:"white"}}
            className="btn ">
               Start your application
