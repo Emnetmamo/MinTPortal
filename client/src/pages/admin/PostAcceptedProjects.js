@@ -31,7 +31,7 @@ function PostAcceptedProjects() {
       const selectedFile = event.target.files[0];
   
       if (selectedFile) {        
-
+        
         setFormData({
           ...formData,
           image: selectedFile,
@@ -51,18 +51,25 @@ function PostAcceptedProjects() {
         });
       }
     };
-    //text file
-    const handleTextFileSelect = (event) => {
-      const selectedFile = event.target.files[0];
-  
-      if (selectedFile) {
-        //setFileName(selectedFile.name); // Update the file name in the state
 
+    //text file
+    
+    const handleTextFileSelect = (event) => {
+      
+      const selectedFile = event.target.files[0];       
+      if (selectedFile) {
+        
         setFormData({
           ...formData,
           file: selectedFile,
-        });                      
-        
+        });                              
+      }
+      else {
+       
+        setFormData({
+          ...formData,
+          file: null,
+        });
       }
     };
     //handle change event
@@ -183,8 +190,7 @@ function PostAcceptedProjects() {
                     rows="3"
                     placeholder="Funding Sources"
                     onChange={handleChange}
-                    required
-                  >
+                    defaultValue= 'None'                  >
 
                   </textarea>
                 </div>

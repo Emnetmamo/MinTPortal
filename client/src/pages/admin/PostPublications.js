@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import '../../images/assets/css/admin.css'
-import AdminHeader from '../../components/AdminComponents/AdminHeader'
 import DropzoneImage from '../../components/AdminComponents/Dropzone'
 import DropzoneText from '../../components/AdminComponents/DropzoneText'
 
@@ -30,7 +29,7 @@ function PostPublications() {
       const selectedFile = event.target.files[0];
   
       if (selectedFile) {        
-
+        
         setFormData({
           ...formData,
           image: selectedFile,
@@ -50,18 +49,25 @@ function PostPublications() {
         });
       }
     };
-    //text file
-    const handleTextFileSelect = (event) => {
-      const selectedFile = event.target.files[0];
-  
-      if (selectedFile) {
-        //setFileName(selectedFile.name); // Update the file name in the state
 
+    //text file
+    
+    const handleTextFileSelect = (event) => {
+      
+      const selectedFile = event.target.files[0];       
+      if (selectedFile) {
+        
         setFormData({
           ...formData,
           file: selectedFile,
-        });                      
-        
+        });                              
+      }
+      else {
+       
+        setFormData({
+          ...formData,
+          file: null,
+        });
       }
     };
     //handle change event
