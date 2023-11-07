@@ -30,7 +30,7 @@ const announcementPost=async (req, res)=>{
         const twentyFourHoursAgo = new Date(nowDate - 24 * 60 * 60 * 1000);
       
       await  announcementModel
-          .find({ endDate: { $gt: twentyFourHoursAgo } })
+          .find({  })
           .then((result) => {
             console.log(result)
             res.json(result);
