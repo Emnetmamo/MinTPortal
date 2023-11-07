@@ -42,7 +42,7 @@ const ConditionalNavbar = () => {
   }
 
   // Check if the path starts with '/admin/'
-  if (path.startsWith('/admin/')) {
+  if (path.startsWith('/admin')) {
     return <AdminHeader />;
   }
 
