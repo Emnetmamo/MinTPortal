@@ -23,7 +23,8 @@ const announcementPost=async (req, res)=>{
         catch(err){
             console.log(err);
         }
-    }
+    } 
+    
     else if (req.params.page === "fetchCalls") {
         const nowDate = new Date();
         const twentyFourHoursAgo = new Date(nowDate - 24 * 60 * 60 * 1000);
