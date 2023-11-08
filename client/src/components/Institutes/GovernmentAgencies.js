@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import ethiopianBitech from '../../images/Institutes/ethipianBitech.png';
 import essti from '../../images/Institutes/essti-logo.jpeg';
-import dreamTech from '../../images/Institutes/dreamtech_logo.png';
+import INSA from '../../images/Institutes/INSA.png';
 
 
 function GovernmentAgencies() {
@@ -59,19 +59,17 @@ function GovernmentAgencies() {
       <Container>
         <Row className="align-items-center">
           <Col>
-            <img src={dreamTech} alt="Logo" className="img-fluid" />
+            <img src={INSA} alt="Logo" className="img-fluid" />
           </Col>
           <Col xs={9} md={10}>
-            <h2 className="mb-2"><a href='https://dreamtech.et/' style={{textDecoration: 'none'}}>Dream Tech </a></h2>
-            <p style={{color:'grey'}} className="mb-1">Dream Tech P.L.C is a leading Web and Mobile App development providing 
-            Company that offers Web Applications Development, FullStack Development, E-commerce Solution Development, 
-            CMS Websites, API Integration, Website Design and Development, Mobile App Development and Design, Server and System
-             Administration with high satisfaction with our valuable clients. We provide high-quality software at an economical cost.
-              We also offer enterprise-level SAAS applications as well.
+            <h2 className="mb-2"><a href='https://www.insa.gov.et' style={{textDecoration: 'none'}}>Information Network Security Administration (INSA)  </a></h2>
+            <p style={{color:'grey'}} className="mb-1">The Information Network Security Administration (INSA) was established for the first 
+            time in 1999 in accordance with Council of Ministers Regulation No. 130/1999 with the aim of protecting our country's information
+             and information infrastructure from harm.
             </p>
-            <p className="mb-1">Email: <span className="text-orange"> info@dreamtech.et</span> </p>
-            <p className="mb-0">Phone: <span className="text-orange">0911191347 (Ethiopia)
-+17173333224 (USA)</span></p>
+            <p className="mb-1">Email: <span className="text-orange"> contact@insa.gov.et</span> </p>
+            <p className="mb-0">Phone: <span className="text-orange">+251-113-71-71-14 (Ethiopia)
+</span></p>
           </Col>
         </Row>
       </Container>

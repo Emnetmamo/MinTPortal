@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // import './ResearchInstitutes.css'
 import AHRI from '../../images/Institutes/AHRI.png';
 import ILRI from '../../images/Institutes/ILRI-CGIAR-logo.svg';
-import ethiopianBitech from '../../images/Institutes/ethipianBitech.png';
+import EDRI from '../../images/Institutes/EDRI.png';
 
   
     
@@ -53,18 +53,14 @@ function ResearchInstitutes() {
       <Container>
         <Row className="align-items-center">
           <Col>
-            <img src={ethiopianBitech} alt="Logo" className="img-fluid" />
+            <img src={EDRI} alt="Logo" className="img-fluid" />
           </Col>
           <Col xs={9} md={10}>
-            <h2 className="mb-2"><a href='https://www.betin.gov.et/' style={{textDecoration: 'none'}}>Ethiopia Biotechnology Institutes</a></h2>
-            <p style={{color:'grey'}} className="mb-1">Betin resolves and address the major challenges in society
-             that are related to health, food security, the realization of sustainable 
-             development and facilitate the basement of industrialization, work on human 
-             development and to establish the general
-             framework and basic structures for national innovative research.
+            <h2 className="mb-2"><a href='https://socialprotection.org/connect/stakeholders/ethiopian-development-research-institute-edri' style={{textDecoration: 'none'}}>Ethiopian Development Research institute (EDRI)</a></h2>
+            <p style={{color:'grey'}} className="mb-1">The Ethiopian Development Research Institute is a semi-autonomous research think-tank engaged in: 
+            Economic research and policy analysis, Bridging research and policy, Capacity, Knowledge dissemination and exchange and Consultancy.
             </p>
-            <p className="mb-1">Email: <span className="text-orange"> info@betin.gov.et</span> </p>
-            <p className="mb-0">Phone: <span className="text-orange">+251118619695/ +251118756388</span></p>
+            <p className="mb-0">Phone: <span className="text-orange">+251 (0)115 506 066</span></p>
           </Col>
         </Row>
       </Container>
