@@ -68,7 +68,7 @@ const Navbar = () => {
       <Link className="dropdown-item" to="/resources/publications" onClick={closeDropdown}>Publications</Link>
     </div>
   </div>
-  <Link className={`nav-link ${window.location.pathname === '/institutes' ? 'active' : ''}`} to="/institutes" onClick={closeMenu} style={{marginRight: '10px'}}>Institutes</Link>
+  <a className={`nav-link ${window.location.pathname === '/institutes' ? 'active' : ''}`} href="/institutes" onClick={closeMenu} style={{marginRight: '10px'}}>Institutes</a>
   <Link className={`nav-link ${window.location.pathname === '/collaborations' ? 'active' : ''}`} to="/collaborations" onClick={closeMenu} style={{marginRight: '10px'}}>Collaborations</Link>
   <Link className={`nav-link ${window.location.pathname === '/aboutus' ? 'active' : ''}`} to="/aboutus" onClick={closeMenu} style={{marginRight: '10px'}}>About Us</Link>
   <Link className={`nav-link ${window.location.pathname === '/news' ? 'active' : ''}`} to="/news" onClick={closeMenu} style={{marginRight: '10px'}}>News</Link>

@@ -123,4 +123,8 @@ body {
 
 
 
+/* institutes */
+.card-title:hover {
+  color: orange;
+}
 
