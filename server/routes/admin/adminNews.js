@@ -1,12 +1,33 @@
 import express from "express";
 import multer from 'multer'
 import fs from 'fs'
+import jwt from 'jsonwebtoken'
 import path from 'path'
 import News from '../../models/news.js'
-
+//import Verify from "../../middleware/verfyAllRoutes.js";
 const router = express.Router()
-
+const SECRET_KEY='miint'
 // directory creation
+function Verify(req, res, next) {
+  const token = req.cookies.token;
+
+  if (!token) {
+    return res.status(401).json('Missing token');
+  }
+
+  jwt.verify(token, SECRET_KEY, (error, decode) => {
+    if (error) {
+      return res.status(401).json('Unauthorized: Error during token verification');
+    }
+
+    if (decode.role === 'admin' ) {
+      
+      next();
+    } else {
+      return res.status(403).json('Forbidden: Not an admin');
+    }
+  });
+}
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -35,7 +56,7 @@ const upload = multer({
 
 
 // POST add-news
-router.post('/add-news', (req, res) => {
+router.post('/add-news',Verify, (req, res) => {
   upload(req, res, async (err) => {
     if (err) {
       // Handle upload error
@@ -65,7 +86,7 @@ router.post('/add-news', (req, res) => {
         imagePath: imagePaths,
       });
        const savedNews = await newNews.save();
-        res.json(savedNews);
+        res.json({savedNews:savedNews,ok:'ok'});
         
         
       } catch (error) {

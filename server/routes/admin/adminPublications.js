@@ -2,7 +2,7 @@ import express from 'express';
 import multer from 'multer';
 import fs from 'fs';
 import Publication from '../../models/publications.js';
-
+import Verify from '../../middleware/verfyAllRoutes.js'
 const router = express.Router();
 
 const storage = multer.diskStorage({
@@ -43,15 +43,15 @@ router.post('/add-publication', (req, res) => {
       let imagePath = 'public\\images\\noimage.png';
 
       if(req.files['file']) {
-        filePath = req.files['file'][0].path; // Multer saves the file path
+        filePath = req.files['file'][0].path; 
        console.log(filePath)
        }
                    
        if (req.files['image']){ 
-       imagePath =  req.files['image'][0].path; // Multer saves the image path
+       imagePath =  req.files['image'][0].path; 
        console.log(imagePath) }
 
-      const serverUrl = 'http://localhost:5001'; // Replace this with your server URL
+      const serverUrl = 'http://localhost:5001'; 
 
       // Process image path
       const partsImage = imagePath.split('public\\');

@@ -17,7 +17,7 @@ function Verify(req, res, next) {
     }
 
     if (decode.role === 'admin' ) {
-        //&& req.path.startsWith('/admin/')
+      
       next();
     } else {
       return res.status(403).json('Forbidden: Not an admin');
