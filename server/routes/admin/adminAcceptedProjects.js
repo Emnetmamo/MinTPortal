@@ -2,7 +2,7 @@ import express from 'express';
 import multer from 'multer';
 import fs from 'fs';
 import AcceptedProject from '../../models/acceptedProjects.js';
-
+import Verify from '../../middleware/verfyAllRoutes.js';
 const router = express.Router();
 
 const storage = multer.diskStorage({
@@ -32,7 +32,7 @@ const upload = multer({
   { name: 'file', maxCount: 1 },
 ]);
 
-router.post('/add-accepted-project', (req, res) => {
+router.post('/add-accepted-project',(req, res) => {
   upload(req, res, async (err) => {
     if (err) {
       res.status(500).json({ error: 'An error occurred while uploading' });

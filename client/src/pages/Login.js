@@ -55,19 +55,20 @@ const Login = () => {
         <div className="col-md-4 text-center">
           <img src={Logo} alt="Logo" className="img-fluid" style={{ maxHeight: '200px' }} />
         </div>
-        <div className="col-md-6">
+        <div className="col-xs-12 col-md-6">
           <h1 className="mb-4 ">Log in</h1>
           <form onSubmit={handleLogin} >
             <div className="mb-3">
               <label htmlFor="email" className="form-label">Email</label>
               <input type="email"  placeholder='Enter Your Email' className="form-control" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
+            
             {/* <div className="mb-3">
               <label htmlFor="password" className="form-label">Password</label>
               <input type="password" placeholder='Enter Your Password' className="form-control" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             </div> */}
           <div className='mb-3'>
-            <Form.Group controlId="password">
+         
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type={showPassword ? 'text' : 'password'}
@@ -76,9 +77,14 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
             button= {showPassword ? <VscEyeClosed/>:<VscEye/> }
               />
-            </Form.Group>
+              
+       
           </div>
-            <button style={{marginBottom: "90px", marginLeft:'563px', backgroundColor:"orange", border: "none", fontSize:"20px"}} type="submit" className="btn btn-primary">Login</button>
+          <div className='d-flex justify-content-end'>
+            <></>
+            <button style={{marginBottom: "90px", marginLeft:'5px', backgroundColor:"orange", border: "none", fontSize:"20px"}} type="submit" className="btn btn-primary">Login</button>
+
+          </div>
           </form>
           {/* <div className="mt-3">
             <span>or</span>
