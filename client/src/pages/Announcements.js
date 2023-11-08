@@ -40,7 +40,7 @@ const Announcements = () => {
         <select name="category" id="category" style={{ borderRadius: "5px" }} onChange={function(e){setCategory(e.target.value)}}>
           <option value=" ">Select a Field</option>
           <option value="Agriculture">Agriculture</option>
-          <option value="envenergy">Environment and Energy</option>
+          <option value="Environment-Energy">Environment and Energy</option>
           <option value="Health">Health</option>
           <option value="Industry">Industrial</option>
           <option value="Other">Other</option>
@@ -49,46 +49,6 @@ const Announcements = () => {
       <div className="tab-content mt-3">
         {selectedTab === "national" && <NationalCalls category ={categorySelected}/>}
         {selectedTab === "foreign" && <ForeignCalls category ={categorySelected}/>}
-      </div>
-      <div
-        style={{
-          width: "100%",
-          textAlign: "center",
-          marginTop: "10px",
-          marginBottom: "50px",
-        }}
-      >
-        <Link
-          style={{
-            backgroundColor: "#11676d",
-            color: "white",
-            marginRight: "20px",
-            width: "100px",
-          }}
-          to="/"
-          className="btn "
-        >
-          Previous
-        </Link>
-        <select name="pageNo" id="pageNo" style={{ borderRadius: "5px" }}>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <Link
-          style={{
-            backgroundColor: "#11676d",
-            color: "white",
-            marginLeft: "20px",
-            width: "100px",
-          }}
-          to="/"
-          className="btn "
-        >
-          Next
-        </Link>
       </div>
     </div>
   );
