@@ -7,7 +7,7 @@ import ForeignCalls from "../components/announcementsComponents/ForeignCalls";
 
 const Announcements = () => {
   const [selectedTab, setSelectedTab] = useState("national");
-  const [categorySelected, setCategory] = useState("Agriculture");
+  const [categorySelected, setCategory] = useState(" ");
 
   const handleTabChange = (tab) => {
     setSelectedTab(tab);
