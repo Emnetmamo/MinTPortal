@@ -4,15 +4,16 @@ import { Outlet, Link } from "react-router-dom";
 const Layout = () => {
   return (
     <>
-     <br/> <br/> <br/> 
+     <br/> <br/> 
       <nav>
 
-        <ul>
-          <li>
-            <Link to="/admin">Admin</Link>
+        <ul style={{backgroundColor:"#11676d"}}>
+          <li style={{display:"inline", marginRight:"50px", color: "orange"}}>Quick Links: </li>
+          <li style={{display:"inline", marginRight:"50px"}}>
+            <Link to="/admin" style={{color: "orange"}}>Admin</Link>
           </li>
-          <li>
-            <Link to="/admin/news/add-news">Add News</Link>
+          <li style={{display:"inline"}}>
+            <Link to="/admin/news/add-news" style={{color: "orange"}}>Add News</Link>
           </li>
          
         </ul>
