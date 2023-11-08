@@ -7,6 +7,7 @@ import ForeignCalls from "../components/announcementsComponents/ForeignCalls";
 
 const Announcements = () => {
   const [selectedTab, setSelectedTab] = useState("national");
+  const [categorySelected, setCategory] = useState("Agriculture");
 
   const handleTabChange = (tab) => {
     setSelectedTab(tab);
@@ -36,18 +37,18 @@ const Announcements = () => {
         </li>
       </ul>
       <div style={{ width: "100%", textAlign: "center", marginTop: "10px" }}>
-        <select name="category" id="category" style={{ borderRadius: "5px" }}>
-          <option value="Agriculture">Select a Field</option>
+        <select name="category" id="category" style={{ borderRadius: "5px" }} onChange={function(e){setCategory(e.target.value)}}>
+          <option value=" ">Select a Field</option>
           <option value="Agriculture">Agriculture</option>
-          <option value="Environment">Environment and Energy</option>
+          <option value="envenergy">Environment and Energy</option>
           <option value="Health">Health</option>
-          <option value="Industrial">Industrial</option>
+          <option value="Industry">Industrial</option>
           <option value="Other">Other</option>
         </select>
       </div>
       <div className="tab-content mt-3">
-        {selectedTab === "national" && <NationalCalls />}
-        {selectedTab === "foreign" && <ForeignCalls />}
+        {selectedTab === "national" && <NationalCalls category ={categorySelected}/>}
+        {selectedTab === "foreign" && <ForeignCalls category ={categorySelected}/>}
       </div>
       <div
         style={{
