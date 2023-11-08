@@ -86,14 +86,18 @@ function AboutUs() {
               <div style={{position: 'relative'}} >
                 <div className='btn btn-warning slanted-text1 d-flex align-items-center justify-content-center'  style={{width: '300px', height:'80px', position: 'absolute',top: '0px', left: '15px', zIndex: '5',  transform: 'rotate(-15deg)', borderRadius: '20px'}}><h1 >Our Vision</h1></div>
                 <div className='slanted-contents1 card pe-0 p-5 m-1 bg-black  ' style={{width: '600px', color: 'white', borderRadius: '40px'}}  >
-                  <h3 className='car p-5 ' style={{width: '100%'}}>
-                  gchvkjcks dio vhsujkvdbn cyifejvsd cklojvdbskjxcl njj vdn   cklojvdbskjxcl njj vdn
-                  gchvkjcks diovhsujkvdbn cyifejvsd ckl ojvdbskjxcl njjvdn   cklojvdbskjxcl njj vdn
-                  gchvkjcks diovhsujkvdbn cyifejvsd ckl ojvdbskjxcl njjvdn   cklojvdbskjxcl njj vdn 
-                  gchvkjcks diovhsujkvdbn cyifejvsd ckl ojvdbskjxcl njjvdn   cklojvdbskjxcl njj vdn 
+                  <ul className='car p-5 ' style={{width: '100%'}}>
+                  <ul>
+                    <li>gchvkjcks dio vhsujkvdbn cyifejvsd cklojvdbskjxcl njj vdn   cklojvdbskjxcl njj vdn</li>
+                    <li>jjdsLJv jdsv jdsnxj kldsjkvxsurjkasdv xc odsbxjkdsibvjskd</li>
+                    <li>Item #3 jvihsdj iouewvds copilbusdbhac jijdskn cx</li>
+                    <li>Item #4  vsduivajxiepsdlvbueowdsjbncx </li>
+                    <li>Item #5uejSBDV IOSDAOUKJEPIDSVNA ou;jrkbvfcxjk</li>
+                  </ul>
+                  
                   <h2 className='mt-5 text-warning'>See more ...</h2>
                              
-                  </h3>
+                  </ul>
                 </div> 
               </div>
             </div>
