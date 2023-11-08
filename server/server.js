@@ -13,8 +13,10 @@ import announcementPost from './controller/announcementPost.js';
 
 //routes imports 
 import news from './routes/news.js'
+import Collaboration from './routes/collaboration.js';
 import resources from './routes/resources.js'
 import adminNews from './routes/admin/adminNews.js'
+import adminCollaboration from './routes/admin/adminCollaboration.js'
 import adminPublications from './routes/admin/adminPublications.js'
 import adminAcceptedProjects from './routes/admin/adminAcceptedProjects.js'
 import login from './controller/login.js';
@@ -61,6 +63,8 @@ app.use('/admin/news', adminNews);
 app.use('/admin/publications', adminPublications)
 app.use('/admin/accepted-projects', adminAcceptedProjects)
 
+app.use('/collaboration', Collaboration);
+app.use('/admin/collaboration', adminCollaboration);
 
 
 

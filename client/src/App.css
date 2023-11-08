@@ -124,7 +124,6 @@ body {
 
 
 /* institutes */
-.card-title:hover {
-  color: orange;
+.card1:hover{
+  background-color: orange;
 }
-
