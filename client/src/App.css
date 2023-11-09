@@ -127,3 +127,24 @@ body {
 .card1:hover{
   background-color: orange;
 }
+
+
+/* user */
+
+.left-sidebar {
+  background-color: orange;
+  height: 150px;
+  padding: 20px;
+  border-right: 1px solid #ccc; /* Optional: Adds a border on the right */
+  border-radius: 20px;
+  margin-bottom: 100px;
+  
+}
+
+.orange-icon {
+  color: orange;
+}
+
+.orange-text {
+  color: orange;
+}

@@ -32,6 +32,14 @@ import PostAcceptedProjects from './pages/admin/PostAcceptedProjects';
 import PostNews from './pages/admin/PostNews'
 
 
+//user page 
+
+import UserHeader from './components/UserComponents/UserHeader.js'
+import UserDashboard from './pages/user/UserDashboard.js';
+import ConfirmAppointment from './pages/user/ConfirmAppointment';
+import CheckStatus from './pages/user/CheckStatus';
+
+
 const ConditionalNavbar = () => {
   const navigate = useNavigate();
   const path = window.location.pathname;
@@ -45,6 +53,14 @@ const ConditionalNavbar = () => {
   if (path.startsWith('/admin')) {
     return <AdminHeader />;
   }
+
+   // Check if the path starts with '/user'
+    if (path.startsWith('/user') || 
+    path.startsWith('/confirm-appointment') || 
+    path.startsWith('//check-status') ) {
+      return <UserHeader />;
+    }
+
 
   // If the path is neither Login/Register nor under /admin, render Navbar
   return <Navbar />;
@@ -103,6 +119,15 @@ const RoutesComponent = () => {
           <Route path='publications/add-publication' element={<PostPublications/>}/>
           <Route path='accepted-projects/add-accepted-project' element={<PostAcceptedProjects/>}/>
         </Route>
+
+
+
+  {/* user */}
+
+            <Route path='/user' element={<UserDashboard />} />
+            <Route path='/confirm-appointment' element={<ConfirmAppointment />} />
+            <Route path='/check-status' element={<CheckStatus />} />
+
       </Routes>
       <ConditionalFooter />
       </Router>
