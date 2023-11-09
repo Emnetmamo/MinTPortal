@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import '../../images/assets/css/admin.css';
 import AdminHeader from '../../components/AdminComponents/AdminHeader';
@@ -10,6 +11,7 @@ import Dropzone from '../../components/AdminComponents/Dropzone';
 axios.defaults.withCredentials=true;
 
 function Post_News() {
+  const navigate=useNavigate();
   const [formData, setFormData] = useState({
     title: '',
     author: '',
@@ -79,10 +81,15 @@ function Post_News() {
         const response = await axios.post('http://localhost:5001/admin/news/add-news', data);
         console.log(formattedDate); // Output: 11/13/2023 (or a date format specific to your locale)
 
-        console.log(response.data);
-        alert('Do you want to submit')
-        toast.info('News submitted successfully!');
-        // await  window.location.reload()
+        console.log(response.data.ok);
+        if(response.data.ok='ok'){
+          alert('Do you want to submit')
+          toast.info('News submitted successfully!');
+          // await  window.location.reload()
+        }else{
+             navigate('/login')
+        }
+       
       } catch (errors) {
         console.error('Error:', errors.message);
         toast.error('An error occurred while submitting news.');
