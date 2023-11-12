@@ -58,8 +58,10 @@ const News = () => {
                 </div>                
                 <h5 className="card-title fw-bold fs-3">{newsItem.title}</h5>
                 <p className="card-text text-muted">{newsItem.content}</p>
-                <Link to={`/news/${index}`} className="btn btn-primary">Read More</Link>
               </div>
+              <div className='d-flex px-4 my-2 '>
+                <Link to={`/news/${index}`} className="btn btn-primary px-3">Read More</Link>
+                </div>
             </div>
           </div>
         ))}
