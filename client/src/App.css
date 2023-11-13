@@ -148,14 +148,14 @@ body {
 .orange-text {
   color: orange;
 }
-.card-img-top{
+.news{
 
     width: 500px;/* Set your desired width */
     height: 450px; /* Set your desired height */
     object-fit: cover /* Preserve aspect ratio and cover the container */
 
 }
-.card-body{
+.newsbody1{
 
   height: 200px;
   object-fit: cover;
