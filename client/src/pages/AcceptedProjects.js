@@ -93,7 +93,7 @@ function getFileNameFromPath(filePath) {
                     <h6 className="card-Investigator my-2 "><b>Author:</b> {AcceptedProjectItem.author}</h6>                     
                     <div className='d-flex align-items-end'>               
                     
-                  <h6 className='card-PublicationDate my-2 mx-1 ' style={{color: '#ffa525'}}>{AcceptedProjectItem.date} </h6> <h6>| </h6> <h6 className='ms-1' style={{color: '#ffa525'}}> {AcceptedProjectItem.field_of_study}</h6>
+                  <h6 className='card-PublicationDate my-2 mx-1 ' style={{color: '#ffa525'}}>{AcceptedProjectItem.date.split('T')[0]} </h6> <h6>| </h6> <h6 className='ms-1' style={{color: '#ffa525'}}> {AcceptedProjectItem.field_of_study}</h6>
                 </div>
                 <Link
                   to="#"
