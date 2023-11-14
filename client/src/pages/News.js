@@ -52,9 +52,9 @@ const News = () => {
               <div className="card-body newsbody1 text-center">
                 <h6 className="mb-0" style={{color: '#11676d', fontSize: '20px'}}
                 >Author:  {newsItem.author}</h6>
-                <div className='d-flex'>     
+                <div className='d-flex' style={{justifyContent: "center"}}>     
                           
-                  <h6 className='mx-1' style={{color: '#ffa525'}}>{newsItem.date} </h6> <h6>| </h6> <h6 className='ms-1' style={{color: '#ffa525'}}> {newsItem.category}</h6>
+                  <h6 className='mx-1' style={{color: '#ffa525'}}>{newsItem.date.split('T')[0]} </h6> <h6>| </h6> <h6 className='ms-1' style={{color: '#ffa525'}}> {newsItem.category}</h6>
                 </div>                
                 <h5 className="card-title fw-bold fs-3">{newsItem.title}</h5>
                 <p className="card-text text-muted">{newsItem.content}</p>
