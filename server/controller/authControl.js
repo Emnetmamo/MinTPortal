@@ -68,7 +68,8 @@ const register = async (req, res) => {
 
 else if (req.params.page === "submitProject") {
   const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
+  // const __dirname = dirname(__filename);
+  const __dirname = "controller";
   const storage = multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, path.join(__dirname, 'uploads'));
