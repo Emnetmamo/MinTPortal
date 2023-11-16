@@ -7,7 +7,7 @@ import { VscEyeClosed, VscEye } from "react-icons/vsc";
 import { Form, FormGroup } from "react-bootstrap";
 import axios from "axios";
 
-const BasicPersonalInfo = ({ nextStep, giveEmail}) => {
+const BasicPersonalInfo = ({ nextStep}) => {
   const [fName, SetFname] = useState("");
   const [LName, SetLname] = useState("");
   const [password, setPassword] = useState("");
