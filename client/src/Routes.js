@@ -30,6 +30,7 @@ import PostCalls from './pages/admin/PostCalls'
 import PostPublications from './pages/admin/PostPublications'
 import PostAcceptedProjects from './pages/admin/PostAcceptedProjects';
 import PostNews from './pages/admin/PostNews'
+import ViewFile from './pages/admin/ViewFile.js';
 
 
 //user page 
@@ -119,7 +120,7 @@ const RoutesComponent = () => {
           <Route path='publications/add-publication' element={<PostPublications/>}/>
           <Route path='accepted-projects/add-accepted-project' element={<PostAcceptedProjects/>}/>
         </Route>
-
+        <Route  path='admin/viewFile' element={<ViewFile/>}></Route>
 
 
   {/* user */}

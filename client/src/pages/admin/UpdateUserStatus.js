@@ -30,10 +30,8 @@ function UpdateUserStatus() {
             <td>{projects[j].projectTitle}</td>
             <td><p>{projects[j].description}</p></td>
             <td></td>
-            <td><a href={'file:\\\\..\\server\\'+projects[j].proposalPath} target='blank' 
-            rel="noreferrer">View Proposal</a></td>
-            <td><a href={'file:\\\\..\\server\\'+projects[j].cvPath} target='blank'
-            rel="noreferrer">View CV</a></td>
+            <td><Link to={'/admin/viewFile'} state={{filePath: projects[j].proposalPath}} >View Proposal</Link></td>
+            <td><Link to={'/admin/viewFile'} state = {{filePath: projects[j].cvPath}} >View CV</Link></td>
             <td>
               <button onClick={handleAccept(projects[j]._id)} className='btn btn-primary'>Accept</button>
               <button onClick={handleReject(projects[j]._id)} className='btn btn-danger'>Reject</button>

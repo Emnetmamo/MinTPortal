@@ -104,8 +104,8 @@ else if (req.params.page === "submitProject") {
         const email1 = req.body.email;
         console.log('Project Title:', projectTitle);
 
-        const cvPath = req.files['cvFile'][0].path;
-        const proposalPath = req.files['proposalFile'][0].path;
+        const cvPath = req.files['cvFile'][0].path.split('\\')[1] + '\\' + req.files['cvFile'][0].path.split('\\')[2];
+        const proposalPath = req.files['proposalFile'][0].path.split('\\')[1] + "\\" +req.files['proposalFile'][0].path.split('\\')[2];
         // console.log(cvPath);
         // console.log(proposalPath);
         // await ProjectModel.updateMany( {},{ $set: { email : 'emnetmk@gmail.com'} }, { multi: true });
