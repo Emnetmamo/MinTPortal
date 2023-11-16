@@ -73,3 +73,21 @@ li.rejected-list{
   background-color: rgb(108, 108, 141) !important;
   
 }
+
+
+
+
+/* login user */
+
+.login-user-icon{
+  width: 40px;
+  height: 40px;
+  color: orange;
+
+}
+.login-user-name{
+  font-size: 30px;
+  color: orange;
+  text-decoration: none;
+}
+

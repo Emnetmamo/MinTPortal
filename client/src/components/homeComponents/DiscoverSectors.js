@@ -26,16 +26,16 @@ const DiscoverSectors = () => {
   return (
     <div className="container shadow p-4 mb-5 mt-5" style={{ background: '#2b2b2b', color: "white" }}>
       <div className="row">
-        <div className="col-md-6" style={{height:"700px"}}>
+        <div className="col-md-6" style={{height:"600px"}}>
           
           <div style={videoContainerStyle}>
-          <img src={video1} alt="Potential Sector Image 1" style={videoStyle} height="300px" width="220px"/>
+          <img src={video1} alt="Potential Sector Image 1" style={videoStyle} height="250px" width="300px"/>
           </div>
           <div style={{ ...videoContainerStyle, marginLeft: '70px' }}>
-          <img src={video2} alt="Potential Sector Image 2" style={videoStyle} height="300px" width="220px"/>
+          <img src={video2} alt="Potential Sector Image 2" style={videoStyle} height="250px" width="300px"/>
           </div>
           <div style={{ ...videoContainerStyle, marginLeft: '150px' }}>
-          <img src={video3} alt="Potential Sector Image 3" style={{...videoStyle, marginBottom:"50px"}} height="300px" width="220px"/>
+          <img src={video3} alt="Potential Sector Image 3" style={{...videoStyle, marginBottom:"50px"}} height="250px" width="300px"/>
           </div>
 
 

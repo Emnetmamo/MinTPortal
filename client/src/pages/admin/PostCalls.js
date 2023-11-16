@@ -187,11 +187,11 @@ const navigate=useNavigate()
                   onChange={(e) => setField(e.target.value)}
                 >
                   <option >Select Field of Study</option>
-                  <option value="agriculture">Agriculture</option>
-                  <option value="envenergy">Environment and Energy</option>
-                  <option value="health">Health</option>
-                  <option value="industry">Industry</option>
-                  <option value="other">Other</option>
+                  <option value="Agriculture">Agriculture</option>
+                  <option value="Environment-Energy">Environment and Energy</option>
+                  <option value="Health">Health</option>
+                  <option value="Industry">Industry</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
 
@@ -205,8 +205,8 @@ const navigate=useNavigate()
                   onChange={(e) => setCallType(e.target.value)}
                 >
                   <option >Select Type of Call</option>
-                  <option value="national">National</option>
-                  <option value="foreign">Foreign</option>
+                  <option value="National">National</option>
+                  <option value="Foreign">Foreign</option>
                 </select>
               </div>
 

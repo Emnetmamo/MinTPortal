@@ -5,7 +5,7 @@ import EthicalEvaluation from '../components/registrationComponents/EthicalEvalu
 
 const Register = () => {
   const [step, setStep] = useState(1);
-
+  let email = "";
   const nextStep = () => {
     setStep(step + 1);
   }
@@ -13,12 +13,19 @@ const Register = () => {
   const prevStep = () => {
     setStep(step - 1);
   }
-
+  // const giveEmail = (address) => {
+  //   email = address;
+  //   console.log("Email is " + address);
+  // }
+  // const getEmail = () => {
+  //   console.log("Found " + email);
+  //   return email;
+  // }
   switch (step) {
     case 1:
-      return <BasicPersonalInfo nextStep={nextStep} />;
+      return <BasicPersonalInfo nextStep={nextStep}/>;
     case 2:
-      return <ProjectIdea nextStep={nextStep} prevStep={prevStep} />;
+      return <ProjectIdea nextStep={nextStep} prevStep={prevStep}/>;
     case 3:
       return <EthicalEvaluation prevStep={prevStep} />;
     default:

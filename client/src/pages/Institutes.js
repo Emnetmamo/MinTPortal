@@ -24,35 +24,43 @@ const Institutes = () => {
           <div className="d-flex flex-column w-100">
             {/* Pair 1: Research Institutes + Laboratories */}
             <div className="d-flex w-100 justify-content-between">
-              <div className="card m-3 flex-grow-1" style={{ width: '48%', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
+              <div className="card m-3 flex-grow-1 card1" title="Click here to visit more" style={{ width: '48%', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
+              <a href='/institutes/research' style={{textDecoration:"none"}}>
                 <img src={research} className="card-img-top" alt="img research" style={{ height: '200px' }} />
-                <div className="card-body">
-                  <h5><a href='/institutes/research' className="card-title" style={{ color: 'black' , fontSize:"18px",fontWeight:"bold", textDecoration: 'none' }}>Research Institutes</a></h5>
+                <div className="card-body" >
+                  <h5><a href='/institutes/research'  className="card-title" style={{ color: 'black' , fontSize:"18px",fontWeight:"bold", textDecoration: 'none' }}>Research Institutes</a></h5>
                 </div>
+                </a> 
               </div>
-
-              <div className="card m-3 flex-grow-1" style={{ width: '48%', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
+         
+              <div className="card m-3 flex-grow-1 card1" title="Click here to visit more" style={{ width: '48%', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
+               <a href='/institutes/labs' style={{textDecoration:"none"}}>
                 <img src={lab} className="card-img-top" alt="img lab" style={{ height: '200px' }} />
                 <div className="card-body">
                   <h5><a href='/institutes/labs' className="card-title" style={{  color: 'black' , fontSize:"18px",fontWeight:"bold", textDecoration: 'none' }}>Laboratories</a></h5>
                 </div>
+                </a>
               </div>
             </div>
 
             {/* Pair 2: ICT Partners + Government Agencies */}
-            <div className="d-flex w-100 justify-content-between">
-              <div className="card m-3 flex-grow-1" style={{ width: '48%', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
+            <div className="d-flex w-100 justify-content-between" >
+              <div className="card m-3 flex-grow-1 card1" title="Click here to visit more" style={{ width: '48%', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
+                <a href='/institutes/ict' style={{textDecoration:"none"}} >
                 <img src={ict} className="card-img-top" alt="img-ict" style={{ height: '200px' }} />
                 <div className="card-body">
-                  <h5><a href='/institutes/ict' className="card-title" style={{  color: 'black' , fontSize:"18px",fontWeight:"bold",textDecoration: 'none' }}>ICT Partners</a></h5>
+                  <h5><a href='/institutes/ict'  className="card-title" style={{  color: 'black' , fontSize:"18px",fontWeight:"bold",textDecoration: 'none' }}>ICT Partners</a></h5>
                 </div>
+                </a>
               </div>
 
-              <div  className="card m-3 flex-grow-1" style={{ width: '48%', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
+              <div  className="card m-3 flex-grow-1 card1" title="Click here to visit more" style={{ width: '48%', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
+                <a href='/institutes/government' style={{textDecoration:"none"}}>
                 <img src={gov} className="card-img-top" alt="img-gov" style={{ height: '200px' }} />
                 <div className="card-body">
-                  <h5><a href='/institutes/government' className="card-title" style={{ color: 'black' , fontSize:"18px",fontWeight:"bold", textDecoration: 'none' }}>Government Agencies</a></h5>
+                  <h5><a href='/institutes/government'  className="card-title" style={{ color: 'black' , fontSize:"18px",fontWeight:"bold", textDecoration: 'none' }}>Government Agencies</a></h5>
                 </div>
+                </a>
               </div>
             </div>
           </div>

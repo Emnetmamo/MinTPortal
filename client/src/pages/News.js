@@ -44,23 +44,24 @@ const News = () => {
       <div className="row">
         {sortedNews && sortedNews.map((newsItem, index) => (
           <div key={newsItem._id} className="col-lg-4 mb-4">
-            <div className="card rounded shadow grow-on-hover"> {/* Added grow-on-hover class */}
+            <div className="card rounded shadow grow-on-hover d-flex align-items-strech" > {/* Added grow-on-hover class */}
                {newsItem && newsItem.image && (
-                  <img className="card-img-top" src={newsItem.image} alt="News" />
+                  <img className='card-img-top news' src={newsItem.image} alt={newsItem.title}/>
                 )}
                           
-              <div className="card-body text-center">
+              <div className="card-body newsbody1 text-center">
                 <h6 className="mb-0" style={{color: '#11676d', fontSize: '20px'}}
                 >Author:  {newsItem.author}</h6>
-                <div className='d-flex justify-content-center'>     
-                          
-                  <h6 className='mx-1' style={{color: '#ffa525'}}>{newsItem.date} </h6> <h6>| </h6> <h6 className='ms-1' style={{color: '#ffa525'}}> {newsItem.category}</h6>
+                <div className='d-flex justify-content-center'>                                                            
+                  <h6 className='mx-1' style={{color: '#ffa525'}}>{newsItem.date.split('T')[0]} </h6> <h6>| </h6> <h6 className='ms-1' style={{color: '#ffa525'}}> {newsItem.category}</h6>
                 </div>                
                 <h5 className="card-title fw-bold fs-3">{newsItem.title}</h5>
                 <p className="card-text text-muted">{newsItem.content}</p>
-                <Link to={`/news/${index}`} className="btn btn-primary">Read More</Link>
               </div>
-            </div>
+              <div className='d-flex px-4 my-2 '>
+                <Link to={`/news/${index}`} className="btn btn-primary px-3">Read More</Link>
+                </div>
+            </div>                        
           </div>
         ))}
       </div>

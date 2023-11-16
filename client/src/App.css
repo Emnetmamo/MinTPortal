@@ -124,7 +124,41 @@ body {
 
 
 /* institutes */
-.card-title:hover {
+.card1:hover{
+  background-color: orange;
+}
+
+
+/* user */
+
+.left-sidebar {
+  background-color: orange;
+  height: 150px;
+  padding: 20px;
+  border-right: 1px solid #ccc; /* Optional: Adds a border on the right */
+  border-radius: 20px;
+  margin-bottom: 100px;
+  
+}
+
+.orange-icon {
   color: orange;
 }
 
+.orange-text {
+  color: orange;
+}
+.news{
+
+    width: 500px;/* Set your desired width */
+    height: 450px; /* Set your desired height */
+    object-fit: cover /* Preserve aspect ratio and cover the container */
+
+}
+.newsbody1{
+
+  height: 200px;
+  object-fit: cover;
+  overflow: hidden; /* Hide any overflow content */
+
+}

@@ -12,7 +12,7 @@ const projectIdea=new mongoose.Schema({
       required:true
   },
   teamMembers:{
-      type:String,
+      type:[String],
       required:true
   },
   projectCategory:{
@@ -27,6 +27,14 @@ const projectIdea=new mongoose.Schema({
       type:String,
       required:true
   },
+  email:{
+    type:String,
+    required:true
+  },
+  status:{
+    type:Number,
+    required:true
+  }
 
 })
 
