@@ -5,7 +5,10 @@ let news_schema = new mongoose.Schema({
   content: {type: String, required: true},
   category: {type: String, required: true},
   date: {type: Date, required: true},
-  imagePath: {type: String, },
+  image: {type: String, },
+  tags: [String],
+  likeCount: {type: Number, default: 0},
+  
 });
 
 const News = mongoose.model('News', news_schema);

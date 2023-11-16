@@ -14,11 +14,12 @@ import announcementPost from './controller/announcementPost.js';
 //routes imports 
 import news from './routes/news.js'
 import resources from './routes/resources.js'
-import adminNews from './routes/admin/adminNews.js'
+import adminAppointments from './routes/admin/adminAppointments.js'
 import adminPublications from './routes/admin/adminPublications.js'
 import adminAcceptedProjects from './routes/admin/adminAcceptedProjects.js'
 import login from './controller/login.js';
 import dashboardRoute from './middleware/dashboard.js';
+import adminRoutes from './routes/adminRoutes.js'
 
 const app = express();
 const CONNECTION_URL = process.env.CONNECTION_URL
@@ -45,7 +46,7 @@ async function main() {
   }
 }
 main()
-
+//mongoose.set('useFindAndModify', false)
    
 //user routes
 app.use('/auth/:page',register)
@@ -57,7 +58,8 @@ app.use('/news', news);
 app.use('/resources', resources);
 
 //middleware to  admin  routes
-app.use('/admin/news', adminNews);
+app.use('/admin/appointments', adminAppointments);
+app.use('/admin/news', adminRoutes);
 app.use('/admin/publications', adminPublications)
 app.use('/admin/accepted-projects', adminAcceptedProjects)
 

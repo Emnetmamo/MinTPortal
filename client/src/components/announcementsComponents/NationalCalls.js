@@ -27,14 +27,14 @@ const NationalCalls = () => {
         <div className="card mb-3" key={calls[i]._id}>
           <div className="card-body">
           <h3 className="card-title">{calls[i].title}</h3>
-            <p className="card-text">Category: {calls[i].callType} calls</p>
-            <p className="card-text">descriptions:{calls[i].description}</p>
-            <p className='card-text'>filed of study:{calls[i].field}</p>
-            <p className='card-text'>start Date: {calls[i].startDate}</p>
-            <p className='card-text'>end Date:{calls[i].endDate}</p>
-            <p className='card-text'>prizes:{calls[i].prizes}</p>
-            <p className='card-text'>follow this  instructions:{calls[i]. instructions}</p>
-            <p className='card-text'>guideline how to fill:{calls[i].guideline}</p>
+            <p className="card-text text-primary">Category: {calls[i].callType} calls</p>
+            <p className="card-text text-primary">descriptions:{calls[i].description}</p>
+            <p className='card-text text-primary'>filed of study:{calls[i].field}</p>
+            <p className='card-text text-primary'>start Date: {calls[i].startDate}</p>
+            <p className='card-text text-primary'>end Date:{calls[i].endDate}</p>
+            <p className='card-text text-primary'>prizes:{calls[i].prizes}</p>
+            <p className='card-text text-primary'>follow this  instructions:{calls[i]. instructions}</p>
+            <p className='card-text text-primary'>guideline how to fill:{calls[i].guideline}</p>
             <a href='/register' style={{ backgroundColor: "orange", color:"white"}}
            className="btn ">
               Start your application

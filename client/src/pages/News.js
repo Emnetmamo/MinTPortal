@@ -1,32 +1,30 @@
 // src/components/pages/News.js
-
 import React, {useState, useEffect}  from 'react';
+import {useSelector, useDispatch } from 'react-redux'
+import {getNews} from '../actions/news'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { FaSearch } from 'react-icons/fa'; // Importing the search icon
 
+
 axios.defaults.withCredentials=true
 
 const News = () => {
-  const [news, setNews] = useState([]);
+
+  const dispatch = useDispatch();
+  const news = useSelector((state) => state.news);
 
   useEffect(() => {
-    // Fetch data when the component mounts
-    
-    axios.get('http://localhost:5001/news')
-      .then(response => {
-        const parsedData = typeof response.data === 'string' ? JSON.parse(response.data) : response.data;
-        console.log(parsedData.date)
+    dispatch(getNews());
+  }, [dispatch]);
 
-         // Sort the publications by date before setting the state
-        const sortedPublications = parsedData.sort((a, b) => new Date(a.date) - new Date(b.date));
-        
-        setNews(sortedPublications); // Update the state with the sorted publicationssetNews(parsedData); // Update the state with fetched news
-      })
-      .catch(error => {
-        console.error('Error fetching news:', error);
-      });
-  }, []);
+  
+  const parsedNewsData = typeof news === 'string' ? JSON.parse(news) : news;
+
+  // // Sort the news by date before setting the state
+  const sortedNews = parsedNewsData.sort((a, b) => new Date(a.date) - new Date(b.date));
+  console.log(sortedNews)
+
   return (
     <div className="container mt-5">
       <h1 className="mb-4 font-weight-bold text-center">News</h1>
@@ -44,15 +42,17 @@ const News = () => {
         </div>
       </div>
       <div className="row">
-        {news.map((newsItem, index) => (
-          <div key={index} className="col-md-4 mb-4">
+        {sortedNews && sortedNews.map((newsItem, index) => (
+          <div key={newsItem._id} className="col-lg-4 mb-4">
             <div className="card rounded shadow grow-on-hover"> {/* Added grow-on-hover class */}
-              
-              <img className='card-img-top' src={`${newsItem.imagePath.replace(/\//g, '\\')}`} alt={newsItem.title} />               
+               {newsItem && newsItem.image && (
+                  <img className="card-img-top" src={newsItem.image} alt="News" />
+                )}
+                          
               <div className="card-body text-center">
                 <h6 className="mb-0" style={{color: '#11676d', fontSize: '20px'}}
                 >Author:  {newsItem.author}</h6>
-                <div className='d-flex'>     
+                <div className='d-flex justify-content-center'>     
                           
                   <h6 className='mx-1' style={{color: '#ffa525'}}>{newsItem.date} </h6> <h6>| </h6> <h6 className='ms-1' style={{color: '#ffa525'}}> {newsItem.category}</h6>
                 </div>                
