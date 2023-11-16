@@ -114,7 +114,7 @@ else if (req.params.page === "submitProject") {
    
         const projects=   await   ProjectModel.create({
           projectTitle:projectTitle,
-          teamMembers:teamMembers,
+          teamMembers:[teamMembers],
           projectCategory:projectCategory,
           description:description,
           cvPath:cvPath,

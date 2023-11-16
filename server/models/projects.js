@@ -12,7 +12,7 @@ const projectIdea=new mongoose.Schema({
       required:true
   },
   teamMembers:{
-      type:String,
+      type:[String],
       required:true
   },
   projectCategory:{
