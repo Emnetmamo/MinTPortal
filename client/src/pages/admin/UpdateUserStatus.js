@@ -23,30 +23,59 @@ function UpdateUserStatus() {
     const tableData = [];
     
     for (let j = 0; j < projects.length; j++) {
+      if(projects[j].status > 0){
       tableData.push(
           <tr>
             <td>{i++}</td>
             <td>{projects[j]._id}</td>
             <td>{projects[j].projectTitle}</td>
             <td><p>{projects[j].description}</p></td>
-            <td></td>
+            <td>{numToStatus(projects[j].status)}</td>
             <td><Link to={'/admin/viewFile'} state={{filePath: projects[j].proposalPath}} >View Proposal</Link></td>
             <td><Link to={'/admin/viewFile'} state = {{filePath: projects[j].cvPath}} >View CV</Link></td>
             <td>
-              <button onClick={handleAccept(projects[j]._id)} className='btn btn-primary'>Accept</button>
-              <button onClick={handleReject(projects[j]._id)} className='btn btn-danger'>Reject</button>
+              <button name={projects[j]._id + "-" + projects[j].status} onClick={
+                function(e){
+                updateStatus(e.target.name.split('-')[0], parseInt(e.target.name.split('-')[1])+1);
+              }} 
+                className='btn btn-primary' style={{display:buttonsDisplay(projects[j].status)}}>Accept</button>
+              <button name={projects[j]._id + "-" + projects[j].status} onClick={
+                function(e){
+                updateStatus(e.target.name.split('-')[0], parseInt(e.target.name.split('-')[1])-1)}} 
+                className='btn btn-danger' style={{display:buttonsDisplay(projects[j].status)}}>Reject</button>
             </td>
           </tr>
       );
+    }
   }
-  console.log(tableData);
+  //console.log(tableData);
   return tableData;
 }
-function handleAccept(id){
-
+function updateStatus(id, newStatus){
+  console.log("Clicked!")
+  axios.get('http://localhost:5001/admin/userStatus/'+id+"-"+newStatus)
+  .then(result=>console.log(result))
+  .catch(err=>console.log(err));
+  window.location.reload(false);
 }
-function handleReject(id){
-
+function numToStatus(num){
+  if(num === 1){
+    return "Concept Evaluation";
+  }
+  else if(num === 2){
+    return "Presentation";
+  }
+  else if(num === 3){
+    return "Money Grant";
+  }
+  else{
+    return "Working on Project";
+  }
+}
+function buttonsDisplay(num){
+  if(num > 3){
+    return "none";
+  }
 }
   return (
     <div className="">

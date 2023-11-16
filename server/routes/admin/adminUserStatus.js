@@ -1,23 +1,16 @@
+import mongoose from "mongoose";
 import ProjectModel from "../../models/projects.js";
 
 const adminUserStatus=async (req, res)=>{
     if(req.params.id !== "getAll")
     {
-        const {title,
-            description,
-            field,
-            callType,
-            startDate,
-            endDate,
-            prizes,
-            instructions,
-            guideline} = req.body;
+        const id1 = new mongoose.Types.ObjectId(req.params.id.split('-')[0]);
+        const newStatus = parseInt(req.params.id.split('-')[1]);
         try{
-            console.log("Posting")
-            announcementModel.create({title, description, field, callType, startDate, endDate, prizes, instructions, guideline})
+            console.log(id1)
+            await ProjectModel.findOneAndUpdate({_id:id1}, {status: newStatus})
             .then(result=>{ 
-               console.log(result)
-                res.json(result)})
+               console.log(result)})
             .catch(err=> res.json(err))
         }
         catch(err){
@@ -27,7 +20,7 @@ const adminUserStatus=async (req, res)=>{
     
     else if (req.params.id === "getAll") {
       await  ProjectModel
-          .find({ })
+          .find({status:{$gt:-1}})
           .then((result) => {
             //console.log(result)
             res.json(result);
