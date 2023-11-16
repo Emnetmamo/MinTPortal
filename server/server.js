@@ -19,6 +19,7 @@ import adminNews from './routes/admin/adminNews.js'
 import adminCollaboration from './routes/admin/adminCollaboration.js'
 import adminPublications from './routes/admin/adminPublications.js'
 import adminAcceptedProjects from './routes/admin/adminAcceptedProjects.js'
+import adminUserStatus from './routes/admin/adminUserStatus.js'
 import login from './controller/login.js';
 import dashboardRoute from './middleware/dashboard.js';
 
@@ -62,6 +63,7 @@ app.use('/resources', resources);
 app.use('/admin/news', adminNews);
 app.use('/admin/publications', adminPublications)
 app.use('/admin/accepted-projects', adminAcceptedProjects)
+app.use('/admin/userStatus/:id', adminUserStatus);
 
 app.use('/collaboration', Collaboration);
 app.use('/admin/collaboration', adminCollaboration);
