@@ -8,7 +8,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
   const [description, setDescription] = useState("");
   const [cvFile, setCvFile] = useState(null);
   const [proposalFile, setProposalFile] = useState(null);
-
+  const [email, SetEmail] = useState("");
   const handleCVFileChange = (e) => {
     setCvFile(e.target.files[0]);
   };
@@ -25,7 +25,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
     formData.append("teamMembers", teamMembers);
     formData.append("projectCategory", projectCategory);
     formData.append("description", description);
-
+    formData.append("email", email);
     if (cvFile) {
       formData.append("cvFile", cvFile);
     }
@@ -33,7 +33,6 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
     if (proposalFile) {
       formData.append("proposalFile", proposalFile);
     }
-
     try {
       const response = await axios.post(
         "http://localhost:5001/auth/submitProject",
@@ -126,6 +125,24 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
               ></textarea>
             </div>
 
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">
+                Email
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                name="email"
+                placeholder="sample@gmail.com"
+                value={email}
+                onChange={(e) => {
+                  SetEmail(e.target.value);
+                }}
+                required
+              />
+            </div>
+            
             <div className="mb-3">
               <label htmlFor="cvFile" className="form-label">
                 Attach your CV*
