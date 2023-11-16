@@ -1,154 +1,97 @@
 import React,{useState} from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom'; 
 
-import partner from "../../images/Institutes/Ict-partners.png";
-import partner1 from "../../images/Institutes/Ict-partners1.png";
-import partner2 from "../../images/Institutes/Ict-partners2.png";
-import partner3 from "../../images/Institutes/Ict-partners3.png";
-import partner4 from "../../images/Institutes/Ict-partners4.png";
-import partner5 from "../../images/Institutes/Ict-partners5.png";
+import zalaTech from '../../images/Institutes/Zalatech-wp-e1540712041216.png';
+import erp from '../../images/Institutes/erp-logo.jpeg';
+import dreamTech from '../../images/Institutes/dreamtech_logo.png';
 
-const IctPartners = () => {
-  const [isClicked, setIsClicked] = useState(false);
 
-  const handleClick = () => {
-    setIsClicked(true);
-  }
-    return (
-
+function IctPartners() {
+  return (
 <container>
 <div className='row'>
-<div className="col-sm-3 mt-5" >
-  <div className="menu" style={{ backgroundColor: '#11676d', marginBottom: '80px', borderRadius: '10px' }}>
-    <ul className=" list-group" style={{ listStyleType: 'none', padding: '40px' }}>
-      
-      <li className="list-group-item list-group-item-dark" data-content="research" style={{ width: '100%', marginBottom: '10px' ,backgroundColor: 'orange', borderRadius: '5px'}}>
-        <Link to='/institutes/research' style={{ textDecoration: 'none', width: '100%', color:'white'}} onClick={handleClick}>Research Institutes</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="labs" style={{ width: '100%', marginBottom: '10px',backgroundColor: 'orange', borderRadius: '5px' }}>
-        <Link to='/institutes/labs' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>Laboratories</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="ict" style={{ width: '100%', marginBottom: '10px',backgroundColor: 'orange', borderRadius: '5px' }}>
-        <Link to='/institutes/ict' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>ICT Partners</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="government" style={{ width: '100%', marginBottom: '10px' ,backgroundColor: 'orange', borderRadius: '5px'}}>
-        <Link to='/institutes/government' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>Government Agency</Link>
-      </li>
-    </ul>
-  </div>
-</div>
 <div className='col'>
-<div >
-        <br /><br />
-         <Container className='w-60%'>
-      {/* Carousel */}
-      <div id="demo" className="carousel slide" data-bs-ride="carousel">
-        {/* Indicators/dots */}
-        <div className="carousel-indicators">
-          <button type="button" data-bs-target="#demo" data-bs-slide-to="0" className="active"></button>
-          <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-          <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-        </div>
-
-        {/* The slideshow/carousel */}
-        <div className="carousel-inner">
-          <div className="carousel-item active">
-            <img src={partner} alt="Los Angeles" className="d-block w-100 " />
-            <div className="carousel-caption">
-              <h1 style={{ color: 'black', textAlign: 'center' }}>Dedicated On-site Time - ICT Partnerships offer a bespoke support solution for any client</h1>
-              {/* <p>Slide 1 Description</p> */}
-            </div>
-          </div>
-          <div className="carousel-item">
-            <img src={partner1} alt="Chicago" className="d-block w-100" />
-            <div className="carousel-caption">
-              <h1 style={{ color: 'black', textAlign: 'center' }}>Affordable - Our aim is to provide affordable solutions and services </h1>
-              {/* <p>Slide 2 Description</p> */}
-            </div>
-          </div>
-          <div className="carousel-item">
-            <img src={partner2} alt="New York" className="d-block w-100 " />
-            <div className="carousel-caption">
-              <h1 style={{ color: 'black', textAlign: 'center' }}>Reliable - Our team is highly skilled and highly professiona services </h1>
-              {/* <p>Slide 3 Description</p> */}
-            </div>
-          </div>
-        </div>
-
-        {/* Left and right controls/icons */}
-        <button className="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon"></span>
-        </button>
-        <button className="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-          <span className="carousel-control-next-icon"></span>
-        </button>
-      </div>
-
+<>
+    <br />
+    <br />
+    <Container>
+      
+      <Row className="align-items-center">
+        <Col>
+          <img src={erp} alt="Logo" className="img-fluid" />
+        </Col>
+        <Col xs={9} md={10}>
+          <hl  className="mb-2" style={{  textAlign: 'center', fontSize: '60px' }}>ICT Partners </hl>
+          <h2 className="mb-2"><a href='	https:// www.erpethiopia.com' style={{textDecoration: 'none'}}>ERP Solutions PLC </a></h2>
+          <p className="mb-1" style={{color:'grey'}}>Our company is owned by Ethiopian Entrepreneurs and is strongly supported by 
+          Indian based private equity firm which brings experience, strategic advice and financial support.
+          We have proven experience in Ethiopia and have successfully implemented the full 
+          ERP system for more than 10 companies like Ethiopian Trading Business corporation, 
+          East Africa Specialized Engineering, Bamacon Engineering PLC, Amhara Metal works Enterprise, 
+          Gafat Endowment, Kibru Tesfaye Import Export, Labora International Trading PLC and so on.
+           </p>
+          <p className="mb-1">Email: <span className="text-orange">contact@erpethiopia.com</span></p>
+          <p className="mb-0">Phone: <span className="text-orange">	+251982527979</span></p>
+        </Col>
+      </Row>
     </Container>
-  
-        {/* Card form */}
-        <div className="container mt-3">
-          {/* <h2>Card Image</h2>
-          <p>Image at the top (card-img-top):</p> */} <br/><br/>
-          <div className="card" style={{ width: '100%' }}>
-            <img className="card-img-top" src={partner3} alt="Card image" style={{ width: '60%' }} />
-            <div className="card-body">
-              <h4 className="card-title">Dedicated On-site Time </h4>
-              <p className="card-text">ICT Partnerships offer a bespoke support solution for any client that we <br />
-               look after as we appreciate the varying needs of every organisation. We believe that in order to <br />
-               create the best ongoing partnership possible regular scheduled</p>
-              <a href="#" className="btn btn-primary">Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <div className="container mt-3">
-          {/* <h2>Card Image</h2>
-          <p>Image at the top (card-img-top):</p> */}<br/><br/>
-          <div className="card" style={{ width: '100%' }}>
-            <img className="card-img-top" src={partner4} alt="Card image" style={{ width: '60%' }} />
-            <div className="card-body">
-              <h4 className="card-title">Affordable</h4>
-              <p className="card-text">Our aim is to provide affordable solutions and a service level you <br />
-               would expect as a large enterprise to medium and small organisations. We can even spread the <br />
-                cost of your support to meet your budgeting needs.</p>
-              <a href="#" className="btn btn-primary">Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <div className="container mt-3 ">
-          {/* <h2>Card Image</h2>
-          <p>Image at the top (card-img-top):</p> */}<br/><br/>
-          <div className="card" style={{ width: '100%' }}>
-            <img className="card-img-top" src={partner5} alt="Card image" style={{ width: '60%' }} />
-            <div className="card-body">
-              <h4 className="card-title">Reliable</h4>
-              <p className="card-text">Our team is highly skilled and highly professional and if we <br />
-              can’t resolve your issue straight away we’ll attempt to provide an alternative option  <br />
-              until we can get you back up and running.</p>
-              <a href="#" className="btn btn-primary">Read More</a>
-            </div>
-          </div>
-        </div>
-        <br /><br />
-      <div className="d-flex justify-content-end" style={{ marginRight: '50px' }}>
+    <br /><br />
+    <Container>
+        <Row className="align-items-center">
+          <Col>
+            <img src={zalaTech} alt="Logo" className="img-fluid" />
+          </Col>
+          <Col xs={9} md={10}>
+            <h2 className="mb-2"><a href='https://zalatechs.com/' style={{textDecoration: 'none'}}>ZalaTech </a></h2>
+            <p className="mb-1" style={{color:'grey'}}>We make sure your website is fast,
+             secure & always up – so your visitors & search engines trust you.
+              Guaranteed. ZalaTech Ethiopia Top-rated website hosting service best-suited 
+            for individuals, bloggers, small and medium businesses.</p>
+            <p className="mb-1">Email: <span className="text-orange">info@zalatechs.com</span></p>
+            <p className="mb-0">Phone: <span className="text-orange">+251-911-645867 | +251-912-974411</span></p>
+          </Col>
+        </Row>
+      </Container>
+      <br /><br />
+      <Container>
+        <Row className="align-items-center">
+          <Col>
+            <img src={dreamTech} alt="Logo" className="img-fluid" />
+          </Col>
+          <Col xs={9} md={10}>
+            <h2 className="mb-2"><a href='https://dreamtech.et/' style={{textDecoration: 'none'}}>Dream Tech </a></h2>
+            <p style={{color:'grey'}} className="mb-1">Dream Tech P.L.C is a leading Web and Mobile App development providing 
+            Company that offers Web Applications Development, FullStack Development, E-commerce Solution Development, 
+            CMS Websites, API Integration, Website Design and Development, Mobile App Development and Design, Server and System
+             Administration with high satisfaction with our valuable clients. We provide high-quality software at an economical cost.
+              We also offer enterprise-level SAAS applications as well.
+            </p>
+            <p className="mb-1">Email: <span className="text-orange"> info@dreamtech.et</span> </p>
+            <p className="mb-0">Phone: <span className="text-orange">0911191347 (Ethiopia)
++17173333224 (USA)</span></p>
+          </Col>
+        </Row>
+      </Container>
+      <br /><br />
+      <div className="d-flex justify-content-end me-5 mt-3">
         <button className="btn btn-primary">
-          <a href="/" style={{ color: 'white', textDecoration: 'none' }}>Next Page</a>
+          <a href="/" style={{ color: 'white', textDecoration: 'none'}}>Next Page</a>
         </button>
+      
       </div>
-      <br />
-      </div>
-</div>
+      </>
+
 
 </div>
 
+</div>
+<br/>
 </container>
 
+   
+     // Add more institutes as needed
 
-     
-    );
-  };
-  
-  export default IctPartners;
+  );
+}
+export default IctPartners;

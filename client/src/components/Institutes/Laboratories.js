@@ -1,8 +1,12 @@
 import React,{useState} from 'react';
-import { Container, Row, Col, Form } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom'; 
-import AHRI from '../../images/Institutes/AHRI.png';
-import partner from '../../images/Institutes/Ict-partners.png';
+// import './ResearchInstitutes.css'
+import ICL from '../../images/Institutes/ICL-LOGO-NEW.png';
+import BLESS from '../../images/Institutes/blessLogo.svg';
+import ARSHO from '../../images/Institutes/arsho.png';
+
+
 
 function Laboratories() {
   const [isClicked, setIsClicked] = useState(false);
@@ -10,87 +14,88 @@ function Laboratories() {
   const handleClick = () => {
     setIsClicked(true);
   }
-  const labs = [
-    {
-      id: 1,
-      name: 'Lab A',
-      image: AHRI,
-      description: 'Lab A is a research laboratory dedicated to advancing scientific discoveries in a specific field or discipline. It provides a controlled environment where researchers can conduct experiments, analyze data, and collaborate on innovative projects. The lab is equipped with state-of-the-art equipment and tools necessary for conducting experiments, making observations, and collecting data.Lab A focuses on studying and exploring various aspects of its specific field. It aims to address research questions, develop new methodologies, and contribute to the existing knowledge in the field. The lab may specialize in areas such as biotechnology, chemistry, physics, computer science, or any other scientific domain. Researchers in Lab 1 work on projects that can range from fundamental scientific research to applied research with practical implications.',
-      email: 'lab1@example.com',
-      phone: '+1 123-456-7890'
-    },
-    {
-      id: 2,
-      name: 'Lab B',
-      image: partner,
-      description: 'Lab B is a specialized laboratory dedicated to conducting research and experiments in a specific scientific field. It provides a controlled environment for scientists, researchers, and students to explore and investigate various phenomena, theories, and applications related to their area of focus. The lab is equipped with advanced equipment, instruments, and technologies necessary for carrying out experiments, data analysis, and research simulations. Lab 2 focuses on advancing knowledge and understanding in its specific scientific field. Lab B work on projects that encompass a wide range of topics, including but not limited to biology, environmental science, engineering, materials science, or neuroscience. The labs research activities may involve conducting experiments, analyzing data, developing new technologies, or exploring innovative approaches to solve complex problems in the field.',
-      email: 'lab2@example.com',
-      phone: '+1 234-567-8901'
-    }
-    // Add more labs as needed
-  ];
-
   return (
 <container>
 <div className='row'>
-<div className="col-sm-3 mt-5" >
-  <div className="menu" style={{ backgroundColor: '#11676d', marginBottom: '80px', borderRadius: '10px' }}>
-    <ul className=" list-group" style={{ listStyleType: 'none', padding: '40px' }}>
-      
-      <li className="list-group-item list-group-item-dark" data-content="research" style={{ width: '100%', marginBottom: '10px' ,backgroundColor: 'orange', borderRadius: '5px'}}>
-        <Link to='/institutes/research' style={{ textDecoration: 'none', width: '100%', color:'white'}} onClick={handleClick}>Research Institutes</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="labs" style={{ width: '100%', marginBottom: '10px',backgroundColor: 'orange', borderRadius: '5px' }}>
-        <Link to='/institutes/labs' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>Laboratories</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="ict" style={{ width: '100%', marginBottom: '10px',backgroundColor: 'orange', borderRadius: '5px' }}>
-        <Link to='/institutes/ict' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>ICT Partners</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="government" style={{ width: '100%', marginBottom: '10px' ,backgroundColor: 'orange', borderRadius: '5px'}}>
-        <Link to='/institutes/government' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>Government Agency</Link>
-      </li>
-    </ul>
-  </div>
-</div>
 <div className='col'>
-<Container>
-      <h2>Laboratories</h2>
-      {labs.map(lab => (
-        <Row key={lab.id} className="mb-4">
-          <Col md={3}>
-            <img src={lab.image} alt={`${lab.name} Image`} className="img-fluid" />
+<>
+    <br />
+    <br />
+    <Container>
+      
+      <Row className="align-items-center">
+        <Col>
+          <img src={ICL} alt="Logo" className="img-fluid" />
+        </Col>
+        <Col xs={9} md={10}>
+          <hl  className="mb-2" style={{  textAlign: 'center', fontSize: '60px' }}> Laboratories</hl>
+          <h2 className="mb-2"><a href='https://www.icladdis.com/' style={{textDecoration: 'none'}}>
+          INTERNATIONAL CLINICAL LABORATORY</a></h2>
+          <p className="mb-1" style={{color:'grey'}}> ICL serves its clients with its high tech equipment 
+          and extreme professionals. At ICL we provide you with  more than 2000 Tests at international standard.
+          </p>
+          <p className="mb-1">Email: <span className="text-orange"> info@icladdis.com</span></p>
+          <p className="mb-0">Phone: <span className="text-orange">	+251114671818</span></p>
+        </Col>
+      </Row>
+    </Container>
+    <br /><br />
+    <Container>
+        <Row className="align-items-center">
+          <Col>
+            <img src={BLESS} style={{backgroundColor:'black'}} alt="Logo" className="img-fluid" />
           </Col>
-          <Col md={9}>
-            <div className="lab-details">
-              <h3>{lab.name}</h3>
-              <p>{lab.description}</p>
-              <Form>
-                <Form.Group>
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control type="email" value={lab.email} disabled />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>Phone</Form.Label>
-                  <Form.Control type="text" value={lab.phone} disabled />
-                </Form.Group>
-              </Form>
-            </div>
+          <Col xs={9} md={10}>
+            <h2 className="mb-2"><a href='https://www.blesslaboratory.com/' style={{textDecoration: 'none'}}>BLESS AGRI FOOD LABORATORY SERVICE PLC</a></h2>
+            <p className="mb-1" style={{color:'grey'}}>
+              BLESS Agri-Food Laboratory services PLC laboratory established by the joint venture of Ethiopian and French investors in 2011. 
+              Bless serves as one of the Country’s focal conformity assessment body specializing in testing, product certification, inspection 
+              and training services on agri-food items.
+            </p>
+            <p className="mb-1">Email: <span className="text-orange">info@blesslaboratory.com</span></p>
+            <p className="mb-0">Phone: <span className="text-orange">	+251116679221</span></p>
           </Col>
         </Row>
-      ))}
-    </Container>
+      </Container>
+      <br /><br />
+      <Container>
+        <Row className="align-items-center">
+          <Col>
+            <img src={ARSHO} alt="Logo" className="img-fluid" />
+          </Col>
+          <Col xs={9} md={10}>
+            <h2 className="mb-2"><a href='https://www.arsholab.com' style={{textDecoration: 'none'}}>ARSHO MEDICAL LABORATORIES PLC</a></h2>
+            <p style={{color:'grey'}} className="mb-1">Arsho Lab service is diagnosing patient samples collected from our different sites around the country. 
+            All testings are performed following standard operating procedures 
+            that are revised regularly. Patient samples will be tested only when daily
+             control runs are acceptable according to the setWestgard rules.
+             Automated analyzers in our Core laboratory (Hematology,Chemistry and Immino assay) 
+            are interfaced with the Lab information computerized system (LIS) to avoid transcription errors.
+            </p>
+            <p className="mb-1">Email: <span className="text-orange">info@arsholab.com</span> </p>
+            <p className="mb-0">Phone: <span className="text-orange">+251 11 416 70 89 or +251 11 467 29 98</span></p>
+          </Col>
+        </Row>
+      </Container>
+      <br /><br />
+      <div className="d-flex justify-content-end me-5 mt-3">
+        <button className="btn btn-primary">
+          <a href="/" style={{ color: 'white', textDecoration: 'none'}}>Next Page</a>
+        </button>
+      
+      </div>
+      </>
+
 
 </div>
+
 </div>
-<div className="d-flex justify-content-end" style={{ marginRight: '50px' }}>
-        <button className="btn btn-primary">
-          <a href="/" style={{ color: 'white', textDecoration: 'none' }}>Next Page</a>
-        </button>
-      </div> 
-      <br/> 
+<br/>
 </container>
 
    
+     // Add more institutes as needed
+
   );
 }
 

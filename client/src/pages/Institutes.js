@@ -1,54 +1,63 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import ResearchInstitutes from '../components/Institutes/ResearchInstitutes';
-import Laboratories from '../components/Institutes/Laboratories';
-import IctPartners from '../components/Institutes/IctPartners';
-import GovernmentAgencies from '../components/Institutes/GovernmentAgencies';
-import value from '../images/Institutes/default-image.jpg';
+// import { Link } from 'react-router-dom';
+import "../App.css";
+import value from '../images/Institutes/link3.jpg';
+import research from '../images/Institutes/Lab.webp';
+import lab from '../images/Institutes/Lab1.jpeg';
+import ict from '../images/Institutes/ict.webp';
+import gov from '../images/Institutes/gov2.jpeg';
 
 const Institutes = () => {
-  const [isClicked, setIsClicked] = useState(false);
 
-  const handleClick = () => {
-    setIsClicked(true);
-  }
 
   return (
-    <div className="container row mt-3 d-flex m-20px">
-      <br/><br/><br/>
-      <div className="col-sm-3 mt-5" >
-  <div className="menu" style={{ backgroundColor: '#11676d', marginBottom: '80px', borderRadius: '10px' }}>
-    <ul className=" list-group" style={{ listStyleType: 'none', padding: '40px' }}>
-      
-      <li className="list-group-item list-group-item-dark" data-content="research" style={{ width: '100%', marginBottom: '10px' ,backgroundColor: 'orange', borderRadius: '5px'}}>
-        <Link to='/institutes/research' style={{ textDecoration: 'none', width: '100%', color:'white'}} onClick={handleClick}>Research Institutes</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="labs" style={{ width: '100%', marginBottom: '10px',backgroundColor: 'orange', borderRadius: '5px' }}>
-        <Link to='/institutes/labs' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>Laboratories</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="ict" style={{ width: '100%', marginBottom: '10px',backgroundColor: 'orange', borderRadius: '5px' }}>
-        <Link to='/institutes/ict' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>ICT Partners</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="government" style={{ width: '100%', marginBottom: '10px' ,backgroundColor: 'orange', borderRadius: '5px'}}>
-        <Link to='/institutes/government' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>Government Agency</Link>
-      </li>
-    </ul>
-  </div>
-</div>
+    <div className="container mt-3 p-5">
+      <div className="row">
+        {/* Left Section with Background Image */}
+        <div className="col-md-6 p-3" style={{ background: `url(${value}) no-repeat center center`, backgroundSize: 'cover', height: '600px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+          <h1 style={{ color: 'white', fontSize: '60px', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', textAlign: "center" }}>
+            Explore our links with different institutes</h1>
+        </div>
 
-      <div className="content col">
-        {!isClicked && (
-          <div className="default-content">
-            <br /> <br />
-            <h2>Welcome to Institutes</h2>
-            <img src={value} className="img-fluid" alt="Default Image" />
+        {/* Right Section with Cards */}
+        <div className="col-md-6 d-flex justify-content-center align-items-center">
+          <div className="d-flex flex-column w-100">
+            {/* Pair 1: Research Institutes + Laboratories */}
+            <div className="d-flex w-100 justify-content-between">
+              <div className="card m-3 flex-grow-1" style={{ width: '48%', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
+                <img src={research} className="card-img-top" alt="img research" style={{ height: '200px' }} />
+                <div className="card-body">
+                  <h5><a href='/institutes/research' className="card-title" style={{ color: 'black' , fontSize:"18px",fontWeight:"bold", textDecoration: 'none' }}>Research Institutes</a></h5>
+                </div>
+              </div>
+
+              <div className="card m-3 flex-grow-1" style={{ width: '48%', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
+                <img src={lab} className="card-img-top" alt="img lab" style={{ height: '200px' }} />
+                <div className="card-body">
+                  <h5><a href='/institutes/labs' className="card-title" style={{  color: 'black' , fontSize:"18px",fontWeight:"bold", textDecoration: 'none' }}>Laboratories</a></h5>
+                </div>
+              </div>
+            </div>
+
+            {/* Pair 2: ICT Partners + Government Agencies */}
+            <div className="d-flex w-100 justify-content-between">
+              <div className="card m-3 flex-grow-1" style={{ width: '48%', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
+                <img src={ict} className="card-img-top" alt="img-ict" style={{ height: '200px' }} />
+                <div className="card-body">
+                  <h5><a href='/institutes/ict' className="card-title" style={{  color: 'black' , fontSize:"18px",fontWeight:"bold",textDecoration: 'none' }}>ICT Partners</a></h5>
+                </div>
+              </div>
+
+              <div  className="card m-3 flex-grow-1" style={{ width: '48%', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
+                <img src={gov} className="card-img-top" alt="img-gov" style={{ height: '200px' }} />
+                <div className="card-body">
+                  <h5><a href='/institutes/government' className="card-title" style={{ color: 'black' , fontSize:"18px",fontWeight:"bold", textDecoration: 'none' }}>Government Agencies</a></h5>
+                </div>
+              </div>
+            </div>
           </div>
-        )}
+        </div>
       </div>
-      <div>
-        {isClicked && <ResearchInstitutes />}
-      </div>
-      <br></br>
     </div>
   );
 }
