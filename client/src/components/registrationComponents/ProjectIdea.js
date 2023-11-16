@@ -103,11 +103,11 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
                 <option value="" disabled>
                   Select a category
                 </option>
-                <option value="Category 1">Agriculture</option>
-                <option value="Category 2">Environment and Energy</option>
-                <option value="Category 3">Health</option>
-                <option value="Category 4">Industrial</option>
-                <option value="Category 5">Other</option>
+                <option value="Agriculture">Agriculture</option>
+                <option value="Environment-Energy">Environment and Energy</option>
+                <option value="Health">Health</option>
+                <option value="Industry">Industry</option>
+                <option value="Other">Other</option>
               </select>
             </div>
 
