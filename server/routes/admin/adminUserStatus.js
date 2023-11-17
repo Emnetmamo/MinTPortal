@@ -3,7 +3,32 @@ import ProjectModel from "../../models/projects.js";
 import AppointmentModel from "../../models/appointments.js";
 
 const adminUserStatus=async (req, res)=>{
-    if(req.params.id !== "getAll")
+  if (req.params.id === "getAll") {
+    await  ProjectModel
+        .find({status:{$gt:-1}})
+        .then((result) => {
+          //console.log(result)
+          res.json(result);
+        })
+        .catch((err) => {
+          console.error(err);
+          res.status(500).json({ error: 'An error occurred while fetching data.' });
+        });
+    }
+    else if(req.params.id.split('-')[0] === "fetch"){
+      const email1 = req.params.id.split('-')[1];
+      await  ProjectModel
+          .find({email:email1})
+          .then((result) => {
+            //console.log(result)
+            res.json(result);
+          })
+          .catch((err) => {
+            console.error(err);
+            res.status(500).json({ error: 'An error occurred while fetching data.' });
+          });
+    }
+    else if(req.params.id.split('-')[0] !== "fetch")
     {
         const id1 = new mongoose.Types.ObjectId(req.params.id.split('-')[0]);
         const newStatus = parseInt(req.params.id.split('-')[1]);
@@ -37,20 +62,13 @@ const adminUserStatus=async (req, res)=>{
             status:"Pending"
           })
         }
+        else if(newStatus === 1){
+          const today = Date.now();
+          const nowDate = (new Date(today)).toISOString();
+          await AppointmentModel.findOneAndDelete({projectId:id1});
+        }
     } 
     
-    else if (req.params.id === "getAll") {
-      await  ProjectModel
-          .find({status:{$gt:-1}})
-          .then((result) => {
-            //console.log(result)
-            res.json(result);
-          })
-          .catch((err) => {
-            console.error(err);
-            res.status(500).json({ error: 'An error occurred while fetching data.' });
-          });
-      }
       
 }
 

@@ -36,7 +36,7 @@ const UserDashboard = () => {
         </div>
         <div className="col-md-9">
           {selectedOption === 'confirmAppointment' && <ConfirmAppointment email={email} />}
-          {selectedOption === 'checkStatus' && <CheckStatus />}
+          {selectedOption === 'checkStatus' && <CheckStatus email={email}/>}
           {(selectedOption !== 'confirmAppointment' && selectedOption !== 'checkStatus') && 
           <div style={{marginLeft:"10%", marginBottom:"50%"}}>
             <h1 style={{color:"#11676d"}}>User Home</h1>
