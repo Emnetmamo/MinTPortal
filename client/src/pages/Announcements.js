@@ -1,7 +1,4 @@
-// src/components/pages/Announcements.js
-
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import NationalCalls from "../components/announcementsComponents/NationalCalls";
 import ForeignCalls from "../components/announcementsComponents/ForeignCalls";
 
@@ -19,9 +16,16 @@ const Announcements = () => {
       <br />
       <br />
       <ul className="nav nav-tabs">
-        <li className="nav-item">
+        <li>
           <button
             className={`nav-link ${selectedTab === "national" ? "active" : ""}`}
+            style={{
+              backgroundColor: selectedTab === "national" ? "orange" : "",
+              color: selectedTab === "national" ? "white" : "black",
+              textTransform: "uppercase",
+              fontSize: "28px",
+              fontWeight: "bold",
+            }}
             onClick={() => handleTabChange("national")}
           >
             National Calls
@@ -30,6 +34,13 @@ const Announcements = () => {
         <li className="nav-item">
           <button
             className={`nav-link ${selectedTab === "foreign" ? "active" : ""}`}
+            style={{
+              backgroundColor: selectedTab === "foreign" ? "orange" : "",
+              color: selectedTab === "foreign" ? "white" : "black",
+              textTransform: "uppercase",
+              fontSize: "28px",
+              fontWeight: "bold",
+            }}
             onClick={() => handleTabChange("foreign")}
           >
             Foreign Calls
@@ -37,7 +48,15 @@ const Announcements = () => {
         </li>
       </ul>
       <div style={{ width: "100%", textAlign: "center", marginTop: "10px" }}>
-        <select name="category" id="category" style={{ borderRadius: "5px" }} onChange={function(e){setCategory(e.target.value)}}>
+        <select
+          name="category"
+          id="category"
+          style={{
+            borderRadius: "5px",
+            fontSize: "16px",
+          }}
+          onChange={(e) => setCategory(e.target.value)}
+        >
           <option value=" ">Select a Field</option>
           <option value="Agriculture">Agriculture</option>
           <option value="Environment-Energy">Environment and Energy</option>
@@ -47,8 +66,8 @@ const Announcements = () => {
         </select>
       </div>
       <div className="tab-content mt-3">
-        {selectedTab === "national" && <NationalCalls category ={categorySelected}/>}
-        {selectedTab === "foreign" && <ForeignCalls category ={categorySelected}/>}
+        {selectedTab === "national" && <NationalCalls category={categorySelected} />}
+        {selectedTab === "foreign" && <ForeignCalls category={categorySelected} />}
       </div>
     </div>
   );
