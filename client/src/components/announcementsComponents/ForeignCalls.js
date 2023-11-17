@@ -46,7 +46,7 @@ const ForeignCalls = (props) => {
         <div className="card mb-3" key={calls[i]._id}>
         <div className="card-body">
 
-        <h2 style={{ textTransform: 'uppercase' }} className="card-title">{calls[i].title}</h2>
+        <h3 style={{ textTransform: 'uppercase' }} className="card-title">{calls[i].title}</h3>
 
 
         <div style={{marginLeft: "50px"}}>          
