@@ -1,7 +1,8 @@
 import React from 'react';
 import AppointmnetImg from '../../images/user/appoint.png';
 
-const ConfirmAppointment = () => {
+const ConfirmAppointment = (props) => {
+  const email = props.email;
   return (
     <div className="card shadow p-3 mb-5 bg-white rounded">
       <img

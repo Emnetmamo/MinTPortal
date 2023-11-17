@@ -33,7 +33,7 @@ const Login = () => {
               history('/admin');
             }
             else{
-              history('/user')
+              history('/user', {state:{email:email}})
             }
           }
          

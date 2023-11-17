@@ -29,7 +29,7 @@ function UpdateUserStatus() {
             <td>{i++}</td>
             <td>{projects[j]._id}</td>
             <td>{projects[j].projectTitle}</td>
-            <td><p>{projects[j].description}</p></td>
+            <td><h6 style={{height:"100px",overflowY:"scroll"}}>{projects[j].description}</h6></td>
             <td>{numToStatus(projects[j].status)}</td>
             <td><Link to={'/admin/viewFile'} state={{filePath: projects[j].proposalPath}} >View Proposal</Link></td>
             <td><Link to={'/admin/viewFile'} state = {{filePath: projects[j].cvPath}} >View CV</Link></td>

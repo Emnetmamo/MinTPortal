@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import ConfirmAppointment from './ConfirmAppointment';
 import CheckStatus from './CheckStatus';
 import '../../App.css';
 
 const UserDashboard = () => {
   const [selectedOption, setSelectedOption] = useState(null);
-
+  const location = useLocation();
+  const {email} = location.state;
+  console.log(email);
   const handleOptionClick = (option) => {
     setSelectedOption(option);
   };
@@ -33,7 +36,7 @@ const UserDashboard = () => {
           </a>
         </div>
         <div className="col-md-9">
-          {selectedOption === 'confirmAppointment' && <ConfirmAppointment />}
+          {selectedOption === 'confirmAppointment' && <ConfirmAppointment email={email} />}
           {selectedOption === 'checkStatus' && <CheckStatus />}
           {(selectedOption !== 'confirmAppointment' && selectedOption !== 'checkStatus') && 
           <div style={{marginLeft:"10%", marginBottom:"50%"}}>
