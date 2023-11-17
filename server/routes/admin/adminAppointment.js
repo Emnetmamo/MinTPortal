@@ -18,7 +18,7 @@ const adminAppointment=async (req, res)=>{
     if(req.params.id.split('-')[0] === "setStatus")
     {
         const id1 = req.params.id.split('-')[1];
-        const newStatus = parseInt(req.params.id.split('-')[2]);
+        const newStatus = req.params.id.split('-')[2];
         try{
             console.log(id1)
             await AppointmentModel.findOneAndUpdate({projectId:id1}, {status: newStatus})
@@ -30,7 +30,19 @@ const adminAppointment=async (req, res)=>{
             console.log(err);
         }
     } 
-    
+    else if(req.params.id.split('-')[0] === "load"){
+        const email = req.params.id.split('-')[1]
+        await  AppointmentModel
+          .find({email:email})
+          .then((result) => {
+            //console.log(result);
+            res.json(result);
+          })
+          .catch((err) => {
+            console.error(err);
+            res.status(500).json({ error: 'An error occurred while fetching data.' });
+          });
+    }
     else if (req.params.id.split('_')[0] === "setAppointment") {
         const id1 = req.params.id.split('_')[1];
         const newAppointmentDate = req.params.id.split('_')[2];
