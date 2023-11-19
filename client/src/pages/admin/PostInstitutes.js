@@ -10,6 +10,7 @@ import Dropzone from '../../components/AdminComponents/Dropzone';
 
 axios.defaults.withCredentials=true;
 
+// 
 function PostInstitutes() {
   const navigate=useNavigate();
   const [formData, setFormData] = useState({

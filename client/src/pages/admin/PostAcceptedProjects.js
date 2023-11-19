@@ -107,8 +107,6 @@ function PostAcceptedProjects() {
     }
   };
 
-
-
   return (
     <div className="">
      
