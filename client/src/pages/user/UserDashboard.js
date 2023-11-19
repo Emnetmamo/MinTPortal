@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import ConfirmAppointment from './ConfirmAppointment';
 import CheckStatus from './CheckStatus';
 import '../../App.css';
 
 const UserDashboard = () => {
   const [selectedOption, setSelectedOption] = useState(null);
-
+  const location = useLocation();
+  const {email} = location.state;
+  //console.log(email);
   const handleOptionClick = (option) => {
     setSelectedOption(option);
   };
@@ -15,26 +18,25 @@ const UserDashboard = () => {
       <br/>
       <div className="row">
         <div className="col-md-3 left-sidebar">
-          <a
-            href="#"
+          <button
             className="btn btn-link w-100 text-center mb-2"
             style={{textDecoration: 'none', backgroundColor: selectedOption === 'confirmAppointment' ? '#11676d' : 'white', color: selectedOption === 'confirmAppointment' ? 'white' : 'black' }}
             onClick={() => handleOptionClick('confirmAppointment')}
           >
             Confirm Appointment Date
-          </a>
-          <a
+          </button>
+          <button
             href="#"
             className="btn btn-link w-100 text-center"
             style={{textDecoration: 'none', backgroundColor: selectedOption === 'checkStatus' ? '#11676d' : 'white', color: selectedOption === 'checkStatus' ? 'white' : 'black' }}
             onClick={() => handleOptionClick('checkStatus')}
           >
             Check Your Status
-          </a>
+          </button>
         </div>
         <div className="col-md-9">
-          {selectedOption === 'confirmAppointment' && <ConfirmAppointment />}
-          {selectedOption === 'checkStatus' && <CheckStatus />}
+          {selectedOption === 'confirmAppointment' && <ConfirmAppointment email={email} />}
+          {selectedOption === 'checkStatus' && <CheckStatus email={email}/>}
           {(selectedOption !== 'confirmAppointment' && selectedOption !== 'checkStatus') && 
           <div style={{marginLeft:"10%", marginBottom:"50%"}}>
             <h1 style={{color:"#11676d"}}>User Home</h1>

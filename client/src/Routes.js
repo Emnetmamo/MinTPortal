@@ -31,6 +31,7 @@ import PostPublications from './pages/admin/PostPublications'
 import PostAcceptedProjects from './pages/admin/PostAcceptedProjects';
 import PostInstitutes from './pages/admin/PostInstitutes.js';
 import PostNews from './pages/admin/PostNews'
+import ViewFile from './pages/admin/ViewFile.js';
 
 //user page 
 
@@ -120,7 +121,7 @@ const RoutesComponent = () => {
           <Route path='accepted-projects/add-accepted-project' element={<PostAcceptedProjects/>}/>
           <Route path='institutes/post-to-institutes' element={<PostInstitutes/>}/>
         </Route>
-
+        <Route  path='admin/viewFile' element={<ViewFile/>}></Route>
 
 
   {/* user */}

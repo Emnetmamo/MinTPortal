@@ -19,8 +19,6 @@ import adminNews from './routes/admin/adminNews.js'
 import adminCollaboration from './routes/admin/adminCollaboration.js'
 import adminPublications from './routes/admin/adminPublications.js'
 import adminAcceptedProjects from './routes/admin/adminAcceptedProjects.js'
-import adminInstitutes from './routes/admin/adminInstitutes.js'
-
 import login from './controller/login.js';
 import dashboardRoute from './middleware/dashboard.js';
 
@@ -64,8 +62,6 @@ app.use('/resources', resources);
 app.use('/admin/news', adminNews);
 app.use('/admin/publications', adminPublications)
 app.use('/admin/accepted-projects', adminAcceptedProjects)
-app.use('/admin/institutes', adminInstitutes)
-
 
 app.use('/collaboration', Collaboration);
 app.use('/admin/collaboration', adminCollaboration);

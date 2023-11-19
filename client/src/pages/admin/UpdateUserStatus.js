@@ -1,9 +1,82 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import '../../images/assets/css/admin.css';
+import axios from 'axios';
 import AdminHeader from '../../components/AdminComponents/AdminHeader';
 
 function UpdateUserStatus() {
+  let i = 1;
+  const [projects, setProjects] = useState([]);
+  const[loaded, setLoaded] = useState(false);
+  useEffect(
+    function(){
+      axios.get('http://localhost:5001/admin/userStatus/getAll')
+      .then((result)=>{
+        setProjects(result.data);
+        //console.log(result);
+      })
+      .catch(err=>console.log(err))
+      setLoaded(true);
+    }
+  ,[]);
+  function displayProjects(){
+    const tableData = [];
+    
+    for (let j = 0; j < projects.length; j++) {
+      if(projects[j].status > 0){
+      tableData.push(
+          <tr>
+            <td>{i++}</td>
+            <td>{projects[j]._id}</td>
+            <td>{projects[j].projectTitle}</td>
+            <td><h6 style={{height:"100px",overflowY:"scroll"}}>{projects[j].description}</h6></td>
+            <td>{numToStatus(projects[j].status)}</td>
+            <td><Link to={'/admin/viewFile'} state={{filePath: projects[j].proposalPath}} >View Proposal</Link></td>
+            <td><Link to={'/admin/viewFile'} state = {{filePath: projects[j].cvPath}} >View CV</Link></td>
+            <td>
+              <button name={projects[j]._id + "-" + projects[j].status} onClick={
+                function(e){
+                updateStatus(e.target.name.split('-')[0], parseInt(e.target.name.split('-')[1])+1);
+              }} 
+                className='btn btn-primary' style={{display:buttonsDisplay(projects[j].status)}}>Accept</button>
+              <button name={projects[j]._id + "-" + projects[j].status} onClick={
+                function(e){
+                updateStatus(e.target.name.split('-')[0], parseInt(e.target.name.split('-')[1])-1)}} 
+                className='btn btn-danger' style={{display:buttonsDisplay(projects[j].status)}}>Reject</button>
+            </td>
+          </tr>
+      );
+    }
+  }
+  //console.log(tableData);
+  return tableData;
+}
+function updateStatus(id, newStatus){
+  console.log("Clicked!")
+  axios.get('http://localhost:5001/admin/userStatus/'+id+"-"+newStatus)
+  .then(result=>console.log(result))
+  .catch(err=>console.log(err));
+  window.location.reload(false);
+}
+function numToStatus(num){
+  if(num === 1){
+    return "Concept Evaluation";
+  }
+  else if(num === 2){
+    return "Presentation";
+  }
+  else if(num === 3){
+    return "Money Grant";
+  }
+  else{
+    return "Working on Project";
+  }
+}
+function buttonsDisplay(num){
+  if(num > 3){
+    return "none";
+  }
+}
   return (
     <div className="">
      
@@ -71,8 +144,7 @@ function UpdateUserStatus() {
           <div className="col-xs-12 col-md-1"></div>
           <div className="col-xs-12 col-md-9 mb-5">
             <br/>
-            <h1 className='mb-3'>Update a User Status</h1>  
-            <form method="post" action="/admin/user-status/add-user-status">
+            <h1 className='mb-3'>Update User Status</h1>  
               <table class="table">
                 <thead class="table-success" style={{color: '#11676d'}}>  
                   <tr>
@@ -80,71 +152,16 @@ function UpdateUserStatus() {
                     <th>User Id</th>
                     <th>Project Title</th>
                     <th>Project Description</th>
-                    <th>Status</th>
-                    <th>Submit</th>
+                    <th>Current Stage</th>
+                    <th>Proposal File</th>
+                    <th>CV</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td><input type="number" style={{width: '40px'}} name="no"/></td>
-                    <td><input type="text" style={{overflow: 'auto'}} name="user-id"/></td>
-                    <td><input type="text"  name="title"/></td>
-                    <td><textarea  name="description" rows="6" cols="50" style={{overflow: 'scroll'}}></textarea></td>
-                    <td>
-                    <select  name="status" size={0}>
-                        <option > None</option>
-                        <option > Accepted</option>  
-                        <option > Pending</option>  
-                        <option > Rejected</option>                  
-                      </select>
-                    </td>
-                    <td><button className='btn btn-warning' type="submit" value="Submit">Submit</button></td>
-                    </tr>
+                  {loaded && displayProjects()}
                 </tbody>  
               </table>
-           </form>
-           <form method="post" action="/admin/user-status/add-user-status">
-              <table class="table">
-                <tbody>
-                  <tr>
-                    <td><input type="number" style={{width: '40px'}} name="no"/></td>
-                    <td><input type="text"  name="user-id"/></td>
-                    <td><input type="text"  name="title"/></td>
-                    <td><textarea  name="description" rows="6" cols="40" style={{overflow: 'scroll'}}></textarea></td>
-                    <td>
-                    <select  name="category" size={0}>
-                        <option > None</option>
-                        <option > Accepted</option>  
-                        <option > Pending</option>  
-                        <option > Rejected</option>                  
-                      </select>
-                    </td>
-                    <td><button className='btn btn-warning' type="submit" value="Submit">Submit</button></td>
-                    </tr>
-                </tbody>  
-              </table>
-              <form method="post" action="/admin/user-status/add-user-status">
-              <table class="table">
-                <tbody>
-                  <tr>
-                    <td><input type="number" style={{width: '40px'}} name="no"/></td>
-                    <td><input type="text"  name="user-id"/></td>
-                    <td><input type="text"  name="title"/></td>
-                    <td><textarea  name="description" rows="6" cols="50" style={{overflow: 'scroll'}}></textarea></td>
-                    <td>
-                    <select  name="category" >
-                        <option > None</option>
-                        <option > Accepted</option>  
-                        <option > Pending</option>  
-                        <option > Rejected</option>                  
-                      </select>
-                    </td>
-                    <td><button className='btn btn-warning' type="submit" value="Submit">Submit</button></td>
-                    </tr>
-                </tbody>  
-              </table>
-           </form>
-           </form>
           </div>
       </div>
     </div>

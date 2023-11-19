@@ -68,7 +68,8 @@ const register = async (req, res) => {
 
 else if (req.params.page === "submitProject") {
   const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
+  // const __dirname = dirname(__filename);
+  const __dirname = "public";
   const storage = multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, path.join(__dirname, 'uploads'));
@@ -95,26 +96,31 @@ else if (req.params.page === "submitProject") {
           console.log('Error occurred during file upload: ' + err);
           return res.json({ message: 'Error occurred during file upload' });
         }
-
+        //console.log(req.body);
         const projectTitle = req.body.projectTitle;
         const teamMembers = req.body.teamMembers;
         const projectCategory = req.body.projectCategory;
         const description = req.body.description;
+        const email1 = req.body.email;
         console.log('Project Title:', projectTitle);
 
-        const cvPath = req.files['cvFile'][0].path;
-        const proposalPath = req.files['proposalFile'][0].path;
+        const cvPath = req.files['cvFile'][0].path.split('\\')[1] + '\\' + req.files['cvFile'][0].path.split('\\')[2];
+        const proposalPath = req.files['proposalFile'][0].path.split('\\')[1] + "\\" +req.files['proposalFile'][0].path.split('\\')[2];
         // console.log(cvPath);
         // console.log(proposalPath);
-
-   const projects=   await   ProjectModel.create({
+        // await ProjectModel.updateMany( {},{ $set: { email : 'emnetmk@gmail.com'} }, { multi: true });
+        // await ProjectModel.updateMany( {},{ $set: { status : 1} }, { multi: true });
+        //console.log(email1);
+   
+        const projects=   await   ProjectModel.create({
           projectTitle:projectTitle,
-          teamMembers:teamMembers,
+          teamMembers:[teamMembers],
           projectCategory:projectCategory,
           description:description,
           cvPath:cvPath,
-          proposalPath:proposalPath
-
+          proposalPath:proposalPath,
+          email:email1,
+          status:1
         })
         .then((projects)=>{res.json('project is stored in database')+projects})
         .catch(error=>{res.json('error during created projects'+error)})
