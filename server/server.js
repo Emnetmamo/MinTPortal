@@ -22,6 +22,7 @@ import adminAcceptedProjects from './routes/admin/adminAcceptedProjects.js'
 import adminInstitutes from './routes/admin/adminInstitutes.js'
 import login from './controller/login.js';
 import dashboardRoute from './middleware/dashboard.js';
+import institutes from './routes/institutes.js'
 
 const app = express();
 const CONNECTION_URL = process.env.CONNECTION_URL
@@ -58,6 +59,7 @@ app.use('/admind',dashboardRoute)
 //app.use('/announcements', fetchRoute)
 app.use('/news', news);
 app.use('/resources', resources);
+app.use('/institutes', institutes)
 
 //middleware to  admin  routes
 app.use('/admin/news', adminNews);
