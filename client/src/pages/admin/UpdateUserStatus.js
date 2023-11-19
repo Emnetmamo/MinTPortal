@@ -57,6 +57,15 @@ function UpdateUserStatus() {
                   Post Accepted Projects
                 </Link>
               </li>
+              <br />
+              <li class="list-group-item post-links   " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link
+                  className="links"
+                  to="/admin/institutes/post-to-institutes"
+                >
+                  Post To Institutes
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="col-xs-12 col-md-1"></div>

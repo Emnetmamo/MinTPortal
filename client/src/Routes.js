@@ -29,8 +29,8 @@ import UpdateUserStatus from './pages/admin/UpdateUserStatus'
 import PostCalls from './pages/admin/PostCalls'
 import PostPublications from './pages/admin/PostPublications'
 import PostAcceptedProjects from './pages/admin/PostAcceptedProjects';
+import PostInstitutes from './pages/admin/PostInstitutes.js';
 import PostNews from './pages/admin/PostNews'
-
 
 //user page 
 
@@ -118,6 +118,7 @@ const RoutesComponent = () => {
           <Route path='calls/add-call' element={<PostCalls/>}/>
           <Route path='publications/add-publication' element={<PostPublications/>}/>
           <Route path='accepted-projects/add-accepted-project' element={<PostAcceptedProjects/>}/>
+          <Route path='institutes/post-to-institutes' element={<PostInstitutes/>}/>
         </Route>
 
 

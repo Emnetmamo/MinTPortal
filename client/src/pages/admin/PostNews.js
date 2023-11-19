@@ -149,6 +149,15 @@ function Post_News() {
                   Post Accepted Projects
                 </Link>
               </li>
+              <br />
+              <li class="list-group-item post-links   " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link
+                  className="links"
+                  to="/admin/institutes/post-to-institutes"
+                >
+                  Post To Institutes
+                </Link>
+              </li>
             </ul>
             {/* ... Navigation links ... */}
           </div>
@@ -264,8 +273,8 @@ function Post_News() {
                 </div>
               </form>            
               <ToastContainer/>         
-            <p>Upload Images:</p>
-            <Dropzone className='py-5 mt-10 border border-neutral-200' />
+            {/* <p>Upload Images:</p>
+            <Dropzone className='py-5 mt-10 border border-neutral-200' /> */}
           </div>
         </div>
       </div>

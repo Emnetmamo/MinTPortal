@@ -48,7 +48,7 @@ const News = () => {
           <div key={index} className="col-md-4 mb-4">
             <div className="card rounded shadow grow-on-hover"> {/* Added grow-on-hover class */}
               
-              <img className='card-img-top news' src={`${newsItem.imagePath.replace(/\//g, '\\')}`} alt={newsItem.title} />               
+              {/* <img className='card-img-top news' src={`${newsItem.imagePath.replace(/\//g, '\\')}`} alt={newsItem.title} />                */}
               <div className="card-body newsbody1 text-center">
                 <h6 className="mb-0" style={{color: '#11676d', fontSize: '20px'}}
                 >Author:  {newsItem.author}</h6>

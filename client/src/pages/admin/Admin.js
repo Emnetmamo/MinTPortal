@@ -4,6 +4,7 @@ import axios from 'axios';
 
 function Admin() {
   const [message, setMessage] = useState('');
+  // const [message_1, setMessage_1] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -13,6 +14,7 @@ function Admin() {
         console.log(result)
         if (result.data === 'ok') {
           setMessage('Welcome to the admin dashboard.');
+          // setMessage_1('Use "Quick Links:" inorder to easily browse and post your contents !! ');
         } else {
           navigate('/login');
         }
@@ -119,13 +121,23 @@ function Admin() {
                   Post Accepted Projects
                 </Link>
               </li>
+              <br />
+              <li class="list-group-item post-links   " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link
+                  className="links"
+                  to="/admin/institutes/post-to-institutes"
+                >
+                  Post To Institutes
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="col-xs-12 col-md-2"></div>
-          <div className="col-xs-12 col-md-7 mb-5">
+          <div className="col-xs-12 col-md-7 mb-5"  style={{ height: "400px" }}>
             <br />
             <h1 style={{color:"orange"}}>Admin Home</h1>
-            <h3>{message}</h3>
+            <h3>{message}</h3> <br /> <br />
+            {/* <h3>{message_1}</h3> */}
           </div>
         </div>
       </div>
