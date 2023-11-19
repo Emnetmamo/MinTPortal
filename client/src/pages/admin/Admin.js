@@ -122,7 +122,7 @@ function Admin() {
                 </Link>
               </li>
               <br />
-              <li class="list-group-item post-links   " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+              <li class="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
                 <Link
                   className="links"
                   to="/admin/institutes/post-to-institutes"

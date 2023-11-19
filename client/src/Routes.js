@@ -29,14 +29,14 @@ import UpdateUserStatus from './pages/admin/UpdateUserStatus'
 import PostCalls from './pages/admin/PostCalls'
 import PostPublications from './pages/admin/PostPublications'
 import PostAcceptedProjects from './pages/admin/PostAcceptedProjects';
-import PostInstitutes from './pages/admin/PostInstitutes.js';
+import PostInstitutes from './pages/admin/PostInstitutes';
 import PostNews from './pages/admin/PostNews'
-import ViewFile from './pages/admin/ViewFile.js';
+import ViewFile from './pages/admin/ViewFile';
 
 //user page 
 
-import UserHeader from './components/UserComponents/UserHeader.js'
-import UserDashboard from './pages/user/UserDashboard.js';
+import UserHeader from './components/UserComponents/UserHeader';
+import UserDashboard from './pages/user/UserDashboard';
 import ConfirmAppointment from './pages/user/ConfirmAppointment';
 import CheckStatus from './pages/user/CheckStatus';
 
@@ -108,7 +108,7 @@ const RoutesComponent = () => {
       </Routes>
       
  
-     
+    
       <Routes>
         <Route path='/admin' element = {<Layout />}>
 

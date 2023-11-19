@@ -4,15 +4,11 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import '../../images/assets/css/admin.css';
-import AdminHeader from '../../components/AdminComponents/AdminHeader';
-import Dropzone from '../../components/AdminComponents/Dropzone';
-
 
 axios.defaults.withCredentials=true;
 
-// 
+
 function PostInstitutes() {
-  const navigate=useNavigate();
   const [formData, setFormData] = useState({
     title: '',
     link: '',
@@ -51,7 +47,28 @@ function PostInstitutes() {
       });
     }
   };
+ //text file
+    
+ const handleTextFileSelect = (event) => {
+      
+  const selectedFile = event.target.files[0];       
+  if (selectedFile) {
+    
+    setFormData({
+      ...formData,
+      file: selectedFile,
+    });                              
+  }
+  else {
+   
+    setFormData({
+      ...formData,
+      file: null,
+    });
+  }
+};
 
+//handle change event
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -60,13 +77,12 @@ function PostInstitutes() {
     });
   };
 
+  //handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     
       const data = new FormData();
-      const dateFromServer = formData.date  // This is the date string fetched from the server
-      const formattedDate = new Date(dateFromServer).toLocaleDateString(); // Format the date
 
       
       data.append('title', formData.title);
@@ -78,22 +94,12 @@ function PostInstitutes() {
       data.append('image', formData.image);
      
 
-     
-      
-
       try {
-        const response = await axios.post('http://localhost:5001/admin/institutes/post-to-institutes', data);
-        console.log(formattedDate); // Output: 11/13/2023 (or a date format specific to your locale)
-
-        console.log(response.data.ok);
-        if(response.data.ok='ok'){
+        const response = axios.post('http://localhost:5001/admin/institutes/post-to-institutes', data);
+        console.log(response.data);
           alert('Do you want to submit')
           toast.info('Institutes form submitted successfully!');
           // await  window.location.reload()
-        }else{
-             navigate('/login')
-        }
-       
       } catch (errors) {
         console.error('Error:', errors.message);
         toast.error('An error occurred while submitting institutes form.');
@@ -109,13 +115,13 @@ function PostInstitutes() {
           <div className="col-xs-12 col-md-3 post-links-container  " style={{ overflow: 'hidden' }}>
           <ul class="list-group text-center fs-5 display-6">
               <br />
-              <li class="list-group-item post-links active " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+              <li class="list-group-item post-links" style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
                 <Link className="links" to="/admin/news/add-news">
                   Post News{" "}
                 </Link>
               </li>
               <br />
-              <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+              <li class="list-group-item post-links" style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
                 <Link
                   className="links"
                   to="/admin/appointments/add-appointment"
@@ -154,7 +160,7 @@ function PostInstitutes() {
                 </Link>
               </li>
               <br />
-              <li class="list-group-item post-links   " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+              <li class="list-group-item post-links active " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
                 <Link
                   className="links"
                   to="/admin/institutes/post-to-institutes"
