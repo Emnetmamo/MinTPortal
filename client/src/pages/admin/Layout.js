@@ -8,8 +8,8 @@ const Layout = () => {
       <nav>
 
         <ul style={{backgroundColor:"#11676d"}}>
-          <li style={{display:"inline", marginRight:"20px", color: "orange"}}>Quick Links: </li>
-          <li style={{display:"inline", marginRight:"980px"}}>
+          <li style={{display:"inline", marginRight:"30px", color: "orange"}}>Quick Links: </li>
+          <li style={{display:"inline", marginRight:"1100px"}}>
             <Link to="/admin" style={{color: "orange"}}>Admin</Link>
           </li>
           {/* <li style={{display:"inline", marginRight:"20px"}}>
