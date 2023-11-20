@@ -24,6 +24,9 @@ import login from './controller/login.js';
 import dashboardRoute from './middleware/dashboard.js';
 import institutes from './routes/institutes.js'
 
+import adminAppointment from './routes/admin/adminAppointment.js';
+import adminUserStatus from './routes/admin/adminUserStatus.js';
+
 const app = express();
 const CONNECTION_URL = process.env.CONNECTION_URL
  const PORT = process.env.PORT_2;
@@ -69,6 +72,9 @@ app.use('/admin/institutes', adminInstitutes)
 
 app.use('/collaboration', Collaboration);
 app.use('/admin/collaboration', adminCollaboration);
+
+app.use('/admin/userStatus/:id', adminUserStatus);
+app.use('/admin/appointment/:id', adminAppointment);
 
 
 

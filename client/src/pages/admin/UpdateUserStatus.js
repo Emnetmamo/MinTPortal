@@ -38,7 +38,7 @@ function UpdateUserStatus() {
                 function(e){
                 updateStatus(e.target.name.split('-')[0], parseInt(e.target.name.split('-')[1])+1);
               }} 
-                className='btn btn-primary' style={{display:buttonsDisplay(projects[j].status)}}>Accept</button>
+                className='btn btn-primary' style={{display:buttonsDisplay(projects[j].status), marginBottom:"10px"}}>Accept</button>
               <button name={projects[j]._id + "-" + projects[j].status} onClick={
                 function(e){
                 updateStatus(e.target.name.split('-')[0], parseInt(e.target.name.split('-')[1])-1)}} 
