@@ -8,8 +8,11 @@ import { FaPhone, FaFacebook, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { RiMapPin2Fill, RiMailFill } from 'react-icons/ri';
 import GoogleMapLocation from '../images/GoogleMapLocation.png'; 
 import Logo from '../images/Logo.jpg';
+import { FaRegCopyright } from 'react-icons/fa';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer style={{ backgroundColor: '#052629', color: 'white' }}>
       <br/>
@@ -61,7 +64,9 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="text-center">
-          <span><i className="fa fa-copyright"></i> MinT All rights Reserved.</span>
+        <span> 
+            <FaRegCopyright /> {currentYear} MinT All rights Reserved.
+            </span>
         </div>
       </div>
     </footer>
