@@ -178,7 +178,7 @@ function PostInstitutes() {
                 
                 <h1>Post To Institutes</h1>
                 <div className="form-group">
-                  <label className='form-label'>Institutes Catagory Title:</label>
+                  <label className='form-label'>Title:</label>
                   <input
                     type="text"
                     name="title"
@@ -190,7 +190,7 @@ function PostInstitutes() {
                   />
                 </div>
                 <div className="form-group">
-                  <label className='form-label'>Institutes Catagory website link(if possible):</label>
+                  <label className='form-label'>Website link(if possible):</label>
                   <input
                     type="text"
                     name="link"
@@ -201,7 +201,7 @@ function PostInstitutes() {
                   />
                 </div>
                 <div className="form-group">
-                  <label className='form-label'>Institutes Catagory Description:</label>
+                  <label className='form-label'>Description:</label>
                   <textarea
                     name="description"
                     className="form-control"
@@ -228,7 +228,7 @@ function PostInstitutes() {
                     <option value="Laboratories" >
                       Laboratories
                     </option>
-                    <option value="IctPartners" >
+                    <option value="Ict Partners" >
                       Ict Partners
                     </option>
                     <option value="Government Agencies" >
@@ -243,7 +243,7 @@ function PostInstitutes() {
                 </div>
 
                 <div className="form-group">
-                  <label className='form-label'>Institutes Catagory Email:</label>
+                  <label className='form-label'>Email:</label>
                   <textarea
                     name="link"
                     className="form-control"
@@ -256,7 +256,7 @@ function PostInstitutes() {
 
                 
                   <div className="form-group">
-                  <label className='form-label'>Institutes Catagory Phone:</label>
+                  <label className='form-label'>Phone:</label>
                   <textarea
                     name="phone"
                     className="form-control"

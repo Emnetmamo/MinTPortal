@@ -4,8 +4,8 @@ let institutes_schema = new mongoose.Schema({
   link: {type: String, },
   description: {type: String, required: true},
   category: {type: String, required: true},
-  email: {type: Date, },
-  phone: {type: Date, required: true},
+  email: {type: String, },
+  phone: {type: String, required: true},
   imagePath: {type: String, },
 });
 

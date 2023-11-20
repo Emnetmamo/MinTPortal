@@ -4,7 +4,6 @@ import axios from 'axios';
 
 function Admin() {
   const [message, setMessage] = useState('');
-  // const [message_1, setMessage_1] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,7 +13,6 @@ function Admin() {
         console.log(result)
         if (result.data === 'ok') {
           setMessage('Welcome to the admin dashboard.');
-          // setMessage_1('Use "Quick Links:" inorder to easily browse and post your contents !! ');
         } else {
           navigate('/login');
         }
@@ -137,7 +135,6 @@ function Admin() {
             <br />
             <h1 style={{color:"orange"}}>Admin Home</h1>
             <h3>{message}</h3> <br /> <br />
-            {/* <h3>{message_1}</h3> */}
           </div>
         </div>
       </div>
