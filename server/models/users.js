@@ -9,12 +9,22 @@ let userschema = new mongoose.Schema({
   country: { type: String, required: true },
   address: { type: String, required: true },
   uniqueID:{type: String, required: true},
-  posts: [{ type: mongoose.Types.ObjectId, ref: 'projectfiles' }]
-  ,
+ 
+  
   role:{
     type:String,
     default:'user'
   }
+  ,
+  projectTitle:{type: String},
+  teamMembers:{type:String},
+  projectCategory:{type:String},
+  description:{type:String},
+  cvPath:{type:String},
+  proposalPath:{type:String},
+ status:{type:Number, default:1}
+
+
 });
 
 

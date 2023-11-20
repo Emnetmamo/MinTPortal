@@ -40,7 +40,7 @@ const register = async (req, res) => {
       user = await UserModel.findOne({ email: email }); // Assign user
 
       if (user) {
-        return res.json("User already exists, please login.");
+        return res.json("UserExist");
       }
 
       const hash = await bcrypt.hash(password, 12);
@@ -59,7 +59,7 @@ const register = async (req, res) => {
       const token = jwt.sign({ user: newUser }, SECRET_KEY, { expiresIn: '1h' });
       res.cookie('token', token, { httpOnly: true }); 
       
-      res.json({ message: 'User registered successfully', token });
+      res.json('Userregistered' );
     } catch (error) {
       res.status(500).json({ error: 'Error during registration: ' + error });
     }
@@ -84,7 +84,7 @@ else if (req.params.page === "submitProject") {
   try {
     verifyToken(req, res, async () => {
       const User = await req.user;
-     // console.log(User);
+    console.log(User);
       if (!User) {
         return res.json({ message: 'User not found. Please register or log in.' });
       }
@@ -96,6 +96,10 @@ else if (req.params.page === "submitProject") {
           console.log('Error occurred during file upload: ' + err);
           return res.json({ message: 'Error occurred during file upload' });
         }
+
+
+
+        
         //console.log(req.body);
         const projectTitle = req.body.projectTitle;
         const teamMembers = req.body.teamMembers;
@@ -111,19 +115,28 @@ else if (req.params.page === "submitProject") {
         // await ProjectModel.updateMany( {},{ $set: { email : 'emnetmk@gmail.com'} }, { multi: true });
         // await ProjectModel.updateMany( {},{ $set: { status : 1} }, { multi: true });
         //console.log(email1);
-   
-        const projects=   await   ProjectModel.create({
-          projectTitle:projectTitle,
-          teamMembers:[teamMembers],
-          projectCategory:projectCategory,
-          description:description,
-          cvPath:cvPath,
-          proposalPath:proposalPath,
-          email:email1,
-          status:1
-        })
-        .then((projects)=>{res.json('project is stored in database')+projects})
-        .catch(error=>{res.json('error during created projects'+error)})
+        const data={projectTitle:projectTitle,teamMembers:teamMembers,projectCategory:projectCategory,description:description,cvPath:cvPath,proposalPath:proposalPath}
+        // const projects=   await   ProjectModel.create({
+        //   projectTitle:projectTitle,
+        //   teamMembers:[teamMembers],
+        //   projectCategory:projectCategory,
+        //   description:description,
+        //   cvPath:cvPath,
+        //   proposalPath:proposalPath,
+        //   email:email1,
+        //   status:1
+        // })
+        // .then((projects)=>{res.json('project is stored in database')+projects})
+        // .catch(error=>{res.json('error during created projects'+error)})
+        const Title=await UserModel.find({Title:projectTitle});
+        if(Title){
+          res.json('titlepresent')
+
+        }else{ const stored=await UserModel.findByIdAndUpdate(User._id, data,{new :true})
+        .then(result=>{res.json('project stored in the data base')})
+        .catch(error=>{console.log(error)})}
+        
+       
       });
     });
   } catch (error) { 

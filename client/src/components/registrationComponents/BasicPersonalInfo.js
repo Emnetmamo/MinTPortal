@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
 import { Form, FormGroup } from "react-bootstrap";
 import axios from "axios";
-
 const BasicPersonalInfo = ({ nextStep}) => {
   const [fName, SetFname] = useState("");
   const [LName, SetLname] = useState("");
@@ -22,13 +21,22 @@ const BasicPersonalInfo = ({ nextStep}) => {
     axios.defaults.withCredentials=true
   
     if (password !== confirmpassword) {
-      toast.error('Password confirmation error');
+      toast.error('Password confirmation error',{
+        autoClose: 5000,
+       className: 'custom-toast'
+      });
     }
     if (password.length < 6) {
-      toast.error('Password length must be above ');
+      toast.error('Password length must be above ',{
+        autoClose: 5000,
+      className: 'custom-toast'
+      });
     }
     if (!/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!.])[A-Za-z\d@#$%^&*!.]{8,}/.test(password)) {
-      toast.error('Password must contain at least one uppercase, one lowercase, one special character, and one number');
+      toast.error('Password must contain at least one uppercase, one lowercase, one special character, and one number',{
+        autoClose: 5000,
+      className: 'custom-toast'
+      });
     }
   
     if (password === confirmpassword && password.length >= 8 && /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!.])[A-Za-z\d@#$%^&*!.]{8,}/.test(password)) {
@@ -44,7 +52,26 @@ const BasicPersonalInfo = ({ nextStep}) => {
         })
         .then((response) => {
           console.log(response.data);
+          if(response.data==="UserExist"){
+            toast.info('Account Already Exists. Please Log In.', {
+              position: toast.POSITION.TOP_CENTER, // Centered at the top
+              autoClose: 6000,
+            });
+          }
+          if(response.data==='Userregistered'){
+            toast.success('Good work go to next step', {
+              position: toast.POSITION.TOP_CENTER, // Centered at the top
+              autoClose: 4000,
+            });
+            
           nextStep();
+          }
+          else{
+            toast.error('server error please try again', {
+              position: toast.POSITION.TOP_CENTER, // Centered at the top
+              autoClose: 6000,
+            });
+          }
         })
         .catch((error) => {
           console.log("error from registration", error);

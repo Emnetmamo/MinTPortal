@@ -10,11 +10,11 @@ const EthicalEvaluation = ({ prevStep }) => {
   const navigate=useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-   setTimeout(() => {
-    toast.success('congratulation your project idea is submited successfully you will recieve notificaton soon for the next process.')
-  
-   }, 6000);
-    navigate('/')
+       toast.success('congratulation ! you submitted the proposals . We will notify you for the next step soon')
+       setTimeout(() => {
+        navigate('/')
+       }, 7000);
+   
   };
 
   const questions = [
@@ -96,6 +96,7 @@ const EthicalEvaluation = ({ prevStep }) => {
           </form>
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 };
