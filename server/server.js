@@ -23,7 +23,6 @@ import adminInstitutes from './routes/admin/adminInstitutes.js'
 import login from './controller/login.js';
 import dashboardRoute from './middleware/dashboard.js';
 import institutes from './routes/institutes.js'
-import footerForm from './routes/footer.js'
 
 const app = express();
 const CONNECTION_URL = process.env.CONNECTION_URL
@@ -62,13 +61,11 @@ app.use('/news', news);
 app.use('/resources', resources);
 app.use('/institutes', institutes)
 
-
 //middleware to  admin  routes
 app.use('/admin/news', adminNews);
 app.use('/admin/publications', adminPublications)
 app.use('/admin/accepted-projects', adminAcceptedProjects)
 app.use('/admin/institutes', adminInstitutes)
-app.use('/footer', footerForm)
 
 app.use('/collaboration', Collaboration);
 app.use('/admin/collaboration', adminCollaboration);
