@@ -1,6 +1,7 @@
 // src/components/Footer.js
 
 import React from 'react';
+import FooterForm from '../components/footerComponents/FooterForm';
 import { Link } from 'react-router-dom';
 import { FaPhone, FaFacebook, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { RiMapPin2Fill, RiMailFill } from 'react-icons/ri';
@@ -20,19 +21,7 @@ const Footer = () => {
           
                    {/* Left Column */}
             <div className="col-md-4 mb-4">
-              <h5>Send Us a Message</h5>
-              <form>
-                <div className="form-group mb-2">
-                  <input type="text" className="form-control" placeholder="Full Name" />
-                </div>
-                <div className="form-group mb-2">
-                  <input type="email" className="form-control" placeholder="Your Email" />
-                </div>
-                <div className="form-group mb-3">
-                  <textarea className="form-control" rows="4" placeholder="Your Message"></textarea>
-                </div>
-                <button type="submit" className="btn btn-warning">Submit</button>
-              </form>
+            <FooterForm />
             </div>
 
                   {/* Center Column */}
