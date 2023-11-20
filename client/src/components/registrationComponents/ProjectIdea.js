@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+import { useNavigate } from "react-router-dom";
 const ProjectIdea = ({ nextStep, prevStep }) => {
+  const navigat=useNavigate()
   const [projectTitle, setProjectTitle] = useState("");
   const [teamMembers, setTeamMembers] = useState("");
   const [projectCategory, setProjectCategory] = useState("");
@@ -34,12 +38,19 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
       formData.append("proposalFile", proposalFile);
     }
     try {
-      const response = await axios.post(
+      const response = await axios.put(
         "http://localhost:5001/auth/submitProject",
         formData
       );
       console.log(response);
-      nextStep()
+      if(response.data==='titlepresent'){
+        toast.error('this project is done by some or already taken,come other day with other topic')
+        setTimeout(() => {
+          navigat('/')
+        }, 7000);
+      }
+      else{
+      nextStep()}
     } catch (error) {
       console.error("Error occurred during project submission: ", error);
     }
@@ -191,6 +202,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
           </form>
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 };
