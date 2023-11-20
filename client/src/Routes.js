@@ -10,7 +10,7 @@ import AboutUs from './pages/AboutUs';
 import News from './pages/News';
 import Login from './pages/Login.js';
 import Register from './pages/Register';
-import Footer from './components/Footer';
+import Footer from './pages/Footer.js';
 import ResearchInstitutes from './components/Institutes/ResearchInstitutes';
 import Laboratories from './components/Institutes/Laboratories';
 import GovernmentAgencies from './components/Institutes/GovernmentAgencies';
@@ -19,6 +19,7 @@ import Publications from './pages/Publications';
 import Institutes from './pages/Institutes';
 import ProjectDescription from './pages/ProjectDescription';
 import AcceptedProjects from './pages/AcceptedProjects';
+import FooterForm from './components/footerComponents/FooterForm.js';
 
 // admin pages
 import Layout from './pages/admin/Layout';
@@ -92,6 +93,7 @@ const RoutesComponent = () => {
         <Route path="/announcements" element={<Announcements />} />
         <Route path="/resources" element={<Resources />} />
         <Route  path='/resources/accepted-projects' element={<AcceptedProjects/>}/>
+        <Route  path='/footer' element={<FooterForm/>}/>
         <Route  path='/resources/publications' element={<Publications/>}/>
         <Route  path='/institutes' element={<Institutes />}/>
         <Route path="/collaborations" element={<Collaborations />} />
