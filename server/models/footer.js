@@ -1,3 +1,4 @@
+
 import mongoose from "mongoose";
 
 let footer_Schema = new mongoose.Schema({
