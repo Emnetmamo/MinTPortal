@@ -29,6 +29,22 @@
   color: white !important;
 }
 
+.dropdown-menu .dropdown-item {
+  background-color: #11676d;
+  color: white;
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+  background-color: #FF8F00;
+  color: white;
+}
+
+.dropdown-menu .dropdown-item.active {
+  background-color: #FF8F00;
+  color: white;
+}
+
 
 /* Add some padding to the body to compensate for the fixed Navbar */
 body {
