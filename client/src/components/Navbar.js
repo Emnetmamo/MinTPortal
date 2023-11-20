@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top">
+    <nav className="navbar navbar-expand-lg navbar-light shadow fixed-top">
       <div className="container-fluid">
         <Link className="navbar-brand mr-auto" to="/">
          

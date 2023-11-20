@@ -4,12 +4,13 @@
   position: fixed;
   width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #11676d;
 }
 
 
 
 .navbar-nav .nav-link {
-  color: #11676d; /* Set the default color */
+  color: white; /* Set the default color */
   font-size: 20px;
   font-weight: bold;
   margin-right: "15px"  !important;
