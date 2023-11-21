@@ -2,23 +2,48 @@ import React, { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import { useNavigate } from "react-router-dom";
+
 const ProjectIdea = ({ nextStep, prevStep }) => {
-  const navigat=useNavigate()
+  const navigate = useNavigate();
   const [projectTitle, setProjectTitle] = useState("");
-  const [teamMembers, setTeamMembers] = useState("");
+  const [teamMembers, setTeamMembers] = useState([]);
+  const [newTeamMember, setNewTeamMember] = useState('');
   const [projectCategory, setProjectCategory] = useState("");
   const [description, setDescription] = useState("");
   const [cvFile, setCvFile] = useState(null);
   const [proposalFile, setProposalFile] = useState(null);
-  const [email, SetEmail] = useState("");
+  const [email, setEmail] = useState("");
+
+  const MAX_FILE_SIZE = 3 * 1024 * 1024; // 3MB in bytes
+
   const handleCVFileChange = (e) => {
-    setCvFile(e.target.files[0]);
+    const file = e.target.files[0];
+    if (file && file.size <= MAX_FILE_SIZE) {
+      setCvFile(file);
+    } else {
+      toast.error('CV file size should not exceed 3MB');
+    }
   };
 
   const handleProposalFileChange = (e) => {
-    setProposalFile(e.target.files[0]);
+    const file = e.target.files[0];
+    if (file && file.size <= MAX_FILE_SIZE) {
+      setProposalFile(file);
+    } else {
+      toast.error('Proposal file size should not exceed 3MB');
+    }
+  };
+
+  const handleAddTeamMember = () => {
+    if (newTeamMember.trim() !== '') {
+      setTeamMembers((prevMembers) => [...prevMembers, newTeamMember.trim()]);
+      setNewTeamMember('');
+    }
+  };
+
+  const handleRemoveTeamMember = (index) => {
+    setTeamMembers((prevMembers) => prevMembers.filter((_, i) => i !== index));
   };
 
   const handleSubmit = async (e) => {
@@ -26,31 +51,31 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
 
     const formData = new FormData();
     formData.append("projectTitle", projectTitle);
-    formData.append("teamMembers", teamMembers);
+    formData.append("teamMembers", JSON.stringify(teamMembers));
     formData.append("projectCategory", projectCategory);
     formData.append("description", description);
     formData.append("email", email);
     if (cvFile) {
       formData.append("cvFile", cvFile);
     }
-
     if (proposalFile) {
       formData.append("proposalFile", proposalFile);
     }
+
     try {
       const response = await axios.put(
         "http://localhost:5001/auth/submitProject",
         formData
       );
       console.log(response);
-      if(response.data==='titlepresent'){
-        toast.error('this project is done by some or already taken,come other day with other topic')
+      if (response.data === 'titlepresent') {
+        toast.error('This project is already taken or done, please choose another topic.');
         setTimeout(() => {
-          navigat('/')
+          navigate('/');
         }, 7000);
+      } else {
+        nextStep();
       }
-      else{
-      nextStep()}
     } catch (error) {
       console.error("Error occurred during project submission: ", error);
     }
@@ -86,21 +111,49 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
               <label htmlFor="teamMembers" className="form-label">
                 Team Members
               </label>
-              <input
-                type="text"
-                className="form-control"
-                id="teamMembers"
-                name="teamMembers"
-                value={teamMembers}
-                onChange={(e) => setTeamMembers(e.target.value)}
-                placeholder="List your team members ..."
-                required
-              />
+              {teamMembers.map((member, index) => (
+                <div key={index} className="d-flex align-items-center">
+                  <input
+                    type="text"
+                    className="form-control me-2"
+                    value={member}
+                    onChange={(e) => {
+                      const updatedMembers = [...teamMembers];
+                      updatedMembers[index] = e.target.value;
+                      setTeamMembers(updatedMembers);
+                    }}
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="btn btn-danger"
+                    onClick={() => handleRemoveTeamMember(index)}
+                  >
+                    Remove
+                  </button>
+                </div>
+              ))}
+              <div className="d-flex align-items-center">
+                <input
+                  type="text"
+                  className="form-control me-2"
+                  placeholder="Add a team member..."
+                  value={newTeamMember}
+                  onChange={(e) => setNewTeamMember(e.target.value)}
+                />
+                <button
+                  type="button"
+                  className="btn btn-success"
+                  onClick={handleAddTeamMember}
+                >
+                  Add
+                </button>
+              </div>
             </div>
 
             <div className="mb-3">
               <label htmlFor="projectCategory" className="form-label">
-                Category of Project*
+                Project Category*
               </label>
               <select
                 className="form-select"
@@ -110,9 +163,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
                 onChange={(e) => setProjectCategory(e.target.value)}
                 required
               >
-                <option value="" disabled>
-                  Select a category
-                </option>
+                <option value="">Select a category</option>
                 <option value="Agriculture">Agriculture</option>
                 <option value="Environment-Energy">Environment and Energy</option>
                 <option value="Health">Health</option>
@@ -122,44 +173,43 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="projectDescription" className="form-label">
-                Description*
+              <label htmlFor="description" className="form-label">
+                Project Description*
               </label>
               <textarea
                 className="form-control"
-                id="projectDescription"
-                name="projectDescription"
-                placeholder="Type your description here..."
+                id="description"
+                name="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
+                rows="5"
                 required
               ></textarea>
             </div>
 
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
-                Email
+                Email Address*
               </label>
               <input
                 type="email"
                 className="form-control"
                 id="email"
                 name="email"
-                placeholder="sample@gmail.com"
                 value={email}
-                onChange={(e) => {
-                  SetEmail(e.target.value);
-                }}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
-            
+
+
             <div className="mb-3">
               <label htmlFor="cvFile" className="form-label">
-                Attach your CV*
+                CV (PDF)*
               </label>
               <input
                 type="file"
+                accept="application/pdf"
                 className="form-control"
                 id="cvFile"
                 name="cvFile"
@@ -170,10 +220,11 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
 
             <div className="mb-3">
               <label htmlFor="proposalFile" className="form-label">
-                Attach your Proposal*
+                Proposal (PDF)*
               </label>
               <input
                 type="file"
+                accept="application/pdf"
                 className="form-control"
                 id="proposalFile"
                 name="proposalFile"
@@ -182,27 +233,30 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
               />
             </div>
 
-            <div className="d-flex justify-content-end">
-              <button
-                style={{ backgroundColor: "orange", color: "white", float: "right" }}
-                type="button"
-                className="btn me-2"
-                onClick={prevStep}
-              >
-                Previous
-              </button>
-              <button
-                style={{ backgroundColor: "orange", color: "white", float: "right" }}
-                type="submit"
-                className="btn"
-              >
-                Next
-              </button>
+           
+
+            <div className="d-flex justify-content-between">
+            <button
+            style={{ backgroundColor: "orange", color: "white", float: "left" }}
+            type="button"
+            className="btn me-2"
+            onClick={prevStep}
+          >
+            Previous
+          </button>
+          <button
+            style={{ backgroundColor: "orange", color: "white", float: "right" }}
+            type="submit"
+            className="btn"
+          >
+            Next
+          </button>
+
             </div>
           </form>
         </div>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };
