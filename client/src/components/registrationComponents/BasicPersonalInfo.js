@@ -4,83 +4,95 @@ import 'react-toastify/dist/ReactToastify.css';
 import countryOptions from "./countryOptions";
 import { Link } from "react-router-dom";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
-import { Form } from "react-bootstrap";
+import { Form, FormGroup } from "react-bootstrap";
 import axios from "axios";
-
-const BasicPersonalInfo = ({ nextStep }) => {
-  const [fName, setFName] = useState("");
-  const [lName, setLName] = useState("");
+const BasicPersonalInfo = ({ nextStep}) => {
+  const [fName, SetFname] = useState("");
+  const [LName, SetLname] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [email, SetEmail] = useState("");
+  const [phone, SetPhone] = useState("");
   const [country, SetCountry] = useState("");
-  const [address, setAddress] = useState("");
+  const [address, SetAdress] = useState("");
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.defaults.withCredentials = true;
-
+    axios.defaults.withCredentials=true
+  
     if (password !== confirmPassword) {
-      toast.error('Password confirmation error', {
+      toast.error('Password confirmation error',{
         autoClose: 5000,
-        className: 'custom-toast'
+       className: 'custom-toast'
       });
-    } else if (password.length < 6) {
-      toast.error('Password length must be at least 6 characters', {
+    }
+    if (password.length < 6) {
+      toast.error('Password length must be above ',{
         autoClose: 5000,
-        className: 'custom-toast'
+      className: 'custom-toast'
       });
-    } else if (!/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!.])[A-Za-z\d@#$%^&*!.]{8,}/.test(password)) {
-      toast.error('Password must contain at least one uppercase letter, one lowercase letter, one special character, and one number', {
+    }
+    if (!/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!.])[A-Za-z\d@#$%^&*!.]{8,}/.test(password)) {
+      toast.error('Password must contain at least one uppercase, one lowercase, one special character, and one number',{
         autoClose: 5000,
-        className: 'custom-toast'
+      className: 'custom-toast'
       });
-    } else {
-      axios.post("http://localhost:5001/auth/register", {
-        fName,
-        lName,
-        password,
-        email,
-        phone,
-        country,
-        address,
-      })
+    }
+  
+    if (password === confirmPassword && password.length >= 8 && /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!.])[A-Za-z\d@#$%^&*!.]{8,}/.test(password)) {
+      axios
+        .post("http://localhost:5001/auth/register", {
+          fName,
+          LName,
+          password,
+          email,
+          phone,
+          country,
+          address,
+        })
         .then((response) => {
           console.log(response.data);
-          if (response.data === "UserExist") {
+          if(response.data==="UserExist"){
             toast.info('Account Already Exists. Please Log In.', {
-              position: toast.POSITION.TOP_CENTER,
+              position: toast.POSITION.TOP_CENTER, // Centered at the top
               autoClose: 6000,
             });
-          } else if (response.data === 'Userregistered') {
-            toast.success('Good work! Proceeding to the next step', {
-              position: toast.POSITION.TOP_CENTER,
+          }
+          if(response.data==='Userregistered'){
+            toast.success('Good work go to next step', {
+              position: toast.POSITION.TOP_CENTER, // Centered at the top
               autoClose: 4000,
             });
-            nextStep();
-          } else {
-            toast.error('Server error. Please try again', {
-              position: toast.POSITION.TOP_CENTER,
+            
+          nextStep();
+          }
+          else{
+            toast.error('server error please try again', {
+              position: toast.POSITION.TOP_CENTER, // Centered at the top
               autoClose: 6000,
             });
           }
         })
         .catch((error) => {
-          console.log("Error from registration", error);
+          console.log("error from registration", error);
         });
     }
+  
   };
+  
+
+
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
+
   const toggleConfirmPasswordVisibility = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
+
 
   return (
     <div className="container">
@@ -128,7 +140,7 @@ const BasicPersonalInfo = ({ nextStep }) => {
                   required
                   value={fName}
                   onChange={(e) => {
-                    setFName(e.target.value);
+                    SetFname(e.target.value);
                   }}
                 />
 
@@ -138,16 +150,19 @@ const BasicPersonalInfo = ({ nextStep }) => {
                   id="lastName"
                   name="lastName"
                   placeholder="Last Name"
-                  required
-                  value={lName}
+                  value={LName}
                   onChange={(e) => {
-                    setLName(e.target.value);
+                    SetLname(e.target.value);
                   }}
+                  required
                 />
               </div>
             </div>
-
-            <div className="mb-3">
+            {/* <div className="mb-3">
+              <label htmlFor="password" className="form-label">Your Password</label>
+              <input type="password" className="form-control" id="password" name="password" placeholder="******" required  />
+            </div> */}
+           <div className="mb-3">
               <label htmlFor="password" className="form-label">
                 Password*
               </label>
@@ -175,6 +190,7 @@ const BasicPersonalInfo = ({ nextStep }) => {
                 </div>
               </div>
             </div>
+
 
             <div className="mb-3">
               <label htmlFor="confirmPassword" className="form-label">
@@ -205,92 +221,87 @@ const BasicPersonalInfo = ({ nextStep }) => {
               </div>
             </div>
 
+
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
-                Email Address*
+                Email
               </label>
               <input
                 type="email"
                 className="form-control"
                 id="email"
                 name="email"
-                placeholder="Email Address"
-                required
+                placeholder="sample@gmail.com"
                 value={email}
                 onChange={(e) => {
-                  setEmail(e.target.value);
+                  SetEmail(e.target.value);
                 }}
+                required
               />
             </div>
-
             <div className="mb-3">
-              <label htmlFor="phone" className="form-label">
-                Phone Number*
+              <label htmlFor="contactNumber" className="form-label">
+                Contact Number
               </label>
               <input
-                type="text"
+                type="tel"
                 className="form-control"
-                id="phone"
-                name="phone"
-                placeholder="Phone Number"
-                required
+                id="contactNumber"
+                name="contactNumber"
+                placeholder="(000)-000-000"
                 value={phone}
                 onChange={(e) => {
-                  setPhone(e.target.value);
+                  SetPhone(e.target.value);
                 }}
+                required
               />
             </div>
-
             <div className="mb-3">
-          <label htmlFor="country" className="form-label">
-            Country
-          </label>
-          <select
-            className="form-select"
-            id="country"
-            name="country"
-            value={country}
-            onChange={(e) => {
-              SetCountry(e.target.value);
-            }}
-            required
-          >
-            <option value="" disabled selected>
-              Select a country
-            </option>
-            {countryOptions.map((country, index) => (
-              <option key={index} value={country}>
-                {country}
-              </option>
-            ))}
-          </select>
-        </div>
-
+              <label htmlFor="country" className="form-label">
+                Country
+              </label>
+              <select
+                className="form-select"
+                id="country"
+                name="country"
+                value={country}
+                onChange={(e) => {
+                  SetCountry(e.target.value);
+                }}
+                required
+              >
+                <option value="" disabled selected>
+                  Select a country
+                </option>
+                {countryOptions.map((country, index) => (
+                  <option key={index} value={country}>
+                    {country}
+                  </option>
+                ))}
+              </select>
+            </div>
             <div className="mb-3">
               <label htmlFor="address" className="form-label">
-                Address*
+                Address
               </label>
               <textarea
                 className="form-control"
                 id="address"
                 name="address"
-                rows="3"
-                placeholder="Address"
-                required
-                value={address}
+                value={address}                
                 onChange={(e) => {
-                  setAddress(e.target.value);
+                  SetAdress(e.target.value);
                 }}
+                required
               ></textarea>
             </div>
             <button
-            style={{ backgroundColor: "orange", color: "white", float: "right" }}
-             type="submit"
-              className="btn"
-          >
-           Next
-           </button>
-
+              style={{ backgroundColor: "orange", color: "white", float: "right" }}
+              type="submit"
+              className="btn "
+            >
+              Next
+            </button>
           </form>
         </div>
       </div>
