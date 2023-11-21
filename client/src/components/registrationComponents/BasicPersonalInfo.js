@@ -4,85 +4,82 @@ import 'react-toastify/dist/ReactToastify.css';
 import countryOptions from "./countryOptions";
 import { Link } from "react-router-dom";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
-import { Form, FormGroup } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import axios from "axios";
-const BasicPersonalInfo = ({ nextStep}) => {
-  const [fName, SetFname] = useState("");
-  const [LName, SetLname] = useState("");
+
+const BasicPersonalInfo = ({ nextStep }) => {
+  const [fName, setFName] = useState("");
+  const [lName, setLName] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmpassword, setComfirmPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [email, SetEmail] = useState("");
-  const [phone, SetPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [country, SetCountry] = useState("");
-  const [address, SetAdress] = useState("");
+  const [address, setAddress] = useState("");
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.defaults.withCredentials=true
-  
-    if (password !== confirmpassword) {
-      toast.error('Password confirmation error',{
+    axios.defaults.withCredentials = true;
+
+    if (password !== confirmPassword) {
+      toast.error('Password confirmation error', {
         autoClose: 5000,
-       className: 'custom-toast'
+        className: 'custom-toast'
       });
-    }
-    if (password.length < 6) {
-      toast.error('Password length must be above ',{
+    } else if (password.length < 6) {
+      toast.error('Password length must be at least 6 characters', {
         autoClose: 5000,
-      className: 'custom-toast'
+        className: 'custom-toast'
       });
-    }
-    if (!/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!.])[A-Za-z\d@#$%^&*!.]{8,}/.test(password)) {
-      toast.error('Password must contain at least one uppercase, one lowercase, one special character, and one number',{
+    } else if (!/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!.])[A-Za-z\d@#$%^&*!.]{8,}/.test(password)) {
+      toast.error('Password must contain at least one uppercase letter, one lowercase letter, one special character, and one number', {
         autoClose: 5000,
-      className: 'custom-toast'
+        className: 'custom-toast'
       });
-    }
-  
-    if (password === confirmpassword && password.length >= 8 && /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!.])[A-Za-z\d@#$%^&*!.]{8,}/.test(password)) {
-      axios
-        .post("http://localhost:5001/auth/register", {
-          fName,
-          LName,
-          password,
-          email,
-          phone,
-          country,
-          address,
-        })
+    } else {
+      axios.post("http://localhost:5001/auth/register", {
+        fName,
+        lName,
+        password,
+        email,
+        phone,
+        country,
+        address,
+      })
         .then((response) => {
           console.log(response.data);
-          if(response.data==="UserExist"){
+          if (response.data === "UserExist") {
             toast.info('Account Already Exists. Please Log In.', {
-              position: toast.POSITION.TOP_CENTER, // Centered at the top
+              position: toast.POSITION.TOP_CENTER,
               autoClose: 6000,
             });
-          }
-          if(response.data==='Userregistered'){
-            toast.success('Good work go to next step', {
-              position: toast.POSITION.TOP_CENTER, // Centered at the top
+          } else if (response.data === 'Userregistered') {
+            toast.success('Good work! Proceeding to the next step', {
+              position: toast.POSITION.TOP_CENTER,
               autoClose: 4000,
             });
-            
-          nextStep();
-          }
-          else{
-            toast.error('server error please try again', {
-              position: toast.POSITION.TOP_CENTER, // Centered at the top
+            nextStep();
+          } else {
+            toast.error('Server error. Please try again', {
+              position: toast.POSITION.TOP_CENTER,
               autoClose: 6000,
             });
           }
         })
         .catch((error) => {
-          console.log("error from registration", error);
+          console.log("Error from registration", error);
         });
     }
-  
   };
-  
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
   return (
@@ -131,7 +128,7 @@ const BasicPersonalInfo = ({ nextStep}) => {
                   required
                   value={fName}
                   onChange={(e) => {
-                    SetFname(e.target.value);
+                    setFName(e.target.value);
                   }}
                 />
 
@@ -141,129 +138,159 @@ const BasicPersonalInfo = ({ nextStep}) => {
                   id="lastName"
                   name="lastName"
                   placeholder="Last Name"
-                  value={LName}
-                  onChange={(e) => {
-                    SetLname(e.target.value);
-                  }}
                   required
+                  value={lName}
+                  onChange={(e) => {
+                    setLName(e.target.value);
+                  }}
                 />
               </div>
-            </div>
-            {/* <div className="mb-3">
-              <label htmlFor="password" className="form-label">Your Password</label>
-              <input type="password" className="form-control" id="password" name="password" placeholder="******" required  />
-            </div> */}
-            <div className="mb-3">
-              <Form.Group controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Enter your password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  button={showPassword ? <VscEyeClosed /> : <VscEye />}
-                />
-              </Form.Group>
             </div>
 
             <div className="mb-3">
               <label htmlFor="password" className="form-label">
-                confirmpassword
+                Password*
               </label>
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                name="password"
-                placeholder="confrimpassword"
-                value={confirmpassword}
-                onChange={(e) => {
-                  setComfirmPassword(e.target.value);
-                }}
-                required
-              />
+              <div className="input-group">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  className="form-control"
+                  id="password"
+                  name="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  required
+                />
+                <div className="password-toggle-container">
+                  <button
+                    className="btn btn-outline-secondary password-toggle-button"
+                    type="button"
+                    onClick={togglePasswordVisibility}
+                  >
+                    {showPassword ? <VscEyeClosed /> : <VscEye />}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="confirmPassword" className="form-label">
+                Confirm Password*
+              </label>
+              <div className="input-group">
+                <input
+                  type={showConfirmPassword ? "text" : "password"}
+                  className="form-control"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  placeholder="Confirm Password"
+                  value={confirmPassword}
+                  onChange={(e) => {
+                    setConfirmPassword(e.target.value);
+                  }}
+                  required
+                />
+                <div className="password-toggle-container">
+                  <button
+                    className="btn btn-outline-secondary password-toggle-button"
+                    type="button"
+                    onClick={toggleConfirmPasswordVisibility}
+                  >
+                    {showConfirmPassword ? <VscEyeClosed /> : <VscEye />}
+                  </button>
+                </div>
+              </div>
             </div>
 
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
-                Email
+                Email Address*
               </label>
               <input
                 type="email"
                 className="form-control"
                 id="email"
                 name="email"
-                placeholder="sample@gmail.com"
+                placeholder="Email Address"
+                required
                 value={email}
                 onChange={(e) => {
-                  SetEmail(e.target.value);
+                  setEmail(e.target.value);
                 }}
-                required
               />
             </div>
+
             <div className="mb-3">
-              <label htmlFor="contactNumber" className="form-label">
-                Contact Number
+              <label htmlFor="phone" className="form-label">
+                Phone Number*
               </label>
               <input
-                type="tel"
+                type="text"
                 className="form-control"
-                id="contactNumber"
-                name="contactNumber"
-                placeholder="(000)-000-000"
+                id="phone"
+                name="phone"
+                placeholder="Phone Number"
+                required
                 value={phone}
                 onChange={(e) => {
-                  SetPhone(e.target.value);
+                  setPhone(e.target.value);
                 }}
-                required
               />
             </div>
+
             <div className="mb-3">
-              <label htmlFor="country" className="form-label">
-                Country
-              </label>
-              <select
-                className="form-select"
-                id="country"
-                name="country"
-                value={country}
-                onChange={(e) => {
-                  SetCountry(e.target.value);
-                }}
-                required
-              >
-                <option value="" disabled selected>
-                  Select a country
-                </option>
-                {countryOptions.map((country, index) => (
-                  <option key={index} value={country}>
-                    {country}
-                  </option>
-                ))}
-              </select>
-            </div>
+          <label htmlFor="country" className="form-label">
+            Country
+          </label>
+          <select
+            className="form-select"
+            id="country"
+            name="country"
+            value={country}
+            onChange={(e) => {
+              SetCountry(e.target.value);
+            }}
+            required
+          >
+            <option value="" disabled selected>
+              Select a country
+            </option>
+            {countryOptions.map((country, index) => (
+              <option key={index} value={country}>
+                {country}
+              </option>
+            ))}
+          </select>
+        </div>
+
             <div className="mb-3">
               <label htmlFor="address" className="form-label">
-                Address
+                Address*
               </label>
               <textarea
                 className="form-control"
                 id="address"
                 name="address"
-                value={address}                
-                onChange={(e) => {
-                  SetAdress(e.target.value);
-                }}
+                rows="3"
+                placeholder="Address"
                 required
+                value={address}
+                onChange={(e) => {
+                  setAddress(e.target.value);
+                }}
               ></textarea>
             </div>
             <button
-              style={{ backgroundColor: "orange", color: "white" }}
-              type="submit"
-              className="btn "
-            >
-              Next
-            </button>
+            style={{ backgroundColor: "orange", color: "white", float: "right" }}
+             type="submit"
+              className="btn"
+          >
+           Next
+           </button>
+
           </form>
         </div>
       </div>
