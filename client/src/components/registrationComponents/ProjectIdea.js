@@ -184,7 +184,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
 
             <div className="d-flex justify-content-end">
               <button
-                style={{ backgroundColor: "orange", color: "white" }}
+                style={{ backgroundColor: "orange", color: "white", float: "right" }}
                 type="button"
                 className="btn me-2"
                 onClick={prevStep}
@@ -192,7 +192,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
                 Previous
               </button>
               <button
-                style={{ backgroundColor: "orange", color: "white" }}
+                style={{ backgroundColor: "orange", color: "white", float: "right" }}
                 type="submit"
                 className="btn"
               >
