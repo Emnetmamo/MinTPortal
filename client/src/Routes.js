@@ -22,6 +22,7 @@ import ProjectDescription from './pages/ProjectDescription';
 import AcceptedProjects from './pages/AcceptedProjects';
 import FooterForm from './components/footerComponents/FooterForm.js';
 
+
 // admin pages
 import Layout from './pages/admin/Layout';
 import Admin from './pages/admin/Admin';
@@ -34,6 +35,7 @@ import PostAcceptedProjects from './pages/admin/PostAcceptedProjects';
 import PostInstitutes from './pages/admin/PostInstitutes';
 import PostNews from './pages/admin/PostNews'
 import ViewFile from './pages/admin/ViewFile';
+import ViewFeedback from "./pages/admin/ViewFeedback.js"
 
 //user page 
 
@@ -122,6 +124,7 @@ const RoutesComponent = () => {
           <Route path='publications/add-publication' element={<PostPublications/>}/>
           <Route path='accepted-projects/add-accepted-project' element={<PostAcceptedProjects/>}/>
           <Route path='institutes/post-to-institutes' element={<PostInstitutes/>}/>
+          <Route path='/admin/viewFeedback/view-feedback' element={<ViewFeedback/>}/>
         </Route>
         <Route  path='admin/viewFile' element={<ViewFile/>}></Route>
 
