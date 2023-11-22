@@ -22,7 +22,7 @@ const Announcements = () => {
             style={{
               backgroundColor: selectedTab === "national" ? "orange" : "",
               color: selectedTab === "national" ? "white" : "black",
-              fontSize: "20px",
+              fontSize: "18px",
               fontWeight: "bold",
             }}
             onClick={() => handleTabChange("national")}
@@ -36,7 +36,7 @@ const Announcements = () => {
             style={{
               backgroundColor: selectedTab === "foreign" ? "orange" : "",
               color: selectedTab === "foreign" ? "white" : "black",
-              fontSize: "20px",
+              fontSize: "18px",
               fontWeight: "bold",
             }}
             onClick={() => handleTabChange("foreign")}
