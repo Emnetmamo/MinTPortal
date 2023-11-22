@@ -1,16 +1,16 @@
 import express from "express";
 import News from '../models/news.js'
 
-const router = express.Router()
+const router = express.Router();
+
 router.get('/', async (req, res) => {
   try {
-    const newsData = await News.find(); // Fetch all news from the MongoDB collection
+    const newsData = await News.find({}).sort(); // Fetch news from the MongoDB collection sorted by createdAt in ascending order
     res.json(newsData);
   } catch (error) {
-    console.error('error2:', error)
+    console.error('Error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });
-
 
 export default router;
