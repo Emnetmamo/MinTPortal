@@ -108,9 +108,20 @@ else if (req.params.page === "submitProject") {
         const description = req.body.description;
         const email1 = req.body.email;
         console.log('Project Title:', projectTitle);
+        console.log("TeamMember: " + teamMembers);
 
         const cvPath = req.files['cvFile'][0].path.split('\\')[1] + '\\' + req.files['cvFile'][0].path.split('\\')[2];
         const proposalPath = req.files['proposalFile'][0].path.split('\\')[1] + "\\" +req.files['proposalFile'][0].path.split('\\')[2];
+
+        let team1 = teamMembers.replace('[', '');
+        team1 = team1.replace(']', '');
+        team1 = team1.replaceAll('"', '');
+        
+        let teamMembers1 = [];
+        for (let i = 0; i < team1.split(',').length; i++) {
+          teamMembers1.push(team1.split(',')[i]);
+        }
+        console.log("TeamMember1: " + teamMembers1);
         // console.log(cvPath);
         // console.log(proposalPath);
         // await ProjectModel.updateMany( {},{ $set: { email : 'emnetmk@gmail.com'} }, { multi: true });
@@ -124,7 +135,7 @@ else if (req.params.page === "submitProject") {
         }else{
           const projects=   await   ProjectModel.create({
             projectTitle:projectTitle,
-            teamMembers:teamMembers,
+            teamMembers:teamMembers1,
             projectCategory:projectCategory,
             description:description,
             cvPath:cvPath,
