@@ -46,17 +46,25 @@ const adminAppointment=async (req, res)=>{
     else if (req.params.id.split('_')[0] === "setAppointment") {
         const id1 = req.params.id.split('_')[1];
         const newAppointmentDate = req.params.id.split('_')[2];
-        try{
-            console.log(id1)
-            await AppointmentModel.findOneAndUpdate({projectId:id1}, 
-                {status: "Pending", appointmentDate: newAppointmentDate})
-            .then(result=>{ 
-               console.log("Set new time "+newAppointmentDate+" "+result)})
-            .catch(err=> res.json(err))
-        }
-        catch(err){
-            console.log(err);
-        }
+        const TimeCheck = await AppointmentModel.find({appointmentDate: newAppointmentDate});
+        console.log(TimeCheck[0]); 
+        if(TimeCheck[0] === undefined)
+        {
+          try{
+              console.log(id1)
+              await AppointmentModel.findOneAndUpdate({projectId:id1}, 
+                  {status: "Pending", appointmentDate: newAppointmentDate})
+              .then(result=>{ 
+                console.log("Set new time "+newAppointmentDate+" "+result)})
+              .catch(err=> res.json(err))
+          }
+          catch(err){
+              console.log(err);
+          }
+      }
+      else{
+        res.json("Already set");
+      }
       }
       
 }
