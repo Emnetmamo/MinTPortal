@@ -12,7 +12,7 @@ import image5 from "../../images/home/introImage5.png";
 
 const Introduction = () => {
   const carouselImageStyle = {
-    maxHeight: '400px', // Adjust the value as needed to maintain a consistent height
+    height: '400px', // Adjust the value as needed to maintain a consistent height
     objectFit: 'cover', // Ensure the image covers the entire container
   };
   return (
