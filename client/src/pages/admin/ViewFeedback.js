@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-function Admin() {
-  const [message, setMessage] = useState('');
-  const navigate = useNavigate();
+const ViewFeedback = () => {
+  const [feedbackData, setFeedbackData] = useState([]);
 
   useEffect(() => {
-    axios.defaults.withCredentials = true;
-    axios.get('http://localhost:5001/admind/dashboard') // Update the route path here
-      .then((result) => {
-        console.log(result)
-        if (result.data === 'ok') {
-          setMessage('Welcome to the admin dashboard.');
-        } else {
-          navigate('/login');
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        navigate('/login'); // Handle errors by redirecting to the login page
-      });
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:5001/footer');
+        console.log('Feedback Data:', response.data); // Check if data is logged correctly
+        setFeedbackData(response.data);
+      } catch (error) {
+        console.error('Error fetching feedback data:', error);
+      }
+    };
+  
+    fetchData();
   }, []);
+  
 
   return (
     <div>
-      <div className="container mt-5" >
+
+<div className="">
+      <div className="container mt-5">
         <div className="row">
           <div
-            className="col-xs-12 col-md-3 post-links-container mt-2"
+            className="col-xs-12 col-md-3 post-links-container mt-5"
             style={{ overflow: "hidden" }}
           >
             <ul class="list-group text-center fs-5 display-6">
@@ -76,7 +76,7 @@ function Admin() {
               </li>
               <br />
               <li
-                class="list-group-item "
+                class="list-group-item"
                 style={{
                   backgroundColor: "#ffa525",
                   border: "none",
@@ -120,7 +120,7 @@ function Admin() {
                 </Link>
               </li>
               <br />
-              <li class="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+              <li class="list-group-item post-links   " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
                 <Link
                   className="links"
                   to="/admin/institutes/post-to-institutes"
@@ -130,34 +130,49 @@ function Admin() {
               </li>
               <br />
 
-              <li
-                class="list-group-item "
-                style={{
-                  backgroundColor: "#ffa525",
-                  border: "none",
-                  borderRadius: "10px",
-                }}
-              >
-                <Link
-                  className="links"
-                  to="/admin/viewFeedback/view-feedback"
-                >
-                 View feedback
-                </Link>
-              </li>
-
+<li
+  class="list-group-item active"
+  style={{
+    backgroundColor: "#ffa525",
+    border: "none",
+    borderRadius: "10px",
+  }}
+>
+  <Link
+    className="links"
+    to="/admin/viewFeedback/view-feedback"
+  >
+   View feedback
+  </Link>
+</li>
             </ul>
           </div>
           <div className="col-xs-12 col-md-2"></div>
-          <div className="col-xs-12 col-md-7 mb-5"  style={{ height: "400px" }}>
-            <br />
-            <h1 style={{color:"orange"}}>Admin Home</h1>
-            <h3>{message}</h3> <br /> <br />
+          <div className="col-xs-12 col-md-7 mb-5">
+          {feedbackData.map((feedback) => (
+        <Card key={feedback._id} className="mb-3">
+          <Card.Body>
+            <Card.Title>{feedback.fullName}</Card.Title>
+            <Card.Subtitle className="mb-2 text-muted">{feedback.email}</Card.Subtitle>
+            <Card.Text>{feedback.message}</Card.Text>
+          </Card.Body>
+        </Card>
+      ))}
           </div>
         </div>
       </div>
     </div>
-  );
-}
 
-export default Admin;
+
+
+
+
+
+
+
+  
+    </div>
+  );
+};
+
+export default ViewFeedback;

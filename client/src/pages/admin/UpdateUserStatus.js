@@ -139,6 +139,23 @@ function buttonsDisplay(num){
                   Post To Institutes
                 </Link>
               </li>
+              <br />
+
+<li
+  class="list-group-item "
+  style={{
+    backgroundColor: "#ffa525",
+    border: "none",
+    borderRadius: "10px",
+  }}
+>
+  <Link
+    className="links"
+    to="/admin/viewFeedback/view-feedback"
+  >
+   View feedback
+  </Link>
+</li>
             </ul>
           </div>
           <div className="col-xs-12 col-md-1"></div>

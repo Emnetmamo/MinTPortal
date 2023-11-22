@@ -48,12 +48,19 @@ function SetAppointmentDate() {
 function updateStatus(id){
   console.log("Clicked!")
   const dateInput = document.getElementById(id);
-  const newDate = new Date(dateInput.value).toISOString();
+  const newDate = new Date(dateInput.value).toISOString(); 
   console.log(newDate);
   axios.get('http://localhost:5001/admin/appointment/setAppointment_'+id+"_"+newDate)
-  .then(result=>console.log(result))
+  .then((result)=>{
+    console.log(result);
+    if(result.data==="Already set"){
+      window.alert("This date and time have already been set for another project. Choose a different date and time.")
+    }
+    else{
+      window.location.reload(false);
+    }
+  })
   .catch(err=>console.log(err));
-  window.location.reload(false);
 }
 
   return (
@@ -118,6 +125,23 @@ function updateStatus(id){
                   Post To Institutes
                 </Link>
               </li>
+              <br />
+
+<li
+  class="list-group-item "
+  style={{
+    backgroundColor: "#ffa525",
+    border: "none",
+    borderRadius: "10px",
+  }}
+>
+  <Link
+    className="links"
+    to="/admin/viewFeedback/view-feedback"
+  >
+   View feedback
+  </Link>
+</li>
             </ul>
           </div>
           <div className="col-xs-12 col-md-2"></div>

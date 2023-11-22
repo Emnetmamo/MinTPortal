@@ -74,6 +74,7 @@ app.use('/admin/accepted-projects', adminAcceptedProjects)
 app.use('/admin/institutes', adminInstitutes)
 app.use('/footer', footerForm)
 
+
 app.use('/collaboration', Collaboration);
 app.use('/admin/collaboration', adminCollaboration);
 
