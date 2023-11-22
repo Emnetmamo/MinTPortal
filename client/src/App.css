@@ -29,21 +29,48 @@
   color: white !important;
 }
 
-.dropdown-menu .dropdown-item {
+
+/* Style the Resources dropdown link */
+.nav-item.dropdown:hover .nav-link {
+  background-color: #FF8F00 !important;
+  color: white !important;
+}
+
+/* Show the dropdown menu on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the dropdown items */
+.nav-item.dropdown .dropdown-item {
   background-color: #11676d;
   color: white;
 }
 
-.dropdown-menu .dropdown-item:hover,
+/* Style the dropdown items on hover */
+.nav-item.dropdown .dropdown-item:hover {
+  background-color: #FF8F00;
+  color: #ffffff;
+}
+
+
+/* .dropdown-menu .dropdown-item {
+  background-color: #11676d;
+  color: white;
+} */
+
+/* .dropdown-menu .dropdown-item:hover,
 .dropdown-menu .dropdown-item:focus {
   background-color: #FF8F00;
   color: white;
-}
+} */
 
-.dropdown-menu .dropdown-item.active {
+/* .dropdown-menu .dropdown-item.active {
   background-color: #FF8F00;
   color: white;
-}
+} */
 
 
 /* Add some padding to the body to compensate for the fixed Navbar */
