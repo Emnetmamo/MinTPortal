@@ -31,7 +31,7 @@ const Navbar = () => {
       <div className="container-fluid">
         <Link className="navbar-brand mr-auto" to="/">
          
-          <img src={Logo} alt="Logo" style={{ maxWidth: '120px' }} />
+        <img src={Logo} alt="Logo" style={{ borderRadius: '90%', width: '95px',height:"90px",marginLeft:"55px" }} />
         </Link>
         <button
           className="navbar-toggler"
