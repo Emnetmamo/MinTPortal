@@ -77,9 +77,9 @@ const News = () => {
               </div>
               <div className="d-flex px-4 my-2">
                 <Link
-                  to={`/news/${index}`}
+                  to='/viewNews'
+                  state={{id:newsItem._id}}
                   className="btn btn-primary px-3"
-                  target="_blank" // Open in a new window/tab
                 >
                   Read More
                 </Link>
