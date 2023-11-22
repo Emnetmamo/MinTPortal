@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   try {
-    const newsData = await News.find({}).sort({ createdAt: -1 }); // Fetch news from the MongoDB collection sorted by createdAt in descending order
+    const newsData = await News.find({}).sort(); // Fetch news from the MongoDB collection sorted by createdAt in ascending order
     res.json(newsData);
   } catch (error) {
     console.error('Error:', error);

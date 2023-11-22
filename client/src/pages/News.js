@@ -16,10 +16,10 @@ const News = () => {
           typeof response.data === 'string'
             ? JSON.parse(response.data)
             : response.data;
-        console.log(parsedData.date);
+        console.log(parsedData.createdAt);
 
         const sortedPublications = parsedData.sort(
-          (a, b) => new Date(a.date) - new Date(b.date)
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)  
         );
 
         setNews(sortedPublications);
