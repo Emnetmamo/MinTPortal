@@ -150,7 +150,7 @@ const ViewFeedback = () => {
           <div className="col-xs-12 col-md-2"></div>
           <div className="col-xs-12 col-md-7 mb-5">
           {feedbackData.map((feedback) => (
-      <Card key={feedback.createdAt} className="mb-3">
+      <Card key={feedback.createdAt} className="mb-3" style={{background: "#F4EFEF"}}>
         <Card.Body>
           <Card.Subtitle className="mb-2 text-muted">{new Date(feedback.createdAt).toLocaleString()}</Card.Subtitle>
            <Card.Title style={{fontSize:"24px"}}>{feedback.fullName}</Card.Title>
