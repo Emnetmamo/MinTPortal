@@ -38,4 +38,16 @@ router.post('/add-footer', async(req, res) => {
       }
     }});
   });
+
+
+  router.get('/', async (req, res) => {
+    try {
+      const feedbackData = await Footer.find(); 
+      res.json(feedbackData);
+    } catch (error) {
+      console.error('Error fetching feedback data:', error);
+      res.status(500).json({ error: 'An error occurred while fetching feedback data' });
+    }
+  });
+
 export  default router;
