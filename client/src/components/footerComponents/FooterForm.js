@@ -107,7 +107,7 @@ function FooterForm() {
             placeholder="Full Name"
             value={formData.fullName}
             onChange={handleChange}
-            required
+           
           />
         </div>
         <div className="form-group mb-2">
@@ -118,7 +118,7 @@ function FooterForm() {
             placeholder="Enter Your Email"
             value={formData.email}
             onChange={handleChange}
-            required
+            
           />
         </div>
         <div className="form-group mb-3" style={{ width: '100%' }}>
