@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa'; // Importing the search icon
 
 axios.defaults.withCredentials = true;
@@ -23,7 +22,9 @@ const ResearchInstitutes = () => {
     fetchResearch();
   }, []);
 
- 
+  const handleTitleClick = (link) => {
+    window.open(link, "_blank");
+  };
 
   return (
     <div className="container m-10">
@@ -33,7 +34,7 @@ const ResearchInstitutes = () => {
         <input
           type="text"
           className="form-control rounded-pill text-center"
-          placeholder="Seach Here"
+          placeholder="Search Here"
           aria-label="Enter institute title"
           aria-describedby="basic-addon2"
           style={{ maxWidth: '200px' }}
@@ -43,26 +44,32 @@ const ResearchInstitutes = () => {
         </div>
       </div>
       <div className="row">
-        {research.map((research, index) => (
+        {research.map((researchInstitute, index) => (
           <div key={index} className="mb-5">
-            <div className="card rounded shadow grow-on-hover d-flex"> {/* Added grow-on-hover class */}
+            <div className="card rounded shadow grow-on-hover d-flex">
               <div className="row g-0">
-                <div className="col-lg-6">
-                <img
-                src={research.imagePath}
-                className="card-img-top rounded-top"
-                alt={`Institute ${index + 1}`}
-                style={{ height: '200px', width: '300px' }}
-                />
+                <div className="col-lg-6 d-flex justify-content-center align-items-center">
+                  <img
+                    src={researchInstitute.imagePath}
+                    className="card-img-top rounded-top"
+                    alt={`Institute ${index + 1}`}
+                    style={{ height: '200px', width: '300px' }}
+                  />
                 </div>
                 <div className="col mx-5 my-2">
                   <div className="card-body">
-                    <h4 className="card-title my-3 text-primary">{research.title}</h4>
-                    <p className="col card-text text-muted">{research.description}</p>
-                    <h6 className="my-2"><b>Category:</b> {research.category}</h6>
-                    <h6 className="my-2"><b>Email:</b> {research.email}</h6>
-                    <h6 className="my-2"><b>Phone:</b> {research.phone}</h6>
-           
+                    <h4
+                      className="card-title my-3 text-primary"
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <a href={researchInstitute.link} target="_blank" rel="noopener noreferrer">
+                        {researchInstitute.title}
+                      </a>
+                    </h4>
+                    <p className="col card-text text-muted">{researchInstitute.description}</p>
+                    <h6 className="my-2"><b>Category:</b> {researchInstitute.category}</h6>
+                    <h6 className="my-2"><b>Email:</b> {researchInstitute.email}</h6>
+                    <h6 className="my-2"><b>Phone:</b> {researchInstitute.phone}</h6>
                   </div>
                 </div>
               </div>
@@ -70,12 +77,8 @@ const ResearchInstitutes = () => {
           </div>
         ))}
       </div>
-      <div className="text-left mt-3 mx-5">
-        <Link style={{ marginBottom: "30px" }} to="/view-more" className="btn btn-primary">View More</Link>
-      </div>
     </div>
   );
 };
 
 export default ResearchInstitutes;
-

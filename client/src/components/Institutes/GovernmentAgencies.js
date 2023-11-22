@@ -23,8 +23,6 @@ const GovernmentAgencies = () => {
     fetchAgencies();
   }, []);
 
-  
-
   return (
     <div className="container m-10">
       <br /><br />
@@ -43,27 +41,29 @@ const GovernmentAgencies = () => {
         </div>
       </div>
       <div className="row">
-        {agencies.map((agencies, index) => (
+        {agencies.map((agency, index) => (
           <div key={index} className="mb-5">
-            <div className="card rounded shadow grow-on-hover d-flex"> {/* Added grow-on-hover class */}
+            <div className="card rounded shadow grow-on-hover d-flex">
               <div className="row g-0">
-                <div className="col-lg-6">
-                <img
-                src={agencies.imagePath}
-                className="card-img-top rounded-top"
-                alt={`Institute ${index + 1}`}
-                style={{ height: '200px', width: '300px' }}
-                />
-                </div>
+              <div className="col-lg-6 d-flex justify-content-center align-items-center">
+             <img
+             src={agency.imagePath}
+             className="card-img-top rounded-top"
+             alt={`Institute ${index + 1}`}
+            style={{ height: '200px', width: '300px' }}
+              />
+             </div>
                 <div className="col mx-5 my-2">
                   <div className="card-body">
-                    <h4 className="card-title my-3 text-primary">{agencies.title}</h4> 
-                    <p className="col card-text text-muted">{agencies.link}</p>
-                    <p className="col card-text text-muted">{agencies.description}</p>
-                    <h6 className="my-2"><b>Category:</b> {agencies.category}</h6>
-                    <h6 className="my-2"><b>Email:</b> {agencies.email}</h6>
-                    <h6 className="my-2"><b>Phone:</b> {agencies.phone}</h6>
-                    
+                    <h4 className="card-title my-3 text-primary">
+                      <a href={agency.link} target="_blank" rel="noopener noreferrer">
+                        {agency.title}
+                      </a>
+                    </h4>
+                    <p className="col card-text text-muted">{agency.description}</p>
+                    <h6 className="my-2"><b>Category:</b> {agency.category}</h6>
+                    <h6 className="my-2"><b>Email:</b> {agency.email}</h6>
+                    <h6 className="my-2"><b>Phone:</b> {agency.phone}</h6>
                   </div>
                 </div>
               </div>

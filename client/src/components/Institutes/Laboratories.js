@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
@@ -17,7 +16,7 @@ const Laboratories = () => {
         const data = response.data;
         setLaboratories(data);
       } catch (error) {
-        console.error('Error fetching institutes:', error);
+        console.error('Error fetching laboratories:', error);
       }
     };
 
@@ -32,7 +31,7 @@ const Laboratories = () => {
         <input
           type="text"
           className="form-control rounded-pill text-center"
-          placeholder="Seach Here"
+          placeholder="Search Here"
           aria-label="Enter institute title"
           aria-describedby="basic-addon2"
           style={{ maxWidth: '200px' }}
@@ -42,26 +41,29 @@ const Laboratories = () => {
         </div>
       </div>
       <div className="row">
-        {laboratories.map((laboratories, index) => (
+        {laboratories.map((laboratory, index) => (
           <div key={index} className="mb-5">
-            <div className="card rounded shadow grow-on-hover d-flex"> {/* Added grow-on-hover class */}
+            <div className="card rounded shadow grow-on-hover d-flex">
               <div className="row g-0">
-                <div className="col-lg-6">
-                <img
-                src={laboratories.imagePath}
-                className="card-img-top rounded-top"
-                alt={`Institute ${index + 1}`}
-                style={{ height: '200px', width: '300px' }}
-                />
-                </div>
+              <div className="col-lg-6 d-flex justify-content-center align-items-center">
+  <img
+    src={laboratory.imagePath}
+    className="card-img-top rounded-top"
+    alt={`Institute ${index + 1}`}
+    style={{ height: '200px', width: '300px' }}
+  />
+</div>
                 <div className="col mx-5 my-2">
                   <div className="card-body">
-                    <h4 className="card-title my-3 text-primary">{laboratories.title}</h4>
-                    <p className="col card-text text-muted">{laboratories.description}</p>
-                    <h6 className="my-2"><b>Category:</b> {laboratories.category}</h6>
-                    <h6 className="my-2"><b>Email:</b> {laboratories.email}</h6>
-                    <h6 className="my-2"><b>Phone:</b> {laboratories.phone}</h6>
-                   
+                    <h4 className="card-title my-3 text-primary">
+                      <a href={laboratory.link} target="_blank" rel="noopener noreferrer">
+                        {laboratory.title}
+                      </a>
+                    </h4>
+                    <p className="col card-text text-muted">{laboratory.description}</p>
+                    <h6 className="my-2"><b>Category:</b> {laboratory.category}</h6>
+                    <h6 className="my-2"><b>Email:</b> {laboratory.email}</h6>
+                    <h6 className="my-2"><b>Phone:</b> {laboratory.phone}</h6>
                   </div>
                 </div>
               </div>

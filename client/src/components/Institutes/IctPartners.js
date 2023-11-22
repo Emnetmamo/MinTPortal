@@ -23,8 +23,9 @@ const IctPartners = () => {
     fetchPartners();
   }, []);
 
-
- 
+  const handleTitleClick = (link) => {
+    window.open(link, "_blank");
+  };
 
   return (
     <div className="container m-10">
@@ -44,26 +45,32 @@ const IctPartners = () => {
         </div>
       </div>
       <div className="row">
-        {partners.map((partners, index) => (
+        {partners.map((partner, index) => (
           <div key={index} className="mb-5">
-            <div className="card rounded shadow grow-on-hover d-flex"> {/* Added grow-on-hover class */}
+            <div className="card rounded shadow grow-on-hover d-flex">
               <div className="row g-0">
-                <div className="col-lg-6">
-                <img
-                src={partners.imagePath}
-                className="card-img-top rounded-top"
-                alt={`Institute ${index + 1}`}
-                style={{ height: '200px', width: '300px' }}
-                />
+                <div className="col-lg-6 d-flex justify-content-center align-items-center">
+                  <img
+                    src={partner.imagePath}
+                    className="card-img-top rounded-top"
+                    alt={`Institute ${index + 1}`}
+                    style={{ height: '200px', width: '300px' }}
+                  />
                 </div>
                 <div className="col mx-5 my-2">
                   <div className="card-body">
-                    <h4 className="card-title my-3 text-primary">{partners.title}</h4>
-                    <p className="col card-text text-muted">{partners.description}</p>
-                    <h6 className="my-2"><b>Category:</b> {partners.category}</h6>
-                    <h6 className="my-2"><b>Email:</b> {partners.email}</h6>
-                    <h6 className="my-2"><b>Phone:</b> {partners.phone}</h6>
-                    
+                    <h4
+                      className="card-title my-3 text-primary"
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <Link to={partner.link} target="_blank" rel="noopener noreferrer">
+                        {partner.title}
+                      </Link>
+                    </h4>
+                    <p className="col card-text text-muted">{partner.description}</p>
+                    <h6 className="my-2"><b>Category:</b> {partner.category}</h6>
+                    <h6 className="my-2"><b>Email:</b> {partner.email}</h6>
+                    <h6 className="my-2"><b>Phone:</b> {partner.phone}</h6>
                   </div>
                 </div>
               </div>
@@ -79,4 +86,3 @@ const IctPartners = () => {
 };
 
 export default IctPartners;
-
