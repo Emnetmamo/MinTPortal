@@ -15,24 +15,21 @@ let userschema = new mongoose.Schema({
     type:String,
     default:'user'
   }
-  ,
-  projectTitle: {type: String,required: true},
-  cvPath: {type: String,required: true},
-  teamMembers: {type: [String],required: true},
-  projectCategory: {type: String,required: true},
-  description: {type: String,required: true},
-  proposalPath: {type: String,required: true},
-  email: {type: String,required: true},
-  status: {type: Number,required: true
-  }
-
-
+  
 });
 
 
 const UserModel = mongoose.model("users", userschema);
 
-
+// projectTitle: {type: String,required: true},
+//   cvPath: {type: String,required: true},
+//   teamMembers: {type: [String],required: true},
+//   projectCategory: {type: String,required: true},
+//   description: {type: String,required: true},
+//   proposalPath: {type: String,required: true},
+//   email: {type: String,required: true},
+//   status: {type: Number,required: true
+//   }
 
 
 
