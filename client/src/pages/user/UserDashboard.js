@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import ConfirmAppointment from './ConfirmAppointment';
 import CheckStatus from './CheckStatus';
 import '../../App.css';
+import { Link } from 'react-router-dom'
 
 const UserDashboard = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -15,8 +16,25 @@ const UserDashboard = () => {
 
   return (
     <div className="container mt-5">
-      <br/>
       <div className="row">
+        <div className="col text-right"> {/* Adjust the alignment */}
+        <Link
+          to="/"
+          style={{
+            marginBottom: '20px',
+            marginTop:'8px',
+            backgroundColor: '#11676d',
+            border: 'none',
+            fontSize: '20px',
+          }}
+          className="btn btn-primary"
+        >
+          Back to Home
+        </Link>
+        </div>
+      </div>
+      <div className="row">
+   
         <div className="col-md-3 left-sidebar">
           <button
             className="btn btn-link w-100 text-center mb-2"
