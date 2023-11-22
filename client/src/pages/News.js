@@ -16,10 +16,10 @@ const News = () => {
           typeof response.data === 'string'
             ? JSON.parse(response.data)
             : response.data;
-        console.log(parsedData.date);
+        console.log(parsedData.createdAt);
 
         const sortedPublications = parsedData.sort(
-          (a, b) => new Date(a.date) - new Date(b.date)
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)  
         );
 
         setNews(sortedPublications);
@@ -65,7 +65,9 @@ const News = () => {
                 </h6>
                 <div className="d-flex" style={{ justifyContent: 'center' }}>
                   <h6 className="mx-1" style={{ color: '#ffa525' }}>
-                    {newsItem.date.split('T')[0]}{' '}
+                    {newsItem.date && newsItem.date.includes('T')
+                      ? newsItem.date.split('T')[0]
+                      : ''}
                   </h6>
                   <h6>| </h6>
                   <h6 className="ms-1" style={{ color: '#ffa525' }}>

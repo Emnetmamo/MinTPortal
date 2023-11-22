@@ -96,7 +96,7 @@ function FooterForm() {
 
   return (
 
-    <div className="col-md-4 mb-4" style={{ width: '70%' }}>
+    <div className="col-ml-4 mb-4" style={{ width: '70%' }}>
       <h5>Send Us a Message</h5>
       <form method='POST'  onSubmit={handleSubmit} encType='multipart/form-data' >
         <div className="form-group mb-2">
