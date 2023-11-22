@@ -6,7 +6,7 @@ import FooterForm from '../components/footerComponents/FooterForm';
 import { Link } from 'react-router-dom';
 import { FaPhone, FaFacebook, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { RiMapPin2Fill, RiMailFill } from 'react-icons/ri';
-import GoogleMapLocation from '../images/GoogleMapLocation.png'; 
+import GoogleMapLocationimg from '../images/GoogleMapLocation.png'; 
 import Logo from '../images/Logo.jpg';
 import { FaRegCopyright } from 'react-icons/fa';
 
@@ -55,7 +55,8 @@ const Footer = () => {
                   <a href="https://www.facebook.com/MInT.Ethiopia/" className="me-2" style={{color:"orange"}}><FaFacebook /></a>
                   <a href="https://twitter.com/ministryofinno2?lang=en" className="me-2" style={{color:"orange"}}><FaTwitter /></a>
                   <a href="https://www.linkedin.com/company/ministry-of-innovation-and-technology-ethiopia/?originalSubdomain=et" className="me-2" style={{color:"orange"}}><FaLinkedin /></a>
-                  <a href={GoogleMapLocation}><img src={GoogleMapLocation} alt="Google Map" style={{ maxWidth: '30px', cursor: 'pointer' }} /></a>
+                  <a href="https://maps.google.com/maps?q=2QF4%2BG2G%2C%20Addis%20Ababa%2C%20Ethiopia" target="_blank"><img src={GoogleMapLocationimg} alt="Google Map" style={{ maxWidth: '30px', cursor: 'pointer' }} /></a>
+  
                 </div>
               </ul>
             </div>        
