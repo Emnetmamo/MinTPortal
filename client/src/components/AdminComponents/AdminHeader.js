@@ -10,7 +10,7 @@ function AdminHeader() {
       <nav className="navbar navbar-expand-xxs ">
         <div className="container-fluid">
           <Link className="navbar-brand " to="/">
-            <img className=' logo' src= {logo} alt='logo' />
+          <img src={logo} alt="Logo" style={{ borderRadius: '90%', width: '95px',height:"90px",marginLeft:"55px" }} />
           </Link>
           <div className="d-inline-flex  align-items-center">
             <div className=" me-2" ><BsFillPersonFill  className='user-icon'/></div>
