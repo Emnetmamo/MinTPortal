@@ -16,13 +16,15 @@ let userschema = new mongoose.Schema({
     default:'user'
   }
   ,
-  projectTitle:{type: String},
-  teamMembers:{type:String},
-  projectCategory:{type:String},
-  description:{type:String},
-  cvPath:{type:String},
-  proposalPath:{type:String},
- status:{type:Number, default:1}
+  projectTitle: {type: String,required: true},
+  cvPath: {type: String,required: true},
+  teamMembers: {type: [String],required: true},
+  projectCategory: {type: String,required: true},
+  description: {type: String,required: true},
+  proposalPath: {type: String,required: true},
+  email: {type: String,required: true},
+  status: {type: Number,required: true
+  }
 
 
 });
