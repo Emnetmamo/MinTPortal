@@ -51,35 +51,35 @@ const NationalCalls = (props) => {
 
 
         <div style={{marginLeft: "50px"}}>          
-              <p style={{ color: "green", fontWeight: "bold" }} className="card-text">
+              <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className="card-text">
                 Category: <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].callType} calls</span>
               </p>
 
-              <p style={{ color: "green", fontWeight: "bold" }} className="card-text">
+              <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className="card-text">
                 Description: <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].description}</span>
               </p>
 
-              <p style={{ color: "green", fontWeight: "bold" }} className='card-text'>
+              <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
                 Field of Study: <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].field}</span>
               </p>
 
-              <p style={{ color: "green", fontWeight: "bold" }} className='card-text'>
+              <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
                 Start Date: <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].startDate.split("T")[0]}</span>
               </p>
 
-              <p style={{ color: "green", fontWeight: "bold" }} className='card-text'>
+              <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
                 End Date: <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].endDate.split("T")[0]}</span>
               </p>
 
-              <p style={{ color: "green", fontWeight: "bold" }} className='card-text'>
+              <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
                 Prizes(Monetary): <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].prizes}</span>
               </p>
 
-              <p style={{ color: "green", fontWeight: "bold" }} className='card-text'>
+              <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
                 Instructions: <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].instructions}</span>
               </p>
 
-              <p style={{ color: "green", fontWeight: "bold" }} className='card-text'>
+              <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
                 Guidelines on how to fill the application: <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].guideline}</span>
               </p>
           </div>
