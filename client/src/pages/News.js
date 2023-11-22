@@ -65,7 +65,9 @@ const News = () => {
                 </h6>
                 <div className="d-flex" style={{ justifyContent: 'center' }}>
                   <h6 className="mx-1" style={{ color: '#ffa525' }}>
-                    {newsItem.date.split('T')[0]}{' '}
+                    {newsItem.date && newsItem.date.includes('T')
+                      ? newsItem.date.split('T')[0]
+                      : ''}
                   </h6>
                   <h6>| </h6>
                   <h6 className="ms-1" style={{ color: '#ffa525' }}>
