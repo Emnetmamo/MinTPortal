@@ -105,7 +105,7 @@ else if (req.params.page === "submitProject") {
         const teamMembers = req.body.teamMembers;
         const projectCategory = req.body.projectCategory;
         const description = req.body.description;
-        const email1 = req.body.email;
+        const email = req.body.email;
         console.log('Project Title:', projectTitle);
 
         const cvPath = req.files['cvFile'][0].path.split('\\')[1] + '\\' + req.files['cvFile'][0].path.split('\\')[2];
