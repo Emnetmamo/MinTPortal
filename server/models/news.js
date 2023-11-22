@@ -6,7 +6,8 @@ let news_schema = new mongoose.Schema({
   category: {type: String, required: true},
   date: {type: Date, required: true},
   imagePath: {type: String, },
-});
+},
+{timestamps: true});
 
 const News = mongoose.model('News', news_schema);
 
