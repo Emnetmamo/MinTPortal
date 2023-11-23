@@ -52,9 +52,9 @@ const Footer = () => {
                 <li><RiMailFill /> contact@mint.gov.et</li>
                 <li><RiMapPin2Fill /> Addis Ababa, Ethiopia</li>
                 <div className="mt-3">
-                  <a href="https://www.facebook.com/MInT.Ethiopia/" className="me-2" style={{color:"orange"}}><FaFacebook /></a>
-                  <a href="https://twitter.com/ministryofinno2?lang=en" className="me-2" style={{color:"orange"}}><FaTwitter /></a>
-                  <a href="https://www.linkedin.com/company/ministry-of-innovation-and-technology-ethiopia/?originalSubdomain=et" className="me-2" style={{color:"orange"}}><FaLinkedin /></a>  
+                  <a href="https://www.facebook.com/MInT.Ethiopia/" className="me-2" style={{color:"orange"}} target="_blank"><FaFacebook /></a>
+                  <a href="https://twitter.com/ministryofinno2?lang=en" className="me-2" style={{color:"orange"}} target="_blank"><FaTwitter /></a>
+                  <a href="https://www.linkedin.com/company/ministry-of-innovation-and-technology-ethiopia/?originalSubdomain=et" className="me-2" style={{color:"orange"}} target="_blank"><FaLinkedin /></a>  
                 </div>
                 <div className='mt-2'>
                 <a href="https://maps.google.com/maps?q=2QF4%2BG2G%2C%20Addis%20Ababa%2C%20Ethiopia" target="_blank"><img src={GoogleMapLocationimg} alt="Google Map" style={{ maxWidth: '50px', cursor: 'pointer' }} /></a>

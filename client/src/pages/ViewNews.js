@@ -19,18 +19,18 @@ function ViewNews(){
         for (let i = 0; i < news.length; i++) {
             if(news[i]._id === id){
                 return(
-                    <div style={{width:"100%", height:"100%"}}>
-            <div className="card rounded shadow grow-on-hover">
+                    <div  style={{width:"85%", height:"80%",paddingLeft:"200px"}}>
+            <div>
               <img
-                className="news"
-                style={{width:"100%", height:"30%"}}
+                className="news rounded "
+                style={{width:"100%", height:"20%",paddingBottom:"20px"}}
                 src={news[i].imagePath}
                 alt={news[i].title}
               />
-              <div className="card-body text-center">
-                <h4 style={{fontSize:"40px"}}>{news[i].title}</h4>
+              <div className=" text-center">
+                <h4 style={{fontSize:"40px",paddingBottom:"15px"}}>{news[i].title}</h4>
               </div>
-              <p className="card-text text-muted" 
+              <p className=" text-muted" 
               style={{height:"auto", paddingLeft:"40px", paddingRight:"40px", paddingBottom:"40px"}}>{news[i].content}</p>
               <div className="text-center">
                 <div className="d-flex" style={{ justifyContent: 'center' }}>
@@ -68,6 +68,7 @@ function ViewNews(){
             <br />
             <br />
             <Link to="/news" className="btn btn-primary" style={{marginLeft:"90%"}}>Back to News</Link>
+            <h1  style={{marginRight:"100%",paddingLeft:"210px",fontSize:"40px"}}>News</h1>
             <br />
             <br />
             {loaded && findNewsById(id)}

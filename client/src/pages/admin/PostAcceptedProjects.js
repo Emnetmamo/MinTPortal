@@ -97,7 +97,7 @@ function PostAcceptedProjects() {
        
     try {
       const response =  axios.post('http://localhost:5001/admin/accepted-projects/add-accepted-project', data);
-      console.log(response.data);
+       console.log(response.data);
       alert('Do you want to submit')
       toast.info('News submitted successfully!');
       // await  window.location.reload()
