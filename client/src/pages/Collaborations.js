@@ -20,6 +20,7 @@ const Collaborations = () => {
     }
   };
 
+  // Slider setting
   const settings = {
     dots: true,
     infinite: true,
