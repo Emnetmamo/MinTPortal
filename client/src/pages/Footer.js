@@ -57,7 +57,7 @@ const Footer = () => {
                   <a href="https://www.linkedin.com/company/ministry-of-innovation-and-technology-ethiopia/?originalSubdomain=et" className="me-2" style={{color:"orange"}}><FaLinkedin /></a>  
                 </div>
                 <div className='mt-2'>
-                <a href="https://maps.google.com/maps?q=2QF4%2BG2G%2C%20Addis%20Ababa%2C%20Ethiopia" target="_blank"><img src={GoogleMapLocationimg} alt="Google Map" style={{ maxWidth: '100px', cursor: 'pointer' }} /></a>
+                <a href="https://maps.google.com/maps?q=2QF4%2BG2G%2C%20Addis%20Ababa%2C%20Ethiopia" target="_blank"><img src={GoogleMapLocationimg} alt="Google Map" style={{ maxWidth: '50px', cursor: 'pointer' }} /></a>
                 </div>
               </ul>
             </div>        
