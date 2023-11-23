@@ -16,10 +16,10 @@ const News = () => {
           typeof response.data === 'string'
             ? JSON.parse(response.data)
             : response.data;
-        console.log(parsedData.date);
+        console.log(parsedData.createdAt);
 
         const sortedPublications = parsedData.sort(
-          (a, b) => new Date(a.date) - new Date(b.date)
+          (a, b) =>new Date(b.createdAt)- new Date(a.createdAt) 
         );
 
         setNews(sortedPublications);
@@ -77,9 +77,9 @@ const News = () => {
               </div>
               <div className="d-flex px-4 my-2">
                 <Link
-                  to={`/news/${index}`}
+                  to='/viewNews'
+                  state={{id:newsItem._id}}
                   className="btn btn-primary px-3"
-                  target="_blank" // Open in a new window/tab
                 >
                   Read More
                 </Link>

@@ -36,6 +36,7 @@ import PostInstitutes from './pages/admin/PostInstitutes';
 import PostNews from './pages/admin/PostNews'
 import ViewFile from './pages/admin/ViewFile';
 import ViewFeedback from "./pages/admin/ViewFeedback.js"
+import ViewNews from './pages/ViewNews.js';
 
 //user page 
 
@@ -127,6 +128,7 @@ const RoutesComponent = () => {
           <Route path='/admin/viewFeedback/view-feedback' element={<ViewFeedback/>}/>
         </Route>
         <Route  path='admin/viewFile' element={<ViewFile/>}></Route>
+        <Route  path='/viewNews' element={<ViewNews/>}></Route>
 
 
   {/* user */}
