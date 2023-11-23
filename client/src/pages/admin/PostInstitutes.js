@@ -213,7 +213,7 @@ function PostInstitutes() {
                     name="link"
                     className="form-control"
                     placeholder="URL"
-                    value={formData.author}
+                    value={formData.link}
                     onChange={handleChange}
                   />
                 </div>
@@ -223,7 +223,7 @@ function PostInstitutes() {
                     name="description"
                     className="form-control"
                     placeholder="Description"
-                    value={formData.content}
+                    value={formData.description}
                     onChange={handleChange}
                     rows="10"
                     required
@@ -262,10 +262,10 @@ function PostInstitutes() {
                 <div className="form-group">
                   <label className='form-label'>Email:</label>
                   <textarea
-                    name="link"
+                    name="email"
                     className="form-control"
                     placeholder="Email"
-                    value={formData.content}
+                    value={formData.email}
                     onChange={handleChange}
                     required
                   />
@@ -278,7 +278,7 @@ function PostInstitutes() {
                     name="phone"
                     className="form-control"
                     placeholder="Phone"
-                    value={formData.content}
+                    value={formData.phone}
                     onChange={handleChange}
                     required
                   />
