@@ -126,7 +126,15 @@ function updateStatus(id){
                 </Link>
               </li>
               <br />
-
+              <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link
+                  className="links"
+                  to="/admin/collaboration/post-to-collaboration"
+                >
+                  Post To Collaborations
+                </Link>
+              </li>
+              <br />
 <li
   class="list-group-item "
   style={{

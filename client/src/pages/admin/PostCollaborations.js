@@ -8,14 +8,11 @@ import '../../images/assets/css/admin.css';
 axios.defaults.withCredentials=true;
 
 
-function PostInstitutes() {
+function PostCollaborations() {
   const [formData, setFormData] = useState({
     title: '',
     link: '',
     description: '',
-    category: '',
-    email: '',
-    phone: '',
     image: null
 
   });
@@ -87,15 +84,12 @@ function PostInstitutes() {
       
       data.append('title', formData.title);
       data.append('link', formData.link);
-      data.append('description', formData.description);
-      data.append('category', formData.category);  
-      data.append('email', formData.email);
-      data.append('phone', formData.phone);   
+      data.append('description', formData.description);  
       data.append('image', formData.image);
      
 
       try {
-        const response = axios.post('http://localhost:5001/admin/institutes/post-to-institutes', data);
+        const response = axios.post('http://localhost:5001/admin/collaboration/post-to-collaboration', data);
         console.log(response.data);
           alert('Do you want to submit')
           toast.info('Institutes form submitted successfully!');
@@ -160,7 +154,7 @@ function PostInstitutes() {
                 </Link>
               </li>
               <br />
-              <li class="list-group-item post-links active " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+              <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
                 <Link
                   className="links"
                   to="/admin/institutes/post-to-institutes"
@@ -169,7 +163,7 @@ function PostInstitutes() {
                 </Link>
               </li>
               <br />
-              <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+              <li class="list-group-item post-links active" style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
                 <Link
                   className="links"
                   to="/admin/collaboration/post-to-collaboration"
@@ -178,6 +172,7 @@ function PostInstitutes() {
                 </Link>
               </li>
               <br />
+
 <li
   class="list-group-item "
   style={{
@@ -199,9 +194,9 @@ function PostInstitutes() {
           <div className="col-xs-12 col-md-2"></div>        
           
           <div className="col-xs-12 col-md-7 mb-5" >                                  
-              <form method='POST' action='/admin/institutes/post-to-institutes' onSubmit={handleSubmit} encType='multipart/form-data' >
+              <form method='POST' action='/admin/collaboration/post-to-collaboration' onSubmit={handleSubmit} encType='multipart/form-data' >
                 
-                <h1>Post To Institutes</h1>
+                <h1>Post To Collaborations</h1>
                 <div className="form-group">
                   <label className='form-label'>Title:</label>
                   <input
@@ -237,60 +232,9 @@ function PostInstitutes() {
                     required
                   />
                 </div>
-                <div className="form-group">
-                  <label className='form-label'>Institutes Category:</label>
-                  <select
-                    name="category"
-                    className="form-control"
-                    value={formData.category}
-                    onChange={handleChange}
-                    required
-                  >
-                    <option value="">Select a category</option>
-                    <option value="Research Institutes" >
-                      Research Institutes
-                    </option>
-                    <option value="Laboratories" >
-                      Laboratories
-                    </option>
-                    <option value="Ict Partners" >
-                      Ict Partners
-                    </option>
-                    <option value="Government Agencies" >
-                      Government Agencies
-                    </option>
-                    
-                    <option value="Other Catagory" >
-                      Other Catagory
-                    </option>
-                  </select>
-
-                </div>
-
-                <div className="form-group">
-                  <label className='form-label'>Email:</label>
-                  <textarea
-                    name="email"
-                    className="form-control"
-                    placeholder="Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  />
-                  </div>
+                
 
                 
-                  <div className="form-group">
-                  <label className='form-label'>Phone:</label>
-                  <textarea
-                    name="phone"
-                    className="form-control"
-                    placeholder="Phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                  />
-                  </div>
                             
                 <div className="form-group">
                   <label className='form-label'>Upload Image:</label>
@@ -322,4 +266,4 @@ function PostInstitutes() {
   );
 }
 
-export default PostInstitutes;
+export default PostCollaborations;

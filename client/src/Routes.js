@@ -33,10 +33,12 @@ import PostCalls from './pages/admin/PostCalls'
 import PostPublications from './pages/admin/PostPublications'
 import PostAcceptedProjects from './pages/admin/PostAcceptedProjects';
 import PostInstitutes from './pages/admin/PostInstitutes';
+import PostCollaborations from './pages/admin/PostCollaborations.js'
 import PostNews from './pages/admin/PostNews'
 import ViewFile from './pages/admin/ViewFile';
 import ViewFeedback from "./pages/admin/ViewFeedback.js"
 import ViewNews from './pages/ViewNews.js';
+
 
 //user page 
 
@@ -125,6 +127,7 @@ const RoutesComponent = () => {
           <Route path='publications/add-publication' element={<PostPublications/>}/>
           <Route path='accepted-projects/add-accepted-project' element={<PostAcceptedProjects/>}/>
           <Route path='institutes/post-to-institutes' element={<PostInstitutes/>}/>
+          <Route path='collaboration/post-to-collaboration' element={<PostCollaborations/>}/>
           <Route path='/admin/viewFeedback/view-feedback' element={<ViewFeedback/>}/>
         </Route>
         <Route  path='admin/viewFile' element={<ViewFile/>}></Route>
