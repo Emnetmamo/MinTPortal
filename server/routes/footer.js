@@ -27,6 +27,7 @@ router.post('/add-footer', async(req, res) => {
         fullName,
         email,
         message,
+        createdAt: new Date(), 
       });
        const savedFooter = await newFooter.save();
         res.json({savedFooter});
@@ -42,12 +43,16 @@ router.post('/add-footer', async(req, res) => {
 
   router.get('/', async (req, res) => {
     try {
-      const feedbackData = await Footer.find(); 
+      const feedbackData = await Footer.find({}, { createdAt: 1,fullName: 1, email: 1, message: 1, _id: 0 }); // Only include createdAt and message
       res.json(feedbackData);
     } catch (error) {
       console.error('Error fetching feedback data:', error);
       res.status(500).json({ error: 'An error occurred while fetching feedback data' });
     }
   });
+  
+
+
+  
 
 export  default router;
