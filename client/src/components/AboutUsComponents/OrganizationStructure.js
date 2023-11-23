@@ -39,7 +39,7 @@ const OrganizationStructureSection = () => {
         ];
       
         return (
-          <div className="container shadow p-4 mb-4 bg-white rounded">
+          <div className="container shadow p-4  mb-5 bg-white rounded"  style={{marginRight:"50px", marginTop: "-30px"}}>
             <h1 className="text-center font-weight-bold mb-4">Our Research and Innovation organization Structure</h1>
             <div className="text-center mb-3">
               <button className="btn" 
@@ -48,10 +48,10 @@ const OrganizationStructureSection = () => {
                   Innovation and Research Sector
               </button>
             </div>
-            <div style={{textAlign:"center"}}>
+            {/* <div style={{textAlign:"center"}}>
                  <img src={imgPath} alt="" width={"80%"} height={"100px"}/>
-            </div>
-            <div className="row">
+            </div> */}
+            <div className="row" style={{marginTop: "60px"}}>
               {departments.map((department, index) => (
                 <div className="col-md-4" key={index}>
                   <button 
@@ -59,7 +59,8 @@ const OrganizationStructureSection = () => {
                     style={{ 
                       backgroundColor: selectedButton === department.name ? 'orange' : '#11676d', 
                       color: 'white', 
-                      fontSize: '20px'
+                      fontSize: '20px',
+                      marginLeft:"-20px"
                     }}
                     onClick={() => handleButtonClick(department.name)}
                   >
