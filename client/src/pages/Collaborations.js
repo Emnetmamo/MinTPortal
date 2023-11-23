@@ -24,14 +24,14 @@ const Collaborations = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 300,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 400,
     responsive: [
       {
-      breakpoint: 768,
+      breakpoint: 400,
       settings: {
       slidesToShow: 1,
       slidesToScroll: 1,
