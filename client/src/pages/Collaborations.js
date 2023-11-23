@@ -42,7 +42,8 @@ const Collaborations = () => {
   };
 
   return (
-    <div className="container mt-4 mb-4 text-center">
+    <div className="container mt-4 mb-4 text-center" style={{  width: '900px' }}>
+      <br /> 
       <h1 className="mb-4 font-weight-bold">Collaborations</h1>
       <Slider {...settings}>
         {collaborations.map((collaboration) => (
@@ -50,6 +51,7 @@ const Collaborations = () => {
             <div className="card rounded">
               <img
                 src={collaboration.imagePath}
+                style={{ height: '200px'}}
                 className="card-img-top"
                 alt={`Collaboration ${collaboration._id}`}
               />
