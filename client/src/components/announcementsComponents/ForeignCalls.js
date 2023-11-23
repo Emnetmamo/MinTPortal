@@ -118,7 +118,7 @@ const ForeignCalls = (props) => {
       {loaded && pageLogic(display())}
       {(noOfPages===0 && loaded) && 
       <div>
-        <h3 style={{color:"#11676d", marginBottom:"50%"}}>No calls in that category</h3>
+        <h3 style={{color:"green", marginBottom:"50%"}}>No calls in that category</h3>
       </div> }
       <div
         style={{
