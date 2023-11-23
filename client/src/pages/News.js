@@ -16,10 +16,10 @@ const News = () => {
           typeof response.data === 'string'
             ? JSON.parse(response.data)
             : response.data;
-        console.log(parsedData.createdAt);
+        console.log(parsedData.date);
 
         const sortedPublications = parsedData.sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)  
+          (a, b) => new Date(a.date) - new Date(b.date)
         );
 
         setNews(sortedPublications);
@@ -65,9 +65,7 @@ const News = () => {
                 </h6>
                 <div className="d-flex" style={{ justifyContent: 'center' }}>
                   <h6 className="mx-1" style={{ color: '#ffa525' }}>
-                    {newsItem.date && newsItem.date.includes('T')
-                      ? newsItem.date.split('T')[0]
-                      : ''}
+                    {newsItem.date && newsItem.date.split('T')[0]}{' '}
                   </h6>
                   <h6>| </h6>
                   <h6 className="ms-1" style={{ color: '#ffa525' }}>
@@ -77,8 +75,12 @@ const News = () => {
                 <h5 className="card-title fw-bold fs-3">{newsItem.title}</h5>
                 <p className="card-text text-muted">{newsItem.content}</p>
               </div>
-              <div className="d-flex px-4 my-2 ">
-                <Link to={`/news/${index}`} className="btn btn-primary px-3">
+              <div className="d-flex px-4 my-2">
+                <Link
+                  to={`/news/${index}`}
+                  className="btn btn-primary px-3"
+                  target="_blank" // Open in a new window/tab
+                >
                   Read More
                 </Link>
               </div>
