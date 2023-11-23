@@ -206,3 +206,10 @@ body {
   overflow: hidden; /* Hide any overflow content */
 
 }
+
+
+/* collaboration page */
+
+.custom-card {
+  height: 500px;
+}
