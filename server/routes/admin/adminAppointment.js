@@ -19,9 +19,11 @@ const adminAppointment=async (req, res)=>{
     {
         const id1 = req.params.id.split('-')[1];
         const newStatus = req.params.id.split('-')[2];
+        const {message} = req.body;
+        console.log("Message: "+message);
         try{
             console.log(id1)
-            await AppointmentModel.findOneAndUpdate({projectId:id1}, {status: newStatus})
+            await AppointmentModel.findOneAndUpdate({projectId:id1}, {status: newStatus, message: message})
             .then(result=>{ 
                console.log(result)})
             .catch(err=> res.json(err))
@@ -53,7 +55,7 @@ const adminAppointment=async (req, res)=>{
           try{
               console.log(id1)
               await AppointmentModel.findOneAndUpdate({projectId:id1}, 
-                  {status: "Pending", appointmentDate: newAppointmentDate})
+                  {status: "Pending", appointmentDate: newAppointmentDate, message:""})
               .then(result=>{ 
                 console.log("Set new time "+newAppointmentDate+" "+result)})
               .catch(err=> res.json(err))

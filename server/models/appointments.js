@@ -22,7 +22,11 @@ const appointmentSchema=new mongoose.Schema({
   status:{
       type:String,
       required:true
-  }
+  },
+  message:{
+    type:String,
+    required:true
+}
 });
 
 const AppointmentModel=mongoose.model('appointments',appointmentSchema);
