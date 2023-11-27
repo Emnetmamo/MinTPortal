@@ -22,7 +22,18 @@ const GovernmentAgencies = () => {
 
     fetchAgencies();
   }, []);
-
+  function searchItem(e){
+    let searchText = e.value.toLowerCase();
+    let titles = document.getElementsByClassName('card-title');
+    Array.from(titles).forEach(function(title1){
+      if(title1.innerHTML.toLowerCase().indexOf(searchText) > -1){
+        title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "";
+      }
+      else{
+        title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "none";
+      }
+    })
+  }
   return (
     <div className="container m-10">
       <br /><br />
@@ -35,6 +46,7 @@ const GovernmentAgencies = () => {
           aria-label="Enter institute title"
           aria-describedby="basic-addon2"
           style={{ maxWidth: '200px' }}
+          onChange={function(e){searchItem(e.target)}}
         />
         <div className="input-group-append mt-2">
           <span className="input-group-text bg-white border-0"><FaSearch /></span>
