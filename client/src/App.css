@@ -194,8 +194,8 @@ body {
 }
 .news{
 
-    width: 500px;/* Set your desired width */
-    height: 450px; /* Set your desired height */
+    width: 300px;/* Set your desired width */
+    height: 250px; /* Set your desired height */
     object-fit: cover /* Preserve aspect ratio and cover the container */
 
 }
