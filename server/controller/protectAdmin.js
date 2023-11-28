@@ -18,7 +18,6 @@ const verifyToken = async (req, res, next) => {
 
     console.log('Decoded Token:', decoded);
 
-    // Set decoded as a property on req so it can be accessed in the route handler
     req.decoded = decoded;
 
     next();
@@ -29,7 +28,7 @@ const verifyToken = async (req, res, next) => {
 };
 
 ProtectAdmin.get('/protect', verifyToken, (req, res) => {
-  const decoded = req.decoded; // Access decoded from req object
+  const decoded = req.decoded; 
 
   if (decoded) {
    // console.log('User role:', decoded.role);
