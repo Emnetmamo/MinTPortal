@@ -38,7 +38,7 @@ import PostNews from './pages/admin/PostNews'
 import ViewFile from './pages/admin/ViewFile';
 import ViewFeedback from "./pages/admin/ViewFeedback.js"
 import ViewNews from './pages/ViewNews.js';
-
+import ProtectAdmin from './ProtectAdmin.js';
 
 //user page 
 
@@ -94,7 +94,12 @@ const RoutesComponent = () => {
       <ConditionalNavbar />
       
       <Routes>
-      
+      <Route path='/user' element={<UserDashboard />} />
+      <Route path='/confirm-appointment' element={<ConfirmAppointment />} />
+      <Route path='/check-status' element={<CheckStatus />} />
+        
+        
+        <Route path="/protect" element={<ProtectAdmin/>}/>
         <Route path="/" element={<Home />} />
         <Route path="/announcements" element={<Announcements />} />
         <Route path="/resources" element={<Resources />} />
@@ -117,8 +122,8 @@ const RoutesComponent = () => {
  
     
       <Routes>
+       <Route element={<ProtectAdmin/>}>
         <Route path='/admin' element = {<Layout />}>
-
           <Route  index element= {<Admin/>}/>
           <Route path='news/add-news' element={<PostNews/>}/>
           <Route path='appointments/add-appointment' element={<SetAppointmentDate/>}/>
@@ -128,19 +133,19 @@ const RoutesComponent = () => {
           <Route path='accepted-projects/add-accepted-project' element={<PostAcceptedProjects/>}/>
           <Route path='institutes/post-to-institutes' element={<PostInstitutes/>}/>
           <Route path='collaboration/post-to-collaboration' element={<PostCollaborations/>}/>
-          <Route path='/admin/viewFeedback/view-feedback' element={<ViewFeedback/>}/>
-        </Route>
-        <Route  path='admin/viewFile' element={<ViewFile/>}></Route>
-        <Route  path='/viewNews' element={<ViewNews/>}></Route>
+          <Route path='viewFeedback/view-feedback' element={<ViewFeedback/>}/>
+          <Route  path='viewFile' element={<ViewFile/>}></Route>
+          <Route  path='viewNews' element={<ViewNews/>}></Route>
 
+        </Route>
+        </Route>
 
   {/* user */}
+  </Routes>
 
-            <Route path='/user' element={<UserDashboard />} />
-            <Route path='/confirm-appointment' element={<ConfirmAppointment />} />
-            <Route path='/check-status' element={<CheckStatus />} />
+           
 
-      </Routes>
+     
       <ConditionalFooter />
       </Router>
       
