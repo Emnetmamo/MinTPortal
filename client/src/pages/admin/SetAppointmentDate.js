@@ -23,7 +23,7 @@ function SetAppointmentDate() {
   function displayProjects(){
     const tableData = [];
     
-    for (let j = 0; j < projects.length; j++) {
+    for (let j = (projects.length-1); j > -1; j--) {
       tableData.push(
           <tr>
             <td>{i++}</td>
