@@ -31,7 +31,7 @@ const Navbar = () => {
       <div className="container-fluid">
         <a className="navbar-brand mr-auto" href="/">
          
-          <img src={Logo} alt="Logo" style={{ maxWidth: '120px' }} />
+          <img src={Logo} alt="Logo" style={{ borderRadius: '90%', width: '95px',height:"90px",marginLeft:"55px" }} />
         </a>
         <button
           className="navbar-toggler"
@@ -48,8 +48,8 @@ const Navbar = () => {
 
         <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="navbarNav">
         <div className="navbar-nav mx-auto" style={{marginTop:"50px"}}>
-  <a className={`nav-link d-flex align-items-center ${window.location.pathname === '/' ? 'active' : ''}`} href="/" onClick={closeMenu} style={{marginRight: '10px'}}> <AiTwotoneHome/>Home</a>
-  <a className={`nav-link ${window.location.pathname === '/announcements' ? 'active' : ''}`} href="/announcements" onClick={closeMenu} style={{marginRight: '10px'}}>Announcements</a>
+  <a className={`nav-link d-flex align-items-center ${window.location.pathname === '/' ? 'active' : ''}`} href="/" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}> <AiTwotoneHome/>Home</a>
+  <a className={`nav-link ${window.location.pathname === '/announcements' ? 'active' : ''}`} href="/announcements" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}>Announcements</a>
   <div className={`nav-item dropdown ${isDropdownOpen ? 'show' : ''}`}>
     <a
       className={`nav-link dropdown-toggle`}
@@ -69,10 +69,10 @@ const Navbar = () => {
       <a className="dropdown-item" href="/resources/publications" onClick={closeDropdown}>Publications</a>
     </div>
   </div>
-  <a className={`nav-link ${window.location.pathname === '/institutes' ? 'active' : ''}`} href="/institutes" onClick={closeMenu} style={{marginRight: '10px'}}>Institutes</a>
-  <a className={`nav-link ${window.location.pathname === '/collaborations' ? 'active' : ''}`} href="/collaborations" onClick={closeMenu} style={{marginRight: '10px'}}>Collaborations</a>
-  <a className={`nav-link ${window.location.pathname === '/aboutus' ? 'active' : ''}`} href="/aboutus" onClick={closeMenu} style={{marginRight: '10px'}}>About Us</a>
-  <a className={`nav-link ${window.location.pathname === '/news' ? 'active' : ''}`} href="/news" onClick={closeMenu} style={{marginRight: '10px'}}>News</a>
+  <a className={`nav-link ${window.location.pathname === '/institutes' ? 'active' : ''}`} href="/institutes" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}>Institutes</a>
+  <a className={`nav-link ${window.location.pathname === '/collaborations' ? 'active' : ''}`} href="/collaborations" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}>Collaborations</a>
+  <a className={`nav-link ${window.location.pathname === '/aboutus' ? 'active' : ''}`} href="/aboutus" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}>About Us</a>
+  <a className={`nav-link ${window.location.pathname === '/news' ? 'active' : ''}`} href="/news" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}>News</a>
 </div>
 
           <div className="navbar-nav ml-auto" >
@@ -86,10 +86,7 @@ const Navbar = () => {
               >Register</Link>
             </div>
 
-            <div className="navbar-nav ml-auto d-inline d-lg-none">
-              <a className="nav-link btn" href="/login" >Login</a>
-              <a className="nav-link btn" href="/register" >Register</a>
-            </div>
+          
         </div>
       </div>
     </nav>
