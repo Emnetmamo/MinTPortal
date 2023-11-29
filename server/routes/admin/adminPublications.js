@@ -11,14 +11,9 @@ const storage = multer.diskStorage({
     const publicationsPath = `public/publications_images/${newPublicationId}`;
 
     fs.mkdirSync(publicationsPath, { recursive: true });
-    //, (err) => {
-    //   if (err) {
-    //     console.error('Error creating directory:', err);
-    //   } else {
-    //     console.log('Directory created successfully:', publicationsPath);
+   
         cb(null, publicationsPath);
-  //     }
-  //   });
+ 
    },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
@@ -27,7 +22,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 1000000 }, // File size limit: 1MB
+  limits: { fileSize: 3000000 }, // File size limit: 1MB
 }).fields([
   { name: 'image', maxCount: 1 },
   { name: 'file', maxCount: 1 },

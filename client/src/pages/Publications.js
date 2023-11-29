@@ -98,10 +98,10 @@ function getFileNameFromPath(filePath) {
                 </div>
                 <div className="col  mx-5 my-2 ">
                   <div className="card-body">
-                    <h4 className="card-title my-3 ">{PublicationItem.title}</h4>
-                    <h6 className="card-Investigator my-2 ">Principal Investigator: {PublicationItem.p_investigator}</h6>                    
+                    <h4 className="card-title my-3 text-primary fs-2">{PublicationItem.title}</h4>
+                    <h6 className="card-Investigator my-2 "><b>Principal Investigator:</b> {PublicationItem.p_investigator}</h6>                    
                     <p className="col card-text text-muted">{PublicationItem.description}</p> 
-                    <h6 className="card-Investigator my-2 ">Author: {PublicationItem.author}</h6>                     
+                    <h6 className="card-Investigator my-2 "><b>Author:</b> {PublicationItem.author}</h6>                     
                     <div className='d-flex align-items-end'>               
                     
                   <h6 className='card-PublicationDate my-2 mx-1 ' style={{color: '#ffa525'}}>{PublicationItem.date} </h6> <h6>| </h6> <h6 className='ms-1' style={{color: '#ffa525'}}> {PublicationItem.field_of_study}</h6>

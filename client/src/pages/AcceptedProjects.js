@@ -98,7 +98,7 @@ function getFileNameFromPath(filePath) {
                 </div>
                 <div className="col  mx-5 my-2 ">
                   <div className="card-body">
-                    <h4 className="card-title my-3 text-primary">{AcceptedProjectItem.title}</h4>
+                    <h4 className="card-title my-3 text-primary fs-2">{AcceptedProjectItem.title}</h4>
                     <h6 className="card-Investigator my-2 "><b>Principal Investigator</b>: {AcceptedProjectItem.p_investigator}</h6>                    
                     <p className="col card-text text-muted">{AcceptedProjectItem.description}</p> 
                     <h6 className="card-Investigator my-2 "><b>Funding Source(s):</b> {AcceptedProjectItem.funding_source}</h6>  

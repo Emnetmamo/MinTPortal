@@ -61,111 +61,110 @@ function updateStatus(id){
   .catch(err=>console.log(err));
   window.location.reload(false);
 }
-
-  return (
-    <div className="">
+return (
+  <div className="">
+    
+    <div className='container mt-5'>
       
-      <div className='container mt-5'>
-        
-          <div className="row">
-            <div className="col-xs-12 col-md-3 post-links-container mt-5" style={{overflow: 'hidden'}}>
-            <ul className="list-group text-center fs-5 display-6">
-              <br />
-              <li className="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link className="links" to="/admin/news/add-news">
-                  Post News{" "}
-                </Link>
-              </li>
-              <br />
-              <li className="list-group-item active" style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link
-                  className="links"
-                  to="/admin/appointments/add-appointment"
-                >
-                  Set Appointment Date{" "}
-                </Link>
-              </li>
-              <br />
-              <li className="list-group-item "style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link className="links" to="/admin/user-status/add-user-status">
-                  Update User Status
-                </Link>
-              </li>
-              <br />
-              <li className="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link className="links" to="/admin/calls/add-call">
-                  Post Calls
-                </Link>
-              </li>
-              <br />
-              <li className="list-group-item  " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link
-                  className="links"
-                  to="/admin/publications/add-publication"
-                >
-                  Post Publications
-                </Link>
-              </li>
-              <br />
-              <li className="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link
-                  className="links"
-                  to="/admin/accepted-projects/add-accepted-project"
-                >
-                  Post Accepted Projects
-                </Link>
-              </li>
-              <br />
-              <li class="list-group-item post-links   " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link
-                  className="links"
-                  to="/admin/institutes/post-to-institutes"
-                >
-                  Post To Institutes
-                </Link>
-              </li>
-              <br />
-              <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link
-                  className="links"
-                  to="/admin/collaboration/post-to-collaboration"
-                >
-                  Post To Collaborations
-                </Link>
-              </li>
-              <br />
+        <div className="row">
+          <div className="col-xs-12 col-md-3 post-links-container mt-5" style={{overflow: 'hidden'}}>
+          <ul className="list-group text-center fs-5 display-6">
+            <br />
+            <li className="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+              <Link className="links" to="/admin/news/add-news">
+                Post News{" "}
+              </Link>
+            </li>
+            <br />
+            <li className="list-group-item active" style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+              <Link
+                className="links"
+                to="/admin/appointments/add-appointment"
+              >
+                Set Appointment Date{" "}
+              </Link>
+            </li>
+            <br />
+            <li className="list-group-item "style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+              <Link className="links" to="/admin/user-status/add-user-status">
+                Update User Status
+              </Link>
+            </li>
+            <br />
+            <li className="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+              <Link className="links" to="/admin/calls/add-call">
+                Post Calls
+              </Link>
+            </li>
+            <br />
+            <li className="list-group-item  " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+              <Link
+                className="links"
+                to="/admin/publications/add-publication"
+              >
+                Post Publications
+              </Link>
+            </li>
+            <br />
+            <li className="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+              <Link
+                className="links"
+                to="/admin/accepted-projects/add-accepted-project"
+              >
+                Post Accepted Projects
+              </Link>
+            </li>
+            <br />
+            <li class="list-group-item post-links   " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+              <Link
+                className="links"
+                to="/admin/institutes/post-to-institutes"
+              >
+                Post To Institutes
+              </Link>
+            </li>
+            <br />
+            <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+              <Link
+                className="links"
+                to="/admin/collaboration/post-to-collaboration"
+              >
+                Post To Collaborations
+              </Link>
+            </li>
+            <br />
 <li
-  class="list-group-item "
-  style={{
-    backgroundColor: "#ffa525",
-    border: "none",
-    borderRadius: "10px",
-  }}
+class="list-group-item "
+style={{
+  backgroundColor: "#ffa525",
+  border: "none",
+  borderRadius: "10px",
+}}
 >
-  <Link
-    className="links"
-    to="/admin/viewFeedback/view-feedback"
-  >
-   View feedback
-  </Link>
+<Link
+  className="links"
+  to="/admin/viewFeedback/view-feedback"
+>
+ View feedback
+</Link>
 </li>
-            </ul>
-          </div>
-          <div className="col-xs-12 col-md-2"></div>
-          <div className="col-xs-12 col-md-7 mb-5">
-            {/* <form method="post" action="/admin/appointments/add-appointment">
-                <br/><br/>
-                <h1>Post an Appointment</h1>
-                <div class="form-group ">
-                    <label className='form-label'>Date:</label>
-                    <input type="date" name="date" class="form-control " placeholder="Date"/>                  
-                </div>
-                <div class="form-group">
-                    <label className='form-label'>Time:</label>
-                    <input  type="time" name="time" className="form-control " placeholder="Time"/>
-                </div>
-                <div class="form-group">
-                    <label className='form-label'>Location:</label>
+          </ul>
+        </div>
+        <div className="col-xs-12 col-md-2"></div>
+        <div className="col-xs-12 col-md-7 mb-5">
+          {/* <form method="post" action="/admin/appointments/add-appointment">
+              <br/><br/>
+              <h1>Post an Appointment</h1>
+              <div class="form-group ">
+                  <label className='form-label'>Date:</label>
+                  <input type="date" name="date" class="form-control " placeholder="Date"/>                  
+              </div>
+              <div class="form-group">
+                  <label className='form-label'>Time:</label>
+                  <input  type="time" name="time" className="form-control " placeholder="Time"/>
+              </div>
+              <div class="form-group">
+            <label className='form-label'>Location:</label>
                     <input  type="text" name="location" className="form-control " placeholder="Location"/>
                 </div>
                 <div class="form-group">

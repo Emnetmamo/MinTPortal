@@ -16,13 +16,14 @@ import announcementPost from './controller/announcementPost.js';
 import news from './routes/news.js'
 import Collaboration from './routes/collaboration.js';
 import resources from './routes/resources.js'
-import adminNews from './routes/admin/adminNews.js'
-import adminCollaboration from './routes/admin/adminCollaboration.js'
+import adminAppointments from './routes/admin/adminAppointments.js'
 import adminPublications from './routes/admin/adminPublications.js'
 import adminAcceptedProjects from './routes/admin/adminAcceptedProjects.js'
 import adminInstitutes from './routes/admin/adminInstitutes.js'
 import login from './controller/login.js';
 import dashboardRoute from './middleware/dashboard.js';
+import adminRoutes from './routes/adminRoutes.js'
+import adminCollaboration from './routes/admin/adminCollaboration.js'
 import institutes from './routes/institutes.js'
 import footerForm from './routes/footer.js'
 import ProtectAdmin from './controller/protectAdmin.js';
@@ -55,7 +56,7 @@ async function main() {
   }
 }
 main()
-
+//mongoose.set('useFindAndModify', false)
    
 //user routes
 app.use('/auth/:page',register)
@@ -70,7 +71,8 @@ app.use('/institutes', institutes)
 
 
 //middleware to  admin  routes
-app.use('/admin/news', adminNews);
+app.use('/admin/appointments', adminAppointments);
+app.use('/admin/news', adminRoutes);
 app.use('/admin/publications', adminPublications)
 app.use('/admin/accepted-projects', adminAcceptedProjects)
 app.use('/admin/institutes', adminInstitutes)

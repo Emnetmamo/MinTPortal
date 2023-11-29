@@ -13,7 +13,7 @@ function PostCalls() {
   const [callType, setCallType] = useState('');
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
-  const [prizes, setPrizes] = useState('');
+  const [prizes, setPrizes] = useState('');                      
   const [instructions, setInstructions] = useState('');
   const [guideline, setGuideline] = useState('');
 const navigate=useNavigate()
@@ -183,9 +183,10 @@ const navigate=useNavigate()
           </div>
           <div className="col-xs-12 col-md-2"></div>
           <div className="col-xs-12 col-md-7 mb-5">
+           
             <form onSubmit={handleSubmit}>
-              <h1>Post a Call</h1>
-
+            <br/> <br/>
+              <h1>Post a Call</h1>             
               <div className="form-group">
                 <label htmlFor="title">Announcement Title:</label>
                 <input
