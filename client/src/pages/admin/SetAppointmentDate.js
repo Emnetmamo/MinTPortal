@@ -115,7 +115,7 @@ return (
               </Link>
             </li>
             <br />
-            <li class="list-group-item post-links   " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+            <li className="list-group-item post-links   " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
               <Link
                 className="links"
                 to="/admin/institutes/post-to-institutes"
@@ -124,7 +124,7 @@ return (
               </Link>
             </li>
             <br />
-            <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+            <li className="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
               <Link
                 className="links"
                 to="/admin/collaboration/post-to-collaboration"
@@ -134,7 +134,7 @@ return (
             </li>
             <br />
 <li
-class="list-group-item "
+className="list-group-item "
 style={{
   backgroundColor: "#ffa525",
   border: "none",
