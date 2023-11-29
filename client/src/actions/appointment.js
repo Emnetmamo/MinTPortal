@@ -1,10 +1,10 @@
 import * as api from '../api'
 
-// actions
+//actions
 // export const getAppointment = () => async (dispatch) => {
 //   try {
 //     const { data: newsData } = await api.fetchNews();
-//     const action = {type: 'FETCH_ALL', payload: newsData}
+//     const action = {type: 'FETCH_ALL_APPOINTMENT', payload: newsData}
 
 //     dispatch(action);
 

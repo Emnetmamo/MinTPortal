@@ -1,8 +1,8 @@
  const appointments = (appointments = [], action ) => {
   switch(action.type){
-    case 'FETCH_ALL':
+    // case 'FETCH_ALL_APPOINTMENT':
       
-      return action.payload;
+    //   return action.payload;
   
     case 'CREATE_APPOINTMENT':
       return [...appointments, action.payload]; 

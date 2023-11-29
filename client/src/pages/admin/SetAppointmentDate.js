@@ -6,14 +6,13 @@ import FileBase from 'react-file-base64'
 import { ToastContainer, toast } from 'react-toastify';
 import {setAppointment} from '../../actions/appointment'
 import '../../images/assets/css/admin.css';
-import Dropzone from '../../components/AdminComponents/Dropzone';
 
 
 axios.defaults.withCredentials=true;
 
-function Post_News() {
+function SetAppointmentDate() {
   
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     date: '',
     time: '',
@@ -62,7 +61,7 @@ function Post_News() {
               <li class="list-group-item post-links  active" style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
                 <Link
                   className="links"
-                  to="/admin/appointments/add-appointment"
+                  to="/admin/appointments/add-appointment1"
                 >
                   Set Appointment Date{" "}
                 </Link>
@@ -103,8 +102,8 @@ function Post_News() {
           <div className="col-xs-12 col-md-2"></div>        
           
           <div className="col-xs-12 col-md-7 mb-5" > 
-          <form method="post" action="/admin/appointments/add-appointment" onSubmit={handleSubmit} >
-                <br/><br/>
+          <form method="post" action="/admin/appointments/add-appointment1" onSubmit={handleSubmit} >
+              
                 <h1>Post an Appointment</h1>
                 <div class="form-group ">
                     <label className='form-label'>Date:</label>
@@ -150,4 +149,4 @@ function Post_News() {
   );
 }
 
-export default Post_News;
+export default SetAppointmentDate;

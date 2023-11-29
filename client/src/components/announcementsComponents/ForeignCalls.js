@@ -45,15 +45,15 @@ const ForeignCalls = (props) => {
       data.push(
         <div className="card mb-3" key={calls[i]._id}>
           <div className="card-body">
-          <h3 className="card-title">{calls[i].title}</h3>
-            <p className="card-text">Category: {calls[i].callType} calls</p>
-            <p className="card-text">Description: {calls[i].description}</p>
-            <p className='card-text'>Field of Study: {calls[i].field}</p>
-            <p className='card-text'>Start Date: {calls[i].startDate.split("T")[0]}</p>
-            <p className='card-text'>End Date: {calls[i].endDate.split("T")[0]}</p>
-            <p className='card-text'>Prizes(Monetary): {calls[i].prizes}</p>
-            <p className='card-text'>Instructions: {calls[i].instructions}</p>
-            <p className='card-text'>Guidelines on how to fill the application: {calls[i].guideline}</p>
+            <h4 className="card-title text-primary">{calls[i].title}</h4>
+            <h5 className="card-text "><b>Category:</b> {calls[i].callType} calls</h5>
+            <h5 className="card-text"><b>Description:</b> {calls[i].description}</h5>
+            <h5 className='card-text'><b>Field of Study:</b> {calls[i].field}</h5>
+            <h5 className='card-text'><b>Start Date:</b> {calls[i].startDate.split("T")[0]}</h5>
+            <h5 className='card-text'><b>End Date:</b> {calls[i].endDate.split("T")[0]}</h5>
+            <h5 className='card-text'><b>Prizes(Monetary):</b> {calls[i].prizes}</h5>
+            <h5 className='card-text'><b>Instructions:</b> {calls[i].instructions}</h5>
+            <h5 className='card-text'><b>Guidelines on how to fill the application:</b> {calls[i].guideline}</h5>
             <a href='/register' style={{ backgroundColor: "orange", color:"white"}}
            className="btn ">
               Start your application

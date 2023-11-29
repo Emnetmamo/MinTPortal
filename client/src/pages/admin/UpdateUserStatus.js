@@ -83,7 +83,7 @@ function buttonsDisplay(num){
       <div className='container mt-5'>
         
           <div className="row ms-0">
-            <div className="col-xs-12 col-md-2 post-links-container-user-status mt-5" style={{overflow: 'hidden', backgroundColor:'#11676d', maxHeight: '480px', borderRadius: '10px'}}>
+            <div className="col-xs-12 col-md-2 post-links-container-user-status mt-5" style={{overflow: 'hidden', backgroundColor:'#11676d', maxHeight: '550px', borderRadius: '10px'}}>
             <ul class="list-group text-center fs-5 display-6">
               <br />
               <li class="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>

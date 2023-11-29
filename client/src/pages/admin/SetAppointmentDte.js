@@ -125,7 +125,7 @@ function SetAppointmentDate() {
           </div>
           <div class="col-xs-12 col-md-2"></div>
           <div class="col-xs-12 col-md-7 mb-5">
-            <form method="post" action="/admin/appointments/add-appointment" onSubmit={handleSubmit} >
+            <form method="post" action="/admin/appointments/add-appointment1" onSubmit={handleSubmit} >
                 <br/><br/>
                 <h1>Post an Appointment</h1>
                 <div class="form-group ">
