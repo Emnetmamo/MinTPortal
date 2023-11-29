@@ -21,6 +21,7 @@ import Institutes from './pages/Institutes';
 import ProjectDescription from './pages/ProjectDescription';
 import AcceptedProjects from './pages/AcceptedProjects';
 import FooterForm from './components/footerComponents/FooterForm.js';
+import StartApplication from './pages/StartApplication.js';
 
 
 // admin pages
@@ -99,6 +100,7 @@ const RoutesComponent = () => {
       <Route path='/confirm-appointment' element={<ConfirmAppointment />} />
       <Route path='/check-status' element={<CheckStatus />} />
       <Route  path='/viewNews' element={<ViewNews/>}></Route>
+      <Route  path='/startApplication' element={<StartApplication/>}></Route>
         
         
         <Route path="/protect" element={<ProtectAdmin/>}/>
