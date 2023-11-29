@@ -98,6 +98,7 @@ const RoutesComponent = () => {
       <Route path='/user' element={<UserDashboard />} />
       <Route path='/confirm-appointment' element={<ConfirmAppointment />} />
       <Route path='/check-status' element={<CheckStatus />} />
+      <Route  path='/viewNews' element={<ViewNews/>}></Route>
         
         
         <Route path="/protect" element={<ProtectAdmin/>}/>
@@ -136,7 +137,6 @@ const RoutesComponent = () => {
           <Route path='collaboration/post-to-collaboration' element={<PostCollaborations/>}/>
           <Route path='viewFeedback/view-feedback' element={<ViewFeedback/>}/>
           <Route  path='viewFile' element={<ViewFile/>}></Route>
-          <Route  path='viewNews' element={<ViewNews/>}></Route>
 
         </Route>
         </Route>
