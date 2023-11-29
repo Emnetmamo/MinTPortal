@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import ProjectModel from "../../models/projects.js";
+import AppointmentModel from "../../models/appointments.js";
 
 const adminUserStatus=async (req, res)=>{
     if(req.params.id !== "getAll")
@@ -15,6 +16,26 @@ const adminUserStatus=async (req, res)=>{
         }
         catch(err){
             console.log(err);
+        }
+        if(newStatus === 2){
+          let currentProject;
+          try{
+          currentProject = await ProjectModel.find({_id:id1})
+          }
+          catch(err){
+            console.log(err);
+          }
+
+          console.log("Current: "+currentProject);
+          const today = Date.now();
+          const nowDate = (new Date(today)).toISOString();
+          AppointmentModel.create({
+            projectId:currentProject[0]._id,
+            projectTitle:currentProject[0].projectTitle,
+            appointmentDate:nowDate,
+            email:currentProject[0].email,
+            status:"Pending"
+          })
         }
     } 
     

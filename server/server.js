@@ -19,6 +19,7 @@ import adminAppointments from './routes/admin/adminAppointments.js'
 import adminPublications from './routes/admin/adminPublications.js'
 import adminAcceptedProjects from './routes/admin/adminAcceptedProjects.js'
 import adminUserStatus from './routes/admin/adminUserStatus.js'
+import adminAppointment from './routes/admin/adminAppointment.js';
 import login from './controller/login.js';
 import dashboardRoute from './middleware/dashboard.js';
 import adminRoutes from './routes/adminRoutes.js'
@@ -66,6 +67,7 @@ app.use('/admin/news', adminRoutes);
 app.use('/admin/publications', adminPublications)
 app.use('/admin/accepted-projects', adminAcceptedProjects)
 app.use('/admin/userStatus/:id', adminUserStatus);
+app.use('/admin/appointment/:id', adminAppointment);
 
 app.use('/collaboration', Collaboration);
 app.use('/admin/collaboration', adminCollaboration);
