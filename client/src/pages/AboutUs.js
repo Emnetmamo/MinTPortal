@@ -79,16 +79,18 @@ function AboutUs() {
                 <div className='btn btn-warning slanted-text1 d-flex align-items-center justify-content-center'  style={{width: '250px', height:'80px', position: 'absolute',top: '-10px', left: '15px', zIndex: '5',  transform: 'rotate(-15deg)', borderRadius: '20px'}}><h1 >Our Visions</h1></div>
                 <div className='slanted-contents1 card pe-0 p-5 m-1   ' style={{ width: '480px', color: 'white', borderRadius: '40px', backgroundColor: '#11676d'}}  >
                
-                  <ul className='car p-5  fw-bold'>
+                  {/* <ul className='car p-5  fw-bold'>
                     <li  style={{opacity: '1',width: '100%'}}>gchvkjcks dio vhsujkvdbn cyifejvsd cklojvdbskjxcl njj vdn   cklojvdbskjxcl njj vdn</li>
                     <li>jjdsLJv jdsv jdsnxj kldsjkvxsurjkasdv xc odsbxjkdsibvjskd</li>
                     <li>Item #3 jvihsdj iouewvds copilbusdbhac jijdskn cx</li>
                     <li>Item #4  vsduivajxiepsdlvbueowdsjbncx </li>
                     <li>Item #5uejSBDV IOSDAOUKJEPIDSVNA ou;jrkbvfcxjk</li>
-                  </ul>
+                  </ul> */}
+                   <h3 className='car pt-5 mt-3 ' style={{width: '100%'}} >
+                Prepare national innovation and technology research and development programs; And plan institutional capacity and human resources development for effective implementation of the programs Provide professional and technical support to regions’ innovation and technology institutions 
                   
                   <h2 className='mt-5 text-warning'>See more ...</h2>
-                                             
+                </h3>                      
                 </div> 
               </div>
             </div>
@@ -98,16 +100,17 @@ function AboutUs() {
                 <div className='btn btn-warning slanted-text1 d-flex align-items-center justify-content-center'  style={{width: '250px', height:'80px', position: 'absolute',top: '-10px', left: '15px', zIndex: '5',  transform: 'rotate(-15deg)', borderRadius: '20px'}}><h1 >Our Missions</h1></div>
                 <div className='slanted-contents1 card pe-0 p-5 m-1   ' style={{width: '480px', color: 'white', borderRadius: '40px', backgroundColor: '#11676d'}}  >
                
-                  <ul className='car p-5 ' style={{width: '100%'}}>
+                  {/* <ul className='car p-5 ' style={{width: '100%'}}>
                     <li>gchvkjcks dio vhsujkvdbn cyifejvsd cklojvdbskjxcl njj vdn   cklojvdbskjxcl njj vdn</li>
                     <li>jjdsLJv jdsv jdsnxj kldsjkvxsurjkasdv xc odsbxjkdsibvjskd</li>
                     <li>Item #3 jvihsdj iouewvds copilbusdbhac jijdskn cx</li>
                     <li>Item #4  vsduivajxiepsdlvbueowdsjbncx </li>
                     <li>Item #5uejSBDV IOSDAOUKJEPIDSVNA ou;jrkbvfcxjk</li>
-                  </ul>
-                  
+                  </ul> */}
+                   <h3 className='car pt-5 mt-3 ' style={{width: '100%'}} >
+                Prepare national innovation and technology research and development programs; And plan institutional capacity and human resources development for effective implementation of the programs Provide professional and technical support to regions’ innovation and technology institutions 
                   <h2 className='mt-5 text-warning'>See more ...</h2>
-                                             
+                 </h3>                            
                 </div> 
               </div>
             </div>
@@ -116,16 +119,17 @@ function AboutUs() {
                 <div className='btn btn-warning slanted-text1 d-flex align-items-center justify-content-center'  style={{width: '250px', height:'80px', position: 'absolute',top: '-10px', left: '15px', zIndex: '5',  transform: 'rotate(-15deg)', borderRadius: '20px'}}><h1 >Our Values</h1></div>
                 <div className='slanted-contents1 card pe-0 p-5 m-1   ' style={{width: '480px', color: 'white', borderRadius: '40px', backgroundColor: '#11676d'}}  >
                
-                  <ul className='car p-5 ' style={{width: '100%'}}>
+                  {/* <ul className='car p-5 ' style={{width: '100%'}}>
                     <li>gchvkjcks dio vhsujkvdbn cyifejvsd cklojvdbskjxcl njj vdn   cklojvdbskjxcl njj vdn</li>
                     <li>jjdsLJv jdsv jdsnxj kldsjkvxsurjkasdv xc odsbxjkdsibvjskd</li>
                     <li>Item #3 jvihsdj iouewvds copilbusdbhac jijdskn cx</li>
                     <li>Item #4  vsduivajxiepsdlvbueowdsjbncx </li>
                     <li>Item #5uejSBDV IOSDAOUKJEPIDSVNA ou;jrkbvfcxjk</li>
-                  </ul>
-                  
+                  </ul> */}
+                   <h3 className='car pt-5 mt-3 ' style={{width: '100%'}} >
+                Prepare national innovation and technology research and development programs; And plan institutional capacity and human resources development for effective implementation of the programs Provide professional and technical support to regions’ innovation and technology institutions 
                   <h2 className='mt-5 text-warning'>See more ...</h2>
-                                             
+                  </h3>                           
                 </div> 
               </div>
             </div>
@@ -135,16 +139,17 @@ function AboutUs() {
                 <div className='btn btn-warning slanted-text1 d-flex align-items-center justify-content-center'  style={{width: '250px', height:'80px', position: 'absolute',top: '-10px', left: '15px', zIndex: '5',  transform: 'rotate(-15deg)', borderRadius: '20px'}}><h1 >Our Goals</h1></div>
                 <div className='slanted-contents1 card pe-0 p-5 m-1   ' style={{width: '480px', color: 'white', borderRadius: '40px', backgroundColor: '#11676d'}}  >
                \
-                  <ul className='car p-5 ' style={{width: '100%'}}>
+                  {/* <ul className='car p-5 ' style={{width: '100%'}}>
                     <li>gchvkjcks dio vhsujkvdbn cyifejvsd cklojvdbskjxcl njj vdn   cklojvdbskjxcl njj vdn</li>
                     <li>jjdsLJv jdsv jdsnxj kldsjkvxsurjkasdv xc odsbxjkdsibvjskd</li>
                     <li>Item #3 jvihsdj iouewvds copilbusdbhac jijdskn cx</li>
                     <li>Item #4  vsduivajxiepsdlvbueowdsjbncx </li>
                     <li>Item #5uejSBDV IOSDAOUKJEPIDSVNA ou;jrkbvfcxjk</li>
-                  </ul>
-                  
+                  </ul> */}
+                   <h3 className='car pt-5 mt-3 ' style={{width: '100%'}} >
+                Prepare national innovation and technology research and development programs; And plan institutional capacity and human resources development for effective implementation of the programs Provide professional and technical support to regions’ innovation and technology institutions 
                   <h2 className='mt-5 text-warning'>See more ...</h2>
-                                             
+                 </h3>                            
                 </div> 
               </div>
             </div>
