@@ -29,6 +29,19 @@ const News = () => {
       });
   }, []);
 
+  function searchNews(e){
+    let searchText = e.value.toLowerCase();
+    let titles = document.getElementsByClassName('card-title');
+    Array.from(titles).forEach(function(title1){
+      if(title1.innerHTML.toLowerCase().indexOf(searchText) > -1){
+        title1.parentElement.parentElement.parentElement.style.display = "";
+      }
+      else{
+        title1.parentElement.parentElement.parentElement.style.display = "none";
+      }
+    })
+  }
+
   return (
     <div className="container mt-5">
       <h1 className="mb-4 font-weight-bold text-center">News</h1>
@@ -40,6 +53,7 @@ const News = () => {
           aria-label="What's new?"
           aria-describedby="basic-addon2"
           style={{ maxWidth: '200px' }}
+          onChange={function(e){searchNews(e.target)}}
         />
         <div className="input-group-append">
           <span className="input-group-text bg-white border-0">

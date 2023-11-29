@@ -27,19 +27,30 @@ const ConfirmAppointment = ({email}) => {
           <tr>
             <td>{i++}</td>
             <td>{appointments[j].projectTitle}</td>
-            <td>{appointments[j].appointmentDate.split('T')[0]}</td>
-            <td>{appointments[j].appointmentDate.split('T')[1]}</td>
+            <td>{new Date(appointments[j].appointmentDate).toLocaleString().split(',')[0]}</td>
+            <td>{new Date(appointments[j].appointmentDate).toLocaleString().split(',')[1]}</td>
             <td>
               <button name={appointments[j].projectId + "-Accepted"} onClick={
                 function(e){
                 updateStatus(e.target.name);
               }} 
                 className='btn btn-primary'>Accept Appointment</button>
-              <button name={appointments[j].projectId + "-Rejected"} style={{marginTop:"10px"}} onClick={
+              <button name={appointments[j].projectId} style={{marginTop:"10px"}} onClick={
+                function(e){
+                rescheduleAppt(e.target.name);
+              }} 
+                className='btn btn-primary'>Reschedule Appointment</button>
+              </td>
+              <td id={appointments[j].projectId + "-Input"} style={{display:"none"}}>
+              <textarea name="" id={appointments[j].projectId + "-Message"} cols="30" rows="3" 
+              placeholder='Reason for rescheduling'></textarea>
+
+              <button name={appointments[j].projectId + "-Reschedule"} id={appointments[j].projectId + "-Rejected"} 
+              style={{marginTop:"10px"}} onClick={
                 function(e){
                 updateStatus(e.target.name);
               }} 
-                className='btn btn-primary'>Reschedule Appointment</button>  
+                className='btn btn-primary'>Submit</button>  
             </td>
           </tr>
       );
@@ -48,11 +59,19 @@ const ConfirmAppointment = ({email}) => {
   return tableData;
 }
 function updateStatus(id){
-  console.log("Clicked!")
-  axios.get('http://localhost:5001/admin/appointment/setStatus-'+id)
+  console.log("Clicked!");
+  const projectID = id.split('-')[0];
+  const text = document.getElementById(projectID+"-Message");
+  const message = {message:text.value};
+  // axios.get('http://localhost:5001/admin/appointment/setStatus-'+id)
+  axios.post('http://localhost:5001/admin/appointment/setStatus-'+id, message)
   .then(result=>console.log(result))
   .catch(err=>console.log(err));
   window.location.reload(false);
+}
+function rescheduleAppt(id){
+  const row = document.getElementById(id+"-Input");
+  row.style.display = "inline";
 }
   return (
     <div className="card shadow p-3 mb-5 bg-white rounded">
@@ -73,7 +92,7 @@ function updateStatus(id){
           <tr>
           <th>No.</th>
           <th>Project Title</th>
-          <th>Date</th>
+          <th>Date (mm/dd/yyyy)</th>
           <th>Time</th>
           <th>Action</th>
           </tr>

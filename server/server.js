@@ -25,6 +25,7 @@ import login from './controller/login.js';
 import dashboardRoute from './middleware/dashboard.js';
 import institutes from './routes/institutes.js'
 import footerForm from './routes/footer.js'
+import ProtectAdmin from './controller/protectAdmin.js';
 
 import adminAppointment from './routes/admin/adminAppointment.js';
 import adminUserStatus from './routes/admin/adminUserStatus.js';
@@ -59,10 +60,11 @@ main()
 //user routes
 app.use('/auth/:page',register)
 app.use('/announcements/:page', announcementPost);
-app.use('/authl',login)
+app.use('/authl',login,ProtectAdmin)
 app.use('/admind',dashboardRoute)
 //app.use('/announcements', fetchRoute)
 app.use('/news', news);
+//app.use('/auth',ProtectAdmin)
 app.use('/resources', resources);
 app.use('/institutes', institutes)
 

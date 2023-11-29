@@ -59,7 +59,8 @@ const adminUserStatus=async (req, res)=>{
             projectTitle:currentProject[0].projectTitle,
             appointmentDate:nowDate,
             email:currentProject[0].email,
-            status:"Pending"
+            status:"Pending",
+            message:" "
           })
         }
         else if(newStatus === 1){

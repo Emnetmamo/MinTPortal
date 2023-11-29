@@ -129,7 +129,15 @@ const ViewFeedback = () => {
                 </Link>
               </li>
               <br />
-
+              <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link
+                  className="links"
+                  to="/admin/collaboration/post-to-collaboration"
+                >
+                  Post To Collaborations
+                </Link>
+              </li>
+              <br />
 <li
   class="list-group-item active"
   style={{
@@ -149,16 +157,19 @@ const ViewFeedback = () => {
           </div>
           <div className="col-xs-12 col-md-2"></div>
           <div className="col-xs-12 col-md-7 mb-5">
-          {feedbackData.map((feedback) => (
-      <Card key={feedback.createdAt} className="mb-3" style={{background: "#F4EFEF"}}>
-        <Card.Body>
-          <Card.Subtitle className="mb-2 text-muted">{new Date(feedback.createdAt).toLocaleString()}</Card.Subtitle>
-           <Card.Title style={{fontSize:"24px"}}>{feedback.fullName}</Card.Title>
-            <Card.Subtitle className="mb-2" style={{color:"blue"}}>{feedback.email}</Card.Subtitle>
-            <Card.Text style={{color:"black", fontWeight:"normal"}} className="mb-2">{feedback.message}</Card.Text>
-        </Card.Body>
-      </Card>
-    ))}
+          {feedbackData
+              .slice() // Create a shallow copy of the array
+              .reverse() // Reverse the array
+              .map((feedback) => (
+                <Card key={feedback.createdAt} className="mb-3" style={{ background: "#F4EFEF" }}>
+                  <Card.Body>
+                    <Card.Subtitle className="mb-2 text-muted">{new Date(feedback.createdAt).toLocaleString()}</Card.Subtitle>
+                    <Card.Title style={{ fontSize: "24px" }}>{feedback.fullName}</Card.Title>
+                    <Card.Subtitle className="mb-2" style={{ color: "blue" }}>{feedback.email}</Card.Subtitle>
+                    <Card.Text style={{ color: "black", fontWeight: "normal" }} className="mb-2">{feedback.message}</Card.Text>
+                  </Card.Body>
+                </Card>
+              ))}
           </div>
         </div>
       </div>

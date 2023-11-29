@@ -8,6 +8,7 @@ import image1 from "../images/News/news1.png"
 import image2 from "../images/News/news2.jpeg"
 import image3 from "../images/News/news3.jpeg"
 import image4 from "../images/News/news4.jpeg"
+import { Link } from 'react-router-dom';
 
 
 function AboutUs() {
@@ -22,8 +23,8 @@ function AboutUs() {
               <h1 class= "display-2  pb-2">
                 <b>Ministry of  <br/> Innovation and <br/> Technology</b> 
                       </h1>
-                      <div class="mbr-section-btn"><a class="btn btn-warning display-4" href="#">
-                              <strong>START APPLICATION</strong> </a>
+                      <div class="mbr-section-btn"><Link class="btn btn-warning display-4" to="/announcements">
+                              <strong>START APPLICATION</strong> </Link>
                       </div>                       
                   </div>
               </div>

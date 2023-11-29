@@ -29,8 +29,9 @@ function SetAppointmentDate() {
             <td>{i++}</td>
             <td>{projects[j].projectId}</td>
             <td>{projects[j].projectTitle}</td>
-            <td>{projects[j].appointmentDate}</td>
+            <td>{new Date(projects[j].appointmentDate).toLocaleString()}</td>
             <td>{projects[j].status}</td>
+            <td><h6 style={{height:"50px",overflowY:"scroll"}}>{projects[j].message}</h6></td>
             <td><input type="datetime-local" name={projects[j].projectId} id={projects[j].projectId} /></td>
             <td>
               <button name={projects[j].projectId + "-" + projects[j].status} onClick={
@@ -56,11 +57,9 @@ function updateStatus(id){
     if(result.data==="Already set"){
       window.alert("This date and time have already been set for another project. Choose a different date and time.")
     }
-    else{
-      window.location.reload(false);
-    }
   })
   .catch(err=>console.log(err));
+  window.location.reload(false);
 }
 
   return (
@@ -126,7 +125,15 @@ function updateStatus(id){
                 </Link>
               </li>
               <br />
-
+              <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link
+                  className="links"
+                  to="/admin/collaboration/post-to-collaboration"
+                >
+                  Post To Collaborations
+                </Link>
+              </li>
+              <br />
 <li
   class="list-group-item "
   style={{
@@ -180,8 +187,9 @@ function updateStatus(id){
                     <th>No.</th>
                     <th>User Id</th>
                     <th>Project Title</th>
-                    <th>Appointment Date</th>
+                    <th>Appointment Date (mm/dd/yyyy)</th>
                     <th>Status</th>
+                    <th>Message from User</th>
                     <th>New Appointment</th>
                     <th>Action</th>
                   </tr>
