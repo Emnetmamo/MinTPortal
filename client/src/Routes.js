@@ -98,6 +98,7 @@ const RoutesComponent = () => {
       <Route path='/user' element={<UserDashboard />} />
       <Route path='/confirm-appointment' element={<ConfirmAppointment />} />
       <Route path='/check-status' element={<CheckStatus />} />
+      <Route  path='/viewNews' element={<ViewNews/>}></Route>
         
         
         <Route path="/protect" element={<ProtectAdmin/>}/>
