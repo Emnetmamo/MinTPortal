@@ -24,21 +24,20 @@ const Collaborations = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 300,
+    speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 400,
+    autoplaySpeed: 3000,
     responsive: [
       {
-      breakpoint: 400,
-      settings: {
-      slidesToShow: 1,
-      slidesToScroll: 1,
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
       }
-      }
-      ]
-      
+    ]
   };
 
   return (
@@ -48,7 +47,7 @@ const Collaborations = () => {
       <Slider {...settings}>
         {collaborations.map((collaboration) => (
           <div key={collaboration._id} className="px-2">
-            <div className="card rounded">
+            <div className="card rounded" style={{  height: "450px"}}>
               <img
                 src={collaboration.imagePath}
                 style={{ height: '200px'}}

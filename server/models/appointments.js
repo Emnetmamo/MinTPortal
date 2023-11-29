@@ -29,6 +29,6 @@ const appointmentSchema=new mongoose.Schema({
 }
 });
 
-const Appointment1 = mongoose.model('Appointment1', appointmentSchema);
+const Appointment1 = mongoose.model('appointment', appointmentSchema);
 
 export default Appointment1
