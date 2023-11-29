@@ -1,5 +1,5 @@
 import express from "express";
-import {getNews} from '../controller/news.js'
+import News from "../models/news.js";
 
 const router = express.Router();
 

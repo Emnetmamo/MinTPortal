@@ -18,7 +18,7 @@ const ConfirmAppointment = ({email}) => {
       .catch(err=>console.log(err))
       setLoaded(true);
     }
-  ,[]);
+  ,[email1]);
   function displayAppoint(){
     const tableData = [];
     

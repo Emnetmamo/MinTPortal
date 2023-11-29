@@ -6,9 +6,7 @@ import { FaSearch } from 'react-icons/fa';
 axios.defaults.withCredentials = true;
 
 const News = () => {
-
-  const dispatch = useDispatch();
-  const news = useSelector((state) => state.news);
+  const [news, setNews] = useState([]);
 
   useEffect(() => {
     axios

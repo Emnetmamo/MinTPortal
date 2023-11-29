@@ -113,6 +113,7 @@ const RoutesComponent = () => {
         <Route path="/news" element={<News />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route  path='viewNews' element={<ViewNews/>}></Route>
         <Route path='/resources/publications/description' element={<ProjectDescription/>}/>
         <Route  path='/institutes/research' element={<ResearchInstitutes />}></Route>
         <Route  path='/institutes/labs' element={<Laboratories />}></Route>
@@ -136,7 +137,7 @@ const RoutesComponent = () => {
           <Route path='collaboration/post-to-collaboration' element={<PostCollaborations/>}/>
           <Route path='viewFeedback/view-feedback' element={<ViewFeedback/>}/>
           <Route  path='viewFile' element={<ViewFile/>}></Route>
-          <Route  path='viewNews' element={<ViewNews/>}></Route>
+      
 
         </Route>
         </Route>

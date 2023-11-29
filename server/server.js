@@ -22,6 +22,8 @@ import adminAcceptedProjects from './routes/admin/adminAcceptedProjects.js'
 import adminInstitutes from './routes/admin/adminInstitutes.js'
 import login from './controller/login.js';
 import dashboardRoute from './middleware/dashboard.js';
+import adminRoutes from './routes/adminRoutes.js'
+import adminCollaboration from './routes/admin/adminCollaboration.js'
 import institutes from './routes/institutes.js'
 import footerForm from './routes/footer.js'
 import ProtectAdmin from './controller/protectAdmin.js';

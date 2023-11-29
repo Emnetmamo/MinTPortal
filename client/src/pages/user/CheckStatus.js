@@ -28,7 +28,7 @@ const CheckStatus = ({email}) => {
       .catch(err=>console.log(err))
       setLoaded(true);
     }
-  ,[]);
+  ,[email1]);
   function displayProjects(){
     const tableData = [];
     let i = 1;
