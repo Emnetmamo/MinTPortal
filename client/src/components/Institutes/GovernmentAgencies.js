@@ -1,99 +1,93 @@
-import React,{useState} from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom'; 
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from 'react-router-dom';
+import { FaSearch } from 'react-icons/fa'; // Importing the search icon
 
-import ethiopianBitech from '../../images/Institutes/ethipianBitech.png';
-import essti from '../../images/Institutes/essti-logo.jpeg';
-import INSA from '../../images/Institutes/INSA.png';
+axios.defaults.withCredentials = true;
 
+const GovernmentAgencies = () => {
+  const [agencies, setAgencies] = useState([]);
 
-function GovernmentAgencies() {
+  useEffect(() => {
+    // Fetch data when the component mounts
+    const fetchAgencies = async () => {
+      try {
+        const response = await axios.get('http://localhost:5001/institutes/agencies');
+        const data = response.data;
+        setAgencies(data);
+      } catch (error) {
+        console.error('Error fetching institutes:', error);
+      }
+    };
+
+    fetchAgencies();
+  }, []);
+  function searchItem(e){
+    let searchText = e.value.toLowerCase();
+    let titles = document.getElementsByClassName('card-title');
+    Array.from(titles).forEach(function(title1){
+      if(title1.innerHTML.toLowerCase().indexOf(searchText) > -1){
+        title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "";
+      }
+      else{
+        title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "none";
+      }
+    })
+  }
   return (
-<container>
-<div className='row'>
-<div className='col'>
-<>
-    <br />
-    <br />
-    <Container>
-      
-      <Row className="align-items-center">
-        <Col>
-          <img src={essti} alt="Logo" className="img-fluid" />
-        </Col>
-        <Col xs={9} md={10}>
-          <hl  className="mb-2" style={{  textAlign: 'center', fontSize: '60px' }}>Government Agencies </hl>
-          <h2 className="mb-2"><a href='https://etssti.org/' style={{textDecoration: 'none'}}> 
-          ETHIOPIAN SPACE SCIENCE AND TECHNOLOGY INSTITUTE </a></h2>
-          <p className="mb-1" style={{color:'grey'}}>Contribute to the development of the national economy by 
-          providing creative and social services to our people and improving their living conditions in the field
-           of space science and technology, In astronomy and astrophysics, on earth view global and to provide 
-           competitive research in aeronautics and astronomy, manpower training and international relations.
-           </p>
-          <p className="mb-1">Email: <span className="text-orange">mainessti@essti.gov.et</span></p>
-          <p className="mb-0">Phone: <span className="text-orange">+251-928-992614 |
-+251-118-961050</span></p>
-        </Col>
-      </Row>
-    </Container>
-    <br /><br />
-    <Container>
-        <Row className="align-items-center">
-          <Col>
-            <img src={ethiopianBitech} alt="Logo" className="img-fluid" />
-          </Col>
-          <Col xs={9} md={10}>
-            <h2 className="mb-2"><a href='https://www.betin.gov.et/' style={{textDecoration: 'none'}}>Ethiopia Biotechnology Institutes</a></h2>
-            <p style={{color:'grey'}} className="mb-1">Betin resolves and address the major challenges in society
-             that are related to health, food security, the realization of sustainable 
-             development and facilitate the basement of industrialization, work on human 
-             development and to establish the general
-             framework and basic structures for national innovative research.
-            </p>
-            <p className="mb-1">Email: <span className="text-orange"> info@betin.gov.et</span> </p>
-            <p className="mb-0">Phone: <span className="text-orange">+251118619695/ +251118756388</span></p>
-          </Col>
-        </Row>
-      </Container>
+    <div className="container m-10">
       <br /><br />
-      <Container>
-        <Row className="align-items-center">
-          <Col>
-            <img src={INSA} alt="Logo" className="img-fluid" />
-          </Col>
-          <Col xs={9} md={10}>
-            <h2 className="mb-2"><a href='https://www.insa.gov.et' style={{textDecoration: 'none'}}>Information Network Security Administration (INSA)  </a></h2>
-            <p style={{color:'grey'}} className="mb-1">The Information Network Security Administration (INSA) was established for the first 
-            time in 1999 in accordance with Council of Ministers Regulation No. 130/1999 with the aim of protecting our country's information
-             and information infrastructure from harm.
-            </p>
-            <p className="mb-1">Email: <span className="text-orange"> contact@insa.gov.et</span> </p>
-            <p className="mb-0">Phone: <span className="text-orange">+251-113-71-71-14 (Ethiopia)
-</span></p>
-          </Col>
-        </Row>
-      </Container>
-      <br /><br />
-      <div className="d-flex justify-content-end me-5 mt-3">
-        <button className="btn btn-primary">
-          <a href="/" style={{ color: 'white', textDecoration: 'none'}}>Next Page</a>
-        </button>
-      
+      <h1 className="mb-4 mt-3 font-weight-bold text-center">Government Agencies</h1>
+      <div className="input-group mb-3">
+        <input
+          type="text"
+          className="form-control rounded-pill text-center"
+          placeholder="Search Here"
+          aria-label="Enter institute title"
+          aria-describedby="basic-addon2"
+          style={{ maxWidth: '200px' }}
+          onChange={function(e){searchItem(e.target)}}
+        />
+        <div className="input-group-append mt-2">
+          <span className="input-group-text bg-white border-0"><FaSearch /></span>
+        </div>
       </div>
-      </>
-
-
-</div>
-
-</div>
-<br/>
-</container>
-
-   
-     // Add more institutes as needed
-
+      <div className="row">
+        {agencies.map((agency, index) => (
+          <div key={index} className="mb-5">
+            <div className="card rounded shadow grow-on-hover d-flex">
+              <div className="row g-0">
+              <div className="col-lg-6 d-flex justify-content-center align-items-center">
+             <img
+             src={agency.imagePath}
+             className="card-img-top rounded-top"
+             alt={`Institute ${index + 1}`}
+            style={{ height: '200px', width: '300px' }}
+              />
+             </div>
+                <div className="col mx-5 my-2">
+                  <div className="card-body">
+                    <h4 className="card-title my-3 text-primary">
+                      <a href={agency.link} target="_blank" rel="noopener noreferrer">
+                        {agency.title}
+                      </a>
+                    </h4>
+                    <p className="col card-text text-muted">{agency.description}</p>
+                    <h6 className="my-2"><b>Category:</b> {agency.category}</h6>
+                    <h6 className="my-2"><b>Email:</b> {agency.email}</h6>
+                    <h6 className="my-2"><b>Phone:</b> {agency.phone}</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="text-left mt-3 mx-5">
+        <Link style={{ marginBottom: "30px" }} to="/view-more" className="btn btn-primary">View More</Link>
+      </div>
+    </div>
   );
-}
-
+};
 
 export default GovernmentAgencies;

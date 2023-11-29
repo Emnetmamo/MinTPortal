@@ -13,6 +13,7 @@ import image1 from "../images/News/news1.png"
 import image2 from "../images/News/news2.jpeg"
 import image3 from "../images/News/news3.jpeg"
 import image4 from "../images/News/news4.jpeg"
+import { Link } from 'react-router-dom';
 
 
 function AboutUs() {

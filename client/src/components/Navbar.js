@@ -27,12 +27,12 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top">
+    <nav className="navbar navbar-expand-lg navbar-light shadow fixed-top">
       <div className="container-fluid">
         <a className="navbar-brand mr-auto" href="/">
          
-          <img src={Logo} alt="Logo" style={{ maxWidth: '120px' }} />
-        </a>
+        <img src={Logo} alt="Logo" style={{ borderRadius: '90%', width: '95px',height:"90px",marginLeft:"55px" }} />
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -48,8 +48,8 @@ const Navbar = () => {
 
         <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="navbarNav">
         <div className="navbar-nav mx-auto" style={{marginTop:"50px"}}>
-  <a className={`nav-link d-flex align-items-center ${window.location.pathname === '/' ? 'active' : ''}`} href="/" onClick={closeMenu} style={{marginRight: '10px'}}> <AiTwotoneHome/>Home</a>
-  <a className={`nav-link ${window.location.pathname === '/announcements' ? 'active' : ''}`} href="/announcements" onClick={closeMenu} style={{marginRight: '10px'}}>Announcements</a>
+  <Link className={`nav-link d-flex align-items-center ${window.location.pathname === '/' ? 'active' : ''}`} to="/" onClick={closeMenu} style={{marginRight: '10px' , color:"white"}}> <AiTwotoneHome/>Home</Link>
+  <Link className={`nav-link ${window.location.pathname === '/announcements' ? 'active' : ''}`} to="/announcements" onClick={closeMenu} style={{marginRight: '10px', color:"white"}}>Announcements</Link>
   <div className={`nav-item dropdown ${isDropdownOpen ? 'show' : ''}`}>
     <a
       className={`nav-link dropdown-toggle`}
@@ -60,18 +60,19 @@ const Navbar = () => {
       aria-haspopup="true"
       aria-expanded={isDropdownOpen}
       onClick={toggleDropdown}
+      style={{color:"white"}}
     >
       Resources
     </a>
     <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`} aria-labelledby="resourcesDropdown">
-      <a className="dropdown-item" href="/resources/accepted-projects" onClick={closeDropdown}>Accepted Projects</a>
-      <a className="dropdown-item" href="/resources/publications" onClick={closeDropdown}>Publications</a>
+      <Link className="dropdown-item" to="/resources/accepted-projects" onClick={closeDropdown} style={{color:"white"}}>Accepted Projects</Link>
+      <Link className="dropdown-item" to="/resources/publications" onClick={closeDropdown} style={{color:"white"}} >Publications</Link>
     </div>
   </div>
-  <a className={`nav-link ${window.location.pathname === '/institutes' ? 'active' : ''}`} href="/institutes" onClick={closeMenu} style={{marginRight: '10px'}}>Institutes</a>
-  <a className={`nav-link ${window.location.pathname === '/collaborations' ? 'active' : ''}`} href="/collaborations" onClick={closeMenu} style={{marginRight: '10px'}}>Collaborations</a>
-  <a className={`nav-link ${window.location.pathname === '/aboutus' ? 'active' : ''}`} href="/aboutus" onClick={closeMenu} style={{marginRight: '10px'}}>About Us</a>
-  <a className={`nav-link ${window.location.pathname === '/news' ? 'active' : ''}`} href="/news" onClick={closeMenu} style={{marginRight: '10px'}}>News</a>
+  <a className={`nav-link ${window.location.pathname === '/institutes' ? 'active' : ''}`} href="/institutes" onClick={closeMenu} style={{marginRight: '10px', color:"white"}}>Institutes</a>
+  <Link className={`nav-link ${window.location.pathname === '/collaborations' ? 'active' : ''}`} to="/collaborations" onClick={closeMenu} style={{marginRight: '10px', color:"white"}}>Collaborations</Link>
+  <Link className={`nav-link ${window.location.pathname === '/aboutus' ? 'active' : ''}`} to="/aboutus" onClick={closeMenu} style={{marginRight: '10px', color:"white"}}>About Us</Link>
+  <Link className={`nav-link ${window.location.pathname === '/news' ? 'active' : ''}`} to="/news" onClick={closeMenu} style={{marginRight: '10px', color:"white"}}>News</Link>
 </div>
 
           <div className="navbar-nav ml-auto" >

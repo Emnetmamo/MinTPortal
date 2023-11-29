@@ -5,9 +5,9 @@ import "../../App.css";
 import { Link } from 'react-router-dom';
 
 
-import video1 from "../../images/home/potential7.gif";
-import video2 from "../../images/home/potential8.gif";
-import video3 from "../../images/home/potential9.gif";
+import video1 from "../../images/home/research.gif";
+import video2 from "../../images/home/drone.gif";
+import video3 from "../../images/home/Agri.gif";
 
 const DiscoverSectors = () => {
   const videoContainerStyle = {
@@ -24,7 +24,7 @@ const DiscoverSectors = () => {
   };
 
   return (
-    <div className="container shadow p-4 mb-5 mt-5" style={{ background: '#2b2b2b', color: "white" }}>
+    <div className="container shadow p-4 mb-5 mt-5" style={{ background: '#2b2b2b', color: "white" ,height: "580px"}}>
       <div className="row">
         <div className="col-md-6" style={{height:"600px"}}>
           

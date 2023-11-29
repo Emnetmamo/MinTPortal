@@ -29,7 +29,7 @@ function UpdateUserStatus() {
             <td>{i++}</td>
             <td>{projects[j]._id}</td>
             <td>{projects[j].projectTitle}</td>
-            <td><p>{projects[j].description}</p></td>
+            <td><h6 style={{height:"100px",overflowY:"scroll"}}>{projects[j].description}</h6></td>
             <td>{numToStatus(projects[j].status)}</td>
             <td><Link to={'/admin/viewFile'} state={{filePath: projects[j].proposalPath}} >View Proposal</Link></td>
             <td><Link to={'/admin/viewFile'} state = {{filePath: projects[j].cvPath}} >View CV</Link></td>
@@ -38,7 +38,7 @@ function UpdateUserStatus() {
                 function(e){
                 updateStatus(e.target.name.split('-')[0], parseInt(e.target.name.split('-')[1])+1);
               }} 
-                className='btn btn-primary' style={{display:buttonsDisplay(projects[j].status)}}>Accept</button>
+                className='btn btn-primary' style={{display:buttonsDisplay(projects[j].status), marginBottom:"10px"}}>Accept</button>
               <button name={projects[j]._id + "-" + projects[j].status} onClick={
                 function(e){
                 updateStatus(e.target.name.split('-')[0], parseInt(e.target.name.split('-')[1])-1)}} 
@@ -130,6 +130,40 @@ function buttonsDisplay(num){
                   Post Accepted Projects
                 </Link>
               </li>
+              <br />
+              <li class="list-group-item post-links   " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link
+                  className="links"
+                  to="/admin/institutes/post-to-institutes"
+                >
+                  Post To Institutes
+                </Link>
+              </li>
+              <br />
+              <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link
+                  className="links"
+                  to="/admin/collaboration/post-to-collaboration"
+                >
+                  Post To Collaborations
+                </Link>
+              </li>
+              <br />
+<li
+  class="list-group-item "
+  style={{
+    backgroundColor: "#ffa525",
+    border: "none",
+    borderRadius: "10px",
+  }}
+>
+  <Link
+    className="links"
+    to="/admin/viewFeedback/view-feedback"
+  >
+   View feedback
+  </Link>
+</li>
             </ul>
           </div>
           <div className="col-xs-12 col-md-1"></div>

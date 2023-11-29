@@ -6,32 +6,41 @@ import { Link } from "react-router-dom";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
 import { Form, FormGroup } from "react-bootstrap";
 import axios from "axios";
-
 const BasicPersonalInfo = ({ nextStep}) => {
   const [fName, SetFname] = useState("");
   const [LName, SetLname] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmpassword, setComfirmPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [email, SetEmail] = useState("");
   const [phone, SetPhone] = useState("");
   const [country, SetCountry] = useState("");
   const [address, SetAdress] = useState("");
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.defaults.withCredentials=true
   
-    if (password !== confirmpassword) {
-      toast.error('Password confirmation error');
+    if (password !== confirmPassword) {
+      toast.error('Password confirmation error',{
+        autoClose: 5000,
+       className: 'custom-toast'
+      });
     }
     if (password.length < 6) {
-      toast.error('Password length must be above ');
+      toast.error('Password length must be above ',{
+        autoClose: 5000,
+      className: 'custom-toast'
+      });
     }
     if (!/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!.])[A-Za-z\d@#$%^&*!.]{8,}/.test(password)) {
-      toast.error('Password must contain at least one uppercase, one lowercase, one special character, and one number');
+      toast.error('Password must contain at least one uppercase, one lowercase, one special character, and one number',{
+        autoClose: 5000,
+      className: 'custom-toast'
+      });
     }
   
-    if (password === confirmpassword && password.length >= 8 && /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!.])[A-Za-z\d@#$%^&*!.]{8,}/.test(password)) {
+    if (password === confirmPassword && password.length >= 8 && /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!.])[A-Za-z\d@#$%^&*!.]{8,}/.test(password)) {
       axios
         .post("http://localhost:5001/auth/register", {
           fName,
@@ -44,7 +53,26 @@ const BasicPersonalInfo = ({ nextStep}) => {
         })
         .then((response) => {
           console.log(response.data);
+          if(response.data==="UserExist"){
+            toast.info('Account Already Exists. Please Log In.', {
+              position: toast.POSITION.TOP_CENTER, // Centered at the top
+              autoClose: 6000,
+            });
+          }
+          if(response.data==='Userregistered'){
+            toast.success('Good work go to next step', {
+              position: toast.POSITION.TOP_CENTER, // Centered at the top
+              autoClose: 4000,
+            });
+            
           nextStep();
+          }
+          else{
+            toast.error('server error please try again', {
+              position: toast.POSITION.TOP_CENTER, // Centered at the top
+              autoClose: 6000,
+            });
+          }
         })
         .catch((error) => {
           console.log("error from registration", error);
@@ -54,9 +82,17 @@ const BasicPersonalInfo = ({ nextStep}) => {
   };
   
 
+
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
 
   return (
     <div className="container">
@@ -126,36 +162,65 @@ const BasicPersonalInfo = ({ nextStep}) => {
               <label htmlFor="password" className="form-label">Your Password</label>
               <input type="password" className="form-control" id="password" name="password" placeholder="******" required  />
             </div> */}
-            <div className="mb-3">
-              <Form.Group controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
+           <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                Password*
+              </label>
+              <div className="input-group">
+                <input
                   type={showPassword ? "text" : "password"}
-                  placeholder="Enter your password"
+                  className="form-control"
+                  id="password"
+                  name="password"
+                  placeholder="Password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  button={showPassword ? <VscEyeClosed /> : <VscEye />}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  required
                 />
-              </Form.Group>
+                <div className="password-toggle-container">
+                  <button
+                    className="btn btn-outline-secondary password-toggle-button"
+                    type="button"
+                    onClick={togglePasswordVisibility}
+                  >
+                    {showPassword ? <VscEyeClosed /> : <VscEye />}
+                  </button>
+                </div>
+              </div>
             </div>
 
+
             <div className="mb-3">
-              <label htmlFor="password" className="form-label">
-                confirmpassword
+              <label htmlFor="confirmPassword" className="form-label">
+                Confirm Password*
               </label>
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                name="password"
-                placeholder="confrimpassword"
-                value={confirmpassword}
-                onChange={(e) => {
-                  setComfirmPassword(e.target.value);
-                }}
-                required
-              />
+              <div className="input-group">
+                <input
+                  type={showConfirmPassword ? "text" : "password"}
+                  className="form-control"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  placeholder="Confirm Password"
+                  value={confirmPassword}
+                  onChange={(e) => {
+                    setConfirmPassword(e.target.value);
+                  }}
+                  required
+                />
+                <div className="password-toggle-container">
+                  <button
+                    className="btn btn-outline-secondary password-toggle-button"
+                    type="button"
+                    onClick={toggleConfirmPasswordVisibility}
+                  >
+                    {showConfirmPassword ? <VscEyeClosed /> : <VscEye />}
+                  </button>
+                </div>
+              </div>
             </div>
+
 
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
@@ -231,7 +296,7 @@ const BasicPersonalInfo = ({ nextStep}) => {
               ></textarea>
             </div>
             <button
-              style={{ backgroundColor: "orange", color: "white" }}
+              style={{ backgroundColor: "orange", color: "white", float: "right" }}
               type="submit"
               className="btn "
             >

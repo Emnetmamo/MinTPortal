@@ -1,13 +1,9 @@
-// src/components/pages/News.js
-import React, {useState, useEffect}  from 'react';
-import {useSelector, useDispatch } from 'react-redux'
-import {getNews} from '../actions/news'
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios'
-import { FaSearch } from 'react-icons/fa'; // Importing the search icon
+import axios from 'axios';
+import { FaSearch } from 'react-icons/fa';
 
-
-axios.defaults.withCredentials=true
+axios.defaults.withCredentials = true;
 
 const News = () => {
 
@@ -15,15 +11,38 @@ const News = () => {
   const news = useSelector((state) => state.news);
 
   useEffect(() => {
-    dispatch(getNews());
-  }, [dispatch]);
+    axios
+      .get('http://localhost:5001/news')
+      .then(response => {
+        const parsedData =
+          typeof response.data === 'string'
+            ? JSON.parse(response.data)
+            : response.data;
+        console.log(parsedData.createdAt);
 
-  
-  const parsedNewsData = typeof news === 'string' ? JSON.parse(news) : news;
+        const sortedPublications = parsedData.sort(
+          (a, b) =>new Date(b.createdAt)- new Date(a.createdAt) 
+        );
 
-  // // Sort the news by date before setting the state
-  const sortedNews = parsedNewsData.sort((a, b) => new Date(a.date) - new Date(b.date));
-  console.log(sortedNews)
+        setNews(sortedPublications);
+      })
+      .catch(error => {
+        console.error('Error fetching news:', error);
+      });
+  }, []);
+
+  function searchNews(e){
+    let searchText = e.value.toLowerCase();
+    let titles = document.getElementsByClassName('card-title');
+    Array.from(titles).forEach(function(title1){
+      if(title1.innerHTML.toLowerCase().indexOf(searchText) > -1){
+        title1.parentElement.parentElement.parentElement.style.display = "";
+      }
+      else{
+        title1.parentElement.parentElement.parentElement.style.display = "none";
+      }
+    })
+  }
 
   return (
     <div className="container mt-5">
@@ -36,40 +55,66 @@ const News = () => {
           aria-label="What's new?"
           aria-describedby="basic-addon2"
           style={{ maxWidth: '200px' }}
+          onChange={function(e){searchNews(e.target)}}
         />
         <div className="input-group-append">
-          <span className="input-group-text bg-white border-0"><FaSearch /></span>
+          <span className="input-group-text bg-white border-0">
+            <FaSearch />
+          </span>
         </div>
       </div>
       <div className="row">
-        {sortedNews && sortedNews.map((newsItem, index) => (
-          <div key={newsItem._id} className="col-lg-4 mb-4">
-            <div className="card rounded shadow grow-on-hover d-flex align-items-strech" > {/* Added grow-on-hover class */}
-               {newsItem && newsItem.image && (
-                  <img className='card-img-top news' src={newsItem.image} alt={newsItem.title}/>
-                )}
-                          
+        {news.map((newsItem, index) => (
+          <div key={index} className="col-md-4 mb-4">
+            <div className="card rounded shadow grow-on-hover">
+              <img
+                className="card-img-top news"
+                src={newsItem.imagePath}
+                alt={newsItem.title}
+              />
               <div className="card-body newsbody1 text-center">
-                <h6 className="mb-0" style={{color: '#11676d', fontSize: '20px'}}
-                >Author:  {newsItem.author}</h6>
-                <div className='d-flex justify-content-center'>                                                            
-                  <h6 className='mx-1' style={{color: '#ffa525'}}>{newsItem.date.split('T')[0]} </h6> <h6>| </h6> <h6 className='ms-1' style={{color: '#ffa525'}}> {newsItem.category}</h6>
-                </div>                
+                <h6
+                  className="mb-0"
+                  style={{ color: '#11676d', fontSize: '20px' }}
+                >
+                  Author: {newsItem.author}
+                </h6>
+                <div className="d-flex" style={{ justifyContent: 'center' }}>
+                  <h6 className="mx-1" style={{ color: '#ffa525' }}>
+                    {newsItem.date && newsItem.date.split('T')[0]}{' '}
+                  </h6>
+                  <h6>| </h6>
+                  <h6 className="ms-1" style={{ color: '#ffa525' }}>
+                    {newsItem.category}
+                  </h6>
+                </div>
                 <h5 className="card-title fw-bold fs-3">{newsItem.title}</h5>
                 <p className="card-text text-muted">{newsItem.content}</p>
               </div>
-              <div className='d-flex px-4 my-2 '>
-                <Link to={`/news/${index}`} className="btn btn-primary px-3">Read More</Link>
-                </div>
-            </div>                        
+              <div className="d-flex px-4 my-2">
+                <Link
+                  to='/viewNews'
+                  state={{id:newsItem._id}}
+                  className="btn btn-primary px-3"
+                >
+                  Read More
+                </Link>
+              </div>
+            </div>
           </div>
         ))}
       </div>
       <div className="text-right mt-3">
-        <Link style={{marginBottom: "30px"}} to="/view-more" className="btn btn-primary">View More</Link>
+        <Link
+          style={{ marginBottom: '30px' }}
+          to="/view-more"
+          className="btn btn-primary"
+        >
+          View More
+        </Link>
       </div>
     </div>
   );
-}
+};
 
 export default News;

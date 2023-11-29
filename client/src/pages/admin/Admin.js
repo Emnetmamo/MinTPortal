@@ -25,10 +25,10 @@ function Admin() {
 
   return (
     <div>
-      <div className="container mt-5">
+      <div className="container mt-5" >
         <div className="row">
           <div
-            className="col-xs-12 col-md-3 post-links-container mt-5"
+            className="col-xs-12 col-md-3 post-links-container mt-2"
             style={{ overflow: "hidden" }}
           >
             <ul class="list-group text-center fs-5 display-6">
@@ -119,13 +119,48 @@ function Admin() {
                   Post Accepted Projects
                 </Link>
               </li>
+              <br />
+              <li class="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link
+                  className="links"
+                  to="/admin/institutes/post-to-institutes"
+                >
+                  Post To Institutes
+                </Link>
+              </li>
+              <br />
+              <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link
+                  className="links"
+                  to="/admin/collaboration/post-to-collaboration"
+                >
+                  Post To Collaborations
+                </Link>
+              </li>
+              <br />
+              <li
+                class="list-group-item "
+                style={{
+                  backgroundColor: "#ffa525",
+                  border: "none",
+                  borderRadius: "10px",
+                }}
+              >
+                <Link
+                  className="links"
+                  to="/admin/viewFeedback/view-feedback"
+                >
+                 View feedback
+                </Link>
+              </li>
+
             </ul>
           </div>
           <div className="col-xs-12 col-md-2"></div>
-          <div className="col-xs-12 col-md-7 mb-5">
+          <div className="col-xs-12 col-md-7 mb-5"  style={{ height: "400px" }}>
             <br />
             <h1 style={{color:"orange"}}>Admin Home</h1>
-            <h3>{message}</h3>
+            <h3>{message}</h3> <br /> <br />
           </div>
         </div>
       </div>

@@ -4,13 +4,14 @@
   position: fixed;
   width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #11676d;
 }
 
 
 
 .navbar-nav .nav-link {
-  color: #11676d; /* Set the default color */
-  font-size: 20px;
+  color: white; /* Set the default color */
+  font-size: 18px;
   font-weight: bold;
   margin-right: "15px"  !important;
 
@@ -27,6 +28,49 @@
   background-color: #FF8F00 !important;
   color: white !important;
 }
+
+
+/* Style the Resources dropdown link */
+.nav-item.dropdown:hover .nav-link {
+  background-color: #FF8F00 !important;
+  color: white !important;
+}
+
+/* Show the dropdown menu on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the dropdown items */
+.nav-item.dropdown .dropdown-item {
+  background-color: #11676d;
+  color: white;
+}
+
+/* Style the dropdown items on hover */
+.nav-item.dropdown .dropdown-item:hover {
+  background-color: #FF8F00;
+  color: #ffffff;
+}
+
+
+/* .dropdown-menu .dropdown-item {
+  background-color: #11676d;
+  color: white;
+} */
+
+/* .dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+  background-color: #FF8F00;
+  color: white;
+} */
+
+/* .dropdown-menu .dropdown-item.active {
+  background-color: #FF8F00;
+  color: white;
+} */
 
 
 /* Add some padding to the body to compensate for the fixed Navbar */
@@ -150,8 +194,8 @@ body {
 }
 .news{
 
-    width: 500px;/* Set your desired width */
-    height: 450px; /* Set your desired height */
+    width: 300px;/* Set your desired width */
+    height: 250px; /* Set your desired height */
     object-fit: cover /* Preserve aspect ratio and cover the container */
 
 }
@@ -161,4 +205,11 @@ body {
   object-fit: cover;
   overflow: hidden; /* Hide any overflow content */
 
+}
+
+
+/* collaboration page */
+
+.custom-card {
+  height: 500px;
 }

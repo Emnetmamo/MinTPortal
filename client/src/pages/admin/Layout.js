@@ -8,14 +8,14 @@ const Layout = () => {
       <nav>
 
         <ul style={{backgroundColor:"#11676d"}}>
-          <li style={{display:"inline", marginRight:"50px", color: "orange"}}>Quick Links: </li>
-          <li style={{display:"inline", marginRight:"50px"}}>
+          <li style={{display:"inline", marginRight:"30px", color: "orange"}}>Quick Links: </li>
+          <li style={{display:"inline", marginRight:"950px"}}>
             <Link to="/admin" style={{color: "orange"}}>Admin</Link>
           </li>
           <li style={{display:"inline"}}>
-            <Link to="/admin/news/add-news" style={{color: "orange"}}>Add News</Link>
+          <Link to="/" style={{ backgroundColor:"orange", color: "black"}}
+          className="btn btn-primary">Back to Home</Link>
           </li>
-         
         </ul>
       </nav>
 

@@ -1,3 +1,4 @@
+
 import express from 'express'
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
@@ -18,12 +19,15 @@ import resources from './routes/resources.js'
 import adminAppointments from './routes/admin/adminAppointments.js'
 import adminPublications from './routes/admin/adminPublications.js'
 import adminAcceptedProjects from './routes/admin/adminAcceptedProjects.js'
-import adminUserStatus from './routes/admin/adminUserStatus.js'
-import adminAppointment from './routes/admin/adminAppointment.js';
+import adminInstitutes from './routes/admin/adminInstitutes.js'
 import login from './controller/login.js';
 import dashboardRoute from './middleware/dashboard.js';
-import adminRoutes from './routes/adminRoutes.js'
-import adminCollaboration from './routes/admin/adminCollaboration.js'
+import institutes from './routes/institutes.js'
+import footerForm from './routes/footer.js'
+import ProtectAdmin from './controller/protectAdmin.js';
+
+import adminAppointment from './routes/admin/adminAppointment.js';
+import adminUserStatus from './routes/admin/adminUserStatus.js';
 
 const app = express();
 const CONNECTION_URL = process.env.CONNECTION_URL
@@ -34,7 +38,7 @@ app.use(express.json());
 app.use(cookieParser())
 app.use(cors({
   origin: "http://localhost:3000",
-  methods: ['GET', 'POST'],
+  methods: ['GET', 'POST',"PUT"],
   credentials: true
 }));
 app.use(express.static(path.join('./', 'public')));
@@ -55,22 +59,29 @@ main()
 //user routes
 app.use('/auth/:page',register)
 app.use('/announcements/:page', announcementPost);
-app.use('/authl',login)
+app.use('/authl',login,ProtectAdmin)
 app.use('/admind',dashboardRoute)
 //app.use('/announcements', fetchRoute)
 app.use('/news', news);
+//app.use('/auth',ProtectAdmin)
 app.use('/resources', resources);
+app.use('/institutes', institutes)
+
 
 //middleware to  admin  routes
 app.use('/admin/appointments', adminAppointments);
 app.use('/admin/news', adminRoutes);
 app.use('/admin/publications', adminPublications)
 app.use('/admin/accepted-projects', adminAcceptedProjects)
-app.use('/admin/userStatus/:id', adminUserStatus);
-app.use('/admin/appointment/:id', adminAppointment);
+app.use('/admin/institutes', adminInstitutes)
+app.use('/footer', footerForm)
+
 
 app.use('/collaboration', Collaboration);
 app.use('/admin/collaboration', adminCollaboration);
+
+app.use('/admin/userStatus/:id', adminUserStatus);
+app.use('/admin/appointment/:id', adminAppointment);
 
 
 

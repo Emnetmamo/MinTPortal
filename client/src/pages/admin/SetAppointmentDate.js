@@ -11,38 +11,55 @@ import '../../images/assets/css/admin.css';
 axios.defaults.withCredentials=true;
 
 function SetAppointmentDate() {
-  
-  const dispatch = useDispatch();
-  const [formData, setFormData] = useState({
-    date: '',
-    time: '',
-    location: '',
-    content: '',
-    sender_email: '',
-    sender_password: '',
-    attendee_email: ''
-
-  });
-
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
-      e.preventDefault();
-    //  const emailResponse = await axios.post('http://localhost:5001/admin/appointments/add-appointment');
-      dispatch(setAppointment(formData));
+  let i = 1;
+  const [projects, setProjects] = useState([]);
+  const[loaded, setLoaded] = useState(false);
+  useEffect(
+    function(){
+      axios.get('http://localhost:5001/admin/appointment/getAll')
+      .then((result)=>{
+        setProjects(result.data);
+        //console.log(result);
+      })
+      .catch(err=>console.log(err))
+      setLoaded(true);
+    }
+  ,[]);
+  function displayProjects(){
+    const tableData = [];
     
-  };
-
-  const clear = () => {
-
+    for (let j = 0; j < projects.length; j++) {
+      tableData.push(
+          <tr>
+            <td>{i++}</td>
+            <td>{projects[j].projectId}</td>
+            <td>{projects[j].projectTitle}</td>
+            <td>{projects[j].appointmentDate}</td>
+            <td>{projects[j].status}</td>
+            <td><input type="datetime-local" name={projects[j].projectId} id={projects[j].projectId} /></td>
+            <td>
+              <button name={projects[j].projectId + "-" + projects[j].status} onClick={
+                function(e){
+                updateStatus(e.target.name.split('-')[0], e.target.name.split('-')[1]);
+              }} 
+                className='btn btn-primary'>Set Appointment</button>
+            </td>
+          </tr>
+      );
   }
+  //console.log(tableData);
+  return tableData;
+}
+function updateStatus(id){
+  console.log("Clicked!")
+  const dateInput = document.getElementById(id);
+  const newDate = new Date(dateInput.value).toISOString();
+  console.log(newDate);
+  axios.get('http://localhost:5001/admin/appointment/setAppointment_'+id+"_"+newDate)
+  .then(result=>console.log(result))
+  .catch(err=>console.log(err));
+  window.location.reload(false);
+}
 
   return (
     <div className= " mt-5 pt-5">
@@ -96,6 +113,40 @@ function SetAppointmentDate() {
                   Post Accepted Projects
                 </Link>
               </li>
+              <br />
+              <li class="list-group-item post-links   " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link
+                  className="links"
+                  to="/admin/institutes/post-to-institutes"
+                >
+                  Post To Institutes
+                </Link>
+              </li>
+              <br />
+              <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link
+                  className="links"
+                  to="/admin/collaboration/post-to-collaboration"
+                >
+                  Post To Collaborations
+                </Link>
+              </li>
+              <br />
+<li
+  class="list-group-item "
+  style={{
+    backgroundColor: "#ffa525",
+    border: "none",
+    borderRadius: "10px",
+  }}
+>
+  <Link
+    className="links"
+    to="/admin/viewFeedback/view-feedback"
+  >
+   View feedback
+  </Link>
+</li>
             </ul>
             {/* ... Navigation links ... */}
           </div>
@@ -139,10 +190,24 @@ function SetAppointmentDate() {
                 <div class="form-group">
                     <button type="submit" className=" form-control my-3 fs-5 btn btn-warning fw-bold">Submit</button>
                 </div>
-            </form>                                                           
-              <ToastContainer/>                    
+            </form> */}
+            <table className="table">
+                <thead className="table-success" style={{color: '#11676d'}}>  
+                  <tr>
+                    <th>No.</th>
+                    <th>User Id</th>
+                    <th>Project Title</th>
+                    <th>Appointment Date</th>
+                    <th>Status</th>
+                    <th>New Appointment</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {loaded && displayProjects()}
+                </tbody>  
+              </table>
           </div>
-        </div>
       </div>
       
     </div>

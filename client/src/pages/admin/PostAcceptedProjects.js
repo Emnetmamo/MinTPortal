@@ -97,7 +97,7 @@ function PostAcceptedProjects() {
        
     try {
       const response =  axios.post('http://localhost:5001/admin/accepted-projects/add-accepted-project', data);
-      console.log(response.data);
+       console.log(response.data);
       alert('Do you want to submit')
       toast.info('News submitted successfully!');
       // await  window.location.reload()
@@ -106,8 +106,6 @@ function PostAcceptedProjects() {
       toast.error('An error occurred while submitting news.');
     }
   };
-
-
 
   return (
     <div className="">
@@ -161,6 +159,41 @@ function PostAcceptedProjects() {
                   Post Accepted Projects
                 </Link>
               </li>
+              <br />
+              <li class="list-group-item post-links   " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link
+                  className="links"
+                  to="/admin/institutes/post-to-institutes"
+                >
+                  Post To Institutes
+                </Link>
+              </li>
+              <br />
+              <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link
+                  className="links"
+                  to="/admin/collaboration/post-to-collaboration"
+                >
+                  Post To Collaborations
+                </Link>
+              </li>
+              <br />
+
+<li
+  class="list-group-item "
+  style={{
+    backgroundColor: "#ffa525",
+    border: "none",
+    borderRadius: "10px",
+  }}
+>
+  <Link
+    className="links"
+    to="/admin/viewFeedback/view-feedback"
+  >
+   View feedback
+  </Link>
+</li>
             </ul>
             </div>
           <div class="col-xs-12 col-md-2"></div>
@@ -262,10 +295,10 @@ function PostAcceptedProjects() {
                 </div>
             </form>
             <ToastContainer />
-            <p>Upload Images:</p>
+            {/* <p>Upload Images:</p>
             <DropzoneImage className='py-5 mt-10 border border-neutral-200'/>            
             <p>Upload Files</p>
-            <DropzoneText className='py-5 mt-10 border border-neutral-200'/>
+            <DropzoneText className='py-5 mt-10 border border-neutral-200'/> */}
           </div>
       </div>
       

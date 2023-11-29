@@ -1,3 +1,4 @@
+
 // src/Routes.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
@@ -10,7 +11,7 @@ import AboutUs from './pages/AboutUs';
 import News from './pages/News';
 import Login from './pages/Login.js';
 import Register from './pages/Register';
-import Footer from './components/Footer';
+import Footer from './pages/Footer.js';
 import ResearchInstitutes from './components/Institutes/ResearchInstitutes';
 import Laboratories from './components/Institutes/Laboratories';
 import GovernmentAgencies from './components/Institutes/GovernmentAgencies';
@@ -19,6 +20,8 @@ import Publications from './pages/Publications';
 import Institutes from './pages/Institutes';
 import ProjectDescription from './pages/ProjectDescription';
 import AcceptedProjects from './pages/AcceptedProjects';
+import FooterForm from './components/footerComponents/FooterForm.js';
+
 
 // admin pages
 import Layout from './pages/admin/Layout';
@@ -29,14 +32,18 @@ import UpdateUserStatus from './pages/admin/UpdateUserStatus'
 import PostCalls from './pages/admin/PostCalls'
 import PostPublications from './pages/admin/PostPublications'
 import PostAcceptedProjects from './pages/admin/PostAcceptedProjects';
+import PostInstitutes from './pages/admin/PostInstitutes';
+import PostCollaborations from './pages/admin/PostCollaborations.js'
 import PostNews from './pages/admin/PostNews'
-import ViewFile from './pages/admin/ViewFile.js';
-
+import ViewFile from './pages/admin/ViewFile';
+import ViewFeedback from "./pages/admin/ViewFeedback.js"
+import ViewNews from './pages/ViewNews.js';
+import ProtectAdmin from './ProtectAdmin.js';
 
 //user page 
 
-import UserHeader from './components/UserComponents/UserHeader.js'
-import UserDashboard from './pages/user/UserDashboard.js';
+import UserHeader from './components/UserComponents/UserHeader';
+import UserDashboard from './pages/user/UserDashboard';
 import ConfirmAppointment from './pages/user/ConfirmAppointment';
 import CheckStatus from './pages/user/CheckStatus';
 
@@ -87,11 +94,18 @@ const RoutesComponent = () => {
       <ConditionalNavbar />
       
       <Routes>
-      
+        
+      <Route path='/user' element={<UserDashboard />} />
+      <Route path='/confirm-appointment' element={<ConfirmAppointment />} />
+      <Route path='/check-status' element={<CheckStatus />} />
+        
+        
+        <Route path="/protect" element={<ProtectAdmin/>}/>
         <Route path="/" element={<Home />} />
         <Route path="/announcements" element={<Announcements />} />
         <Route path="/resources" element={<Resources />} />
         <Route  path='/resources/accepted-projects' element={<AcceptedProjects/>}/>
+        <Route  path='/footer' element={<FooterForm/>}/>
         <Route  path='/resources/publications' element={<Publications/>}/>
         <Route  path='/institutes' element={<Institutes />}/>
         <Route path="/collaborations" element={<Collaborations />} />
@@ -100,7 +114,6 @@ const RoutesComponent = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path='/resources/publications/description' element={<ProjectDescription/>}/>
-        <Route path='/resources/publications/description' element={<ProjectDescription/>}/>
         <Route  path='/institutes/research' element={<ResearchInstitutes />}></Route>
         <Route  path='/institutes/labs' element={<Laboratories />}></Route>
         <Route  path='/institutes/ict' element={<IctPartners />}></Route>
@@ -108,10 +121,10 @@ const RoutesComponent = () => {
       </Routes>
       
  
-     
+    
       <Routes>
+       <Route element={<ProtectAdmin/>}>
         <Route path='/admin' element = {<Layout />}>
-
           <Route  index element= {<Admin/>}/>
           <Route path='news/add-news' element={<PostNews/>}/>
           <Route path='appointments/add-appointment' element={<SetAppointmentDate/>}/>
@@ -119,17 +132,21 @@ const RoutesComponent = () => {
           <Route path='calls/add-call' element={<PostCalls/>}/>
           <Route path='publications/add-publication' element={<PostPublications/>}/>
           <Route path='accepted-projects/add-accepted-project' element={<PostAcceptedProjects/>}/>
-        </Route>
-        <Route  path='admin/viewFile' element={<ViewFile/>}></Route>
+          <Route path='institutes/post-to-institutes' element={<PostInstitutes/>}/>
+          <Route path='collaboration/post-to-collaboration' element={<PostCollaborations/>}/>
+          <Route path='viewFeedback/view-feedback' element={<ViewFeedback/>}/>
+          <Route  path='viewFile' element={<ViewFile/>}></Route>
+          <Route  path='viewNews' element={<ViewNews/>}></Route>
 
+        </Route>
+        </Route>
 
   {/* user */}
+  </Routes>
 
-            <Route path='/user' element={<UserDashboard />} />
-            <Route path='/confirm-appointment' element={<ConfirmAppointment />} />
-            <Route path='/check-status' element={<CheckStatus />} />
+           
 
-      </Routes>
+     
       <ConditionalFooter />
       </Router>
       

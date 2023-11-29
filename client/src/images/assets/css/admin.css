@@ -1,12 +1,12 @@
 .user-icon{
-  width: 40px;
-  height: 40px;
-  color: #11676d;
+  width: 50px;
+  height: 50px;
+  color: white;
 
 }
 .user-name{
   font-size: 30px;
-  color: #11676d;
+  color: white;
   text-decoration: none;
 }
 .header{
@@ -20,14 +20,16 @@
 
 .logo{
   width: 120px; 
-  margin-left: 110px; 
+  margin-left: 10px; 
 }
 
 .post-links-container{
   background-color: #11676d;
   border-radius: 10px;
-  height: 410px;
+  height: 600px;
+  margin-bottom: 50px;
 }
+
 .list-group-item{
   background-color: #ffa525;
 }
@@ -46,7 +48,7 @@
   opacity: 0.3;
 }
 .links{
-  text-decoration: none;
+  text-decoration: none !important;
   color: white !important;
   font-weight: 700;
 }

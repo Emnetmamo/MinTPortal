@@ -9,18 +9,27 @@ let userschema = new mongoose.Schema({
   country: { type: String, required: true },
   address: { type: String, required: true },
   uniqueID:{type: String, required: true},
-  posts: [{ type: mongoose.Types.ObjectId, ref: 'projectfiles' }]
-  ,
+ 
+  
   role:{
     type:String,
     default:'user'
   }
+  
 });
 
 
 const UserModel = mongoose.model("users", userschema);
 
-
+// projectTitle: {type: String,required: true},
+//   cvPath: {type: String,required: true},
+//   teamMembers: {type: [String],required: true},
+//   projectCategory: {type: String,required: true},
+//   description: {type: String,required: true},
+//   proposalPath: {type: String,required: true},
+//   email: {type: String,required: true},
+//   status: {type: Number,required: true
+//   }
 
 
 

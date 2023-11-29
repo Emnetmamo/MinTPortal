@@ -32,15 +32,15 @@ const verifyToken = async (req, res, next) => {
 
 const register = async (req, res) => {
   const uniqueID = uuidv4();
-  let user; // Define user variable outside the if-else block
+  let user = []; // Define user variable outside the if-else block
 
   if (req.params.page === "register") {
     const { fName, LName, password, email, phone, country, address } = req.body;
     try {
-      user = await UserModel.findOne({ email: email }); // Assign user
+      user = await UserModel.find({ email: email }); // Assign user
 
-      if (user) {
-        return res.json("User already exists, please login.");
+      if (user.length > 0) {
+        return res.json("UserExist");
       }
 
       const hash = await bcrypt.hash(password, 12);
@@ -52,14 +52,13 @@ const register = async (req, res) => {
         phone,
         country,
         address,
-        uniqueID,
-        posts: [], // Initialize the user's posts as an empty array
+        uniqueID
       });
      
       const token = jwt.sign({ user: newUser }, SECRET_KEY, { expiresIn: '1h' });
       res.cookie('token', token, { httpOnly: true }); 
       
-      res.json({ message: 'User registered successfully', token });
+      res.json('Userregistered' );
     } catch (error) {
       res.status(500).json({ error: 'Error during registration: ' + error });
     }
@@ -84,7 +83,7 @@ else if (req.params.page === "submitProject") {
   try {
     verifyToken(req, res, async () => {
       const User = await req.user;
-     // console.log(User);
+    console.log(User);
       if (!User) {
         return res.json({ message: 'User not found. Please register or log in.' });
       }
@@ -96,34 +95,59 @@ else if (req.params.page === "submitProject") {
           console.log('Error occurred during file upload: ' + err);
           return res.json({ message: 'Error occurred during file upload' });
         }
+
+
+
+        
         //console.log(req.body);
+        let Title = [];
+
         const projectTitle = req.body.projectTitle;
         const teamMembers = req.body.teamMembers;
         const projectCategory = req.body.projectCategory;
         const description = req.body.description;
         const email1 = req.body.email;
         console.log('Project Title:', projectTitle);
+        console.log("TeamMember: " + teamMembers);
 
         const cvPath = req.files['cvFile'][0].path.split('\\')[1] + '\\' + req.files['cvFile'][0].path.split('\\')[2];
         const proposalPath = req.files['proposalFile'][0].path.split('\\')[1] + "\\" +req.files['proposalFile'][0].path.split('\\')[2];
+
+        let team1 = teamMembers.replace('[', '');
+        team1 = team1.replace(']', '');
+        team1 = team1.replaceAll('"', '');
+        
+        let teamMembers1 = [];
+        for (let i = 0; i < team1.split(',').length; i++) {
+          teamMembers1.push(team1.split(',')[i]);
+        }
+        console.log("TeamMember1: " + teamMembers1);
         // console.log(cvPath);
         // console.log(proposalPath);
         // await ProjectModel.updateMany( {},{ $set: { email : 'emnetmk@gmail.com'} }, { multi: true });
         // await ProjectModel.updateMany( {},{ $set: { status : 1} }, { multi: true });
         //console.log(email1);
-   
-        const projects=   await   ProjectModel.create({
-          projectTitle:projectTitle,
-          teamMembers:[teamMembers],
-          projectCategory:projectCategory,
-          description:description,
-          cvPath:cvPath,
-          proposalPath:proposalPath,
-          email:email1,
-          status:1
-        })
-        .then((projects)=>{res.json('project is stored in database')+projects})
-        .catch(error=>{res.json('error during created projects'+error)})
+        // const data={projectTitle:projectTitle,teamMembers:teamMembers,projectCategory:projectCategory,description:description,cvPath:cvPath,proposalPath:proposalPath}
+        Title=await ProjectModel.find({Title:projectTitle});
+        if(Title.length>0){
+          res.json('titlepresent')
+
+        }else{
+          const projects=   await   ProjectModel.create({
+            projectTitle:projectTitle,
+            teamMembers:teamMembers1,
+            projectCategory:projectCategory,
+            description:description,
+            cvPath:cvPath,
+            proposalPath:proposalPath,
+            email:email1,
+            status:1
+          })
+          .then((projects)=>{res.json('project is stored in database')+projects})
+          .catch(error=>{res.json('error during created projects'+error)})
+        }
+        
+       
       });
     });
   } catch (error) { 

@@ -1,88 +1,74 @@
-// src/components/pages/Collaborations.js
-
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import collab1 from "../images/Collaborations/collab1.jpeg";
-import collab2 from '../images/Collaborations/kodica-logo.png';
-import collab3 from '../images/Collaborations/Logo-ACTS.jpg';
-import collab4 from '../images/Collaborations/jos-log.png';
-import collab5 from '../images/Collaborations/dereja-log.png';
-
-
-const collaborationData = [
-  {
-    id: 1,
-    title: 'United Nations Development Program',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    imageUrl: collab1,
-  },
-  {
-    id: 2,
-    title: 'Korean International Coorporation Agency',
-    description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    imageUrl: collab2,
-  },
-  {
-    id: 3,
-    title: 'Afriacn Center of Technology Science ',
-    description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
-    imageUrl: collab3,
-  },
-  {
-    id: 4,
-    title: 'Jobs Creation Commission Ethiopia',
-    description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.',
-    imageUrl: collab4,
-  },
-  {
-    id: 5,
-    title: 'Dereja',
-    description: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.',
-    imageUrl: collab5,
-  }
-];
+import axios from 'axios';
 
 const Collaborations = () => {
+  const [collaborations, setCollaborations] = useState([]);
+
+  useEffect(() => {
+    fetchCollaborations();
+  }, []);
+
+  const fetchCollaborations = async () => {
+    try {
+      const response = await axios.get('http://localhost:5001/collaboration/collaborations');
+      setCollaborations(response.data);
+    } catch (error) {
+      console.error('Error fetching collaborations:', error);
+    }
+  };
+
+  // Slider setting
   const settings = {
     dots: true,
     infinite: true,
-    speed: 700,
+    speed: 300,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 400,
     responsive: [
       {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        }
+      breakpoint: 400,
+      settings: {
+      slidesToShow: 1,
+      slidesToScroll: 1,
       }
-    ]
+      }
+      ]
+      
   };
 
   return (
-    <div className="container mt-4 mb-4 text-center"> {/* Added text-center class */}
-    <br/><br/>
-      <h1 className="mb-4 font-weight-bold">Collaborations</h1> {/* Added h1 title */}
+    <div className="container mt-4 mb-4 text-center" style={{  width: '900px' }}>
+      <br /> 
+      <h1 className="mb-4 font-weight-bold">Collaborations</h1>
       <Slider {...settings}>
-        {collaborationData.map(collaboration => (
-          <div key={collaboration.id} className="px-2">
+        {collaborations.map((collaboration) => (
+          <div key={collaboration._id} className="px-2">
             <div className="card rounded">
               <img
-                src={collaboration.imageUrl}
-                className="card-img-top  text-center" // Added rounded-circle class
-                alt={`Collaboration ${collaboration.id}`}
-                style={{ width: '200px', height: '200px' }}
+                src={collaboration.imagePath}
+                style={{ height: '200px'}}
+                className="card-img-top"
+                alt={`Collaboration ${collaboration._id}`}
               />
               <div className="card-body">
                 <h5 className="card-title">
-                  <a href={`/collaboration/${collaboration.id}`}>{collaboration.title}</a>
+                  <a
+                    style={{ color: 'orange' }}
+                    href={collaboration.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {collaboration.title}
+                  </a>
                 </h5>
-                <p className="card-text">{collaboration.description}</p>
+                <p style={{ color: 'black', fontWeight: 'normal' }} className="card-text">
+                  {collaboration.description}
+                </p>
               </div>
             </div>
           </div>
@@ -90,6 +76,6 @@ const Collaborations = () => {
       </Slider>
     </div>
   );
-}
+};
 
 export default Collaborations;
