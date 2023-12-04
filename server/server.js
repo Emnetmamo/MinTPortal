@@ -27,6 +27,7 @@ import adminCollaboration from './routes/admin/adminCollaboration.js'
 import institutes from './routes/institutes.js'
 import footerForm from './routes/footer.js'
 import ProtectAdmin from './controller/protectAdmin.js';
+import report from './routes/report.js';
 
 import adminAppointment from './routes/admin/adminAppointment.js';
 import adminUserStatus from './routes/admin/adminUserStatus.js';
@@ -68,6 +69,7 @@ app.use('/news', news);
 //app.use('/auth',ProtectAdmin)
 app.use('/resources', resources);
 app.use('/institutes', institutes)
+app.use('/report', report);
 
 
 //middleware to  admin  routes

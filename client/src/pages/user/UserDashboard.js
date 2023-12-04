@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ConfirmAppointment from './ConfirmAppointment';
 import CheckStatus from './CheckStatus';
+import UploadReport from './UploadReport';
+import FeedbackReport from './FeedbackReport';
 import '../../App.css';
 import { Link } from 'react-router-dom'
 
@@ -35,7 +37,7 @@ const UserDashboard = () => {
       </div>
       <div className="row">
    
-        <div className="col-md-3 left-sidebar">
+        <div className="col-md-3 left-sidebar" style={{padding:"10px"}}>
           <button
             className="btn btn-link w-100 text-center mb-2"
             style={{textDecoration: 'none', backgroundColor: selectedOption === 'confirmAppointment' ? '#11676d' : 'white', color: selectedOption === 'confirmAppointment' ? 'white' : 'black' }}
@@ -45,17 +47,36 @@ const UserDashboard = () => {
           </button>
           <button
             href="#"
-            className="btn btn-link w-100 text-center"
+            className="btn btn-link w-100 text-center mb-2"
             style={{textDecoration: 'none', backgroundColor: selectedOption === 'checkStatus' ? '#11676d' : 'white', color: selectedOption === 'checkStatus' ? 'white' : 'black' }}
             onClick={() => handleOptionClick('checkStatus')}
           >
             Check Your Status
           </button>
+          <button
+            href="#"
+            className="btn btn-link w-100 text-center mb-2"
+            style={{textDecoration: 'none', backgroundColor: selectedOption === 'uploadReport' ? '#11676d' : 'white', color: selectedOption === 'uploadReport' ? 'white' : 'black' }}
+            onClick={() => handleOptionClick('uploadReport')}
+          >
+            Upload Report
+          </button>
+          <button
+            href="#"
+            className="btn btn-link w-100 text-center mb-2"
+            style={{textDecoration: 'none', backgroundColor: selectedOption === 'feedbackReport' ? '#11676d' : 'white', color: selectedOption === 'feedbackReport' ? 'white' : 'black' }}
+            onClick={() => handleOptionClick('feedbackReport')}
+          >
+            View Feedback on Report
+          </button>
         </div>
         <div className="col-md-9">
           {selectedOption === 'confirmAppointment' && <ConfirmAppointment email={email} />}
           {selectedOption === 'checkStatus' && <CheckStatus email={email}/>}
-          {(selectedOption !== 'confirmAppointment' && selectedOption !== 'checkStatus') && 
+          {selectedOption === 'uploadReport' && <UploadReport email={email}/>}
+          {selectedOption === 'feedbackReport' && <FeedbackReport email={email}/>}
+          {(selectedOption !== 'confirmAppointment' && selectedOption !== 'checkStatus' 
+          && selectedOption !== 'uploadReport' && selectedOption !== 'feedbackReport') && 
           <div style={{marginLeft:"10%", marginBottom:"50%"}}>
             <h1 style={{color:"#11676d"}}>User Home</h1>
             <h3>Welcome to the user dashboard. Here you can:
@@ -63,6 +84,7 @@ const UserDashboard = () => {
                 <br/>
                 <li>View your project proposal's status</li>
                 <li>Check and change your proposal presentation date</li>
+                <li>Upload your progress report if your project is accepted</li>
               </ul>
             </h3>
           </div>}

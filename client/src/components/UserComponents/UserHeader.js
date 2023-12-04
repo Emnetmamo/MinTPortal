@@ -14,7 +14,7 @@ function UserHeader() {
           </Link>
           <div className="d-inline-flex  align-items-center">
             <div className=" me-2" ><BsFillPersonFill  className='login-user-icon'/></div>
-            <Link to='/user' className="me-3 login-user-name">User</Link>
+            <Link to='/user' onClick={function(e){e.preventDefault(); window.location.reload(false);}} className="me-3 login-user-name">User</Link>
           </div>
         </div>
       </nav>

@@ -40,6 +40,7 @@ import ViewFile from './pages/admin/ViewFile';
 import ViewFeedback from "./pages/admin/ViewFeedback.js"
 import ViewNews from './pages/ViewNews.js';
 import ProtectAdmin from './ProtectAdmin.js';
+import ViewReports from './pages/admin/ViewReports.js';
 
 //user page 
 
@@ -140,7 +141,7 @@ const RoutesComponent = () => {
           <Route path='collaboration/post-to-collaboration' element={<PostCollaborations/>}/>
           <Route path='viewFeedback/view-feedback' element={<ViewFeedback/>}/>
           <Route  path='viewFile' element={<ViewFile/>}></Route>
-      
+          <Route  path='viewReports' element={<ViewReports/>}></Route>
 
         </Route>
         </Route>

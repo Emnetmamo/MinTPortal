@@ -11,6 +11,7 @@ import PostCollaborations from './pages/admin/PostCollaborations'
 import ViewFeedback from './pages/admin/ViewFeedback'
 import ViewFile from './pages/admin/ViewFile'
 import ViewNews from './pages/ViewNews'
+import ViewReports from './pages/admin/ViewReports'
 import Home from './pages/Home'
 import {Routes,Route} from 'react-router-dom'
 
@@ -49,7 +50,7 @@ const ProtectAdmin = () => {
           <Route path='viewFeedback/view-feedback' element={<ViewFeedback/>}/>
           <Route  path='viewFile' element={<ViewFile/>}></Route>
           <Route  path='viewNews' element={<ViewNews/>}></Route>
-
+          <Route  path='viewReports' element={<ViewReports/>}></Route>
         </Route>
         </Routes>
     ):(<Home/>)}

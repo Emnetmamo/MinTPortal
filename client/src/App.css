@@ -177,7 +177,7 @@ body {
 
 .left-sidebar {
   background-color: orange;
-  height: 150px;
+  height: 200px;
   padding: 20px;
   border-right: 1px solid #ccc; /* Optional: Adds a border on the right */
   border-radius: 20px;
