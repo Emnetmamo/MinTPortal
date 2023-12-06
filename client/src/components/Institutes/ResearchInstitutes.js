@@ -27,13 +27,23 @@ const ResearchInstitutes = () => {
   };
   function searchItem(e){
     let searchText = e.value.toLowerCase();
-    let titles = document.getElementsByClassName('card-title');
+    let titles2 = Array.from(document.getElementsByClassName('card-title'));
+    let contents = Array.from(document.getElementsByClassName('card-text text-muted'));
+    let titles = titles2.concat(contents);
+    let parent = null;
     Array.from(titles).forEach(function(title1){
-      if(title1.innerHTML.toLowerCase().indexOf(searchText) > -1){
+      if(title1.innerText.toLowerCase().indexOf(searchText) > -1){
         title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "";
+        parent = title1.parentElement.parentElement.parentElement.parentElement.parentElement;
+        console.log(parent);
       }
       else{
-        title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "none";
+        if(parent === title1.parentElement.parentElement.parentElement.parentElement.parentElement){
+          title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "";
+        }
+        else{
+          title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "none";
+        }
       }
     })
   }
