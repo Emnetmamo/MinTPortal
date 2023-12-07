@@ -5,7 +5,7 @@ let news_schema = new mongoose.Schema({
   content: {type: String, required: true},
   category: {type: String, required: true},
   date: {type: Date, required: true},
-  imagePath: {type: String, },
+  imagePath: {type: String, required: true},
 },
 {timestamps: true});
 

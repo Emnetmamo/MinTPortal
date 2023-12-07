@@ -66,7 +66,6 @@ router.post('/add-news',Verify, (req, res) => {
       let imagePath = 'public\\images\\noimage.png'
       if (req.file){ imagePath = req.file.path; 
       console.log(imagePath)  }
-         
       const serverUrl = 'http://localhost:5001'; // Replace this with your server URL
       
       //   Remove 'public' from the path
@@ -74,26 +73,28 @@ router.post('/add-news',Verify, (req, res) => {
       const cleanImagePath = parts.join('');
       const imageUrl = serverUrl + '/' + cleanImagePath;      
       const imagePaths = imageUrl.replace(/\//g, '\\')
-
+      console.log(imagePaths)
         
-      try {
-          const newNews =  new News({
-        title,
-        author,
-        content,
-        category,
-        date,
-        imagePath: imagePaths,
-      });
-       const savedNews = await newNews.save();
-        res.json({savedNews:savedNews,ok:'ok'});
+      // try {
+          const newNews =  News.create({
+        title:title,
+        author:author,
+        content:content,
+        category:category,
+        date:date,
+        imagePath: imagePaths
+      })
+      .then((result)=>{console.log(result); res.json(result)})
+      .catch(err=>console.log(err))
+      //  const savedNews = await newNews.save();
+      //   res.json({savedNews:savedNews,ok:'ok'});
         
         
-      } catch (error) {
+      // } catch (error) {
        
-        console.error('An error occurred while saving to the database:', error);         
-        res.status(500).json({ error: 'An error occurred while saving to the database' });
-      }
+      //   console.error('An error occurred while saving to the database:', error);         
+      //   res.status(500).json({ error: 'An error occurred while saving to the database' });
+      // }
     }
   });
 });
