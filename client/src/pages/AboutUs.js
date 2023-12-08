@@ -14,6 +14,7 @@ import image2 from "../images/News/news2.jpeg"
 import image3 from "../images/News/news3.jpeg"
 import image4 from "../images/News/news4.jpeg"
 import { Link } from 'react-router-dom';
+import ContactUs from '../components/AboutUsComponents/ContactUs';
 
 
 function AboutUs() {
@@ -70,6 +71,7 @@ function AboutUs() {
         <br/><br/>
        
         <br/><br/>
+        <ContactUs/>
         <section >
           <h1 className='text-center slanted-text'>Click to Read More</h1>
           <br/><br/><br/><br/>
