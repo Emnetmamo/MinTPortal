@@ -81,7 +81,7 @@ const Login = () => {
               <div className="input-group">
                 <input
                   type={showPassword ? 'text' : 'password'}
-                  placeholder="Enter Your Password"
+                  placeholder="Password you entered when you registered"
                   className="form-control"
                   id="password"
                   value={password}

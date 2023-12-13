@@ -51,9 +51,9 @@ const NationalCalls = (props) => {
 
 
         <div style={{marginLeft: "50px"}}>          
-              <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className="card-text">
+              {/* <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className="card-text">
                 Category: <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].callType} calls</span>
-              </p>
+              </p> */}
 
               <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className="card-text">
                 Description: <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].description}</span>
@@ -85,7 +85,7 @@ const NationalCalls = (props) => {
           </div>
           <a href='/startApplication' style={{ backgroundColor: "orange", color:"white", marginLeft:"900px"}}
            className="btn ">
-              Start your application
+              Apply
             </a>
           </div>
         </div>

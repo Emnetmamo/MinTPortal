@@ -13,7 +13,9 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
   const [description, setDescription] = useState("");
   const [cvFile, setCvFile] = useState(null);
   const [proposalFile, setProposalFile] = useState(null);
+  const [letter, setLetter] = useState(null);
   const [email, setEmail] = useState("");
+  const [institute, setInstitute] = useState("")
 
   const MAX_FILE_SIZE = 3 * 1024 * 1024; // 3MB in bytes
 
@@ -32,6 +34,15 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
       setProposalFile(file);
     } else {
       toast.error('Proposal file size should not exceed 3MB');
+    }
+  };
+
+  const handleLetterFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file && file.size <= MAX_FILE_SIZE) {
+      setLetter(file);
+    } else {
+      toast.error('Letter file size should not exceed 3MB');
     }
   };
 
@@ -55,13 +66,16 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
     formData.append("projectCategory", projectCategory);
     formData.append("description", description);
     formData.append("email", email);
+    formData.append("institute", institute);
     if (cvFile) {
       formData.append("cvFile", cvFile);
     }
     if (proposalFile) {
       formData.append("proposalFile", proposalFile);
     }
-
+    if (letter) {
+      formData.append("letter", letter);
+    }
     try {
       const response = await axios.put(
         "http://localhost:5001/auth/submitProject",
@@ -201,7 +215,21 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
                 required
               />
             </div>
-
+            
+            <div className="mb-3">
+              <label htmlFor="institute" className="form-label">
+                Host Institution*
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="institute"
+                name="institute"
+                value={institute}
+                onChange={(e) => setInstitute(e.target.value)}
+                required
+              />
+            </div>
 
             <div className="mb-3">
               <label htmlFor="cvFile" className="form-label">
@@ -233,7 +261,20 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
               />
             </div>
 
-           
+            <div className="mb-3">
+              <label htmlFor="letter" className="form-label">
+                Letter from Host Institutions*
+              </label>
+              <input
+                type="file"
+                accept="application/pdf"
+                className="form-control"
+                id="letter"
+                name="letter"
+                onChange={handleLetterFileChange}
+                required
+              />
+            </div>
 
             <div className="d-flex justify-content-between">
             <button

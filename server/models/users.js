@@ -9,12 +9,12 @@ let userschema = new mongoose.Schema({
   country: { type: String, required: true },
   address: { type: String, required: true },
   uniqueID:{type: String, required: true},
- 
   
   role:{
     type:String,
     default:'user'
-  }
+  },
+  sex: {type: String, required: true}
   
 });
 

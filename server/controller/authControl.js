@@ -35,7 +35,7 @@ const register = async (req, res) => {
   let user = []; // Define user variable outside the if-else block
 
   if (req.params.page === "register") {
-    const { fName, LName, password, email, phone, country, address } = req.body;
+    const { fName, LName, password, email, phone, country, address, sex } = req.body;
     try {
       user = await UserModel.find({ email: email }); // Assign user
 
@@ -44,6 +44,7 @@ const register = async (req, res) => {
       }
 
       const hash = await bcrypt.hash(password, 12);
+      // await UserModel.updateMany( {},{ $set: { sex : 'Male'} }, { multi: true });
       const newUser = await UserModel.create({
         fName,
         LName,
@@ -52,7 +53,8 @@ const register = async (req, res) => {
         phone,
         country,
         address,
-        uniqueID
+        uniqueID,
+        sex
       });
      
       const token = jwt.sign({ user: newUser }, SECRET_KEY, { expiresIn: '1h' });
@@ -90,6 +92,7 @@ else if (req.params.page === "submitProject") {
       upload.fields([
         { name: 'cvFile', maxCount: 1 },
         { name: 'proposalFile', maxCount: 2 },
+        { name: 'letter', maxCount: 2 }
       ])(req, res, async (err) => {
         if (err) {
           console.log('Error occurred during file upload: ' + err);
@@ -107,11 +110,13 @@ else if (req.params.page === "submitProject") {
         const projectCategory = req.body.projectCategory;
         const description = req.body.description;
         const email1 = req.body.email;
+        const institute = req.body.institute;
         console.log('Project Title:', projectTitle);
         console.log("TeamMember: " + teamMembers);
 
         const cvPath = req.files['cvFile'][0].path.split('\\')[1] + '\\' + req.files['cvFile'][0].path.split('\\')[2];
         const proposalPath = req.files['proposalFile'][0].path.split('\\')[1] + "\\" +req.files['proposalFile'][0].path.split('\\')[2];
+        const letterPath = req.files['letter'][0].path.split('\\')[1] + "\\" +req.files['letter'][0].path.split('\\')[2];
 
         let team1 = teamMembers.replace('[', '');
         team1 = team1.replace(']', '');
@@ -125,7 +130,8 @@ else if (req.params.page === "submitProject") {
         // console.log(cvPath);
         // console.log(proposalPath);
         // await ProjectModel.updateMany( {},{ $set: { email : 'emnetmk@gmail.com'} }, { multi: true });
-        // await ProjectModel.updateMany( {},{ $set: { status : 1} }, { multi: true });
+        // await ProjectModel.updateMany( {},{ $set: { hostInstitution : "Addis Ababa University"} }, { multi: true });
+        // await ProjectModel.updateMany( {},{ $set: { letterPath : "uploads\\1701198466688.pdf"} }, { multi: true });
         //console.log(email1);
         // const data={projectTitle:projectTitle,teamMembers:teamMembers,projectCategory:projectCategory,description:description,cvPath:cvPath,proposalPath:proposalPath}
         Title=await ProjectModel.find({Title:projectTitle});
@@ -141,7 +147,9 @@ else if (req.params.page === "submitProject") {
             cvPath:cvPath,
             proposalPath:proposalPath,
             email:email1,
-            status:1
+            status:1,
+            hostInstitution:institute,
+            letterPath: letterPath
           })
           .then((projects)=>{res.json('project is stored in database')+projects})
           .catch(error=>{res.json('error during created projects'+error)})
