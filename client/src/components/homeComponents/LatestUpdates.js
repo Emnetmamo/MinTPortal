@@ -126,7 +126,8 @@ const LatestUpdates = () => {
       }
       else{
         let display = [];
-        for (let i = 0; i < 5; i++) {
+        console.log((news.length - 1) + ", "+(news.length - 5));
+        for (let i = (news.length - 1); i > (news.length - 6); i--) {
           display.push(
             <Carousel.Item>
           <Link
@@ -140,7 +141,7 @@ const LatestUpdates = () => {
               style={carouselImageStyle}
             />
             <Carousel.Caption>
-              <h3>{news[i].title}</h3>
+              <h2>{news[i].title}</h2>
               <p style={{color:"white", overflow:"hidden"}}>{news[i].content.substring(0, 200)}</p>
             </Carousel.Caption>
           </Link>
