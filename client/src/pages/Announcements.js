@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import NationalCalls from "../components/announcementsComponents/NationalCalls";
 import ForeignCalls from "../components/announcementsComponents/ForeignCalls";
+import LatestAnnouncement from "../components/homeComponents/LatestAnnoucement";
 
 const Announcements = () => {
   const [selectedTab, setSelectedTab] = useState("national");
@@ -66,6 +67,7 @@ const Announcements = () => {
       <div className="tab-content mt-3">
         {selectedTab === "national" && <NationalCalls category={categorySelected} />}
         {selectedTab === "foreign" && <ForeignCalls category={categorySelected} />}
+        {selectedTab === "foreign" ||selectedTab === "national" && <LatestAnnouncement category={categorySelected} />}
       </div>
     </div>
   );

@@ -5,11 +5,13 @@ import Introduction from '../components/homeComponents/Introduction';
 import DiscoverSectors from '../components/homeComponents/DiscoverSectors';
 import RegistrationSteps from '../components/homeComponents/RegistrationSteps';
 import LatestUpdates from '../components/homeComponents/LatestUpdates';
+import ImportantInformation from '../components/homeComponents/ImportantInformation';
 
 const Home = () => {
   return (
     <div className="container py-5">
       <Introduction />
+      <ImportantInformation/>
       <DiscoverSectors />
       <RegistrationSteps />
       <LatestUpdates />
