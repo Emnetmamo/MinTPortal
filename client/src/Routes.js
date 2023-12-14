@@ -12,6 +12,7 @@ import News from './pages/News';
 import Login from './pages/Login.js';
 import Register from './pages/Register';
 import Footer from './pages/Footer.js';
+import GraphicalAnalysis from './pages/GraphicalAnalysis.js';
 import ResearchInstitutes from './components/Institutes/ResearchInstitutes';
 import Laboratories from './components/Institutes/Laboratories';
 import GovernmentAgencies from './components/Institutes/GovernmentAgencies';
@@ -102,8 +103,9 @@ const RoutesComponent = () => {
       <Route path='/check-status' element={<CheckStatus />} />
       <Route  path='/viewNews' element={<ViewNews/>}></Route>
       <Route  path='/startApplication' element={<StartApplication/>}></Route>
-        
-        
+
+
+        <Route path="/graph" element={<GraphicalAnalysis />} />
         <Route path="/protect" element={<ProtectAdmin/>}/>
         <Route path="/" element={<Home />} />
         <Route path="/announcements" element={<Announcements />} />
