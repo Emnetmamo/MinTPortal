@@ -40,6 +40,10 @@ const projectIdea = new mongoose.Schema({
   letterPath: {
     type: String,
     required: true
+  },
+  submittedDate: {
+    type: Date,
+    required: true
   }
 });
 

@@ -14,7 +14,8 @@ let userschema = new mongoose.Schema({
     type:String,
     default:'user'
   },
-  sex: {type: String, required: true}
+  sex: {type: String, required: true},
+  registeredDate: {type: Date, required:true}
   
 });
 

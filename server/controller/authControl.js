@@ -44,7 +44,9 @@ const register = async (req, res) => {
       }
 
       const hash = await bcrypt.hash(password, 12);
+      const nowDate = new Date(Date.now()).toISOString();
       // await UserModel.updateMany( {},{ $set: { sex : 'Male'} }, { multi: true });
+      // await UserModel.updateMany( {},{ $set: { registeredDate : nowDate} }, { multi: true });
       const newUser = await UserModel.create({
         fName,
         LName,
@@ -54,7 +56,8 @@ const register = async (req, res) => {
         country,
         address,
         uniqueID,
-        sex
+        sex,
+        registeredDate: nowDate
       });
      
       const token = jwt.sign({ user: newUser }, SECRET_KEY, { expiresIn: '1h' });
@@ -127,11 +130,13 @@ else if (req.params.page === "submitProject") {
           teamMembers1.push(team1.split(',')[i]);
         }
         console.log("TeamMember1: " + teamMembers1);
+        const nowDate = new Date(Date.now()).toISOString();
         // console.log(cvPath);
         // console.log(proposalPath);
         // await ProjectModel.updateMany( {},{ $set: { email : 'emnetmk@gmail.com'} }, { multi: true });
         // await ProjectModel.updateMany( {},{ $set: { hostInstitution : "Addis Ababa University"} }, { multi: true });
         // await ProjectModel.updateMany( {},{ $set: { letterPath : "uploads\\1701198466688.pdf"} }, { multi: true });
+        // await ProjectModel.updateMany( {},{ $set: { submittedDate : nowDate} }, { multi: true });
         //console.log(email1);
         // const data={projectTitle:projectTitle,teamMembers:teamMembers,projectCategory:projectCategory,description:description,cvPath:cvPath,proposalPath:proposalPath}
         Title=await ProjectModel.find({Title:projectTitle});
@@ -149,7 +154,9 @@ else if (req.params.page === "submitProject") {
             email:email1,
             status:1,
             hostInstitution:institute,
-            letterPath: letterPath
+            letterPath: letterPath,
+            submittedDate: nowDate
+
           })
           .then((projects)=>{res.json('project is stored in database')+projects})
           .catch(error=>{res.json('error during created projects'+error)})

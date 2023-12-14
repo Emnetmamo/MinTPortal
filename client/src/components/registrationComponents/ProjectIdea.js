@@ -248,7 +248,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
 
             <div className="mb-3">
               <label htmlFor="proposalFile" className="form-label">
-                Proposal (PDF)*
+                Concept Note (PDF)*
               </label>
               <input
                 type="file"
