@@ -22,7 +22,7 @@ const SectorialGraphicalAnalysis = () => {
   const totalApplicants = calculateTotal(data);
 
   return (
-    <div style={{ marginTop: '40px', marginLeft: '300px' }}>
+    <div style={{ marginTop: '40px', marginLeft: '250px' }}>
       <div style={{ width: '800px' }}>
         <p>The <em>Graphical Analysis</em> of Applicants in various <em>Sectors</em> within the respective Year of Applying for Researchs</p>
       </div>
