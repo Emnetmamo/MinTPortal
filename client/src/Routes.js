@@ -18,6 +18,7 @@ import ResearchInstitutes from './components/Institutes/ResearchInstitutes';
 import Laboratories from './components/Institutes/Laboratories';
 import GovernmentAgencies from './components/Institutes/GovernmentAgencies';
 import IctPartners from './components/Institutes/IctPartners';
+import Others from './components/Institutes/Others.js';
 import Publications from './pages/Publications';
 import Institutes from './pages/Institutes';
 import ProjectDescription from './pages/ProjectDescription';
@@ -128,6 +129,7 @@ const RoutesComponent = () => {
         <Route  path='/institutes/labs' element={<Laboratories />}></Route>
         <Route  path='/institutes/ict' element={<IctPartners />}></Route>
         <Route  path='/institutes/government' element={<GovernmentAgencies />}></Route>
+        <Route  path='/institutes/other' element={<Others />}></Route>
       </Routes>
       
  
