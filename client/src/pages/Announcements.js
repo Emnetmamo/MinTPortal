@@ -67,7 +67,6 @@ const Announcements = () => {
       <div className="tab-content mt-3">
         {selectedTab === "national" && <NationalCalls category={categorySelected} />}
         {selectedTab === "foreign" && <ForeignCalls category={categorySelected} />}
-        {selectedTab === "foreign" ||selectedTab === "national" && <LatestAnnouncement category={categorySelected} />}
       </div>
     </div>
   );
