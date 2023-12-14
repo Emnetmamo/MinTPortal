@@ -21,7 +21,7 @@ function Post_News() {
     content: '',
     category: '',
     date: '',
-    image: ''
+    imagePath: ''
 
   });
 
@@ -295,12 +295,12 @@ main()
                   <FileBase
                     type="file" 
                     multiple = {false}                         
-                    onDone={({base64}) => setFormData({...formData, image: base64})}
+                    onDone={({base64}) => setFormData({...formData, imagePath: base64})}
                     
                   />            
                                                  
                  </div>
-                 {formData.image && <img src={formData.image} alt="Selected" style={{height: '150px', width: '150px'}} />}
+                 {formData.imagePath && <img src={formData.imagePath} alt="Selected" style={{height: '150px', width: '150px'}} />}
                 </div>
                 <br />
                 <div className="form-group">
