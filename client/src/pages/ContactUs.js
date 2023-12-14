@@ -1,15 +1,10 @@
 // ContactUs.jsx
 import {React, useState} from 'react';
-import "../../images/assets/css/contactUs.css"
+import "../images/assets/css/contactUs.css"
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
 axios.defaults.withCredentials=true;
-
-
-
-
-
 
 
 const ContactUs = () => {
@@ -57,7 +52,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="contact-container">
+    <div className="contact-container" style={{marginTop: "50px"}}>
       <div className="contact-form">
         <h2>Contact Us</h2>
         <form method='POST'  onSubmit={handleSubmit} encType='multipart/form-data' >
@@ -87,7 +82,24 @@ const ContactUs = () => {
             value={formData.message}
             onChange={handleChange}></textarea>
           </div>
-          <button type="submit">Send Message</button>
+          <button
+  style={{
+    backgroundColor: '#ff8e2c',
+    color: '#ffffff',
+    padding: '12px 25px',
+    borderRadius: '30px',
+    border: "none",
+    fontSize: '16px',
+    transition: 'background-color 0.3s ease', // Add transition for a smooth effect
+  }}
+  type="submit"
+  onMouseOver={(e) => (e.target.style.backgroundColor = '#16676d')}
+  onMouseOut={(e) => (e.target.style.backgroundColor = '#ff8e2c')}
+>
+  Send Message
+</button>
+
+
         </form>
       </div>
       <div className="contact-map">
