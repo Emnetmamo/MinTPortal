@@ -73,7 +73,7 @@ const GraphicalAnalysis = () => {
               ))}
             </tr>
             <tr style={tableRowEvenStyle}>
-              <td style={tableHeaderStyle}>Total No. of Applicants</td>
+              <td style={tableHeaderStyle}>Sum of Applicants</td>
               {data.map((item) => (
                 <td key={item.year} style={tableCellStyle}>{item.males + item.females}</td>
               ))}

@@ -1,70 +1,28 @@
 import express from "express";
-import Institutes from "../models/users.js";
+import UserModel from "../models/users.js";
 
-const router = express.Router()
- 
-//GET User Info
+const router = express.Router();
+
+// GET User Info
 router.get('/graphicalAnalysis', async (req, res) => {
-  
   try {
+    const usersData = await UserModel.find();
 
-    // Find documents by category
-    const institutesData = await Institutes.find({ category :'Research Institutes'});
+    // Calculate the count of males and females
+    let malesCount = 0;
+    let femalesCount = 0;
 
-  
-    res.json(institutesData); // Do something with the retrieved data
+    usersData.forEach(user => {
+      if (user.sex === 'Male') {
+        malesCount++;
+      } else if (user.sex === 'Female') {
+        femalesCount++;
+      }
+    });
+
+    res.json({ males: malesCount, females: femalesCount });
   } catch (error) {
-    console.error('error2:', error)
-    res.status(500).json({ error: 'Server error' });
-  }
-});
-
-
-
-//GET Laboratories
-router.get('/laboratories', async (req, res) => {
-  
-  try {
-
-    // Find documents by category
-    const institutesData = await Institutes.find({ category :'Laboratories'});
-
-    
-    res.json(institutesData); // Do something with the retrieved data
-  } catch (error) {
-    console.error('error2:', error)
-    res.status(500).json({ error: 'Server error' });
-  }
-});
-
-
-//GET ICT partners
-router.get('/partners', async (req, res) => {
-  
-  try {
-
-    // Find documents by category
-    const institutesData = await Institutes.find({ category :'Ict Partners'});
-
-    res.json(institutesData); // Do something with the retrieved data
-  } catch (error) {
-    console.error('error2:', error)
-    res.status(500).json({ error: 'Server error' });
-  }
-});
-
-
-//GET Government Agencies
-router.get('/agencies', async (req, res) => {
-  
-  try {
-
-    // Find documents by category
-    const institutesData = await Institutes.find({ category :'Government Agencies'});
-
-    res.json(institutesData); // Do something with the retrieved data
-  } catch (error) {
-    console.error('error2:', error)
+    console.error('Error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });

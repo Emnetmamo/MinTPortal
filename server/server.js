@@ -26,6 +26,7 @@ import adminRoutes from './routes/adminRoutes.js'
 import adminNews from './routes/admin/adminNews.js'
 import adminCollaboration from './routes/admin/adminCollaboration.js'
 import institutes from './routes/institutes.js'
+import graphicalAnalysis from './routes/graphicalAnalysis.js'
 import footerForm from './routes/footer.js'
 import ProtectAdmin from './controller/protectAdmin.js';
 import report from './routes/report.js';
@@ -70,6 +71,7 @@ app.use('/news', news);
 //app.use('/auth',ProtectAdmin)
 app.use('/resources', resources);
 app.use('/institutes', institutes)
+app.use('/graphAnalysis', graphicalAnalysis)
 app.use('/report', report);
 
 
