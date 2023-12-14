@@ -18,9 +18,11 @@ const GraphicalAnalysis = () => {
   const totalApplicants = calculateTotal(data);
 
   return (
-    <div style={{ marginTop: '40px', marginLeft: '100px' }}>
+    <div style={{ marginTop: '40px', marginLeft: '300px' }}>
+       <h1 style={{ marginLeft: '130px'}}>The Graphical Analysis of Applicants</h1>
+      <p>The Graphical and Tabular Analysis of Male and Female Applicants <br />within the corresponding Year of Registration</p>
       <div style={{ marginBottom: '20px' }}>
-        <BarChart width={600} height={400} data={data}>
+        <BarChart width={800} height={400} data={data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="year">
             <Label
@@ -50,7 +52,7 @@ const GraphicalAnalysis = () => {
         </BarChart>
       </div>
       <div>
-        <table style={{ width: '600px', borderCollapse: 'collapse' }}>
+        <table style={{ width: '800px', borderCollapse: 'collapse' }}>
           <thead>
             <tr style={{ backgroundColor: '#f2f2f2' }}>
               <th style={tableHeaderStyle}>Years ( G.C ) </th>
