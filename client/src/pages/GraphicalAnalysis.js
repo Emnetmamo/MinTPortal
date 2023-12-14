@@ -18,9 +18,11 @@ const GraphicalAnalysis = () => {
   const totalApplicants = calculateTotal(data);
 
   return (
-    <div style={{ marginTop: '40px', marginLeft: '300px' }}>
-       <h1 style={{ marginLeft: '130px'}}>The Graphical Analysis of Applicants</h1>
-      <p>The Graphical and Tabular Analysis of Male and Female Applicants <br />within the corresponding Year of Registration</p>
+    <div style={{ marginTop: '40px', marginLeft: '300px' }}> 
+    <div style={{ width: '800px' }}>
+    <h1 style={{ marginLeft: '80px'}}>The Graphical & Tabular Analysis of Applicants</h1>
+      <p>The <em>Graphical Analysis</em> of Male and Female Applicants within the corresponding Year of Registration</p>
+    </div>
       <div style={{ marginBottom: '20px' }}>
         <BarChart width={800} height={400} data={data}>
           <CartesianGrid strokeDasharray="3 3" />
@@ -51,6 +53,9 @@ const GraphicalAnalysis = () => {
           </Bar>
         </BarChart>
       </div>
+      <div style={{ width: '800px' }}>
+      <p>The <em>Tabular Analysis</em> of Male and Female Applicants within the corresponding Year of Registration</p>
+    </div>
       <div>
         <table style={{ width: '800px', borderCollapse: 'collapse' }}>
           <thead>
@@ -83,7 +88,7 @@ const GraphicalAnalysis = () => {
           </tbody>
         </table>
       </div>
-      <div style={{ margin: '10px', textAlign: 'left', fontSize: '16px' }}>
+      <div style={{ margin: '10px', textAlign: 'left', fontSize: '16px',width: '800px' }}>
         Total No. of Applicants: {totalApplicants}
       </div>
     </div>
