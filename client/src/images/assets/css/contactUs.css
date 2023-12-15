@@ -1,5 +1,6 @@
 /* ContactUs.css */
 .contact-container {
+ 
     display: flex;
     justify-content: space-around;
     margin-top: -50px;
@@ -43,21 +44,6 @@
     font-size: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
-  }
-  
-  button {
-    background-color: #ff8e2c; /* Blue color */
-    color: #ffffff;
-    padding: 12px 25px; /* Adjusted padding */
-    border: none;
-    border-radius: 30px !important;
-    font-size: 16px; /* Revert to original font size */
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth transition */
-  }
-  
-  button:hover {
-    background-color: #2185d0; /* Darker blue on hover */
   }
   
   .contact-map {

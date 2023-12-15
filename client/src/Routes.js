@@ -8,6 +8,7 @@ import Announcements from './pages/Announcements';
 import Resources from './pages/Resources';
 import Collaborations from './pages/Collaborations';
 import AboutUs from './pages/AboutUs';
+import ContactUs from './pages/ContactUs.js';
 import News from './pages/News';
 import Login from './pages/Login.js';
 import Register from './pages/Register';
@@ -49,6 +50,7 @@ import UserHeader from './components/UserComponents/UserHeader';
 import UserDashboard from './pages/user/UserDashboard';
 import ConfirmAppointment from './pages/user/ConfirmAppointment';
 import CheckStatus from './pages/user/CheckStatus';
+
 
 
 const ConditionalNavbar = () => {
@@ -116,6 +118,7 @@ const RoutesComponent = () => {
         <Route  path='/institutes' element={<Institutes />}/>
         <Route path="/collaborations" element={<Collaborations />} />
         <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/contactus" element={<ContactUs />} />
         <Route path="/news" element={<News />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
