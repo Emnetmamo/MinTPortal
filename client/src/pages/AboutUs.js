@@ -1,5 +1,4 @@
 import React from 'react'
-import { FaFacebook, FaLinkedin, FaTwitter, FaPhone } from 'react-icons/fa';
 import { BsFillPersonFill } from "react-icons/bs";
 import GoogleMapLocation from '../images/GoogleMapLocation.png'; 
 import OrganizationStructure from "../components/AboutUsComponents/OrganizationStructure";
@@ -13,7 +12,6 @@ import image1 from "../images/News/news1.png"
 import image2 from "../images/News/news2.jpeg"
 import image3 from "../images/News/news3.jpeg"
 import image4 from "../images/News/news4.jpeg"
-import { RiMapPin2Fill, RiMailFill } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 
 
@@ -70,18 +68,7 @@ function AboutUs() {
         </div>
         </section> 
         <br/><br/>
-        <section>
-        <div style={{boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', paddingBottom:"5%"}}>
-        <h1 style={{marginLeft:"5%", color:'orange'}}>Contact Information</h1>
-        <div  title="Click here to visit more" style={{ width: '100%', height: '40%', display:"inline" }}>
-          <div style={{fontSize:"28px", display:"inline", marginLeft:"5%", color:'#11676d'}}><FaPhone/>+25111265737</div>
-          <div style={{fontSize:"28px", display:"inline", marginLeft:"15%", color:'#11676d'}}><RiMailFill /> contact@mint.gov.et</div>
-          <div style={{fontSize:"28px", display:"inline", marginLeft:"15%", color:'#11676d'}}><RiMapPin2Fill />Addis Ababa, Ethiopia</div>
-
-        </div>
-        </div>
         
-        </section>
         <br/><br/>
   
         <section >

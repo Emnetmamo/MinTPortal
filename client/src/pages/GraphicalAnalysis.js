@@ -16,7 +16,7 @@ const GraphicalAnalysis = () => {
       <br />
       <br />
       <div style={{ width: '800px' }}>
-    <h1 style={{ marginLeft: '80px'}}>The Graphical & Tabular Analysis of Applicants</h1>
+    <h1 style={{ marginLeft: '0px'}}>Analysis of Applicants</h1>
     </div>
     <br />
       <ul className="nav nav-tabs">

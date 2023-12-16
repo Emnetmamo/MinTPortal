@@ -1,5 +1,7 @@
 // ContactUs.jsx
 import {React, useState} from 'react';
+import { FaPhone } from 'react-icons/fa';
+import { RiMapPin2Fill, RiMailFill } from 'react-icons/ri';
 import "../images/assets/css/contactUs.css"
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -52,7 +54,17 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="contact-container" style={{marginTop: "50px"}}>
+    <div>
+    <div style={{boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', paddingBottom:"5%", marginTop:"60px"}}>
+        <h1 style={{marginLeft:"5%", color:'orange'}}>Contact Information</h1>
+        <div  title="Click here to visit more" style={{ width: '100%', height: '40%', display:"inline" }}>
+          <div style={{fontSize:"28px", display:"inline", marginLeft:"5%", color:'#11676d'}}><FaPhone/>+25111265737</div>
+          <div style={{fontSize:"28px", display:"inline", marginLeft:"15%", color:'#11676d'}}><RiMailFill /> contact@mint.gov.et</div>
+          <div style={{fontSize:"28px", display:"inline", marginLeft:"15%", color:'#11676d'}}><RiMapPin2Fill />Addis Ababa, Ethiopia</div>
+
+        </div>
+    </div>
+    <div className="contact-container" style={{marginTop: "0px"}}>
       <div className="contact-form">
         <h2>Contact Us</h2>
         <form method='POST'  onSubmit={handleSubmit} encType='multipart/form-data' >
@@ -113,6 +125,7 @@ const ContactUs = () => {
           loading="lazy"
         ></iframe>
       </div>
+    </div>
     </div>
   );
 };
