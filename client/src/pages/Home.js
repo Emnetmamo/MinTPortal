@@ -14,7 +14,7 @@ const Home = () => {
     <div className="container py-5" >
       <Introduction />
       <QuickLinks />
-      DiscoverSectors />
+      <DiscoverSectors />
       <RegistrationSteps />
       <LatestUpdates />
 

@@ -130,7 +130,7 @@ const NewsAnnouncementsPublications = () => {
       <div className="section">
         <BlinkingIcon
           icon={publicationIcon}
-          text={<a href="/publications" style={{ marginLeft: '10px' , textDecoration: 'none'}}>{latestPublication}</a>}
+          text={<a href="/resources/publications" style={{ marginLeft: '10px' , textDecoration: 'none'}}>{latestPublication}</a>}
          size={48}
           blinkInterval={2000}
           onClick={handlePublicationClick}
