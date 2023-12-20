@@ -17,7 +17,7 @@ const Home = () => {
       <DiscoverSectors />
       <RegistrationSteps />
       <LatestUpdates />
-
+      
     </div>
   );
 }

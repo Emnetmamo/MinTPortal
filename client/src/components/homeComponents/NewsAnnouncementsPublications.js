@@ -109,6 +109,31 @@ const NewsAnnouncementsPublications = () => {
         `}
       </style>
       <div style={{ backgroundColor: "lightgrey", color: "black", padding: "10px", marginBottom: "10px", textAlign: "center" }}>QUICK LINKS</div>
+      <div className="quick-links"> 
+     <img src={arrowIcon} alt="Arrow" width="30px" height="13px" className="arrow-icon" style={{ paddingRight: '10px' }}/> 
+     <Link  to="/news" style={{textDecoration: "none"}}>News</Link></div>
+     <hr className="section-divider" style={{ border: "none", borderTop: "2px dashed black", marginTop: "10px", marginBottom: "10px" }} /> 
+     <div className="quick-links"> 
+     <img src={arrowIcon} alt="Arrow" width="30px" height="13px" className="arrow-icon" style={{ paddingRight: '10px' }}/> 
+     <Link  to="/graph" style={{textDecoration: "none"}}>Reports</Link></div>
+     <hr className="section-divider" style={{ border: "none", borderTop: "2px dashed black", marginTop: "10px", marginBottom: "10px" }} />  
+     <div className="quick-links"> 
+     <img src={arrowIcon} alt="Arrow" width="30px" height="13px" className="arrow-icon" style={{ paddingRight: '10px' }}/> 
+     <Link  to="/institutes" style={{textDecoration: "none"}}>Institutes</Link></div>
+     <hr className="section-divider" style={{ border: "none", borderTop: "2px dashed black", marginTop: "10px", marginBottom: "10px" }} /> 
+     <div className="quick-links"> 
+     <img src={arrowIcon} alt="Arrow" width="30px" height="13px" className="arrow-icon" style={{ paddingRight: '10px' }}/> 
+     <Link  to="/resources/publications" style={{textDecoration: "none"}}>Publications</Link></div>
+     <hr className="section-divider" style={{ border: "none", borderTop: "2px dashed black", marginTop: "10px", marginBottom: "10px" }} /> 
+     <div className="quick-links"> 
+     <img src={arrowIcon} alt="Arrow" width="30px" height="13px" className="arrow-icon" style={{ paddingRight: '10px' }}/> 
+     <Link  to="/announcements" style={{textDecoration: "none"}}>Announcements</Link></div>
+     <hr className="section-divider" style={{ border: "none", borderTop: "2px dashed black", marginTop: "10px", marginBottom: "10px" }} /> 
+     <div className="quick-links"> 
+     <img src={arrowIcon} alt="Arrow" width="30px" height="13px" className="arrow-icon" style={{ paddingRight: '10px' }} /> 
+     <Link  to="/startApplication" style={{textDecoration: "none"}}>Register</Link></div>
+
+      <hr className="section-divider" />
       <div className="section">
         <BlinkingIcon
           icon={newsIcon}
@@ -136,32 +161,8 @@ const NewsAnnouncementsPublications = () => {
           onClick={handlePublicationClick}
         />
       </div>
-      <hr className="section-divider" />
-     <div className="quick-links"> 
-     <img src={arrowIcon} alt="Arrow" width="30px" height="13px" className="arrow-icon" style={{ paddingRight: '10px' }}/> 
-     <Link  to="/news">News</Link></div>
-     <hr className="section-divider" style={{ border: "none", borderTop: "2px dashed black", marginTop: "10px", marginBottom: "10px" }} /> 
-     <div className="quick-links"> 
-     <img src={arrowIcon} alt="Arrow" width="30px" height="13px" className="arrow-icon" style={{ paddingRight: '10px' }}/> 
-     <Link  to="/graph">Reports</Link></div>
-     <hr className="section-divider" style={{ border: "none", borderTop: "2px dashed black", marginTop: "10px", marginBottom: "10px" }} />  
-     <div className="quick-links"> 
-     <img src={arrowIcon} alt="Arrow" width="30px" height="13px" className="arrow-icon" style={{ paddingRight: '10px' }}/> 
-     <Link  to="/institutes">Institutes</Link></div>
-     <hr className="section-divider" style={{ border: "none", borderTop: "2px dashed black", marginTop: "10px", marginBottom: "10px" }} /> 
-     <div className="quick-links"> 
-     <img src={arrowIcon} alt="Arrow" width="30px" height="13px" className="arrow-icon" style={{ paddingRight: '10px' }}/> 
-     <Link  to="/resources/publications">Publications</Link></div>
-     <hr className="section-divider" style={{ border: "none", borderTop: "2px dashed black", marginTop: "10px", marginBottom: "10px" }} /> 
-     <div className="quick-links"> 
-     <img src={arrowIcon} alt="Arrow" width="30px" height="13px" className="arrow-icon" style={{ paddingRight: '10px' }}/> 
-     <Link  to="/announcements">Announcements</Link></div>
-     <hr className="section-divider" style={{ border: "none", borderTop: "2px dashed black", marginTop: "10px", marginBottom: "10px" }} /> 
-     <div className="quick-links"> 
-     <img src={arrowIcon} alt="Arrow" width="30px" height="13px" className="arrow-icon" style={{ paddingRight: '10px' }} /> 
-     <Link  to="/startApplication">Register</Link></div>
-     <hr className="section-divider" style={{ border: "none", borderTop: "2px dashed black", marginTop: "10px", marginBottom: "10px" }} /> 
-      
+      <br />
+      <div style={{ backgroundColor: "lightgrey", color: "black", padding: "10px", marginBottom: "10px", textAlign: "center" }}></div>
 
      </div>
      
