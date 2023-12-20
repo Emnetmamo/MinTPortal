@@ -11,12 +11,12 @@ import QuickLinks from '../components/homeComponents/QuickLinks';
 const Home = () => {
   return (
 
-    <div className="container py-5" style={{position:"relative"}}>
-      <div><Introduction /></div>
-      <div><QuickLinks /></div>
-      <div><DiscoverSectors /></div>
-      <div><RegistrationSteps /></div>
-      <div><LatestUpdates /></div>
+    <div className="container py-5" >
+      <Introduction />
+      <QuickLinks />
+      DiscoverSectors />
+      <RegistrationSteps />
+      <LatestUpdates />
 
     </div>
   );
