@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './home.css';
 
 
 const LatestAnnouncement = (props) => {
@@ -51,47 +52,53 @@ const LatestAnnouncement = (props) => {
     return isNational;
   };
 
+  // function blink(){
+  //   if(document.getElementById("blink"))
+  //   {
+  //   let state1 = document.getElementById("blink").style.color;
+  //   //console.log(state1);
+  //   if(state1 === "black"){
+  //     document.getElementById("blink").style.color = "red";
+  //     // setTimeout(function(){
+  //     //   //console.log(state1);
+  //     // }, 5000);
+  //   }
+  //   else{
+  //     document.getElementById("blink").style.color = "black";
+  //     // setTimeout(function(){
+  //     //   //console.log(state1);
+  //     // }, 2000);
+  //   }
+  //   window.setInterval(blink, 1000);
+  // }
+  // }
+
   return (
     <div>
-      <div>
+      <div >
         
-        <h3 className='m-5 ml-5'>Recent announcement</h3>
-        <h3 style={{ textTransform: 'uppercase',marginLeft:"40px" , marginBottom:"20px" }} className="card-title">{latestCall.title}</h3>
+        {/* <h3 className='m-5 ml-5'>Recent announcement</h3> */}
+        <div className="d-flex px-4" style={{display:"inline"}}>
+          <a
+            href='/announcements'
+            style={{ display: "inline", backgroundColor:"#d1f0e2", borderColor:"#ddd", border:"solid 1px",boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.3)' }}
+            className="btn px-1 "
+          >
+            <h6 id="blink" className= "blink" style={{display:"inline" }}>New Announcement</h6>
+            
+            <h6 style={{marginLeft:"30px" , marginBottom:"20px", display:"inline" }} className="card-title">Title {latestCall.title.toUpperCase()}</h6>
         <div style={{ marginLeft: "40px" }}>
         {typeOfCalls() ?  
-           <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className="card-text">
-            National Call</p> :  
-            <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className="card-text">
-            Foreign Call</p> }
-          <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className="card-text">
-            Description: <span style={{ color: "black", fontWeight: "normal" }}>{latestCall.description}</span>
+           <p style={{ color: "green", fontWeight: "bold", fontSize: "16px", display:"inline" }} className="card-text">
+            Type: National Call</p> :
+            <p style={{ color: "green", fontWeight: "bold", fontSize: "16px", display:"inline" }} className="card-text">
+            Type: Foreign Call &nbsp; </p> }
+         
+          <p style={{ color: "green", fontWeight: "bold", fontSize: "16px", display:"inline" }} className='card-text'>
+            Field of Study: <span style={{ color: "black", fontWeight: "normal", display:"inline" }}>{latestCall.field}</span>
           </p>
-          <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
-            Field of Study: <span style={{ color: "black", fontWeight: "normal" }}>{latestCall.field}</span>
-          </p>
-          <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
-            Start Date: <span style={{ color: "black", fontWeight: "normal" }}>{latestCall.startDate.split("T")[0]}</span>
-          </p>
-          <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
-            End Date: <span style={{ color: "black", fontWeight: "normal" }}>{latestCall.endDate.split("T")[0]}</span>
-          </p>
-          <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
-            Prizes(Monetary): <span style={{ color: "black", fontWeight: "normal" }}>{latestCall.prizes}</span>
-          </p>
-          <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
-            Instructions: <span style={{ color: "black", fontWeight: "normal" }}>{latestCall.instructions}</span>
-          </p>
-          <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
-            Guidelines on how to fill the application: <span style={{ color: "black", fontWeight: "normal" }}>{latestCall.guideline}</span>
-          </p>
+       
         </div>
-        <div className="d-flex px-5 my-3">
-          <a
-            href='/startApplication'
-            style={{ backgroundColor: "orange", color: "white" }}
-            className="btn px-3 "
-          >
-            Apply
           </a>
         </div>
       </div>
