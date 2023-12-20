@@ -9,12 +9,13 @@ import RecentInformations from '../components/homeComponents/RecentInformations'
 
 const Home = () => {
   return (
-    <div className="container py-5">
-      <Introduction />
-      <RecentInformations/>
-      <DiscoverSectors />
-      <RegistrationSteps />
-      <LatestUpdates />
+    <div className="container py-5" style={{position:"relative"}}>
+      <div className='col-md-4 offset-md-7 ' style={{position:"absolute", zIndex:"10", marginLeft:"66%" }}><RecentInformations/></div>
+      
+      <div><Introduction /></div>
+      <div><DiscoverSectors /></div>
+      <div><RegistrationSteps /></div>
+      <div><LatestUpdates /></div>
     </div>
   );
 }

@@ -1,14 +1,14 @@
 import React from 'react'
 import LatestNews from './LatestNews'
 import LatestAnnouncement from './LatestAnnoucement'
-import LatestData from './LatestData'
+
 
 const ImportantInformation = () => {
   return (
     <div className='row mt-3'>
-        <div className='col-md-4'><LatestNews/></div>
-        <div className='col-md-4'><LatestAnnouncement/></div>
-        <div className='col-md-4'><LatestData/></div>
+        {/* <div className='row-md-4'><LatestNews/></div> */}
+        <div className='row-md-4'><LatestAnnouncement/></div>
+    
     </div>
   )
 }
