@@ -59,7 +59,7 @@ const UserDashboard = () => {
             style={{textDecoration: 'none', backgroundColor: selectedOption === 'uploadReport' ? '#11676d' : 'white', color: selectedOption === 'uploadReport' ? 'white' : 'black' }}
             onClick={() => handleOptionClick('uploadReport')}
           >
-            Upload Report
+            Upload Files
           </button>
           <button
             href="#"

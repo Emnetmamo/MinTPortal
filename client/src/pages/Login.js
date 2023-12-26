@@ -23,7 +23,11 @@ const Login = () => {
         if (result.data.message === 'ok') {
           if (result.data.role === 'admin') {
             history('/admin');
-          } else {
+          }
+          else if(result.data.role === 'admin2'){
+            history('/admin2', { state: { email: email } });
+          }
+           else {
             history('/user', { state: { email: email } });
           }
         }

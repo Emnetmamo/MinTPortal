@@ -42,7 +42,7 @@ const adminUserStatus=async (req, res)=>{
         catch(err){
             console.log(err);
         }
-        if(newStatus === 2){
+        if(newStatus > 2){
           let currentProject;
           try{
           currentProject = await ProjectModel.find({_id:id1})
@@ -63,7 +63,7 @@ const adminUserStatus=async (req, res)=>{
             message:" "
           })
         }
-        else if(newStatus === 1){
+        else if(newStatus < 3){
           const today = Date.now();
           const nowDate = (new Date(today)).toISOString();
           await AppointmentModel.findOneAndDelete({projectId:id1});

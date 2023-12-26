@@ -45,6 +45,11 @@ import ViewNews from './pages/ViewNews.js';
 import ProtectAdmin from './ProtectAdmin.js';
 import ViewReports from './pages/admin/ViewReports.js';
 
+import Admin2 from './pages/admin2/Admin2.js';
+import ViewReports2 from './pages/admin2/ViewReports2.js';
+import ProjectFeedback from './pages/admin2/ProjectFeedback.js';
+import SubmitReport from './pages/admin2/SubmitReport.js';
+
 //user page 
 
 import UserHeader from './components/UserComponents/UserHeader';
@@ -130,6 +135,12 @@ const RoutesComponent = () => {
         <Route  path='/institutes/ict' element={<IctPartners />}></Route>
         <Route  path='/institutes/government' element={<GovernmentAgencies />}></Route>
         <Route  path='/institutes/other' element={<Others />}></Route>
+        <Route  path='/admin2' element={<Admin2 />}></Route>
+        <Route  path='/admin2/viewReports' element={<ViewReports2/>}></Route>
+        <Route  path='/admin2/viewFile' element={<ViewFile/>}></Route>
+        <Route  path='/admin2/projectFeedback' element={<ProjectFeedback/>}></Route>
+        <Route  path='/admin2/submitReport' element={<SubmitReport/>}></Route>
+
       </Routes>
       
  
@@ -147,7 +158,6 @@ const RoutesComponent = () => {
           <Route path='institutes/post-to-institutes' element={<PostInstitutes/>}/>
           <Route path='collaboration/post-to-collaboration' element={<PostCollaborations/>}/>
           <Route path='viewFeedback/view-feedback' element={<ViewFeedback/>}/>
-          <Route  path='viewFile' element={<ViewFile/>}></Route>
           <Route  path='viewReports' element={<ViewReports/>}></Route>
 
         </Route>

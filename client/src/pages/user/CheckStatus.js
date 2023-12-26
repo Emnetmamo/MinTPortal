@@ -66,6 +66,10 @@ function getStatus(status){
         <td>Rejected</td>
       </tr>
       <tr>
+        <td>Proposal Evaluation</td>
+        <td>Rejected</td>
+      </tr>
+      <tr>
         <td>Presentation</td>
         <td>Rejected</td>
       </tr>
@@ -85,6 +89,10 @@ function getStatus(status){
         </tr>
       <tr>
         <td>Concept Evaluation</td>
+        <td>Pending</td>
+      </tr>
+      <tr>
+        <td>Proposal Evaluation</td>
         <td>Pending</td>
       </tr>
       <tr>
@@ -110,6 +118,10 @@ function getStatus(status){
         <td>Accepted</td>
       </tr>
       <tr>
+        <td>Proposal Evaluation</td>
+        <td>Pending</td>
+      </tr>
+      <tr>
         <td>Presentation</td>
         <td>Pending</td>
       </tr>
@@ -132,8 +144,12 @@ function getStatus(status){
         <td>Accepted</td>
       </tr>
       <tr>
-        <td>Presentation</td>
+        <td>Proposal Evaluation</td>
         <td>Accepted</td>
+      </tr>
+      <tr>
+        <td>Presentation</td>
+        <td>Pending</td>
       </tr>
       <tr>
         <td>Money Grant</td>
@@ -153,6 +169,36 @@ else if(status===4){
       <td>Concept Evaluation</td>
       <td>Accepted</td>
     </tr>
+    <tr>
+        <td>Proposal Evaluation</td>
+        <td>Accepted</td>
+      </tr>
+    <tr>
+      <td>Presentation</td>
+      <td>Accepted</td>
+    </tr>
+    <tr>
+      <td>Money Grant</td>
+      <td>Pending</td>
+    </tr>
+    </tbody>
+  );
+}
+else if(status===5){
+  return(
+    <tbody>
+      <tr>
+        <td>Ethical Evaluation</td>
+        <td>Accepted</td>
+      </tr>
+    <tr>
+      <td>Concept Evaluation</td>
+      <td>Accepted</td>
+    </tr>
+    <tr>
+        <td>Proposal Evaluation</td>
+        <td>Accepted</td>
+      </tr>
     <tr>
       <td>Presentation</td>
       <td>Accepted</td>

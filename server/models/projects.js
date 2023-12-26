@@ -44,6 +44,22 @@ const projectIdea = new mongoose.Schema({
   submittedDate: {
     type: Date,
     required: true
+  },
+  grantedDate: {
+    type: Date,
+    required: true
+  },
+  proposalPath2:{
+    type: String,
+    required: true
+  },
+  presentationPath:{
+    type: String,
+    required: true
+  },
+  proposalPath3:{
+    type: String,
+    required: true
   }
 });
 
