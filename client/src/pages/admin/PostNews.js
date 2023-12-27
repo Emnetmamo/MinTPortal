@@ -23,7 +23,7 @@ function Post_News() {
     content: '',
     category: '',
     date: '',
-    image: ''
+    imagePath: ''
 
   });
 
@@ -357,7 +357,7 @@ main()
                   {/* <FileBase
                     type="file" 
                     multiple = {false}                         
-                    onDone={({base64}) => setFormData({...formData, image: base64})}
+                    onDone={({base64}) => setFormData({...formData, imagePath: base64})}
                     
                   />             */}
                   <input type="file" name="image" id="image" onChange={handleFileSelect}/>
