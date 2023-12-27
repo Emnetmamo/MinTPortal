@@ -91,7 +91,7 @@ const ForeignCalls = (props) => {
       );
       }
     }
-    return data;
+    return data.reverse();
   }
   }
   function pageLogic(list){

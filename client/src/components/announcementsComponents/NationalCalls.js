@@ -92,7 +92,7 @@ const NationalCalls = (props) => {
       );
       }
     }
-    return data;
+    return data.reverse();
   }
   }
   function pageLogic(list){
