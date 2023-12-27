@@ -78,12 +78,12 @@ function buttonsDisplay(num){
   }
 }
   return (
-    <div className="">
+    <div className=" ">
      
       <div className='container mt-5'>
         
           <div className="row ms-0">
-            <div className="col-xs-12 col-md-2 post-links-container-user-status mt-5" style={{overflow: 'hidden', backgroundColor:'#11676d', maxHeight: '550px', borderRadius: '10px'}}>
+            <div className="col-xs-12 col-md-2 post-links-container-user-status mt-5" style={{overflow: 'hidden', backgroundColor:'#11676d', borderRadius: '10px', maxHeight:"950px"}}>
             <ul class="list-group text-center fs-5 display-6">
               <br />
               <li class="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
@@ -149,21 +149,37 @@ function buttonsDisplay(num){
                 </Link>
               </li>
               <br />
-<li
-  class="list-group-item "
-  style={{
-    backgroundColor: "#ffa525",
-    border: "none",
-    borderRadius: "10px",
-  }}
->
-  <Link
-    className="links"
-    to="/admin/viewFeedback/view-feedback"
-  >
-   View feedback
-  </Link>
-</li>
+              <li
+                class="list-group-item "
+                style={{
+                  backgroundColor: "#ffa525",
+                  border: "none",
+                  borderRadius: "10px",
+                }}
+              >
+                <Link
+                  className="links"
+                  to="/admin/viewFeedback/view-feedback"
+                >
+                View feedback
+                </Link>
+              </li>
+              <li
+                class="list-group-item "
+                style={{
+                  backgroundColor: "#ffa525",
+                  border: "none",
+                  borderRadius: "10px",
+                  marginTop: "20px"
+                }}
+              >
+                <Link
+                  className="links"
+                  to="/admin/viewReports"
+                >
+                View Reports
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="col-xs-12 col-md-1"></div>

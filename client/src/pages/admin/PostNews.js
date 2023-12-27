@@ -14,6 +14,8 @@ axios.defaults.withCredentials=true;
 
 function Post_News() {
   
+  const defaultImageURL = 'http://localhost:5001/images/noimage.png'
+  const [imagePreview, setImagePreview] = useState(defaultImageURL);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     title: '',
@@ -61,11 +63,55 @@ function Post_News() {
       [name]: value,
     });
   };
+  const handleFileSelect = (event) => {
+    const selectedFile = event.target.files[0];
 
+    if (selectedFile) {
+      setFormData({
+        ...formData,
+        image: selectedFile,
+      });
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(selectedFile);
+    } else {
+      // If no file is selected, revert to default image
+      setImagePreview(defaultImageURL);
+      setFormData({
+        ...formData,
+        image: null,
+      });
+    }
+  };
   const handleSubmit = async (e) => {
       e.preventDefault();
   
-      dispatch(setNews(formData));
+      // dispatch(setNews(formData));
+      
+      const data = new FormData();
+
+      
+      data.append('title', formData.title);
+      data.append('author', formData.author);
+      data.append('content', formData.content);
+      data.append('category', formData.category);    
+      data.append('date', formData.date);
+      data.append('image', formData.image);
+
+      try {
+        const response = axios.post('http://localhost:5001/admin/news/add-news', data);
+        console.log(response.data);
+          alert('Do you want to submit')
+          toast.info('News form submitted successfully!');
+          // await  window.location.reload()
+      } catch (errors) {
+        console.error('Error:', errors.message);
+        toast.error('An error occurred while submitting news form.');
+      }
+      
     
   };
 
@@ -179,21 +225,37 @@ main()
                 </Link>
               </li>
               <br />
-<li
-  class="list-group-item "
-  style={{
-    backgroundColor: "#ffa525",
-    border: "none",
-    borderRadius: "10px",
-  }}
->
-  <Link
-    className="links"
-    to="/admin/viewFeedback/view-feedback"
-  >
-   View feedback
-  </Link>
-</li>
+              <li
+                class="list-group-item "
+                style={{
+                  backgroundColor: "#ffa525",
+                  border: "none",
+                  borderRadius: "10px",
+                }}
+              >
+                <Link
+                  className="links"
+                  to="/admin/viewFeedback/view-feedback"
+                >
+                View feedback
+                </Link>
+              </li>
+              <li
+                class="list-group-item "
+                style={{
+                  backgroundColor: "#ffa525",
+                  border: "none",
+                  borderRadius: "10px",
+                  marginTop: "20px"
+                }}
+              >
+                <Link
+                  className="links"
+                  to="/admin/viewReports"
+                >
+                View Reports
+                </Link>
+              </li>
             </ul>
             {/* ... Navigation links ... */}
           </div>
@@ -292,15 +354,18 @@ main()
                 <div className="form-group">
                   <label className='form-label'>Upload Image:</label>
                   <div  className="form-control form-input mb-2">
-                  <FileBase
+                  {/* <FileBase
                     type="file" 
                     multiple = {false}                         
                     onDone={({base64}) => setFormData({...formData, imagePath: base64})}
                     
-                  />            
+                  />             */}
+                  <input type="file" name="image" id="image" onChange={handleFileSelect}/>
                                                  
                  </div>
-                 {formData.imagePath && <img src={formData.imagePath} alt="Selected" style={{height: '150px', width: '150px'}} />}
+                 {imagePreview && (
+                    <img src={imagePreview} alt="Preview" style={{ maxWidth: '100px', maxHeight: '100px' }} />
+                  )}
                 </div>
                 <br />
                 <div className="form-group">

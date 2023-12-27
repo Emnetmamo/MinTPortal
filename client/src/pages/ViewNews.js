@@ -22,8 +22,9 @@ function ViewNews(){
                     <div  style={{width:"85%", height:"80%",paddingLeft:"200px"}}>
             <div>
               <img
-                className="news rounded "
-                style={{width:"100%", height:"20%",paddingBottom:"20px"}}
+                className="news-fluid rounded "
+                // style={{width:"100%", height:"20%",paddingBottom:"20px"}}
+                style={{width:"100%", height:"400px",padding:"20px"}}
                 src={news[i].imagePath}
                 alt={news[i].title}
               />

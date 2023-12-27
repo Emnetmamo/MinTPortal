@@ -8,10 +8,12 @@ import Announcements from './pages/Announcements';
 import Resources from './pages/Resources';
 import Collaborations from './pages/Collaborations';
 import AboutUs from './pages/AboutUs';
+import ContactUs from './pages/ContactUs.js';
 import News from './pages/News';
 import Login from './pages/Login.js';
 import Register from './pages/Register';
 import Footer from './pages/Footer.js';
+import GraphicalAnalysis from './pages/GraphicalAnalysis.js';
 import ResearchInstitutes from './components/Institutes/ResearchInstitutes';
 import Laboratories from './components/Institutes/Laboratories';
 import GovernmentAgencies from './components/Institutes/GovernmentAgencies';
@@ -40,6 +42,7 @@ import ViewFile from './pages/admin/ViewFile';
 import ViewFeedback from "./pages/admin/ViewFeedback.js"
 import ViewNews from './pages/ViewNews.js';
 import ProtectAdmin from './ProtectAdmin.js';
+import ViewReports from './pages/admin/ViewReports.js';
 
 //user page 
 
@@ -47,6 +50,7 @@ import UserHeader from './components/UserComponents/UserHeader';
 import UserDashboard from './pages/user/UserDashboard';
 import ConfirmAppointment from './pages/user/ConfirmAppointment';
 import CheckStatus from './pages/user/CheckStatus';
+
 
 
 const ConditionalNavbar = () => {
@@ -101,8 +105,9 @@ const RoutesComponent = () => {
       <Route path='/check-status' element={<CheckStatus />} />
       <Route  path='/viewNews' element={<ViewNews/>}></Route>
       <Route  path='/startApplication' element={<StartApplication/>}></Route>
-        
-        
+
+
+        <Route path="/graph" element={<GraphicalAnalysis />} />
         <Route path="/protect" element={<ProtectAdmin/>}/>
         <Route path="/" element={<Home />} />
         <Route path="/announcements" element={<Announcements />} />
@@ -113,6 +118,7 @@ const RoutesComponent = () => {
         <Route  path='/institutes' element={<Institutes />}/>
         <Route path="/collaborations" element={<Collaborations />} />
         <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/contactus" element={<ContactUs />} />
         <Route path="/news" element={<News />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -140,7 +146,7 @@ const RoutesComponent = () => {
           <Route path='collaboration/post-to-collaboration' element={<PostCollaborations/>}/>
           <Route path='viewFeedback/view-feedback' element={<ViewFeedback/>}/>
           <Route  path='viewFile' element={<ViewFile/>}></Route>
-      
+          <Route  path='viewReports' element={<ViewReports/>}></Route>
 
         </Route>
         </Route>

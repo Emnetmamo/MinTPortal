@@ -16,6 +16,7 @@ import image4 from "../images/News/news4.jpeg"
 import { Link } from 'react-router-dom';
 
 
+
 function AboutUs() {
   return (
     <div>     
@@ -70,6 +71,7 @@ function AboutUs() {
         <br/><br/>
        
         <br/><br/>
+  
         <section >
           <h1 className='text-center slanted-text'>Click to Read More</h1>
           <br/><br/><br/><br/>

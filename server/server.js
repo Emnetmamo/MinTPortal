@@ -23,10 +23,13 @@ import adminInstitutes from './routes/admin/adminInstitutes.js'
 import login from './controller/login.js';
 import dashboardRoute from './middleware/dashboard.js';
 import adminRoutes from './routes/adminRoutes.js'
+import adminNews from './routes/admin/adminNews.js'
 import adminCollaboration from './routes/admin/adminCollaboration.js'
 import institutes from './routes/institutes.js'
+import graphicalAnalysis from './routes/graphicalAnalysis.js'
 import footerForm from './routes/footer.js'
 import ProtectAdmin from './controller/protectAdmin.js';
+import report from './routes/report.js';
 
 import adminAppointment from './routes/admin/adminAppointment.js';
 import adminUserStatus from './routes/admin/adminUserStatus.js';
@@ -68,11 +71,13 @@ app.use('/news', news);
 //app.use('/auth',ProtectAdmin)
 app.use('/resources', resources);
 app.use('/institutes', institutes)
+app.use('/graphAnalysis', graphicalAnalysis)
+app.use('/report', report);
 
 
 //middleware to  admin  routes
 app.use('/admin/appointments', adminAppointments);
-app.use('/admin/news', adminRoutes);
+app.use('/admin/news', adminNews);
 app.use('/admin/publications', adminPublications)
 app.use('/admin/accepted-projects', adminAcceptedProjects)
 app.use('/admin/institutes', adminInstitutes)

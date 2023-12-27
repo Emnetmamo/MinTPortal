@@ -32,6 +32,18 @@ const projectIdea = new mongoose.Schema({
   status: {
     type: Number,
     required: true
+  },
+  hostInstitution: {
+    type: String,
+    required: true
+  },
+  letterPath: {
+    type: String,
+    required: true
+  },
+  submittedDate: {
+    type: Date,
+    required: true
   }
 });
 

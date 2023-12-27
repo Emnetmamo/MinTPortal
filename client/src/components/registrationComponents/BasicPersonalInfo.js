@@ -12,6 +12,7 @@ const BasicPersonalInfo = ({ nextStep}) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [sex, SetSex] = useState("Male");
   const [email, SetEmail] = useState("");
   const [phone, SetPhone] = useState("");
   const [country, SetCountry] = useState("");
@@ -50,6 +51,7 @@ const BasicPersonalInfo = ({ nextStep}) => {
           phone,
           country,
           address,
+          sex
         })
         .then((response) => {
           console.log(response.data);
@@ -158,10 +160,43 @@ const BasicPersonalInfo = ({ nextStep}) => {
                 />
               </div>
             </div>
+            <div className="mb-3">
+            <label htmlFor="sex" className="form-label">
+                Sex*
+              </label>
+            <select
+                className="form-select"
+                id="sex"
+                name="sex"
+                value={sex}
+                onChange={(e) => SetSex(e.target.value)}
+                required
+              >
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
             {/* <div className="mb-3">
               <label htmlFor="password" className="form-label">Your Password</label>
               <input type="password" className="form-control" id="password" name="password" placeholder="******" required  />
             </div> */}
+          <div className="mb-3">
+              <label htmlFor="email" className="form-label">
+                Email*
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                name="email"
+                placeholder="sample@gmail.com"
+                value={email}
+                onChange={(e) => {
+                  SetEmail(e.target.value);
+                }}
+                required
+              />
+            </div>
            <div className="mb-3">
               <label htmlFor="password" className="form-label">
                 Password*
@@ -222,23 +257,6 @@ const BasicPersonalInfo = ({ nextStep}) => {
             </div>
 
 
-            <div className="mb-3">
-              <label htmlFor="email" className="form-label">
-                Email
-              </label>
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                name="email"
-                placeholder="sample@gmail.com"
-                value={email}
-                onChange={(e) => {
-                  SetEmail(e.target.value);
-                }}
-                required
-              />
-            </div>
             <div className="mb-3">
               <label htmlFor="contactNumber" className="form-label">
                 Contact Number

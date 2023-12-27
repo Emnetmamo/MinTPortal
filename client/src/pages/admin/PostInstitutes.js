@@ -71,6 +71,17 @@ function PostInstitutes() {
 //handle change event
   const handleChange = (event) => {
     const { name, value } = event.target;
+    if(name==="category" && value!=="Research Institutes" && value!=="Laboratories"
+    && value!=="Ict Partners" && value!=="Government Agencies"){
+      const otherDiv = document.getElementById("otherDiv");
+      otherDiv.style.display = "";
+      document.getElementById("selectCategory").removeAttribute("required");
+    }
+    else if(name==="category" && (value==="Research Institutes" || value==="Laboratories"
+    || value==="Ict Partners" || value==="Government Agencies")){
+      document.getElementById("otherDiv").style.display = "none";
+      document.getElementById("selectCategory").setAttribute("required", "");
+    }
     setFormData({
       ...formData,
       [name]: value,
@@ -178,21 +189,37 @@ function PostInstitutes() {
                 </Link>
               </li>
               <br />
-<li
-  class="list-group-item "
-  style={{
-    backgroundColor: "#ffa525",
-    border: "none",
-    borderRadius: "10px",
-  }}
->
-  <Link
-    className="links"
-    to="/admin/viewFeedback/view-feedback"
-  >
-   View feedback
-  </Link>
-</li>
+              <li
+                class="list-group-item "
+                style={{
+                  backgroundColor: "#ffa525",
+                  border: "none",
+                  borderRadius: "10px",
+                }}
+              >
+                <Link
+                  className="links"
+                  to="/admin/viewFeedback/view-feedback"
+                >
+                View feedback
+                </Link>
+              </li>
+              <li
+                class="list-group-item "
+                style={{
+                  backgroundColor: "#ffa525",
+                  border: "none",
+                  borderRadius: "10px",
+                  marginTop: "20px"
+                }}
+              >
+                <Link
+                  className="links"
+                  to="/admin/viewReports"
+                >
+                View Reports
+                </Link>
+              </li>
             </ul>
             {/* ... Navigation links ... */}
           </div>
@@ -242,6 +269,7 @@ function PostInstitutes() {
                   <select
                     name="category"
                     className="form-control"
+                    id="selectCategory"
                     value={formData.category}
                     onChange={handleChange}
                     required
@@ -260,13 +288,16 @@ function PostInstitutes() {
                       Government Agencies
                     </option>
                     
-                    <option value="Other Catagory" >
-                      Other Catagory
+                    <option value="Other Category" >
+                      Other Category
                     </option>
                   </select>
 
                 </div>
-
+                <div className="form-group" id='otherDiv' style={{display:"none"}}>
+                  <label className='form-label' htmlFor='other' >Other Category</label>
+                  <input type="text" name="category" id="other" placeholder='Type category name' onChange={handleChange}/>
+                </div>
                 <div className="form-group">
                   <label className='form-label'>Email:</label>
                   <textarea

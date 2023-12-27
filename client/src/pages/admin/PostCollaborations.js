@@ -173,21 +173,37 @@ function PostCollaborations() {
               </li>
               <br />
 
-<li
-  class="list-group-item "
-  style={{
-    backgroundColor: "#ffa525",
-    border: "none",
-    borderRadius: "10px",
-  }}
->
-  <Link
-    className="links"
-    to="/admin/viewFeedback/view-feedback"
-  >
-   View feedback
-  </Link>
-</li>
+              <li
+                class="list-group-item "
+                style={{
+                  backgroundColor: "#ffa525",
+                  border: "none",
+                  borderRadius: "10px",
+                }}
+              >
+                <Link
+                  className="links"
+                  to="/admin/viewFeedback/view-feedback"
+                >
+                View feedback
+                </Link>
+              </li>
+              <li
+                class="list-group-item "
+                style={{
+                  backgroundColor: "#ffa525",
+                  border: "none",
+                  borderRadius: "10px",
+                  marginTop: "20px"
+                }}
+              >
+                <Link
+                  className="links"
+                  to="/admin/viewReports"
+                >
+                View Reports
+                </Link>
+              </li>
             </ul>
             {/* ... Navigation links ... */}
           </div>
