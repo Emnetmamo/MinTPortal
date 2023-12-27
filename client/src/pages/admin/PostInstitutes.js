@@ -285,7 +285,7 @@ function PostInstitutes() {
                       Ict Partners
                     </option>
                     <option value="Government Agencies" >
-                      Government Agencies
+                     Affiliate Institutes
                     </option>
                     
                     <option value="Other Category" >

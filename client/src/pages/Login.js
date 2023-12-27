@@ -22,12 +22,11 @@ const Login = () => {
         console.log(result.data);
         if (result.data.message === 'ok') {
           if (result.data.role === 'admin') {
-            history('/admin');
-          }
-          else if(result.data.role === 'admin2'){
-            history('/admin2', { state: { email: email } });
-          }
-           else {
+            // Open '/admin' in a new tab
+            window.open('/admin', '_blank');
+          } else if (result.data.role === 'admin2') {
+            window.open('/admin2', { state: { email: email } });
+          } else {
             history('/user', { state: { email: email } });
           }
         }
@@ -36,6 +35,7 @@ const Login = () => {
         console.log(error);
       });
   };
+  
 
   return (
     <div className="container mt-5">
