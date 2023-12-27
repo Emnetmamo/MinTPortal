@@ -3,7 +3,8 @@ import '../../images/assets/css/admin.css';
 import { useLocation } from 'react-router-dom';
 
 function Sidebar(props){
-    const email = props.email;
+    const {email} = props;
+    //console.log(email);
     return(
             <ul class="list-group text-center fs-5 display-6">
               <br />

@@ -33,6 +33,7 @@ import ProtectAdmin from './controller/protectAdmin.js';
 import report from './routes/report.js';
 import admin2Feedback from './routes/admin2Feedback.js';
 import projectFilesUpload from './routes/projectFilesUpload.js'
+import admin2Reports from './routes/admin2Reports.js'
 
 import adminAppointment from './routes/admin/adminAppointment.js';
 import adminUserStatus from './routes/admin/adminUserStatus.js';
@@ -96,6 +97,7 @@ app.use('/admin/appointment/:id', adminAppointment);
 
 app.use('/admin2Feedback', admin2Feedback);
 app.use('/projectFiles', projectFilesUpload);
+app.use('/admin2Reports', admin2Reports);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

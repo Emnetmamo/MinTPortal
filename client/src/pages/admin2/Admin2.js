@@ -9,7 +9,7 @@ function Admin2() {
   const navigate = useNavigate();
   const location = useLocation();
   const {email} = location.state;
-  console.log(email);
+  //console.log(email);
 
   useEffect(() => {
     axios.defaults.withCredentials = true;

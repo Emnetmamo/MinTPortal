@@ -15,6 +15,6 @@ const committeeReportSchema = new mongoose.Schema({
     }
 });
 
-const committeReportModel = mongoose.model("committeereport", committeeReportSchema);
+const committeReportModel = mongoose.model("committeereports", committeeReportSchema);
 
 export default committeReportModel;
