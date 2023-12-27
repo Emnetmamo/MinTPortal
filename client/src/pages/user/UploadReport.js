@@ -12,8 +12,8 @@ const UploadReport = ({email}) => {
     function(){
       axios.get('http://localhost:5001/admin/userStatus/fetch-'+email1)
       .then((result)=>{
+        console.log(result);
         setProjects(result.data);
-        //console.log(result);
       })
       .catch(err=>console.log(err))
       setLoaded(true);
@@ -52,8 +52,9 @@ const UploadReport = ({email}) => {
     }
   }
   function displayDashboard(){
-    if(loaded){
+    if(loaded && projects[0]){
         if(projects[0] && projects[0].status === 5){
+          
             return(
                 <div>
                     <h2>Upload Progress Report</h2>
@@ -66,6 +67,16 @@ const UploadReport = ({email}) => {
             );
         }
         else if(projects[0] && projects[0].status === 4){
+          if(projects[0].proposalPath3.length > 5){
+            return(
+              <div>
+                  <h2>Upload Files</h2>
+                  <h4>You have already uploaded all necessary files needed at this stage for your project: {projects[0].projectTitle}</h4>
+                  <h4>Good job!</h4>
+              </div>
+          );
+          }
+          else{
           return(
               <div>
                   <h2>Upload Final Proposal</h2>
@@ -76,8 +87,19 @@ const UploadReport = ({email}) => {
                   <button className='btn btn-primary' style={{margin:"20px 0px"}} onClick={submitFile}>Submit</button>
               </div>
           );
+          }
       }
       else if(projects[0] && projects[0].status === 3){
+        if(projects[0].presentationPath.length > 5){
+          return(
+            <div>
+                <h2>Upload Files</h2>
+                <h4>You have already uploaded all necessary files needed at this stage for your project: {projects[0].projectTitle}</h4>
+                <h4>Good job!</h4>
+            </div>
+        );
+        }
+        else{
         return(
             <div>
                 <h2>Upload Presentation File</h2>
@@ -88,8 +110,19 @@ const UploadReport = ({email}) => {
                 <button className='btn btn-primary' style={{margin:"20px 0px"}} onClick={submitFile}>Submit</button>
             </div>
         );
+        }
     }
     else if(projects[0] && projects[0].status === 2){
+      if(projects[0].proposalPath2.length > 5){
+        return(
+          <div>
+              <h2>Upload Files</h2>
+              <h4>You have already uploaded all necessary files needed at this stage for your project: {projects[0].projectTitle}</h4>
+              <h4>Good job!</h4>
+          </div>
+      );
+      }
+      else{
       return(
           <div>
               <h2>Upload Proposal</h2>
@@ -100,6 +133,16 @@ const UploadReport = ({email}) => {
               <button className='btn btn-primary' style={{margin:"20px 0px"}} onClick={submitFile}>Submit</button>
           </div>
       );
+      }
+  }
+  else{
+    return(
+      <div>
+          <h2>Upload Files</h2>
+          <h4>You have already uploaded all necessary files needed for this stage for your project: {projects[0].projectTitle}</h4>
+          <h4>Good job!</h4>
+      </div>
+  );
   }
     }
   }
