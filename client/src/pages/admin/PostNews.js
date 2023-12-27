@@ -311,30 +311,15 @@ main()
                     required
                   >
                     <option value="">Select a category</option>
-                    <option value="National News" >
-                      National News
-                    </option>
-                    <option value="Foreign News" >
-                      Foreign News
-                    </option>
-                    <option value="Technology" >
-                      Technology
-                    </option>
-                    <option value="Science" >
-                      Science
-                    </option>
-                    <option value="Health" >
-                      Health
-                    </option>
-                    <option value="Entertainment" >
-                      Entertainment
-                    </option>
-                    <option value="Finance" >
-                      Finance
-                    </option>
-                    <option value="Sports" >
-                      Sports
-                    </option>
+                    <option value="Agriculture">Agriculture</option>
+          <option value="Environment-Energy">Industry</option>
+          <option value="Health">Health</option>
+          <option value="Construction">Construction</option>
+          <option value="Mines and Water">Mines and Water</option>
+          <option value="Information Communication">Information Communication</option>
+          <option value="Energy">Energy </option>
+          <option value="Enviroment Protection">Environment Protection </option>
+          <option value="Other related Sectors">Other related Sectors</option>
                   </select>
 
                 </div>

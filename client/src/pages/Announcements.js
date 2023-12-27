@@ -58,10 +58,15 @@ const Announcements = () => {
         >
           <option value=" ">Select a Field</option>
           <option value="Agriculture">Agriculture</option>
-          <option value="Environment-Energy">Environment and Energy</option>
+          <option value="Industry">Industry</option>
           <option value="Health">Health</option>
-          <option value="Industry">Industrial</option>
-          <option value="Other">Other</option>
+          <option value="Construction">Construction</option>
+          <option value="Mines and Water">Mines and Water</option>
+          <option value="Information Communication">Information Communication</option>
+          <option value="Energy">Energy </option>
+          <option value="Environment Protection">Environment Protection </option>
+          <option value="Other related Sectors">Other related Sectors</option>
+        
         </select>
       </div>
       <div className="tab-content mt-3">

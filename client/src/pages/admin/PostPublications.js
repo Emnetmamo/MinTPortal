@@ -240,24 +240,37 @@ function PostPublications() {
                       <label className="form-check-label" htmlFor="agri">Agriculture</label>
                     </div>
                     <div className="d-flex align-items-center">
-                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="envnenergy" value="Environment and Energy" onChange={handleChange}   />                     
-                      <label className="form-check-label" htmlFor="envnenergy">Environment and Energy</label>
+                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="agri" value="Energy" onChange={handleChange}   />                     
+                      <label className="form-check-label" htmlFor="agri">Energy</label>
                     </div>
+                    
                     <div className="d-flex align-items-center">
                       <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="health" value="Health"  onChange={handleChange}  />                     
                       <label className="form-check-label" htmlFor="health">Health</label>
                     </div>
                     <div className="d-flex align-items-center">
-                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="industrial" value="Industrial" onChange={handleChange}   />                     
-                      <label className="form-check-label" htmlFor="industrial">Industrial</label>
-                    </div>                  
-                    <div className="d-flex align-items-center">
-                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="technology" value="Technology" onChange={handleChange}   />                     
-                      <label className="form-check-label" htmlFor="technology">Technology</label>
+                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="health" value="Construction"  onChange={handleChange}  />                     
+                      <label className="form-check-label" htmlFor="health">Construction</label>
                     </div>
                     <div className="d-flex align-items-center">
-                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="other" value="other"  onChange={handleChange}  />                     
-                      <label className="form-check-label" htmlFor="other">Other</label>
+                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="industrial" value="Industry" onChange={handleChange}   />                     
+                      <label className="form-check-label" htmlFor="industrial">Industry</label>
+                    </div>     
+                    <div className="d-flex align-items-center">
+                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="industrial" value="Mines and Water" onChange={handleChange}   />                     
+                      <label className="form-check-label" htmlFor="industrial">Mines and Water</label>
+                    </div>              
+                    <div className="d-flex align-items-center">
+                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="technology" value="Informatiom Comminication" onChange={handleChange}   />                     
+                      <label className="form-check-label" htmlFor="technology">Information Communication</label>
+                    </div>
+                    <div className="d-flex align-items-center">
+                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="technology" value="Enviroment Protection" onChange={handleChange}   />                     
+                      <label className="form-check-label" htmlFor="technology">Environment Protection </label>
+                    </div>
+                    <div className="d-flex align-items-center">
+                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="other" value="Other related Sectors"  onChange={handleChange}  />                     
+                      <label className="form-check-label" htmlFor="other">Other related Sectors</label>
                     </div>
                   </form>
                 </div>
