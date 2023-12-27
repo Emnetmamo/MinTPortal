@@ -18,6 +18,19 @@ const FeedbackReport = ({email}) => {
     console.log(reports);
     setLoaded(true);
   }, [reports])
+
+  function showMessages(messages){
+    let mssg = [];
+    for (let i = 0; i < messages.length; i++) {
+      mssg.push(
+        <h6>{messages[i]}</h6>
+      ); 
+    }
+    return(
+      mssg
+    );
+  }
+
   function displayReports(){
     if(loaded && reports[0]){
         let data = [];
@@ -26,7 +39,7 @@ const FeedbackReport = ({email}) => {
                 <td>Report {i+1}</td>
                 <td>{reports[i].projectTitle}</td>
                 <td>{new Date(reports[i].date).toLocaleString()}</td>
-                <td>{reports[i].message}</td>
+                <td>{showMessages(reports[i].message)}</td>
             </tr>);   
         }
         return data;

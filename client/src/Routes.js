@@ -18,6 +18,7 @@ import ResearchInstitutes from './components/Institutes/ResearchInstitutes';
 import Laboratories from './components/Institutes/Laboratories';
 import GovernmentAgencies from './components/Institutes/GovernmentAgencies';
 import IctPartners from './components/Institutes/IctPartners';
+import Others from './components/Institutes/Others.js';
 import Publications from './pages/Publications';
 import Institutes from './pages/Institutes';
 import ProjectDescription from './pages/ProjectDescription';
@@ -43,6 +44,11 @@ import ViewFeedback from "./pages/admin/ViewFeedback.js"
 import ViewNews from './pages/ViewNews.js';
 import ProtectAdmin from './ProtectAdmin.js';
 import ViewReports from './pages/admin/ViewReports.js';
+
+import Admin2 from './pages/admin2/Admin2.js';
+import ViewReports2 from './pages/admin2/ViewReports2.js';
+import ProjectFeedback from './pages/admin2/ProjectFeedback.js';
+import SubmitReport from './pages/admin2/SubmitReport.js';
 
 //user page 
 
@@ -128,6 +134,13 @@ const RoutesComponent = () => {
         <Route  path='/institutes/labs' element={<Laboratories />}></Route>
         <Route  path='/institutes/ict' element={<IctPartners />}></Route>
         <Route  path='/institutes/government' element={<GovernmentAgencies />}></Route>
+        <Route  path='/institutes/other' element={<Others />}></Route>
+        <Route  path='/admin2' element={<Admin2 />}></Route>
+        <Route  path='/admin2/viewReports' element={<ViewReports2/>}></Route>
+        <Route  path='/admin2/viewFile' element={<ViewFile/>}></Route>
+        <Route  path='/admin2/projectFeedback' element={<ProjectFeedback/>}></Route>
+        <Route  path='/admin2/submitReport' element={<SubmitReport/>}></Route>
+
       </Routes>
       
  
@@ -145,7 +158,6 @@ const RoutesComponent = () => {
           <Route path='institutes/post-to-institutes' element={<PostInstitutes/>}/>
           <Route path='collaboration/post-to-collaboration' element={<PostCollaborations/>}/>
           <Route path='viewFeedback/view-feedback' element={<ViewFeedback/>}/>
-          <Route  path='viewFile' element={<ViewFile/>}></Route>
           <Route  path='viewReports' element={<ViewReports/>}></Route>
 
         </Route>

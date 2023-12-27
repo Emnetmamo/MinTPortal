@@ -35,9 +35,25 @@ const UploadReport = ({email}) => {
 
     }
   }
+  function submitFile(){
+    if(loaded && projects[0]){
+    const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }};
+    let formData = new FormData();
+    formData.append('file', file);
+    console.log(file);
+
+    axios.post('http://localhost:5001/projectFiles/upload/'+ projects[0].status +"-" + projects[0]._id, formData, config)
+    .then((res)=>{console.log(res); window.alert("Report Submitted Successfully!")})
+    .catch(err=>console.log(err))
+
+    }
+  }
   function displayDashboard(){
     if(loaded){
-        if(projects[0] && projects[0].status === 4){
+        if(projects[0] && projects[0].status === 5){
             return(
                 <div>
                     <h2>Upload Progress Report</h2>
@@ -49,16 +65,42 @@ const UploadReport = ({email}) => {
                 </div>
             );
         }
-        else{
-            return(
-                <div>
-                    <h2>Upload Progress Report</h2>
-                    <h4>Your project proposal is still in the process of being accepted. When it is accepted you will be
-                        able to submit your progress reports.
-                    </h4>
-                </div>
-            )
-        }
+        else if(projects[0] && projects[0].status === 4){
+          return(
+              <div>
+                  <h2>Upload Final Proposal</h2>
+                  <h4>You can submit your final proposal with action plan for your project: {projects[0].projectTitle}</h4>
+                  <label htmlFor="file" style={{display:"block"}}>Upload Proposal(PDF)</label>
+                  <input type="file" name="file" id="file" className='form-control' 
+                  onChange={function(e){ setFile(e.target.files[0]) }}/>
+                  <button className='btn btn-primary' style={{margin:"20px 0px"}} onClick={submitFile}>Submit</button>
+              </div>
+          );
+      }
+      else if(projects[0] && projects[0].status === 3){
+        return(
+            <div>
+                <h2>Upload Presentation File</h2>
+                <h4>You can submit your presentation file for your project: {projects[0].projectTitle}</h4>
+                <label htmlFor="file" style={{display:"block"}}>Upload Presentation(PDF)</label>
+                <input type="file" name="file" id="file" className='form-control' 
+                onChange={function(e){ setFile(e.target.files[0]) }}/>
+                <button className='btn btn-primary' style={{margin:"20px 0px"}} onClick={submitFile}>Submit</button>
+            </div>
+        );
+    }
+    else if(projects[0] && projects[0].status === 2){
+      return(
+          <div>
+              <h2>Upload Proposal</h2>
+              <h4>You can submit your proposal for your project: {projects[0].projectTitle}</h4>
+              <label htmlFor="file" style={{display:"block"}}>Upload Proposal(PDF)</label>
+              <input type="file" name="file" id="file" className='form-control' 
+              onChange={function(e){ setFile(e.target.files[0]) }}/>
+              <button className='btn btn-primary' style={{margin:"20px 0px"}} onClick={submitFile}>Submit</button>
+          </div>
+      );
+  }
     }
   }
   return(

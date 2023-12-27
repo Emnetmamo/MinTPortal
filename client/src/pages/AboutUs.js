@@ -1,5 +1,4 @@
 import React from 'react'
-import { FaPhone, FaFacebook, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { BsFillPersonFill } from "react-icons/bs";
 import GoogleMapLocation from '../images/GoogleMapLocation.png'; 
 import OrganizationStructure from "../components/AboutUsComponents/OrganizationStructure";
@@ -69,11 +68,10 @@ function AboutUs() {
         </div>
         </section> 
         <br/><br/>
-       
+        
         <br/><br/>
   
         <section >
-          <h1 className='text-center slanted-text'>Click to Read More</h1>
           <br/><br/><br/><br/>
           <div className='d-flex flex-wrap align-items-strech justify-content-evenly  mx-5 '>
             <div className='mb-5'>

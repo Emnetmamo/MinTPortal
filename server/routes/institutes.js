@@ -69,4 +69,17 @@ router.get('/agencies', async (req, res) => {
   }
 });
 
+router.get('/others', async (req, res) => {
+  
+  try {
+
+    // Find documents by category
+    const institutesData = await Institutes.find({});
+
+    res.json(institutesData); // Do something with the retrieved data
+  } catch (error) {
+    console.error('error2:', error)
+    res.status(500).json({ error: 'Server error' });
+  }
+});
 export default router;

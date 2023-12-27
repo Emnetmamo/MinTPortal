@@ -84,7 +84,7 @@ const ForeignCalls = (props) => {
           </div>
           <a href='/startApplication' style={{ backgroundColor: "orange", color:"white", marginLeft:"900px"}}
            className="btn ">
-             Apply
+             APPLY
             </a>
           </div>
         </div>

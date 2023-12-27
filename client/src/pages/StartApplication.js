@@ -72,7 +72,7 @@ function StartApplication(){
               <br />
               <p>Once you have these documents you can click on the register button on the top right corner 
                 or use this button:</p>
-              <a href="/register" className="btn btn-primary">Start Application Process</a>
+              <a href="/register" className="btn btn-primary">APPLY</a>
               <br />
             </div>
             <br />

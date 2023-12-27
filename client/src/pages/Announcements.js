@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NationalCalls from "../components/announcementsComponents/NationalCalls";
 import ForeignCalls from "../components/announcementsComponents/ForeignCalls";
 
+
 const Announcements = () => {
   const [selectedTab, setSelectedTab] = useState("national");
   const [categorySelected, setCategory] = useState(" ");

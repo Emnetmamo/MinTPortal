@@ -21,7 +21,7 @@ const upload = multer({storage: storage, limits:{fileSize: 10000000}}); //file s
 router.post('/setMessage', async function(req, res){
         const message1 = req.body.message;
         const reportID = new mongoose.Types.ObjectId(req.body.reportID);
-        await reportsModel.findOneAndUpdate({_id: reportID}, {message: message1})
+        await reportsModel.findOneAndUpdate({_id: reportID}, {$addToSet:{message: [message1]}})
         .then(result=>res.json(result))
         .catch(err=>console.log(err))
 })
