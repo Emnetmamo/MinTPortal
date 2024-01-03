@@ -5,6 +5,7 @@ import '../../images/assets/css/admin.css'
 import axios from 'axios';
 import DropzoneImage from '../../components/AdminComponents/Dropzone'
 import DropzoneText from '../../components/AdminComponents/DropzoneText'
+import Sidebar from './Sidebar.js';
 
 
 axios.defaults.withCredentials=true;
@@ -68,55 +69,7 @@ function ViewReports() {
       <div className='container mt-5'>       
           <div class="row">
             <div className="col-xs-12 col-md-3 my-5 post-links-container" >
-            <ul class="list-group text-center fs-5 display-6">
-              <br />
-              <li class="list-group-item" style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link
-                  className="links"
-                  to="/admin/appointments/add-appointment"
-                >
-                  Set Appointment Date{" "}
-                </Link>
-              </li>
-              <br />
-              <li class="list-group-item "style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link className="links" to="/admin/user-status/add-user-status">
-                  Update User Status
-                </Link>
-              </li>
-              <br />
-              <li
-                class="list-group-item "
-                style={{
-                  backgroundColor: "#ffa525",
-                  border: "none",
-                  borderRadius: "10px",
-                }}
-              >
-                <Link
-                  className="links"
-                  to="/admin/viewFeedback/view-feedback"
-                >
-                View feedback
-                </Link>
-              </li>
-              <li
-                class="list-group-item active"
-                style={{
-                  backgroundColor: "#ffa525",
-                  border: "none",
-                  borderRadius: "10px",
-                  marginTop: "20px"
-                }}
-              >
-                <Link
-                  className="links"
-                  to="/admin/viewReports"
-                >
-                View Reports
-                </Link>
-              </li>
-            </ul>
+            <Sidebar/>
             </div>
           <div class="col-xs-12 col-md-2"></div>
           <div class="col-xs-12 col-md-7 mb-5">

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../../images/assets/css/admin.css';
 import axios from 'axios';
 import AdminHeader from '../../components/AdminComponents/AdminHeader';
+import Sidebar from './Sidebar.js';
 
 function UpdateUserStatus() {
   let i = 1;
@@ -248,55 +249,7 @@ function buttonsDisplay(num){
         
           <div className="row ms-0">
             <div className="col-xs-12 col-md-2 post-links-container-user-status mt-5" style={{overflow: 'hidden', backgroundColor:'#11676d', borderRadius: '10px', maxHeight:"950px"}}>
-            <ul class="list-group text-center fs-5 display-6">
-              <br />
-              <li class="list-group-item" style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link
-                  className="links"
-                  to="/admin/appointments/add-appointment"
-                >
-                  Set Appointment Date{" "}
-                </Link>
-              </li>
-              <br />
-              <li class="list-group-item active"style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link className="links" to="/admin/user-status/add-user-status">
-                  Update User Status
-                </Link>
-              </li>
-              <br />
-              <li
-                class="list-group-item "
-                style={{
-                  backgroundColor: "#ffa525",
-                  border: "none",
-                  borderRadius: "10px",
-                }}
-              >
-                <Link
-                  className="links"
-                  to="/admin/viewFeedback/view-feedback"
-                >
-                View feedback
-                </Link>
-              </li>
-              <li
-                class="list-group-item "
-                style={{
-                  backgroundColor: "#ffa525",
-                  border: "none",
-                  borderRadius: "10px",
-                  marginTop: "20px"
-                }}
-              >
-                <Link
-                  className="links"
-                  to="/admin/viewReports"
-                >
-                View Reports
-                </Link>
-              </li>
-            </ul>
+            <Sidebar/>
           </div>
           <div className="col-xs-12 col-md-1"></div>
           <div className="col-xs-12 col-md-9 mb-5">
