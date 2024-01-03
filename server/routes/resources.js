@@ -80,18 +80,18 @@ router.get('/gender-info', async (req, res) => {
 });
 
 
-// GET User Gender Info
+// GET Project Idea Info
 router.get('/project-idea', async (req, res) => {
   try {
     const projectsData = await ProjectModel.find();
 
-    // Initialize object to store gender counts by registeredDate
+    // Initialize object to store projectIdea counts by submittedDate
     const projectCountsByDate = {};
 
     projectsData.forEach(user => {
       const submittedDate = new Date(user.submittedDate).getFullYear();
 
-      // Increment the count for each gender
+      // Increment the count for each category
       if (!projectCountsByDate[submittedDate]) {
         projectCountsByDate[submittedDate] = {
           agriculture: 0,
