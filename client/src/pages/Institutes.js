@@ -19,16 +19,16 @@ const Institutes = () => {
   const [showResearchInstitutes, setShowResearchInstitutes] = useState(false);
   return (
     <div className="container mt-3 p-5">
-      <div className="row">
+      <div className="row" style={{marginLeft: "-100px"}}>
         {/* Left Section with Background Image */}
-        <div className="col-md-6 p-3" style={{ background: `url(${value}) no-repeat center center`, backgroundSize: 'cover', height: '535px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <div className="col-md-5 p-3" style={{ background: `url(${value}) no-repeat center center`, backgroundSize: 'cover', height: '535px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' , borderRadius:"10px"}}>
           <h1 style={{ color: 'white', fontSize: '60px', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', textAlign: "center" }}>
             Explore our links with different institutes
           </h1>
         </div>
 
         {/* Right Section with Cards */}
-        <div className="col-md-6 d-flex justify-content-center align-items-center">
+        <div className="col-md-7 d-flex justify-content-center align-items-center">
           <div className="d-flex flex-column w-100">
             {/* Pair 1: Research Institutes + Laboratories */}
             <div className="d-flex w-100 justify-content-between">
@@ -55,7 +55,7 @@ const Institutes = () => {
             <div className="d-flex w-100 justify-content-between">
               <div className="card m-3 flex-grow-1 card1" title="Click here to visit more" style={{ width: '30%', height: '40%', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
                 <a href='/institutes/ict' style={{ textDecoration: "none" }} onClick={() => setShowIctPartners(true)}>
-                  <img src={ict} className="card-img-top" alt="img-ict" style={{ height: '200px' }} />
+                  <img src={ict} className="card-img-top" alt="img-ict" style={{ height: '175px' }} />
                   <div className="card-body">
                     <h5><a href='/institutes/ict' className="card-title" style={{ color: 'black', fontSize: "17px", fontWeight: "bold", textDecoration: 'none' }}>ICT Partners</a></h5>
                   </div>
@@ -66,7 +66,7 @@ const Institutes = () => {
                 <a href='/institutes/government' style={{ textDecoration: "none" }} onClick={() => setShowGovernmentAgencies(true)}>
                   <img src={gov} className="card-img-top" alt="img-gov" style={{ height: '175px' }} />
                   <div className="card-body">
-                    <h5><a href='/institutes/government' className="card-title" style={{ color: 'black', fontSize: "17px", fontWeight: "bold", textDecoration: 'none' }}>Government Agencies</a></h5>
+                    <h5><a href='/institutes/government' className="card-title" style={{ color: 'black', fontSize: "17px", fontWeight: "bold", textDecoration: 'none' }}>Affiliate Institutes</a></h5>
                   </div>
                 </a>
               </div>
@@ -94,23 +94,6 @@ const Institutes = () => {
 };
 
 export default Institutes;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // import React, { useState } from 'react';

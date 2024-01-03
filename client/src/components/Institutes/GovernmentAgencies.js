@@ -47,7 +47,7 @@ const GovernmentAgencies = () => {
   return (
     <div className="container m-10">
       <br /><br />
-      <h1 className="mb-4 mt-3 font-weight-bold text-center">Government Agencies</h1>
+      <h1 className="mb-4 mt-3 font-weight-bold text-center">Affiliate Institutes</h1>
       <div className="input-group mb-3">
         <input
           type="text"

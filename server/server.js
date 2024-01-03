@@ -22,6 +22,8 @@ import adminAcceptedProjects from './routes/admin/adminAcceptedProjects.js'
 import adminInstitutes from './routes/admin/adminInstitutes.js'
 import login from './controller/login.js';
 import dashboardRoute from './middleware/dashboard.js';
+import dashboardRoute2 from './middleware/dashboard2.js';
+import dashboardRoute3 from './middleware/dashboard3.js';
 import adminRoutes from './routes/adminRoutes.js'
 import adminNews from './routes/admin/adminNews.js'
 import adminCollaboration from './routes/admin/adminCollaboration.js'
@@ -29,6 +31,9 @@ import institutes from './routes/institutes.js'
 import footerForm from './routes/footer.js'
 import ProtectAdmin from './controller/protectAdmin.js';
 import report from './routes/report.js';
+import admin2Feedback from './routes/admin2Feedback.js';
+import projectFilesUpload from './routes/projectFilesUpload.js'
+import admin2Reports from './routes/admin2Reports.js'
 
 import adminAppointment from './routes/admin/adminAppointment.js';
 import adminUserStatus from './routes/admin/adminUserStatus.js';
@@ -65,6 +70,8 @@ app.use('/auth/:page',register)
 app.use('/announcements/:page', announcementPost);
 app.use('/authl',login,ProtectAdmin)
 app.use('/admind',dashboardRoute)
+app.use('/admind2',dashboardRoute2)
+app.use('/admind3',dashboardRoute3)
 //app.use('/announcements', fetchRoute)
 app.use('/news', news);
 //app.use('/auth',ProtectAdmin)
@@ -88,7 +95,9 @@ app.use('/admin/collaboration', adminCollaboration);
 app.use('/admin/userStatus/:id', adminUserStatus);
 app.use('/admin/appointment/:id', adminAppointment);
 
-
+app.use('/admin2Feedback', admin2Feedback);
+app.use('/projectFiles', projectFilesUpload);
+app.use('/admin2Reports', admin2Reports);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
