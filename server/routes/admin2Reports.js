@@ -37,6 +37,7 @@ const upload = multer({storage: storage, limits:{fileSize: 10000000}}); //file s
 router.post('/upload/:id',upload.single('file') ,async function(req, res){
     const userID1 = req.params.id.split('-')[0];
     const projectID1 = req.params.id.split('-')[1];
+    const projectTitle = req.params.id.split('-')[2];
     const file = req.file;
     //console.log(req.body);
     console.log(req.file);
@@ -46,6 +47,7 @@ router.post('/upload/:id',upload.single('file') ,async function(req, res){
     await committeReportModel.create({
         userID: userID1,
         projectID: projectID1,
+        projectTitle: projectTitle,
         reportPath: path
     })
     .then(result => console.log(result))

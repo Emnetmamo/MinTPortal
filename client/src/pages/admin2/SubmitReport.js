@@ -55,7 +55,7 @@ function generateRow(project){
             <td><input type="file" name="file" id={project._id + "-" +"file"} className='form-control' 
                     onChange={function(e){ setFile(e.target.files[0]); console.log(file); toast.info("File Selected! Click on Submit") }}/></td>
             <td>
-              <button name={project._id} onClick={
+              <button name={project._id + '-' + project.projectTitle} onClick={
                 function(e){
                 SubmitReport(e.target.name);
               }} 
@@ -68,12 +68,14 @@ function generateRow(project){
 function SubmitReport(id){
   console.log("Clicked!")
   if(loaded && projects[0]){
-    if(document.getElementById(id+"-file").files[0]){
+    const id2 = id.split('-')[0];
+    const title1 = id.split('-')[1]
+    if(document.getElementById(id2+"-file").files[0]){
     const config = {
         headers: {
           "Content-Type": "multipart/form-data",
         }};
-    setFile(document.getElementById(id+"-file").files[0])    
+    setFile(document.getElementById(id2+"-file").files[0])    
     let formData = new FormData();
     formData.append('file', file);
     console.log(file);

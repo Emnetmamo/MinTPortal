@@ -159,7 +159,7 @@ const RoutesComponent = () => {
           <Route path='collaboration/post-to-collaboration' element={<PostCollaborations/>}/>
           <Route path='viewFeedback/view-feedback' element={<ViewFeedback/>}/>
           <Route  path='viewReports' element={<ViewReports/>}></Route>
-
+          <Route  path='viewFile' element={<ViewFile/>}></Route>
         </Route>
         </Route>
 

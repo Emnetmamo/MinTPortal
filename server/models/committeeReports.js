@@ -9,6 +9,10 @@ const committeeReportSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    projectTitle:{
+        type: String,
+        required: true
+    },
     reportPath:{
         type: String,
         required: true
