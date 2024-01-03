@@ -70,12 +70,6 @@ return (
           <div className="col-xs-12 col-md-3 post-links-container mt-5" style={{overflow: 'hidden'}}>
           <ul className="list-group text-center fs-5 display-6">
             <br />
-            <li className="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-              <Link className="links" to="/admin/news/add-news">
-                Post News{" "}
-              </Link>
-            </li>
-            <br />
             <li className="list-group-item active" style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
               <Link
                 className="links"
@@ -88,48 +82,6 @@ return (
             <li className="list-group-item "style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
               <Link className="links" to="/admin/user-status/add-user-status">
                 Update User Status
-              </Link>
-            </li>
-            <br />
-            <li className="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-              <Link className="links" to="/admin/calls/add-call">
-                Post Calls
-              </Link>
-            </li>
-            <br />
-            <li className="list-group-item  " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-              <Link
-                className="links"
-                to="/admin/publications/add-publication"
-              >
-                Post Publications
-              </Link>
-            </li>
-            <br />
-            <li className="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-              <Link
-                className="links"
-                to="/admin/accepted-projects/add-accepted-project"
-              >
-                Post Accepted Projects
-              </Link>
-            </li>
-            <br />
-            <li className="list-group-item post-links   " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-              <Link
-                className="links"
-                to="/admin/institutes/post-to-institutes"
-              >
-                Post To Institutes
-              </Link>
-            </li>
-            <br />
-            <li className="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-              <Link
-                className="links"
-                to="/admin/collaboration/post-to-collaboration"
-              >
-                Post To Collaborations
               </Link>
             </li>
             <br />

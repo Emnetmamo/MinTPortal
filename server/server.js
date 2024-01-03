@@ -23,6 +23,7 @@ import adminInstitutes from './routes/admin/adminInstitutes.js'
 import login from './controller/login.js';
 import dashboardRoute from './middleware/dashboard.js';
 import dashboardRoute2 from './middleware/dashboard2.js';
+import dashboardRoute3 from './middleware/dashboard3.js';
 import adminRoutes from './routes/adminRoutes.js'
 import adminNews from './routes/admin/adminNews.js'
 import adminCollaboration from './routes/admin/adminCollaboration.js'
@@ -71,6 +72,7 @@ app.use('/announcements/:page', announcementPost);
 app.use('/authl',login,ProtectAdmin)
 app.use('/admind',dashboardRoute)
 app.use('/admind2',dashboardRoute2)
+app.use('/admind3',dashboardRoute3)
 //app.use('/announcements', fetchRoute)
 app.use('/news', news);
 //app.use('/auth',ProtectAdmin)

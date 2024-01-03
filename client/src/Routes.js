@@ -33,12 +33,12 @@ import Admin from './pages/admin/Admin';
 import AdminHeader from './components/AdminComponents/AdminHeader';
 import SetAppointmentDate from './pages/admin/SetAppointmentDate'
 import UpdateUserStatus from './pages/admin/UpdateUserStatus'
-import PostCalls from './pages/admin/PostCalls'
-import PostPublications from './pages/admin/PostPublications'
-import PostAcceptedProjects from './pages/admin/PostAcceptedProjects';
-import PostInstitutes from './pages/admin/PostInstitutes';
-import PostCollaborations from './pages/admin/PostCollaborations.js'
-import PostNews from './pages/admin/PostNews'
+import PostCalls from './pages/admin3/PostCalls'
+import PostPublications from './pages/admin3/PostPublications'
+import PostAcceptedProjects from './pages/admin3/PostAcceptedProjects';
+import PostInstitutes from './pages/admin3/PostInstitutes';
+import PostCollaborations from './pages/admin3/PostCollaborations.js'
+import PostNews from './pages/admin3/PostNews'
 import ViewFile from './pages/admin/ViewFile';
 import ViewFeedback from "./pages/admin/ViewFeedback.js"
 import ViewNews from './pages/ViewNews.js';
@@ -49,6 +49,8 @@ import Admin2 from './pages/admin2/Admin2.js';
 import ViewReports2 from './pages/admin2/ViewReports2.js';
 import ProjectFeedback from './pages/admin2/ProjectFeedback.js';
 import SubmitReport from './pages/admin2/SubmitReport.js';
+
+import Admin3 from './pages/admin3/Admin3.js';
 
 //user page 
 
@@ -135,12 +137,20 @@ const RoutesComponent = () => {
         <Route  path='/institutes/ict' element={<IctPartners />}></Route>
         <Route  path='/institutes/government' element={<GovernmentAgencies />}></Route>
         <Route  path='/institutes/other' element={<Others />}></Route>
+        
         <Route  path='/admin2' element={<Admin2 />}></Route>
         <Route  path='/admin2/viewReports' element={<ViewReports2/>}></Route>
         <Route  path='/admin2/viewFile' element={<ViewFile/>}></Route>
         <Route  path='/admin2/projectFeedback' element={<ProjectFeedback/>}></Route>
         <Route  path='/admin2/submitReport' element={<SubmitReport/>}></Route>
 
+        <Route  path='/admin3' element={<Admin3 />}></Route>
+        <Route path='/admin3/news/add-news' element={<PostNews/>}/>
+        <Route path='/admin3/calls/add-call' element={<PostCalls/>}/>
+        <Route path='/admin3/publications/add-publication' element={<PostPublications/>}/>
+        <Route path='/admin3/accepted-projects/add-accepted-project' element={<PostAcceptedProjects/>}/>
+        <Route path='/admin3/institutes/post-to-institutes' element={<PostInstitutes/>}/>
+        <Route path='/admin3/collaboration/post-to-collaboration' element={<PostCollaborations/>}/>
       </Routes>
       
  
@@ -149,14 +159,8 @@ const RoutesComponent = () => {
        <Route element={<ProtectAdmin/>}>
         <Route path='/admin' element = {<Layout />}>
           <Route  index element= {<Admin/>}/>
-          <Route path='news/add-news' element={<PostNews/>}/>
           <Route path='appointments/add-appointment' element={<SetAppointmentDate/>}/>
           <Route path='user-status/add-user-status' element={<UpdateUserStatus/>}/>
-          <Route path='calls/add-call' element={<PostCalls/>}/>
-          <Route path='publications/add-publication' element={<PostPublications/>}/>
-          <Route path='accepted-projects/add-accepted-project' element={<PostAcceptedProjects/>}/>
-          <Route path='institutes/post-to-institutes' element={<PostInstitutes/>}/>
-          <Route path='collaboration/post-to-collaboration' element={<PostCollaborations/>}/>
           <Route path='viewFeedback/view-feedback' element={<ViewFeedback/>}/>
           <Route  path='viewReports' element={<ViewReports/>}></Route>
           <Route  path='viewFile' element={<ViewFile/>}></Route>

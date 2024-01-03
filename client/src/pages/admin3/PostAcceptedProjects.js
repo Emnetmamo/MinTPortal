@@ -1,19 +1,22 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import '../../images/assets/css/admin.css'
+import Sidebar from './Sidebar.js';
+import axios from 'axios';
 import DropzoneImage from '../../components/AdminComponents/Dropzone'
 import DropzoneText from '../../components/AdminComponents/DropzoneText'
 
 
 axios.defaults.withCredentials=true;
 
-function PostPublications() {
+function PostAcceptedProjects() {
+
     const [formData, setFormData] = useState({
       title: '',
       p_investigator: '',
       author: '',
+      funding_source: '',
       description: '',
       field_of_study: '',
       date: '',
@@ -86,16 +89,16 @@ function PostPublications() {
     data.append('title', formData.title);
     data.append('p_investigator', formData.author);
     data.append('author', formData.author);
+    data.append('funding_source', formData.funding_source);
     data.append('description', formData.description);
     data.append('field_of_study', formData.field_of_study);
     data.append('date', formData.date);   
     data.append('image', formData.image);
     data.append('file', formData.file);
-      
-    
+       
     try {
-      const response =  axios.post('http://localhost:5001/admin/publications/add-publication', data);
-      console.log(response.data);
+      const response =  axios.post('http://localhost:5001/admin/accepted-projects/add-accepted-project', data);
+       console.log(response.data);
       alert('Do you want to submit')
       toast.info('News submitted successfully!');
       // await  window.location.reload()
@@ -105,136 +108,52 @@ function PostPublications() {
     }
   };
 
-
-
   return (
     <div className="">
-      
+     
       <div className='container mt-5'>       
           <div class="row">
             <div className="col-xs-12 col-md-3 my-5 post-links-container" >
-            <ul class="list-group text-center fs-5 display-6">
-              <br />
-              <li class="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link className="links" to="/admin/news/add-news">
-                  Post News{" "}
-                </Link>
-              </li>
-              <br />
-              <li class="list-group-item" style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link
-                  className="links"
-                  to="/admin/appointments/add-appointment"
-                >
-                  Set Appointment Date{" "}
-                </Link>
-              </li>
-              <br />
-              <li class="list-group-item "style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link className="links" to="/admin/user-status/add-user-status">
-                  Update User Status
-                </Link>
-              </li>
-              <br />
-              <li class="list-group-item  " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link className="links" to="/admin/calls/add-call">
-                  Post Calls
-                </Link>
-              </li>
-              <br />
-              <li class="list-group-item active " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link
-                  className="links"
-                  to="/admin/publications/add-publication"
-                >
-                  Post Publications
-                </Link>
-              </li>
-              <br />
-              <li class="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link
-                  className="links"
-                  to="/admin/accepted-projects/add-accepted-project"
-                >
-                  Post Accepted Projects
-                </Link>
-              </li>
-              <br />
-              <li class="list-group-item   " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link
-                  className="links"
-                  to="/admin/institutes/post-to-institutes"
-                >
-                  Post To Institutes
-                </Link>
-              </li>
-              <br />
-              <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link
-                  className="links"
-                  to="/admin/collaboration/post-to-collaboration"
-                >
-                  Post To Collaborations
-                </Link>
-              </li>
-              <br />
-            <li
-              class="list-group-item "
-              style={{
-                backgroundColor: "#ffa525",
-                border: "none",
-                borderRadius: "10px",
-              }}
-            >
-              <Link
-                className="links"
-                to="/admin/viewFeedback/view-feedback"
-              >
-              View feedback
-              </Link>
-            </li>
-            <li
-                class="list-group-item "
-                style={{
-                  backgroundColor: "#ffa525",
-                  border: "none",
-                  borderRadius: "10px",
-                  marginTop: "20px"
-                }}
-              >
-                <Link
-                  className="links"
-                  to="/admin/viewReports"
-                >
-                View Reports
-                </Link>
-              </li>
-            </ul>
+            <Sidebar/>
             </div>
           <div class="col-xs-12 col-md-2"></div>
           <div class="col-xs-12 col-md-7 mb-5">
-            <form method="POST" action="/admin/publications/add-publication" onSubmit={handleSubmit} encType='multipart/form-data' >
+            <form method="POST" action="/admin/accepted-projects/add-accepted-project" onSubmit={handleSubmit} encType='multipart/form-data' >
                 <br/> <br/>
-                <h1>Post a Publication</h1>
+                <h1>Post an Accepted Project</h1>
                 <div class="form-group ">
                     <label className='form-label'>Project Title:</label>
-                    <input type="text" name="title" class="form-control " placeholder="Title" onChange={handleChange}/>                  
+                    <input type="text" name="title" class="form-control " placeholder="Title" onChange={handleChange} required/>                  
                 </div>
                 <div class="form-group ">
                     <label className='form-label'>Principal Investigator's Name:</label>
-                    <input type="text" name="p_investigator" class="form-control " placeholder="Name" onChange={handleChange}/>                  
+                    <input type="text" name="p_investigator" class="form-control " placeholder="Name" onChange={handleChange} required/>                  
                 </div>
                 <div class="form-group ">
                     <label className='form-label'>Author:</label>
-                    <input type="text" name="author" class="form-control " placeholder="Author" onChange={handleChange}/>                  
+                    <input type="text" name="author" class="form-control " placeholder="Author" onChange={handleChange} required/>                  
+                </div>
+                <div class="form-group ">
+                <label for="">Funding Sources:</label>
+                  <textarea
+                    name="funding_source"
+                    class="form-control"
+                    id="ta"
+                    cols="63"
+                    rows="3"
+                    placeholder="Funding Sources"
+                    onChange={handleChange}
+                    defaultValue= 'None'                  >
+
+                  </textarea>
                 </div>
                 <div class="form-group">
-                  <label for="">Project Description:</label>
-                  <textarea name="description" class="form-control" id="ta" cols="63" rows="10" placeholder="Description" onChange={handleChange}></textarea>
+                  <label for="ta">Project Description:</label>
+                  <textarea name="description" class="form-control" id="ta" cols="63" rows="10" placeholder="Description" onChange={handleChange } required></textarea>
                 </div>
                 <div class="form-group">
                   <label className='form-label'>Field of Study:</label>
-                  <form>
+                  <form >
                     <div className="d-flex align-items-center">
                       <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="agri" value="Agriculture" onChange={handleChange}   />                     
                       <label className="form-check-label" htmlFor="agri">Agriculture</label>
@@ -263,7 +182,7 @@ function PostPublications() {
                 </div>
                 <div class="form-group">
                     <label className='form-label'>Publication Date:</label>
-                    <input  type="date" name="date" className="form-control form-input" onChange={handleChange}/>
+                    <input  type="date" name="date" className="form-control form-input" onChange={handleChange} required/>
                 </div>
                 <div className="form-group">
                 <label className='form-label'>Upload Image:</label>
@@ -302,11 +221,12 @@ function PostPublications() {
             <DropzoneText className='py-5 mt-10 border border-neutral-200'/> */}
           </div>
       </div>
+      
     </div>
-   
+    
   </div>
    
   )
 }
 
-export default PostPublications;
+export default PostAcceptedProjects;
