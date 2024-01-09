@@ -7,6 +7,7 @@ import ViewFile from './pages/admin/ViewFile'
 import ViewNews from './pages/ViewNews'
 import ViewReports from './pages/admin/ViewReports'
 import ViewCommitteeReports from './pages/admin/ViewCommitteeReports'
+import AddAdmin from './pages/admin/AddAdmin'
 import Home from './pages/Home'
 import {Routes,Route} from 'react-router-dom'
 
@@ -41,6 +42,7 @@ const ProtectAdmin = () => {
           <Route  path='viewNews' element={<ViewNews/>}></Route>
           <Route  path='viewReports' element={<ViewReports/>}></Route>
           <Route  path='viewCommitteeReports' element={<ViewCommitteeReports/>}></Route>
+          <Route  path='addAdmin' element={<AddAdmin/>}></Route>
         </Route>
         </Routes>
     ):(<Home/>)}

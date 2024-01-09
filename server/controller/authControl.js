@@ -70,6 +70,43 @@ const register = async (req, res) => {
     
   }
 
+  if (req.params.page === "register2") {
+    const { fName, LName, password, email, phone, country, address, sex, adminType } = req.body;
+    try {
+      user = await UserModel.find({ email: email }); // Assign user
+
+      if (user.length > 0) {
+        return res.json("UserExist");
+      }
+
+      const hash = await bcrypt.hash(password, 12);
+      const nowDate = new Date(Date.now()).toISOString();
+      // await UserModel.updateMany( {},{ $set: { sex : 'Male'} }, { multi: true });
+      // await UserModel.updateMany( {},{ $set: { registeredDate : nowDate} }, { multi: true });
+      const newUser = await UserModel.create({
+        fName,
+        LName,
+        password: hash,
+        email,
+        phone,
+        country,
+        address,
+        uniqueID,
+        sex,
+        registeredDate: nowDate,
+        role: adminType
+      });
+     
+      const token = jwt.sign({ user: newUser }, SECRET_KEY, { expiresIn: '1h' });
+      res.cookie('token', token, { httpOnly: true }); 
+      
+      res.json('Userregistered' );
+    } catch (error) {
+      res.status(500).json({ error: 'Error during registration: ' + error });
+    }
+    
+  }
+
 else if (req.params.page === "submitProject") {
   const __filename = fileURLToPath(import.meta.url);
   // const __dirname = dirname(__filename);
