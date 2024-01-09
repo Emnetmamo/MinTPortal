@@ -179,7 +179,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
               >
                 <option value="">Select a category</option>
                 <option value="Agriculture">Agriculture</option>
-                <option value="Environment-Energy">Environment and Energy</option>
+                <option value="Environment_Energy">Environment and Energy</option>
                 <option value="Health">Health</option>
                 <option value="Industry">Industry</option>
                 <option value="Other">Other</option>

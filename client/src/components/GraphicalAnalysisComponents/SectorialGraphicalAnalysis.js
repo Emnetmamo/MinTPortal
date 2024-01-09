@@ -1,30 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LabelList, Label } from 'recharts';
 
-const data = [
-  { year: 2018, industrial: 120, environmental: 100, health: 80, agricultural: 70, other: 50 },
-  { year: 2019, industrial: 150, environmental: 130, health: 110, agricultural: 90, other: 70 },
-  { year: 2020, industrial: 180, environmental: 160, health: 140, agricultural: 120, other: 100 },
-  { year: 2021, industrial: 200, environmental: 190, health: 170, agricultural: 150, other: 130 },
-  { year: 2022, industrial: 220, environmental: 210, health: 190, agricultural: 170, other: 150 },
-  { year: 2023, industrial: 240, environmental: 230, health: 210, agricultural: 190, other: 170 },
-];
-
-const calculateTotal = (data) => {
-  return data.reduce(
-    (total, item) =>
-      total + item.industrial + item.environmental + item.health + item.agricultural + item.other,
-    0
-  );
-};
-
 const SectorialGraphicalAnalysis = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(('http://localhost:5001/resources/project-idea'));
+        setData(response.data);
+        setLoading(false);
+      } catch (error) {
+        setError('Error fetching data');
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const calculateTotal = (data) => {
+    return data.reduce(
+      (total, item) =>
+        total + item.industry + item.environmemtEnergy + item.health + item.agriculture + item.other,
+      0
+    );
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   const totalApplicants = calculateTotal(data);
 
   return (
     <div style={{ marginTop: '40px', marginLeft: '250px' }}>
       <div style={{ width: '800px' }}>
-        <p>The <em>Graphical Analysis</em> of Applicants in various <em>Sectors</em> within the respective Year of Applying for Researchs</p>
+        <p>
+          The <em>Graphical Analysis</em> of Applicants in various <em>Sectors</em> within the respective Year of Applying for Researchs
+        </p>
       </div>
       <div style={{ marginBottom: '20px' }}>
         <BarChart width={800} height={400} data={data}>
@@ -33,27 +54,21 @@ const SectorialGraphicalAnalysis = () => {
             <Label value="Years ( G.C )" position="bottom" offset={-10} style={{ textAnchor: 'middle' }} />
           </XAxis>
           <YAxis>
-            <Label
-              value="Number of Applicants"
-              position="left"
-              angle={-90}
-              offset={-10}
-              style={{ textAnchor: 'middle' }}
-            />
+            <Label value="Number of Applicants" position="left" angle={-90} offset={-10} style={{ textAnchor: 'middle' }} />
           </YAxis>
           <Tooltip />
           <Legend />
-          <Bar dataKey="industrial" fill="#8884d8" name="Industrial">
-            <LabelList dataKey="industrial" position="top" />
+          <Bar dataKey="industry" fill="#8884d8" name="Industrial">
+            <LabelList dataKey="industry" position="top" />
           </Bar>
-          <Bar dataKey="environmental" fill="#82ca9d" name="Environmental & Energy">
-            <LabelList dataKey="environmental" position="top" />
+          <Bar dataKey="environmemtEnergy" fill="#82ca9d" name="Environmental & Energy">
+            <LabelList dataKey="environmemtEnergy" position="top" />
           </Bar>
           <Bar dataKey="health" fill="#ffc658" name="Health">
             <LabelList dataKey="health" position="top" />
           </Bar>
-          <Bar dataKey="agricultural" fill="#ff7f50" name="Agricultural">
-            <LabelList dataKey="agricultural" position="top" />
+          <Bar dataKey="agriculture" fill="#ff7f50" name="Agricultural">
+            <LabelList dataKey="agriculture" position="top" />
           </Bar>
           <Bar dataKey="other" fill="#82ca9d" name="Other">
             <LabelList dataKey="other" position="top" />
@@ -61,7 +76,9 @@ const SectorialGraphicalAnalysis = () => {
         </BarChart>
       </div>
       <div style={{ width: '800px' }}>
-      <p>The <em>Tabular Analysis</em> of Applicants in various <em>Sectors</em> within the respective Year of Applying for Researchs</p>
+        <p>
+          The <em>Tabular Analysis</em> of Applicants in various <em>Sectors</em> within the respective Year of Applying for Researchs
+        </p>
       </div>
       <div>
         <table style={{ width: '800px', borderCollapse: 'collapse' }}>
@@ -80,7 +97,7 @@ const SectorialGraphicalAnalysis = () => {
               <td style={tableHeaderStyle}>No. of Industrial Applicants</td>
               {data.map((item) => (
                 <td key={item.year} style={tableCellStyle}>
-                  {item.industrial}
+                  {item.industry}
                 </td>
               ))}
             </tr>
@@ -88,7 +105,7 @@ const SectorialGraphicalAnalysis = () => {
               <td style={tableHeaderStyle}>No. of Environmental & Energy Applicants</td>
               {data.map((item) => (
                 <td key={item.year} style={tableCellStyle}>
-                  {item.environmental}
+                  {item.environmemtEnergy}
                 </td>
               ))}
             </tr>
@@ -104,7 +121,7 @@ const SectorialGraphicalAnalysis = () => {
               <td style={tableHeaderStyle}>No. of Agricultural Applicants</td>
               {data.map((item) => (
                 <td key={item.year} style={tableCellStyle}>
-                  {item.agricultural}
+                  {item.agriculture}
                 </td>
               ))}
             </tr>
@@ -117,18 +134,20 @@ const SectorialGraphicalAnalysis = () => {
               ))}
             </tr>
             <tr style={tableRowOddStyle}>
-              <td style={tableHeaderStyle}>Total No. of Applicants</td>
+              <td style={tableHeaderStyle}>Total Applicants</td>
               {data.map((item) => (
                 <td key={item.year} style={tableCellStyle}>
-                  {item.industrial + item.environmental + item.health + item.agricultural + item.other}
+                  {item.industry + item.environmemtEnergy + item.health + item.agriculture + item.other}
                 </td>
               ))}
             </tr>
           </tbody>
         </table>
       </div>
-      <div style={{ margin: '10px', textAlign: 'left', fontSize: '16px', width: '800px' }}>
-        Total No. of Applicants from ({data[0].year} - {new Date().getFullYear()}): {totalApplicants}
+      <div style={{ width: '800px' }}>
+        <p>
+          Total number of applicants in all sectors: <strong>{totalApplicants}</strong>
+        </p>
       </div>
     </div>
   );
@@ -138,19 +157,19 @@ const tableHeaderStyle = {
   padding: '10px',
   borderBottom: '1px solid #ddd',
   textAlign: 'left',
-};
-
-const tableRowEvenStyle = {
+  };
+  
+  const tableRowEvenStyle = {
   backgroundColor: '#f9f9f9',
-};
-
-const tableRowOddStyle = {
+  };
+  
+  const tableRowOddStyle = {
   backgroundColor: '#D6EEEE',
-};
-
-const tableCellStyle = {
+  };
+  
+  const tableCellStyle = {
   padding: '10px',
   borderBottom: '1px solid #ddd',
-};
+  };
 
 export default SectorialGraphicalAnalysis;
