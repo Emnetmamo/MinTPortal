@@ -44,6 +44,7 @@ import ViewFeedback from "./pages/admin/ViewFeedback.js"
 import ViewNews from './pages/ViewNews.js';
 import ProtectAdmin from './ProtectAdmin.js';
 import ViewReports from './pages/admin/ViewReports.js';
+import ViewCommitteeReports from './pages/admin/ViewCommitteeReports.js';
 
 import Admin2 from './pages/admin2/Admin2.js';
 import ViewReports2 from './pages/admin2/ViewReports2.js';
@@ -164,6 +165,7 @@ const RoutesComponent = () => {
           <Route path='viewFeedback/view-feedback' element={<ViewFeedback/>}/>
           <Route  path='viewReports' element={<ViewReports/>}></Route>
           <Route  path='viewFile' element={<ViewFile/>}></Route>
+          <Route  path='viewCommitteeReports' element={<ViewCommitteeReports/>}></Route>
         </Route>
         </Route>
 

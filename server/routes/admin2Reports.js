@@ -43,12 +43,13 @@ router.post('/upload/:id',upload.single('file') ,async function(req, res){
     console.log(req.file);
     
     const path = "committee-reports/"+fileName1;
-
+    const uploadDate1 = new Date(Date.now()).toISOString();
     await committeReportModel.create({
         userID: userID1,
         projectID: projectID1,
         projectTitle: projectTitle,
-        reportPath: path
+        reportPath: path,
+        uploadDate: uploadDate1
     })
     .then(result => console.log(result))
     .catch(err=>console.log(err))

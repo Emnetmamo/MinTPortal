@@ -30,6 +30,7 @@ function ViewCommitteeReports() {
                   <tr>
                     <th>No.</th>
                     <th>Project Title</th>
+                    <th>Upload Date</th>
                     <th>Report File</th>
                   </tr>
                 </thead>
@@ -37,6 +38,7 @@ function ViewCommitteeReports() {
                     <tr>
                         <td>{reports.length - i}</td>
                         <td>{reports[i].projectTitle}</td>
+                        <td>{new Date(reports[i].uploadDate).toLocaleString()}</td>
                         <td><Link to={'/admin/viewFile'} state={{filePath: reports[i].reportPath}} >View Report</Link></td>
                     </tr>
                 </tbody>
@@ -45,14 +47,6 @@ function ViewCommitteeReports() {
             }
             return data;
         }
-    }
-    function submitFeedback(id){
-        const reportID = id.split('-')[0];
-        const projID = id.split('-')[1];
-        const feedback = document.getElementById(reportID+"-input").value;
-        axios.post('http://localhost:5001/report/setMessage', {reportID:reportID, message: feedback})
-        .then((result)=>{console.log(result); toast.info("Feedback Submitted Successfully");})
-        .catch(err=>console.log(err))
     }
   return (
     <div className="">
@@ -64,11 +58,12 @@ function ViewCommitteeReports() {
             </div>
           <div class="col-xs-12 col-md-2"></div>
           <div class="col-xs-12 col-md-7 mb-5">
+          <h1>Technical Committee Reports</h1>
+          <br />
           <table className="table">
                 {loaded && displayReports()}
             </table>
           </div>
-          <ToastContainer/>
       </div>
       
     </div>

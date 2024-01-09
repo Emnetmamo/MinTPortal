@@ -68,6 +68,22 @@ function Sidebar(props){
           View Reports
           </Link>
         </li>
+        <li
+          class="list-group-item "
+          style={{
+            backgroundColor: "#ffa525",
+            border: "none",
+            borderRadius: "10px",
+            marginTop: "20px"
+          }}
+        >
+          <Link
+            className="links"
+            to="/admin/viewCommitteeReports"
+          >
+          View Committee Reports
+          </Link>
+        </li>
       </ul>
     );
 }
