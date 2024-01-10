@@ -74,6 +74,8 @@ function rescheduleAppt(id){
   row.style.display = "inline";
 }
   return (
+    <div>
+    {(loaded && appointments.length > 0) && (
     <div className="card shadow p-3 mb-5 bg-white rounded">
       <img
        src={AppointmnetImg} 
@@ -115,6 +117,24 @@ function rescheduleAppt(id){
           <button  style={{backgroundColor:"orange", color:"white"}} className="btn ">Reject</button>
         </div> */}
       </div>
+    </div>)}
+    {(loaded && appointments.length === 0) && (
+      <div className="card shadow p-3 mb-5 bg-white rounded">
+      <img
+       src={AppointmnetImg} 
+       alt="Appointment" 
+       className="img-fluid mb-2"
+       style={{width:"350px", height:"200px", marginLeft:"210px"}}
+       />
+      <div className="card-body">
+      <p 
+        style={{backgroundColor:"orange",color:"white", textAlign:"center", padding:"3px", borderRadius:"2px"}} 
+        className="card-text">
+          An admin has not sent you an appointment date for your project since your project is still being reviewed.
+      </p>
+      </div>
+    </div>
+    )}
     </div>
   );
 };
