@@ -161,7 +161,10 @@ function generateRow(project){
             <td><textarea name={project._id+"-feedback"} id={project._id+"-feedback"} cols="15" rows="4"></textarea>
             </td>
             <td>
-                <h6>Not Applicable</h6>
+                <select name={project._id+"-quality"} id={project._id+"-quality"}>
+                    <option value="Satisfactory">Satisfactory</option>
+                    <option value="Unsatisfactory">Unsatisfactory</option>
+                </select>
             </td>
             <td>
               <button name={project._id + "-" + project.status + "-" + project.projectTitle} onClick={
@@ -214,7 +217,7 @@ function buttonsDisplay(num){
         
           <div className="row ms-0">
             <div className='col-xs-12 col-md-2 post-links-container-user-status mt-5' style={{backgroundColor:"#11676d"}} >
-            <Sidebar/>
+            <Sidebar email={email}/>
             </div>
           <div className="col-xs-12 col-md-1"></div>
           <div className="col-xs-12 col-md-9 mb-5">

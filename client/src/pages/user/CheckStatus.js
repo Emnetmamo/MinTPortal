@@ -33,7 +33,7 @@ const CheckStatus = ({email}) => {
     const tableData = [];
     let i = 1;
     for (let j = 0; j < projects.length; j++) {
-      if(projects[j].status > 0){
+      if(projects[j].status > -1){
       tableData.push(
         <div>
           <h4>{projects[j].projectTitle + " status"}</h4>
@@ -44,7 +44,7 @@ const CheckStatus = ({email}) => {
                         <th>Status</th>
                       </tr>
                     </thead>
-                      {getStatus(projects[j].status)}
+                      {getStatus(projects[j].status, projects[j])}
                   </table>
           </div>
       );
@@ -53,32 +53,116 @@ const CheckStatus = ({email}) => {
   //console.log(tableData);
   return tableData;
 }
-function getStatus(status){
+function getStatus(status, project){
   if(status === 0){
-    return( 
-      <tbody>
+    if(project.proposalPath3 === " "){
+      if(project.presentationPath === " "){
+        if(project.proposalPath2 === " "){
+          return( 
+            <tbody>
+              <tr>
+                <td>Ethical Evaluation</td>
+                <td>Accepted</td>
+              </tr>
+            <tr>
+              <td>Concept Evaluation</td>
+              <td>Rejected</td>
+            </tr>
+            <tr>
+              <td>Proposal Evaluation</td>
+              <td>Rejected</td>
+            </tr>
+            <tr>
+              <td>Presentation</td>
+              <td>Rejected</td>
+            </tr>
+            <tr>
+              <td>Money Grant</td>
+              <td>Rejected</td>
+            </tr>
+            </tbody>
+           );
+        }
+        else{
+          return( 
+            <tbody>
+              <tr>
+                <td>Ethical Evaluation</td>
+                <td>Accepted</td>
+              </tr>
+            <tr>
+              <td>Concept Evaluation</td>
+              <td>Accepted</td>
+            </tr>
+            <tr>
+              <td>Proposal Evaluation</td>
+              <td>Rejected</td>
+            </tr>
+            <tr>
+              <td>Presentation</td>
+              <td>Rejected</td>
+            </tr>
+            <tr>
+              <td>Money Grant</td>
+              <td>Rejected</td>
+            </tr>
+            </tbody>
+           );
+        }
+      }
+      else{
+        return( 
+          <tbody>
+            <tr>
+              <td>Ethical Evaluation</td>
+              <td>Accepted</td>
+            </tr>
+          <tr>
+            <td>Concept Evaluation</td>
+            <td>Accepted</td>
+          </tr>
+          <tr>
+            <td>Proposal Evaluation</td>
+            <td>Accepted</td>
+          </tr>
+          <tr>
+            <td>Presentation</td>
+            <td>Rejected</td>
+          </tr>
+          <tr>
+            <td>Money Grant</td>
+            <td>Rejected</td>
+          </tr>
+          </tbody>
+         );
+      }
+    }
+    else{
+      return( 
+        <tbody>
+          <tr>
+            <td>Ethical Evaluation</td>
+            <td>Accepted</td>
+          </tr>
         <tr>
-          <td>Ethical Evaluation</td>
+          <td>Concept Evaluation</td>
+          <td>Accepted</td>
+        </tr>
+        <tr>
+          <td>Proposal Evaluation</td>
+          <td>Accepted</td>
+        </tr>
+        <tr>
+          <td>Presentation</td>
+          <td>Accepted</td>
+        </tr>
+        <tr>
+          <td>Money Grant</td>
           <td>Rejected</td>
         </tr>
-      <tr>
-        <td>Concept Evaluation</td>
-        <td>Rejected</td>
-      </tr>
-      <tr>
-        <td>Proposal Evaluation</td>
-        <td>Rejected</td>
-      </tr>
-      <tr>
-        <td>Presentation</td>
-        <td>Rejected</td>
-      </tr>
-      <tr>
-        <td>Money Grant</td>
-        <td>Rejected</td>
-      </tr>
-      </tbody>
-     );
+        </tbody>
+       );
+    }
   }
   else if(status===1){
     return(

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../../images/assets/css/admin.css';
 import axios from 'axios';
 import AdminHeader from '../../components/AdminComponents/AdminHeader';
+import Sidebar from './Sidebar.js';
 
 function UpdateUserStatus() {
   let i = 1;
@@ -27,7 +28,7 @@ function UpdateUserStatus() {
     const tableData = [];
     
     for (let j = (projects.length-1); j > -1; j--) {
-      if(projects[j].status > 0){
+      if(projects[j].status > -1){
       tableData.push(
           generateRow(projects[j])
       );
@@ -75,7 +76,26 @@ function updateStatus(id, newStatus){
   window.location.reload(false);
 }
 function generateRow(project){
-  if(project.status === 1){
+  if(project.status === 0){
+    let fileLink = "";
+    if(project.proposalPath3 === " "){
+      if(project.presentationPath === " "){
+        if(project.proposalPath2 === " "){
+          <td><Link to={'/admin/viewFile'} state={{filePath: project.proposalPath}} >View Concept Note</Link>
+        <br />
+        <Link to={'/admin/viewFile'} state = {{filePath: project.cvPath}} >View CV</Link></td>
+        }
+        else{
+          fileLink = (<td><Link to={'/admin/viewFile'} state={{filePath: project.proposalPath2}}>View Proposal</Link></td>);
+        }
+      }
+      else{
+        fileLink = (<td><Link to={'/admin/viewFile'} state={{filePath: project.presentationPath}}>View Presentation File</Link></td>);
+      }
+    }
+    else{
+      fileLink = (<td><Link to={'/admin/viewFile'} state={{filePath: project.proposalPath3}}>View Proposal</Link></td>);
+    }
     return (
         <tr>
         <td>{i++}</td>
@@ -83,9 +103,7 @@ function generateRow(project){
         <td>{project.projectTitle}</td>
         <td><h6 style={{height:"100px",overflowY:"scroll"}}>{project.description}</h6></td>
         <td>{numToStatus(project.status)}</td>
-        <td><Link to={'/admin2/viewFile'} state={{filePath: project.proposalPath}} >View Concept Note</Link>
-        <br />
-        <Link to={'/admin2/viewFile'} state = {{filePath: project.cvPath}} >View CV</Link></td>
+        {fileLink}
         <td style={{overflowY:"scroll"}}>{organizeFeedback(project._id, project.status)}</td>
         <td>
               <button name={project._id + "-" + project.status} onClick={
@@ -95,7 +113,33 @@ function generateRow(project){
                 className='btn btn-primary' style={{display:buttonsDisplay(project.status), marginBottom:"10px"}}>Accept</button>
               <button name={project._id + "-" + project.status} onClick={
                 function(e){
-                updateStatus(e.target.name.split('-')[0], parseInt(e.target.name.split('-')[1])-1)}} 
+                updateStatus(e.target.name.split('-')[0], 0)}} 
+                className='btn btn-danger' style={{display:buttonsDisplay(project.status)}}>Reject</button>
+            </td>
+      </tr>
+    );
+  }
+  else if(project.status === 1){
+    return (
+        <tr>
+        <td>{i++}</td>
+        <td>{project._id}</td>
+        <td>{project.projectTitle}</td>
+        <td><h6 style={{height:"100px",overflowY:"scroll"}}>{project.description}</h6></td>
+        <td>{numToStatus(project.status)}</td>
+        <td><Link to={'/admin/viewFile'} state={{filePath: project.proposalPath}} >View Concept Note</Link>
+        <br />
+        <Link to={'/admin/viewFile'} state = {{filePath: project.cvPath}} >View CV</Link></td>
+        <td style={{overflowY:"scroll"}}>{organizeFeedback(project._id, project.status)}</td>
+        <td>
+              <button name={project._id + "-" + project.status} onClick={
+                function(e){
+                updateStatus(e.target.name.split('-')[0], parseInt(e.target.name.split('-')[1])+1);
+              }} 
+                className='btn btn-primary' style={{display:buttonsDisplay(project.status), marginBottom:"10px"}}>Accept</button>
+              <button name={project._id + "-" + project.status} onClick={
+                function(e){
+                updateStatus(e.target.name.split('-')[0], 0)}} 
                 className='btn btn-danger' style={{display:buttonsDisplay(project.status)}}>Reject</button>
             </td>
       </tr>
@@ -107,7 +151,7 @@ function generateRow(project){
       fileLink = (<td>Not Submitted Yet</td>)
     }
     else{
-      fileLink = (<td><Link to={'/admin2/viewFile'} state={{filePath: project.proposalPath2}}>View Proposal</Link></td>);
+      fileLink = (<td><Link to={'/admin/viewFile'} state={{filePath: project.proposalPath2}}>View Proposal</Link></td>);
     }
     return (
         <tr>
@@ -126,7 +170,7 @@ function generateRow(project){
                 className='btn btn-primary' style={{display:buttonsDisplay(project.status), marginBottom:"10px"}}>Accept</button>
               <button name={project._id + "-" + project.status} onClick={
                 function(e){
-                updateStatus(e.target.name.split('-')[0], parseInt(e.target.name.split('-')[1])-1)}} 
+                updateStatus(e.target.name.split('-')[0], 0)}} 
                 className='btn btn-danger' style={{display:buttonsDisplay(project.status)}}>Reject</button>
             </td>
       </tr>
@@ -138,7 +182,7 @@ function generateRow(project){
       fileLink = (<td>Not Submitted Yet</td>)
     }
     else{
-      fileLink = (<td><Link to={'/admin2/viewFile'} state={{filePath: project.presentationPath}}>View Presentation File</Link></td>);
+      fileLink = (<td><Link to={'/admin/viewFile'} state={{filePath: project.presentationPath}}>View Presentation File</Link></td>);
     }
     return (
         <tr>
@@ -157,7 +201,7 @@ function generateRow(project){
                 className='btn btn-primary' style={{display:buttonsDisplay(project.status), marginBottom:"10px"}}>Accept</button>
               <button name={project._id + "-" + project.status} onClick={
                 function(e){
-                updateStatus(e.target.name.split('-')[0], parseInt(e.target.name.split('-')[1])-1)}} 
+                updateStatus(e.target.name.split('-')[0], 0)}} 
                 className='btn btn-danger' style={{display:buttonsDisplay(project.status)}}>Reject</button>
             </td>
       </tr>
@@ -169,7 +213,7 @@ function generateRow(project){
       fileLink = (<td>Not Submitted Yet</td>)
     }
     else{
-      fileLink = (<td><Link to={'/admin2/viewFile'} state={{filePath: project.proposalPath3}}>View Final Proposal</Link></td>);
+      fileLink = (<td><Link to={'/admin/viewFile'} state={{filePath: project.proposalPath3}}>View Final Proposal</Link></td>);
     }
     return (
         <tr>
@@ -188,13 +232,20 @@ function generateRow(project){
                 className='btn btn-primary' style={{display:buttonsDisplay(project.status), marginBottom:"10px"}}>Accept</button>
               <button name={project._id + "-" + project.status} onClick={
                 function(e){
-                updateStatus(e.target.name.split('-')[0], parseInt(e.target.name.split('-')[1])-1)}} 
+                updateStatus(e.target.name.split('-')[0], 0)}} 
                 className='btn btn-danger' style={{display:buttonsDisplay(project.status)}}>Reject</button>
             </td>
       </tr>
     );
   }
   else{
+    let fileLink = " ";
+    if(project.proposalPath3 === " "){
+      fileLink = (<td>Not Submitted Yet</td>)
+    }
+    else{
+      fileLink = (<td><Link to={'/admin/viewFile'} state={{filePath: project.proposalPath3}}>View Final Proposal</Link></td>);
+    }
     return (
         <tr>
         <td>{i++}</td>
@@ -202,7 +253,7 @@ function generateRow(project){
         <td>{project.projectTitle}</td>
         <td><h6 style={{height:"100px",overflowY:"scroll"}}>{project.description}</h6></td>
         <td>{numToStatus(project.status)}</td>
-        <td><Link to={'/admin2/viewFile'} state={{filePath: project.proposalPath3}} >View Final Proposal</Link></td>
+        {fileLink}
         <td style={{overflowY:"scroll"}}>{organizeFeedback(project._id, project.status)}</td>
         <td>
               <button name={project._id + "-" + project.status} onClick={
@@ -212,7 +263,7 @@ function generateRow(project){
                 className='btn btn-primary' style={{display:buttonsDisplay(project.status), marginBottom:"10px"}}>Accept</button>
               <button name={project._id + "-" + project.status} onClick={
                 function(e){
-                updateStatus(e.target.name.split('-')[0], parseInt(e.target.name.split('-')[1])-1)}} 
+                updateStatus(e.target.name.split('-')[0], 0)}} 
                 className='btn btn-danger' style={{display:buttonsDisplay(project.status)}}>Reject</button>
             </td>
       </tr>
@@ -220,7 +271,10 @@ function generateRow(project){
   }
 }
 function numToStatus(num){
-  if(num === 1){
+  if(num === 0){
+    return "Rejected";
+  }
+  else if(num === 1){
     return "Concept Evaluation";
   }
   else if(num === 2){
@@ -232,8 +286,14 @@ function numToStatus(num){
   else if(num === 4){
     return "Money Grant"
   }
-  else{
+  else if(num === 5){
     return "Working on Project";
+  }
+  else if(num === 6){
+    return "Finished Working on Project";
+  }
+  else if(num === 7){
+    return "Stopped Working on Project";
   }
 }
 function buttonsDisplay(num){
@@ -248,103 +308,7 @@ function buttonsDisplay(num){
         
           <div className="row ms-0">
             <div className="col-xs-12 col-md-2 post-links-container-user-status mt-5" style={{overflow: 'hidden', backgroundColor:'#11676d', borderRadius: '10px', maxHeight:"950px"}}>
-            <ul class="list-group text-center fs-5 display-6">
-              <br />
-              <li class="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link className="links" to="/admin/news/add-news">
-                  Post News{" "}
-                </Link>
-              </li>
-              <br />
-              <li class="list-group-item" style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link
-                  className="links"
-                  to="/admin/appointments/add-appointment"
-                >
-                  Set Appointment Date{" "}
-                </Link>
-              </li>
-              <br />
-              <li class="list-group-item active"style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link className="links" to="/admin/user-status/add-user-status">
-                  Update User Status
-                </Link>
-              </li>
-              <br />
-              <li class="list-group-item  " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link className="links" to="/admin/calls/add-call">
-                  Post Calls
-                </Link>
-              </li>
-              <br />
-              <li class="list-group-item  " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link
-                  className="links"
-                  to="/admin/publications/add-publication"
-                >
-                  Post Publications
-                </Link>
-              </li>
-              <br />
-              <li class="list-group-item " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link
-                  className="links"
-                  to="/admin/accepted-projects/add-accepted-project"
-                >
-                  Post Accepted Projects
-                </Link>
-              </li>
-              <br />
-              <li class="list-group-item post-links   " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link
-                  className="links"
-                  to="/admin/institutes/post-to-institutes"
-                >
-                  Post To Institutes
-                </Link>
-              </li>
-              <br />
-              <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link
-                  className="links"
-                  to="/admin/collaboration/post-to-collaboration"
-                >
-                  Post To Collaborations
-                </Link>
-              </li>
-              <br />
-              <li
-                class="list-group-item "
-                style={{
-                  backgroundColor: "#ffa525",
-                  border: "none",
-                  borderRadius: "10px",
-                }}
-              >
-                <Link
-                  className="links"
-                  to="/admin/viewFeedback/view-feedback"
-                >
-                View feedback
-                </Link>
-              </li>
-              <li
-                class="list-group-item "
-                style={{
-                  backgroundColor: "#ffa525",
-                  border: "none",
-                  borderRadius: "10px",
-                  marginTop: "20px"
-                }}
-              >
-                <Link
-                  className="links"
-                  to="/admin/viewReports"
-                >
-                View Reports
-                </Link>
-              </li>
-            </ul>
+            <Sidebar/>
           </div>
           <div className="col-xs-12 col-md-1"></div>
           <div className="col-xs-12 col-md-9 mb-5">

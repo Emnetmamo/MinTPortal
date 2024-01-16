@@ -7,11 +7,13 @@ import DropzoneImage from '../../components/AdminComponents/Dropzone'
 import DropzoneText from '../../components/AdminComponents/DropzoneText'
 import Sidebar from './Sidebar.js';
 import '../../images/assets/css/admin.css';
+import { useLocation } from 'react-router-dom';
 
 
 axios.defaults.withCredentials=true;
 
 function ViewReports2() {
+    const {email} = useLocation().state;
     const [reports, setReports] = useState([]);
     const [loaded, setLoaded] = useState(false);
     useEffect(function(){
@@ -73,7 +75,7 @@ function ViewReports2() {
             className="col-xs-12 col-md-3 post-links-container mt-2"
             style={{ overflow: "hidden" }}
           >
-            <Sidebar/>
+            <Sidebar email={email}/>
             </div>
           <div class="col-xs-12 col-md-2"></div>
           <div class="col-xs-12 col-md-7 mb-5">

@@ -66,7 +66,7 @@ const adminUserStatus=async (req, res)=>{
         else if(newStatus < 3){
           const today = Date.now();
           const nowDate = (new Date(today)).toISOString();
-          await AppointmentModel.findOneAndDelete({projectId:id1});
+          await AppointmentModel.deleteMany({projectId:id1});
         }
     } 
     

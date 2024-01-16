@@ -4,6 +4,7 @@ import ConfirmAppointment from './ConfirmAppointment';
 import CheckStatus from './CheckStatus';
 import UploadReport from './UploadReport';
 import FeedbackReport from './FeedbackReport';
+import SetProjectStatus from './SetProjectStatus';
 import '../../App.css';
 import { Link } from 'react-router-dom'
 
@@ -69,15 +70,24 @@ const UserDashboard = () => {
           >
             View Feedback on Report
           </button>
+          <button
+            href="#"
+            className="btn btn-link w-100 text-center mb-2"
+            style={{textDecoration: 'none', backgroundColor: selectedOption === 'setProjectStatus' ? '#11676d' : 'white', color: selectedOption === 'setProjectStatus' ? 'white' : 'black' }}
+            onClick={() => handleOptionClick('setProjectStatus')}
+          >
+            Set Project Status
+          </button>
         </div>
         <div className="col-md-9">
           {selectedOption === 'confirmAppointment' && <ConfirmAppointment email={email} />}
           {selectedOption === 'checkStatus' && <CheckStatus email={email}/>}
           {selectedOption === 'uploadReport' && <UploadReport email={email}/>}
           {selectedOption === 'feedbackReport' && <FeedbackReport email={email}/>}
+          {selectedOption === 'setProjectStatus' && <SetProjectStatus email={email}/>}
           {(selectedOption !== 'confirmAppointment' && selectedOption !== 'checkStatus' 
-          && selectedOption !== 'uploadReport' && selectedOption !== 'feedbackReport') && 
-          <div style={{marginLeft:"10%", marginBottom:"50%"}}>
+          && selectedOption !== 'uploadReport' && selectedOption !== 'feedbackReport' && selectedOption !== 'setProjectStatus') 
+          && <div style={{marginLeft:"10%", marginBottom:"50%"}}>
             <h1 style={{color:"#11676d"}}>User Home</h1>
             <h3>Welcome to the user dashboard. Here you can:
               <ul>
