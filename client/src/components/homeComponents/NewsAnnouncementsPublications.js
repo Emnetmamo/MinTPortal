@@ -92,7 +92,7 @@ const NewsAnnouncementsPublications = () => {
       <style>
         {`
           .blinking-icon img.blink {
-            animation: blink-animation 110ms infinite;
+            animation: blink-animation 1100ms infinite;
           }
 
           @keyframes blink-animation {
@@ -100,7 +100,7 @@ const NewsAnnouncementsPublications = () => {
               opacity: 1;
             }
             50% {
-              opacity: 0;
+              opacity: 0.5;
             }
             100% {
               opacity: 1;
@@ -108,7 +108,7 @@ const NewsAnnouncementsPublications = () => {
           }
         `}
       </style>
-      <div style={{ backgroundColor: "lightgrey", color: "black", padding: "10px", marginBottom: "10px", textAlign: "center" }}>QUICK LINKS</div>
+      <div style={{ backgroundColor: "#11676d", color: "white", padding: "10px", marginBottom: "10px", textAlign: "center" }}>QUICK LINKS</div>
       <div className="quick-links"> 
      <img src={arrowIcon} alt="Arrow" width="30px" height="13px" className="arrow-icon" style={{ paddingRight: '10px' }}/> 
      <Link  to="/news" style={{textDecoration: "none"}}>News</Link></div>
@@ -162,7 +162,7 @@ const NewsAnnouncementsPublications = () => {
         />
       </div>
       <br />
-      <div style={{ backgroundColor: "lightgrey", color: "black", padding: "10px", marginBottom: "10px", textAlign: "center" }}></div>
+      <div style={{ backgroundColor: "#11676d", color: "black", padding: "10px", marginBottom: "10px", textAlign: "center" }}></div>
 
      </div>
      
