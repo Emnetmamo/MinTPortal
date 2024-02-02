@@ -97,10 +97,10 @@ const NewsAnnouncementsPublications = () => {
 
           @keyframes blink-animation {
             0% {
-              opacity: 1;
+              opacity: 0.6;
             }
             50% {
-              opacity: 0.5;
+              opacity: 0.1;
             }
             100% {
               opacity: 1;
