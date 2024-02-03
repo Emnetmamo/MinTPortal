@@ -116,7 +116,7 @@ function AddAdmin() {
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="owner" className="form-label">
-                Project’s Owner*
+                Admin's Full Name*
               </label>
               <div className="d-flex">
                 <input
