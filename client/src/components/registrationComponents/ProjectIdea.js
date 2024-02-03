@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
 const ProjectIdea = ({ nextStep, prevStep }) => {
   const navigate = useNavigate();
   const [projectTitle, setProjectTitle] = useState("");
   const [teamMembers, setTeamMembers] = useState([]);
-  const [newTeamMember, setNewTeamMember] = useState('');
+  const [newTeamMember, setNewTeamMember] = useState("");
   const [projectCategory, setProjectCategory] = useState("");
   const [description, setDescription] = useState("");
   const [cvFile, setCvFile] = useState(null);
   const [proposalFile, setProposalFile] = useState(null);
   const [letter, setLetter] = useState(null);
   const [email, setEmail] = useState("");
-  const [institute, setInstitute] = useState("")
+  const [institute, setInstitute] = useState("");
 
   const MAX_FILE_SIZE = 3 * 1024 * 1024; // 3MB in bytes
 
@@ -24,7 +24,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
     if (file && file.size <= MAX_FILE_SIZE) {
       setCvFile(file);
     } else {
-      toast.error('CV file size should not exceed 3MB');
+      toast.error("CV file size should not exceed 3MB");
     }
   };
 
@@ -33,7 +33,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
     if (file && file.size <= MAX_FILE_SIZE) {
       setProposalFile(file);
     } else {
-      toast.error('Proposal file size should not exceed 3MB');
+      toast.error("Proposal file size should not exceed 3MB");
     }
   };
 
@@ -42,14 +42,14 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
     if (file && file.size <= MAX_FILE_SIZE) {
       setLetter(file);
     } else {
-      toast.error('Letter file size should not exceed 3MB');
+      toast.error("Letter file size should not exceed 3MB");
     }
   };
 
   const handleAddTeamMember = () => {
-    if (newTeamMember.trim() !== '') {
+    if (newTeamMember.trim() !== "") {
       setTeamMembers((prevMembers) => [...prevMembers, newTeamMember.trim()]);
-      setNewTeamMember('');
+      setNewTeamMember("");
     }
   };
 
@@ -82,10 +82,12 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
         formData
       );
       console.log(response);
-      if (response.data === 'titlepresent') {
-        toast.error('This project is already taken or done, please choose another topic.');
+      if (response.data === "titlepresent") {
+        toast.error(
+          "This project is already taken or done, please choose another topic."
+        );
         setTimeout(() => {
-          navigate('/');
+          navigate("/");
         }, 7000);
       } else {
         nextStep();
@@ -178,23 +180,29 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
                 required
               >
                 <option value="">Select a category</option>
-<<<<<<< HEAD
-           <option value="Agriculture">Agriculture</option>
-          <option value="Industry">Industry</option>
-          <option value="Health">Health</option>
-          <option value="Construction">Construction</option>
-          <option value="Mines and Water">Mines and Water</option>
-          <option value="Information Communication">Information Communication</option>
-          <option value="Energy">Energy </option>
-          <option value="Enviroment and Protection">Environment Protection </option>
-          <option value="Other related Sectors">Other related Sectors</option>
-=======
+
                 <option value="Agriculture">Agriculture</option>
-                <option value="Environment_Energy">Environment and Energy</option>
+                <option value="Industry">Industry</option>
+                <option value="Health">Health</option>
+                <option value="Construction">Construction</option>
+                <option value="Mines and Water">Mines and Water</option>
+                <option value="Information Communication">
+                  Information Communication
+                </option>
+                <option value="Energy">Energy </option>
+                <option value="Enviroment and Protection">
+                  Environment Protection{" "}
+                </option>
+                <option value="Other related Sectors">
+                  Other related Sectors
+                </option>
+                <option value="Agriculture">Agriculture</option>
+                <option value="Environment_Energy">
+                  Environment and Energy
+                </option>
                 <option value="Health">Health</option>
                 <option value="Industry">Industry</option>
                 <option value="Other">Other</option>
->>>>>>> 4b8039b25939005ab328f540fac2b735b5a0299f
               </select>
             </div>
 
@@ -227,7 +235,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
                 required
               />
             </div>
-            
+
             <div className="mb-3">
               <label htmlFor="institute" className="form-label">
                 Host Institution*
@@ -289,22 +297,29 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
             </div>
 
             <div className="d-flex justify-content-between">
-            <button
-            style={{ backgroundColor: "orange", color: "white", float: "left" }}
-            type="button"
-            className="btn me-2"
-            onClick={prevStep}
-          >
-            Previous
-          </button>
-          <button
-            style={{ backgroundColor: "orange", color: "white", float: "right" }}
-            type="submit"
-            className="btn"
-          >
-            Next
-          </button>
-
+              <button
+                style={{
+                  backgroundColor: "orange",
+                  color: "white",
+                  float: "left",
+                }}
+                type="button"
+                className="btn me-2"
+                onClick={prevStep}
+              >
+                Previous
+              </button>
+              <button
+                style={{
+                  backgroundColor: "orange",
+                  color: "white",
+                  float: "right",
+                }}
+                type="submit"
+                className="btn"
+              >
+                Next
+              </button>
             </div>
           </form>
         </div>
