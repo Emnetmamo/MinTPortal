@@ -180,10 +180,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
                 required
               >
                 <option value="">Select a category</option>
-<<<<<<< HEAD
-
-=======
-           {/* <option value="Agriculture">Agriculture</option>
+           <option value="Agriculture">Agriculture</option>
           <option value="Industry">Industry</option>
           <option value="Health">Health</option>
           <option value="Construction">Construction</option>
@@ -191,9 +188,8 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
           <option value="Information Communication">Information Communication</option>
           <option value="Energy">Energy </option>
           <option value="Enviroment and Protection">Environment Protection </option>
-          <option value="Other related Sectors">Other related Sectors</option> */}
->>>>>>> c4ea79b612e435b407ebf932eebe2828bc0bd4e4
-                <option value="Agriculture">Agriculture</option>
+          <option value="Other related Sectors">Other related Sectors</option>
+                {/* <option value="Agriculture">Agriculture</option>
                 <option value="Industry">Industry</option>
                 <option value="Health">Health</option>
                 <option value="Construction">Construction</option>
@@ -214,7 +210,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
                 </option>
                 <option value="Health">Health</option>
                 <option value="Industry">Industry</option>
-                <option value="Other">Other</option>
+                <option value="Other">Other</option> */}
               </select>
             </div>
 

@@ -40,18 +40,22 @@ function UpdateUserStatus() {
 function organizeFeedback(id, status){
   if(loaded){
     let fdbcks = [];
-    let satNo = 0;
-    let unsatNo = 0;
+    // let satNo = 0;
+    // let unsatNo = 0;
+    let sum = 0;
+    let num1 = 0;
     for (let j = 0; j < feedbacks.length; j++) {
       if(feedbacks[j].projectID === id ){
     for (let i = 0; i < feedbacks[j].feedback.length; i++) {
         if(feedbacks[j].feedback[i].split('-')[0] === status.toString()){
-        if(feedbacks[j].feedback[i].split('-')[1] === "Satisfactory"){
-          satNo += 1;
-        }
-        if(feedbacks[j].feedback[i].split('-')[1] === "Unsatisfactory"){
-          unsatNo += 1;
-        }
+        // if(c === "Satisfactory"){
+        //   satNo += 1;
+        // }
+        // if(feedbacks[j].feedback[i].split('-')[1] === "Unsatisfactory"){
+        //   unsatNo += 1;
+        // }
+        sum += parseInt(feedbacks[j].feedback[i].split('-')[1]);
+        num1 += 1
         fdbcks.push(
           <h6>{"->"+feedbacks[j].feedback[i].split('-')[2]}</h6>
         );
@@ -59,12 +63,23 @@ function organizeFeedback(id, status){
       }
     }
   }
-  fdbcks.push(
-    <h6>Satisfactory: {satNo}</h6>
-  );
-  fdbcks.push(
-    <h6>Unsatisfactory: {unsatNo}</h6>
-  );
+  if(num1 > 0){
+    let average = sum/num1;
+    fdbcks.push(
+    <h6>Average Grade: {average}</h6>
+    );
+  }
+  else{
+    fdbcks.push(
+      <h6>No feedback given yet</h6>
+      );
+  }
+  // fdbcks.push(
+  //   <h6>Satisfactory: {satNo}</h6>
+  // );
+  // fdbcks.push(
+  //   <h6>Unsatisfactory: {unsatNo}</h6>
+  // );
   return (fdbcks);
   }
 }

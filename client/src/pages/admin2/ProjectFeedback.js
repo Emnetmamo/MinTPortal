@@ -53,10 +53,7 @@ function generateRow(project){
             <td style={{width:"100px"}}><textarea name={project._id+"-feedback"} id={project._id+"-feedback"} cols="15" rows="4"></textarea>
             </td>
             <td>
-                <select name={project._id+"-quality"} id={project._id+"-quality"}>
-                    <option value="Satisfactory">Satisfactory</option>
-                    <option value="Unsatisfactory">Unsatisfactory</option>
-                </select>
+              <input name={project._id+"-quality"} id={project._id+"-quality"} type='number' min={0} max={100}/>
             </td>
             <td>
               <button name={project._id + "-" + project.status + "-" + project.projectTitle} onClick={
@@ -80,10 +77,7 @@ function generateRow(project){
             <td><textarea name={project._id+"-feedback"} id={project._id+"-feedback"} cols="15" rows="4"></textarea>
             </td>
             <td>
-                <select name={project._id+"-quality"} id={project._id+"-quality"}>
-                    <option value="Satisfactory">Satisfactory</option>
-                    <option value="Unsatisfactory">Unsatisfactory</option>
-                </select>
+              <input name={project._id+"-quality"} id={project._id+"-quality"} type='number' min={0} max={100}/>
             </td>
             <td>
               <button name={project._id + "-" + project.status + "-" + project.projectTitle} onClick={
@@ -107,10 +101,7 @@ function generateRow(project){
             <td><textarea name={project._id+"-feedback"} id={project._id+"-feedback"} cols="15" rows="4"></textarea>
             </td>
             <td>
-                <select name={project._id+"-quality"} id={project._id+"-quality"}>
-                    <option value="Satisfactory">Satisfactory</option>
-                    <option value="Unsatisfactory">Unsatisfactory</option>
-                </select>
+              <input name={project._id+"-quality"} id={project._id+"-quality"} type='number' min={0} max={100}/>
             </td>
             <td>
               <button name={project._id + "-" + project.status + "-" + project.projectTitle} onClick={
@@ -134,10 +125,7 @@ function generateRow(project){
             <td><textarea name={project._id+"-feedback"} id={project._id+"-feedback"} cols="15" rows="4"></textarea>
             </td>
             <td>
-                <select name={project._id+"-quality"} id={project._id+"-quality"}>
-                    <option value="Satisfactory">Satisfactory</option>
-                    <option value="Unsatisfactory">Unsatisfactory</option>
-                </select>
+              <input name={project._id+"-quality"} id={project._id+"-quality"} type='number' min={0} max={100}/>
             </td>
             <td>
               <button name={project._id + "-" + project.status + "-" + project.projectTitle} onClick={
@@ -161,10 +149,7 @@ function generateRow(project){
             <td><textarea name={project._id+"-feedback"} id={project._id+"-feedback"} cols="15" rows="4"></textarea>
             </td>
             <td>
-                <select name={project._id+"-quality"} id={project._id+"-quality"}>
-                    <option value="Satisfactory">Satisfactory</option>
-                    <option value="Unsatisfactory">Unsatisfactory</option>
-                </select>
+                <input name={project._id+"-quality"} id={project._id+"-quality"} type='number' min={0} max={100}/>
             </td>
             <td>
               <button name={project._id + "-" + project.status + "-" + project.projectTitle} onClick={
@@ -233,7 +218,7 @@ function buttonsDisplay(num){
                     <th>Current Stage</th>
                     <th>Current Files</th>
                     <th>Feedback</th>
-                    <th>Work Quality</th>
+                    <th>Grade(Out of 100)</th>
                     <th>Action</th>
                   </tr>
                 </thead>

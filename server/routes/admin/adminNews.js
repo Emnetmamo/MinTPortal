@@ -20,7 +20,7 @@ function Verify(req, res, next) {
       return res.status(401).json('Unauthorized: Error during token verification');
     }
 
-    if (decode.role === 'admin' ) {
+    if (decode.role === 'admin3' ) {
       
       next();
     } else {
