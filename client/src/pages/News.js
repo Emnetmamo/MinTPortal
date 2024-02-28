@@ -73,8 +73,8 @@ const News = () => {
       </div>
       <div className="row">
         {news.map((newsItem, index) => (
-          <div key={index} className="col-md-4 mb-4">
-            <div className="card rounded shadow grow-on-hover">
+          <div key={index} className="col-md-4 mb-5">
+            <div className="news-container card rounded shadow grow-on-hover">
               <img
                 className="card-img-top news"
                 src={newsItem.imagePath}
