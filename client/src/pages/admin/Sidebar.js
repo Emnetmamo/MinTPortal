@@ -19,6 +19,7 @@ function Sidebar(props){
           <Link
             className="links"
             to="/admin/appointments/add-appointment"
+            state={{email:email}}
           >
             Set Appointment Date{" "}
           </Link>
@@ -32,7 +33,7 @@ function Sidebar(props){
             borderRadius: "10px",
           }}
         >
-          <Link className="links" to="/admin/user-status/add-user-status">
+          <Link className="links" to="/admin/user-status/add-user-status" state={{email:email}} >
             Update User Status
           </Link>
         </li>
@@ -48,6 +49,7 @@ function Sidebar(props){
           <Link
             className="links"
             to="/admin/viewFeedback/view-feedback"
+            state={{email:email}}
           >
            View feedback
           </Link>
@@ -64,6 +66,7 @@ function Sidebar(props){
           <Link
             className="links"
             to="/admin/viewReports"
+            state={{email:email}}
           >
           View Reports
           </Link>
@@ -80,6 +83,7 @@ function Sidebar(props){
           <Link
             className="links"
             to="/admin/viewCommitteeReports"
+            state={{email:email}}
           >
           View Committee Reports
           </Link>
@@ -96,6 +100,7 @@ function Sidebar(props){
           <Link
             className="links"
             to="/admin/addAdmin"
+            state={{email:email}}
           >
           Add Admin
           </Link>

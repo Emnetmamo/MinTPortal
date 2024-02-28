@@ -41,7 +41,7 @@ function Admin2() {
           <div className="col-xs-12 col-md-2"></div>
           <div className="col-xs-12 col-md-7 mb-5"  style={{ height: "400px" }}>
             <br />
-            <h1 style={{color:"orange"}}>Admin Home</h1>
+            <h1 style={{color:"orange"}}>MinT General Admin Home</h1>
             <h3>{message}</h3> <br /> <br />
           </div>
         </div>

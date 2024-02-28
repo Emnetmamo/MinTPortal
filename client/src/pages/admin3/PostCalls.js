@@ -153,7 +153,7 @@ const navigate=useNavigate()
               </div>
 
               <div className="form-group">
-                <label htmlFor="prizes">Prizes:</label>
+                <label htmlFor="prizes">Award:</label>
                 <textarea
                   id="prizes"
                   name="prizes"

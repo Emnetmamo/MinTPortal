@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Sidebar from './Sidebar.js';
 
 const ViewFeedback = () => {
   const [feedbackData, setFeedbackData] = useState([]);
-
+  const location = useLocation();
+  const {email} = location.state;
   useEffect(() => {
     const fetchData = async () => {
       try {

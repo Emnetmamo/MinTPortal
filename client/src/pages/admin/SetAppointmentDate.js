@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import '../../images/assets/css/admin.css';
 import axios from 'axios';
 import AdminHeader from '../../components/AdminComponents/AdminHeader';
@@ -10,6 +10,8 @@ function SetAppointmentDate() {
   let i = 1;
   const [projects, setProjects] = useState([]);
   const[loaded, setLoaded] = useState(false);
+  const location = useLocation();
+  const {email} = location.state;
   useEffect(
     function(){
       axios.get('http://localhost:5001/admin/appointment/getAll')
