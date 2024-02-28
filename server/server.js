@@ -37,6 +37,7 @@ import admin2Reports from './routes/admin2Reports.js'
 
 import adminAppointment from './routes/admin/adminAppointment.js';
 import adminUserStatus from './routes/admin/adminUserStatus.js';
+import getName from './middleware/getName.js';
 
 const app = express();
 const CONNECTION_URL = process.env.CONNECTION_URL
@@ -98,6 +99,14 @@ app.use('/admin/appointment/:id', adminAppointment);
 app.use('/admin2Feedback', admin2Feedback);
 app.use('/projectFiles', projectFilesUpload);
 app.use('/admin2Reports', admin2Reports);
+app.use('/getName', getName);
+
+//part of login and logout code
+app.use('/check-auth-status', ProtectAdmin);
+//logout code
+app.get('/logout', (req, res) => {
+  res.clearCookie('token').send('Logged out successfully.');
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

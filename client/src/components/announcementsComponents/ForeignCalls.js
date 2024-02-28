@@ -71,7 +71,7 @@ const ForeignCalls = (props) => {
               </p>
 
               <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
-                Prizes(Monetary): <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].prizes}</span>
+                Award(Monetary): <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].prizes}</span>
               </p>
 
               <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>

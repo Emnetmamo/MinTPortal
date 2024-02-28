@@ -251,7 +251,7 @@ function AddAdmin() {
                   onChange={(e) => setAdminType(e.target.value)}
                 >
                   <option >Select Admin Type</option>
-                  <option value="admin">MinT Technical Committee Admin (Part of Techincal Committee)</option>
+                  <option value="admin">MinT Grant Admin (Part of Techincal Committee)</option>
                   <option value="admin2">Technical Committee Admin (External Party)</option>
                   <option value="admin3">MinT General Admin (Manages website)</option>
                   </select>

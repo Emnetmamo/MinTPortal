@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import '../../images/assets/css/admin.css'
 import axios from 'axios';
@@ -13,6 +13,8 @@ axios.defaults.withCredentials=true;
 function ViewCommitteeReports() {
     const [reports, setReports] = useState([]);
     const [loaded, setLoaded] = useState(false);
+    const location = useLocation();
+  const {email} = location.state;
     useEffect(function(){
         axios.get('http://localhost:5001/admin2Reports/getAll')
         .then((result)=>{setReports(result.data); console.log(result)})

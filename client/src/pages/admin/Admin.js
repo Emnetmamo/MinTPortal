@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Sidebar from './Sidebar.js';
 
 function Admin() {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const {email} = location.state;
+  console.log(email);
   useEffect(() => {
     axios.defaults.withCredentials = true;
     axios.get('http://localhost:5001/admind/dashboard') // Update the route path here
@@ -32,12 +34,12 @@ function Admin() {
             className="col-xs-12 col-md-3 post-links-container mt-2"
             style={{ overflow: "hidden" }}
           >
-            <Sidebar/>
+            <Sidebar email={email} />
           </div>
           <div className="col-xs-12 col-md-2"></div>
           <div className="col-xs-12 col-md-7 mb-5"  style={{ height: "400px" }}>
             <br />
-            <h1 style={{color:"orange"}}>Admin Home</h1>
+            <h1 style={{color:"orange"}}>MinT Grant Admin Home</h1>
             <h3>{message}</h3> <br /> <br />
           </div>
         </div>

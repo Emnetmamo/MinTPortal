@@ -22,14 +22,14 @@ const Login = () => {
         console.log(result.data);
         if (result.data.message === 'ok') {
           if (result.data.role === 'admin') {
-            history('/admin');
+            history('/admin',  { state: { email: email, role: result.data.role } });
           } else if (result.data.role === 'admin2') {
-            history('/admin2', { state: { email: email } });
+            history('/admin2', { state: { email: email, role: result.data.role } });
           }
           else if (result.data.role === 'admin3') {
-            history('/admin3', { state: { email: email } });
+            history('/admin3', { state: { email: email, role: result.data.role } });
           } else {
-            history('/user', { state: { email: email } });
+            history('/user', { state: { email: email, role: result.data.role } });
           }
         }
       })

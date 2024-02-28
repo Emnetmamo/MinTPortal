@@ -20,7 +20,7 @@ const Introduction = () => {
       <div id="top"></div>
 
       <div className="col-md-6">
-        <h1 style={{fontSize: "50px"}}>Our Mission is to bring change through Researches and Innovation</h1>  
+        <h1 style={{fontSize: "60px"}}>Ethiopian National Research Portal</h1>  
         <a href="/announcements" style={{background: "orange", color: "white", border: 'none'}} className="btn btn-secondary  ms-2">See open Research Calls</a>
       </div>
       <div className="col-md-6">
