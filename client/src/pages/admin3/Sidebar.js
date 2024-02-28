@@ -16,7 +16,7 @@ function Sidebar(props){
                   borderRadius: "10px",
                 }}
               >
-                <Link className="links" to="/admin3/news/add-news">
+                <Link className="links" to="/admin3/news/add-news" state={{email:email}}>
                   Post News{" "}
                 </Link>
               </li>
@@ -29,7 +29,7 @@ function Sidebar(props){
                   borderRadius: "10px",
                 }}
               >
-                <Link className="links" to="/admin3/calls/add-call">
+                <Link className="links" to="/admin3/calls/add-call" state={{email:email}}>
                   Post Calls
                 </Link>
               </li>
@@ -45,6 +45,7 @@ function Sidebar(props){
                 <Link
                   className="links"
                   to="/admin3/publications/add-publication"
+                  state={{email:email}}
                 >
                   Post Publications
                 </Link>
@@ -61,6 +62,7 @@ function Sidebar(props){
                 <Link
                   className="links"
                   to="/admin3/accepted-projects/add-accepted-project"
+                  state={{email:email}}
                 >
                   Post Accepted Projects
                 </Link>
@@ -70,6 +72,7 @@ function Sidebar(props){
                 <Link
                   className="links"
                   to="/admin3/institutes/post-to-institutes"
+                  state={{email:email}}
                 >
                   Post To Institutes
                 </Link>
@@ -79,6 +82,7 @@ function Sidebar(props){
                 <Link
                   className="links"
                   to="/admin3/collaboration/post-to-collaboration"
+                  state={{email:email}}
                 >
                   Post To Collaborations
                 </Link>
