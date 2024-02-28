@@ -90,6 +90,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
           navigate("/");
         }, 7000);
       } else {
+        toast.success('Almost done!')
         nextStep();
       }
     } catch (error) {
