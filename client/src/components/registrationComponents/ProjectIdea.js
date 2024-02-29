@@ -90,9 +90,13 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
           navigate("/");
         }, 7000);
       } else {
-        toast.success('Almost done!')
-        nextStep();
+        toast.success('Almost done!', {
+          position: toast.POSITION.TOP_CENTER, // Centered at the top
+          autoClose: 4000,
+        });
+        nextStep()
       }
+
     } catch (error) {
       console.error("Error occurred during project submission: ", error);
     }
