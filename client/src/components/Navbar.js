@@ -56,7 +56,7 @@ const Navbar = () => {
   <div className={`nav-item dropdown ${isDropdownOpen ? 'show' : ''}`}>
     <a
       className={`nav-link dropdown-toggle`}
-      href="#"
+      href="# "
       id="resourcesDropdown"
       role="button"
       data-toggle="dropdown"
