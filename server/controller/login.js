@@ -10,7 +10,7 @@ login.post('/login',(req,res)=>{
     UserModel.findOne({ email })
       .then((user) => {
         if (!user) {
-          return res.status(404).json({ error: 'User not found' });
+          return res.json({ error: 'User not found' });//status(404).
         }
   
         bcrypt.compare(password, user.password, (error, response) => {
@@ -23,13 +23,13 @@ login.post('/login',(req,res)=>{
             res.cookie('token', token, { httpOnly: true }); 
             return res.json({ message: 'ok', token,role:user.role });
           } else {
-            return res.status(401).json({ error: 'Incorrect password' });
+            return res.json({ error: 'Incorrect password' });//status(401).
           }
         });
       })
       .catch((error) => {
         console.error(error);
-        res.status(500).json({ error: 'Internal server error' });
+        res.json({ error: 'Internal server error' });//status(500)
       });
 })
 export default login

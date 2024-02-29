@@ -3,7 +3,7 @@ import Logo from '../images/Logo.jpg';
 import { VscEyeClosed, VscEye } from 'react-icons/vsc';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-
+import { ToastContainer, toast } from "react-toastify";
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,6 +20,18 @@ const Login = () => {
       .post('http://localhost:5001/authl/login', { email, password })
       .then((result) => {
         console.log(result.data);
+        if(result.data.error==='User not found'){
+          toast.error('User not found,please register', {
+            position: toast.POSITION.TOP_CENTER, 
+            autoClose: 6000,
+          })
+        }
+        if(result.data.error==='Incorrect password'){
+          toast.error('Incorrect password,please enter the correct password', {
+            position: toast.POSITION.TOP_CENTER, 
+            autoClose: 6000,
+          })
+        }
         if (result.data.message === 'ok') {
           if (result.data.role === 'admin') {
             document.cookie += 'email="'+email+'"';
@@ -128,8 +140,10 @@ const Login = () => {
               </button>
             </div>
           </form>
+          <ToastContainer/>
         </div>
       </div>
+    
     </div>
   );
 };
