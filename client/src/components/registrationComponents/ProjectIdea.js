@@ -21,9 +21,14 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
 
   useEffect(function(){
     function checkEmail(){
-      console.log(document.cookie.split(';')[1].split('=')[1]);
-      if(document.cookie.split(';')[1].split('=')[1] === '"user"'){
-        setEmail(document.cookie.split(';')[0].split('=')[1].replaceAll('"',''));
+      try{
+        console.log(document.cookie.split(';')[1].split('=')[1]);
+        if(document.cookie.split(';')[1].split('=')[1] === '"user"'){
+          setEmail(document.cookie.split(';')[0].split('=')[1].replaceAll('"',''));
+        }
+      }
+      catch(err){
+
       }
     }
     checkEmail();

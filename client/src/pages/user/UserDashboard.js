@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ConfirmAppointment from './ConfirmAppointment';
 import CheckStatus from './CheckStatus';
 import UploadReport from './UploadReport';
@@ -12,7 +12,24 @@ const UserDashboard = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const location = useLocation();
   const {email} = location.state;
+  const navigate = useNavigate();
   //console.log(email);
+  useEffect(function(){
+    function checkIfUser(){
+      if(document.cookie){
+        if(document.cookie.split(';')[1].split('=')[1] === '"user"'){
+
+        }
+        else{
+          navigate('/');
+        }
+      }
+      else{
+        navigate('/'); 
+      }
+    }
+    checkIfUser();
+  },[]);
   const handleOptionClick = (option) => {
     setSelectedOption(option);
   };
