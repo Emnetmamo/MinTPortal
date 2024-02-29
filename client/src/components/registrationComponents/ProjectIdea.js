@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,6 +18,16 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
   const [institute, setInstitute] = useState("");
 
   const MAX_FILE_SIZE = 3 * 1024 * 1024; // 3MB in bytes
+
+  useEffect(function(){
+    function checkEmail(){
+      console.log(document.cookie.split(';')[1].split('=')[1]);
+      if(document.cookie.split(';')[1].split('=')[1] === '"user"'){
+        setEmail(document.cookie.split(';')[0].split('=')[1].replaceAll('"',''));
+      }
+    }
+    checkEmail();
+  },[]);
 
   const handleCVFileChange = (e) => {
     const file = e.target.files[0];
@@ -188,7 +198,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
           <option value="Mines and Water">Mines and Water</option>
           <option value="Information Communication">Information Communication</option>
           <option value="Energy">Energy </option>
-          <option value="Enviroment and Protection">Environment Protection </option>
+          <option value="Enviroment and Protection">Environment and Protection </option>
           <option value="Other related Sectors">Other related Sectors</option>
                 {/* <option value="Agriculture">Agriculture</option>
                 <option value="Industry">Industry</option>

@@ -22,13 +22,21 @@ const Login = () => {
         console.log(result.data);
         if (result.data.message === 'ok') {
           if (result.data.role === 'admin') {
+            document.cookie += 'email="'+email+'"';
+            document.cookie = 'role="'+result.data.role+'"';
             history('/admin',  { state: { email: email, role: result.data.role } });
           } else if (result.data.role === 'admin2') {
+            document.cookie += 'email="'+email+'"';
+            document.cookie = 'role="'+result.data.role+'"';
             history('/admin2', { state: { email: email, role: result.data.role } });
           }
           else if (result.data.role === 'admin3') {
+            document.cookie += 'email="'+email+'"';
+            document.cookie = 'role="'+result.data.role+'"';
             history('/admin3', { state: { email: email, role: result.data.role } });
           } else {
+            document.cookie += 'email="'+email+'"';
+            document.cookie = 'role="'+result.data.role+'"';
             history('/user', { state: { email: email, role: result.data.role } });
           }
         }

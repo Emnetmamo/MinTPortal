@@ -1,7 +1,9 @@
-import { Outlet, Link } from "react-router-dom";
-
+import { Outlet, Link, useLocation } from "react-router-dom";
 
 const Layout = () => {
+
+  const location = useLocation();
+  const {email} = location.state;
   return (
     <>
      <br/> <br/> 
@@ -10,7 +12,7 @@ const Layout = () => {
         <ul style={{backgroundColor:"#11676d"}}>
           <li style={{display:"inline", marginRight:"30px", color: "orange"}}>Quick Links: </li>
           <li style={{display:"inline", marginRight:"950px"}}>
-            <Link to="/admin" style={{color: "orange"}}>Admin</Link>
+            <Link to="/admin" style={{color: "orange"}} state={{email:email}}>Admin</Link>
           </li>
           <li style={{display:"inline"}}>
           <Link to="/" style={{ backgroundColor:"orange", color: "black"}}
