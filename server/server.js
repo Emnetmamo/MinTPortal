@@ -105,6 +105,8 @@ app.use('/getName', getName);
 app.use('/check-auth-status', ProtectAdmin);
 //logout code
 app.get('/logout', (req, res) => {
+  res.clearCookie('email');
+  res.clearCookie('role');
   res.clearCookie('token').send('Logged out successfully.');
 });
 

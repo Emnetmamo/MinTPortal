@@ -41,9 +41,17 @@ function AdminHeader() {
         .then(result=> {response2 = result; console.log(result);})
         .catch(err=>console.log(err));
         }
-        axios.post('http://localhost:5001/getName', {email:email})
-        .then(result=> {response = result; setUserName(result.data.name); console.log(result);})
-        .catch(err=>console.log(err));
+        if(email === undefined){
+          const email1 = document.cookie.split(';')[0].split('=')[1];
+          axios.post('http://localhost:5001/getName', {email:email1})
+          .then(result=> {response = result; setUserName(result.data.name); console.log(result);})
+          .catch(err=>console.log(err));
+        }
+        else{
+          axios.post('http://localhost:5001/getName', {email:email})
+          .then(result=> {response = result; setUserName(result.data.name); console.log(result);})
+          .catch(err=>console.log(err));
+        }
         //const isAuthenticated = response.data.isAuthenticated;
         // const userName1 = response.data.name
         console.log(userName);
