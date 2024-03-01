@@ -6,8 +6,12 @@ import imgPath from "../../images/AboutUs/arm.png";
 const OrganizationStructureSection = () => {
   const [selectedButton, setSelectedButton] = useState(null);
 
-  const handleButtonClick = (button) => {
-    setSelectedButton((prevState) => (prevState === button ? null : button));
+  const handleButtonHover = (button) => {
+    setSelectedButton(button);
+  };
+
+  const handleButtonLeave = () => {
+    setSelectedButton(null);
   };
 
   const departments = [
@@ -45,7 +49,8 @@ const OrganizationStructureSection = () => {
         <button
           className="btn"
           style={{ backgroundColor: "#11475f", color: "white", fontWeight: "bold", fontSize: "28px" }}
-          onClick={() => handleButtonClick('viewDepartments')}
+          onMouseEnter={() => handleButtonHover('viewDepartments')}
+          onMouseLeave={() => handleButtonLeave()}
         >
           Innovation and Research Sector
         </button>
@@ -57,7 +62,7 @@ const OrganizationStructureSection = () => {
       </div>
       <div className="row" style={{ marginTop: "60px" }}>
         {departments.map((department, index) => (
-          <div className="col-md-4" key={index} style={{ marginBottom: "20px" }}>
+          <div className="col-md-4" key={index} style={{ marginBottom: "20px" ,gap:'0px'}}>
             <button
               className="btn mb-2"
               style={{
@@ -67,7 +72,8 @@ const OrganizationStructureSection = () => {
                 width: "100%", // Set width to 100%
                 whiteSpace: "normal", // Allow text to wrap
               }}
-              onClick={() => handleButtonClick(department.name)}
+              onMouseEnter={() => handleButtonHover(department.name)}
+              onMouseLeave={() => handleButtonLeave()}
             >
               {department.name}
             </button>
