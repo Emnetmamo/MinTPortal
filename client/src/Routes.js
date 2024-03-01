@@ -74,14 +74,29 @@ const ConditionalNavbar = () => {
 
   // Check if the path starts with '/admin/'
   if (path.startsWith('/admin')) {
-    return <AdminHeader />;
+    if(document.cookie){
+      if(document.cookie.split(';')[1].split('=')[1] !== '"user"'){
+        return <AdminHeader />;
+      }
+    }
+    else{
+      navigate('/');
+      return <Navbar/>;
+    }
   }
 
    // Check if the path starts with '/user'
     if (path.startsWith('/user') || 
     path.startsWith('/confirm-appointment') || 
     path.startsWith('//check-status') ) {
-      return <UserHeader />;
+      if(document.cookie){
+        if(document.cookie.split(';')[1].split('=')[1] === '"user"'){
+          return <UserHeader />;
+        }
+      }
+      else{
+        return <Navbar/>;
+      }
     }
 
 

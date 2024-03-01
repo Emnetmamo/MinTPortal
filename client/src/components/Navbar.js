@@ -9,6 +9,9 @@ import "../App.css";
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isLoggedOut = (document.cookie.split(';')[0] === "");
+  console.log("LoggedOut is " + isLoggedOut);
+  console.log(document.cookie);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -53,7 +56,7 @@ const Navbar = () => {
   <div className={`nav-item dropdown ${isDropdownOpen ? 'show' : ''}`}>
     <a
       className={`nav-link dropdown-toggle`}
-      href="#"
+      href="# "
       id="resourcesDropdown"
       role="button"
       data-toggle="dropdown"
@@ -76,7 +79,7 @@ const Navbar = () => {
   <a className={`nav-link ${window.location.pathname === '/news' ? 'active' : ''}`} href="/news" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}>News</a>
   <a className={`nav-link ${window.location.pathname === '/graph' ? 'active' : ''}`} href="/graph" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}>Reports</a>
 </div>
-
+{isLoggedOut &&
           <div className="navbar-nav ml-auto" >
               <Link className="nav-link d-none d-lg-inline btn " to="/login" 
               style={{backgroundColor: "white", color:"#11676d", border: "solid", borderWidth:"0.5px" , marginRight:'5px', borderRadius:"10px", fontSize: '16px' }} 
@@ -87,7 +90,7 @@ const Navbar = () => {
               style={{backgroundColor: "white", color:"#11676d", border: "solid",  borderWidth:"0.5px" , borderRadius:"10px" , fontSize: '16px'}} 
               >Register</Link>
             </div>
-
+            }
           
         </div>
       </div>
