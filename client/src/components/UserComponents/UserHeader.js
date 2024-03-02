@@ -7,8 +7,8 @@ import logo from '../../images/Logo.jpg';
 
 function UserHeader() {
   const location = useLocation();
-  const {email, role} = location.state;
-  console.log(email);
+  //const {email, role} = location.state;
+  //console.log(email);
   const navigate = useNavigate()
   const [isAuthenticated, setIsAuthenticated] = useState(null) ;
   const [userName, setUserName] = useState('')
@@ -20,19 +20,10 @@ function UserHeader() {
         // .then(result=> {response = result; console.log(result);})
         // .catch(err=>console.log(err));
 
-        let response2 = null;
-        const email1 = document.cookie.split(';')[0].split('=')[1];
-        if(email === undefined){
-          const email1 = document.cookie.split(';')[0].split('=')[1];
-          axios.post('http://localhost:5001/getName', {email:email1})
-          .then(result=> {response = result; setUserName(result.data.name); console.log(result);})
-          .catch(err=>console.log(err));
-        }
-        else{
-          axios.post('http://localhost:5001/getName', {email:email})
-          .then(result=> {response = result; setUserName(result.data.name); console.log(result);})
-          .catch(err=>console.log(err));
-        }
+        const email1 = document.cookie.split(';')[0].split('=')[1].replaceAll('"','');
+        axios.post('http://localhost:5001/getName', {email:email1})
+        .then(result=> {response = result; setUserName(result.data.name); console.log(result);})
+        .catch(err=>console.log(err));
         //const isAuthenticated = response.data.isAuthenticated;
         // const userName1 = response.data.name
         console.log(userName);

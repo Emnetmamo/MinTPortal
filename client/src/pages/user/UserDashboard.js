@@ -11,14 +11,18 @@ import { Link } from 'react-router-dom'
 const UserDashboard = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const location = useLocation();
-  const {email} = location.state;
   const navigate = useNavigate();
+  if(!document.cookie){
+    navigate('/');
+  }
+  const email = document.cookie.split(';')[0].split('=')[1].replaceAll('"','');
+  //const {email} = location.state;
   //console.log(email);
   useEffect(function(){
     function checkIfUser(){
       if(document.cookie){
         if(document.cookie.split(';')[1].split('=')[1] === '"user"'){
-
+          
         }
         else{
           navigate('/');

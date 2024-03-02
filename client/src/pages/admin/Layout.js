@@ -3,7 +3,8 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 const Layout = () => {
 
   const location = useLocation();
-  const {email} = location.state;
+  //const {email} = location.state;
+  const email = document.cookie.split(';')[0].split('=')[1].replaceAll('"','');
   return (
     <>
      <br/> <br/> 

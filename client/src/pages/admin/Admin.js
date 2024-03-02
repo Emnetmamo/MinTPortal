@@ -7,7 +7,10 @@ function Admin() {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
-  const {email} = location.state;
+  if(!document.cookie){
+    navigate('/');
+  }
+  const email = document.cookie.split(';')[0].split('=')[1].replaceAll('"','');
   console.log(email);
   useEffect(() => {
     axios.defaults.withCredentials = true;

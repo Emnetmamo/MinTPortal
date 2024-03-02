@@ -12,11 +12,16 @@ import { BsFillPersonFill } from "react-icons/bs";
 function AdminHeader() {
 
   const location = useLocation();
-  const {email, role} = location.state;
+  const navigate = useNavigate();
+  if(!document.cookie){
+    navigate('/');
+  }
+  const email = document.cookie.split(';')[0].split('=')[1].replaceAll('"','');
+  const role = document.cookie.split(';')[1].split('=')[1].replaceAll('"','');
   console.log(email);
-  const navigate = useNavigate()
   const [isAuthenticated, setIsAuthenticated] = useState(null) ;
-  const [userName, setUserName] = useState('')
+  const [userName, setUserName] = useState('');
+  const path = window.location.pathname;
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
@@ -28,30 +33,33 @@ function AdminHeader() {
         let response2 = null;
         if(role === "admin"){
           axios.get('http://localhost:5001/admind/dashboard')
-        .then(result=> {response2 = result; console.log(result);})
-        .catch(err=>console.log(err));
+          .then(result=> {response2 = result; console.log(result);})
+          .catch(err=>console.log(err));
+          if(path.startsWith('/admin2') || path.startsWith('/admin3')){
+            navigate('/admin');
+          }
         }
         else if(role === "admin2"){
           axios.get('http://localhost:5001/admind2/dashboard')
-        .then(result=> {response2 = result; console.log(result);})
-        .catch(err=>console.log(err));
+          .then(result=> {response2 = result; console.log(result);})
+          .catch(err=>console.log(err));
+          if(!path.startsWith('/admin2')){
+            navigate('/admin2');
+          }
         }
         else if(role === "admin3"){
           axios.get('http://localhost:5001/admind3/dashboard')
-        .then(result=> {response2 = result; console.log(result);})
+          .then(result=> {response2 = result; console.log(result);})
+          .catch(err=>console.log(err));
+          if(!path.startsWith('/admin3')){
+            navigate('/admin3');
+          }
+        }
+
+        axios.post('http://localhost:5001/getName', {email:email})
+        .then(result=> {response = result; setUserName(result.data.name); console.log(result);})
         .catch(err=>console.log(err));
-        }
-        if(email === undefined){
-          const email1 = document.cookie.split(';')[0].split('=')[1];
-          axios.post('http://localhost:5001/getName', {email:email1})
-          .then(result=> {response = result; setUserName(result.data.name); console.log(result);})
-          .catch(err=>console.log(err));
-        }
-        else{
-          axios.post('http://localhost:5001/getName', {email:email})
-          .then(result=> {response = result; setUserName(result.data.name); console.log(result);})
-          .catch(err=>console.log(err));
-        }
+        
         //const isAuthenticated = response.data.isAuthenticated;
         // const userName1 = response.data.name
         console.log(userName);

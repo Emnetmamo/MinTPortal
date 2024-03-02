@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Logo from '../images/Logo.jpg';
 import { VscEyeClosed, VscEye } from 'react-icons/vsc';
 import axios from 'axios';
@@ -9,6 +9,26 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const history = useNavigate();
+
+  useEffect(function(){
+    function checkIfLoggedIn(){
+      if(document.cookie){
+        if(document.cookie.split(';')[1].split('=')[1].replaceAll('"','') === "admin"){
+          history('/admin');
+        }
+        else if(document.cookie.split(';')[1].split('=')[1].replaceAll('"','') === "admin2"){
+          history('/admin2');
+        }
+        else if(document.cookie.split(';')[1].split('=')[1].replaceAll('"','') === "admin3"){
+          history('/admin3');
+        }
+        else if(document.cookie.split(';')[1].split('=')[1].replaceAll('"','') === "user"){
+          history('/user');
+        }
+      }
+    }
+    checkIfLoggedIn();
+  },[]);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
