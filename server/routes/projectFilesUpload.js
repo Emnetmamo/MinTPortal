@@ -43,6 +43,7 @@ router.post('/upload/:id',upload.single('file') ,async function(req, res){
             .then(result=>console.log(result))
             .catch(err=>console.log(err))
         }
+        res.json("Successful");
 });
 
 export default router;

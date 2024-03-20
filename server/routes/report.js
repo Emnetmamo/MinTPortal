@@ -53,6 +53,7 @@ router.post('/upload/:id',upload.single('file') ,async function(req, res){
             message: " ",
             filePath: path
         });
+        res.json("Successful");
 })
 router.get('/getAll', async function(req,res){
     await reportsModel.find({})

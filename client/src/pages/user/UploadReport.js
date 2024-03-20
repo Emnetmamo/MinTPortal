@@ -28,11 +28,10 @@ const UploadReport = ({email}) => {
     let formData = new FormData();
     formData.append('file', file);
     console.log(file);
-
+    let message = "";
     axios.post('http://localhost:5001/report/upload/'+ projects[0].projectTitle +"-" + projects[0]._id, formData, config)
-    .then((res)=>{console.log(res); window.alert("Report Submitted Successfully!")})
-    .catch(err=>console.log(err))
-
+    .then((res)=>{console.log(res); message = "Report Submitted Successfully!"; toast.success(message);})
+    .catch(err=>{console.log(err); message = "There was an error"; toast.error(message);})
     }
   }
   function submitFile(){
@@ -45,9 +44,10 @@ const UploadReport = ({email}) => {
     formData.append('file', file);
     console.log(file);
 
+    let message = "";
     axios.post('http://localhost:5001/projectFiles/upload/'+ projects[0].status +"-" + projects[0]._id, formData, config)
-    .then((res)=>{console.log(res); window.alert("Report Submitted Successfully!")})
-    .catch(err=>console.log(err))
+    .then((res)=>{console.log(res); message = "File Submitted Successfully!"; toast.success(message)})
+    .catch(err=>{console.log(err); message = "There was an error"; toast.error(message)})
 
     }
   }
@@ -151,6 +151,7 @@ const UploadReport = ({email}) => {
         <div className='card shadow p-3 mb-5 bg-white rounded'>
             {loaded && displayDashboard()}
         </div>
+        <ToastContainer/>
     </div>
   );
 }

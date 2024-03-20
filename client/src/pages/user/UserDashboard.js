@@ -7,6 +7,7 @@ import FeedbackReport from './FeedbackReport';
 import SetProjectStatus from './SetProjectStatus';
 import '../../App.css';
 import { Link } from 'react-router-dom'
+import {toast, ToastContainer} from 'react-toastify';
 
 const UserDashboard = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -121,6 +122,7 @@ const UserDashboard = () => {
           </div>}
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 };
