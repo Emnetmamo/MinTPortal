@@ -43,6 +43,12 @@ const SetProjectStatus = ({email}) => {
                     onClick={function(e){submitStatus(e.target.name)}}>Submit Status</button>
                 </div>);
             }
+            else if(projects[i].status === 0){
+              return(
+              <div>
+                  <h3>Your project: {projects[i].projectTitle} has been rejected so you cannot update its status.</h3>
+              </div>);
+            }
             else{
                 return(
                 <div>
