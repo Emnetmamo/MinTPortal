@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AppointmnetImg from '../../images/user/appoint.png';
+import { toast, ToastContainer } from 'react-toastify';
 
 const ConfirmAppointment = ({email}) => {
   const email1 = email;
@@ -67,7 +68,7 @@ function updateStatus(id){
   axios.post('http://localhost:5001/admin/appointment/setStatus-'+id, message)
   .then(result=>console.log(result))
   .catch(err=>console.log(err));
-  window.location.reload(false);
+  toast.success("Action Submitted");
 }
 function rescheduleAppt(id){
   const row = document.getElementById(id+"-Input");

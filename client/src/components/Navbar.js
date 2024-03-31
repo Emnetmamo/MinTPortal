@@ -1,8 +1,9 @@
 import React from 'react';
 import  {useState}  from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../images/Logo.jpg';
 import { AiTwotoneHome } from "react-icons/ai";
+import axios from 'axios';
 import "../App.css";
 // import Announcements from '../pages/Announcements';
 
@@ -10,6 +11,7 @@ const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isLoggedOut = (document.cookie.split(';')[0] === "");
+  const navigate = useNavigate();
   console.log("LoggedOut is " + isLoggedOut);
   console.log(document.cookie);
 
@@ -28,7 +30,30 @@ const Navbar = () => {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
-
+  const logout = async () => {
+    try {
+      await axios.get('http://localhost:5001/logout');
+      navigate('/login')
+      //window.location.href = '/login'; 
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  };
+  function goToDashboard(){
+    const currentRole = document.cookie.split(';')[1].split('=')[1].replaceAll('"', '');
+    if(currentRole === "user"){
+      navigate('/user');
+    }
+    else if(currentRole === "admin"){
+      navigate('/admin');
+    }
+    else if(currentRole === "admin2"){
+      navigate('/admin2');
+    }
+    else if(currentRole === "admin3"){
+      navigate('/admin3');
+    }
+  }
   return (
     <nav className="navbar navbar-expand-lg navbar-light shadow fixed-top">
       <div className="container-fluid">
@@ -91,7 +116,18 @@ const Navbar = () => {
               >Register</Link>
             </div>
             }
-          
+{!isLoggedOut &&
+          <div className="navbar-nav ml-auto" >
+              <button className="nav-link d-none d-lg-inline btn " onClick={goToDashboard}
+              style={{backgroundColor: "white", color:"#11676d", border: "solid", borderWidth:"0.5px" , marginRight:'5px', borderRadius:"10px", fontSize: '16px' }} 
+              >Back to Dashboard</button>
+
+
+              <button className="nav-link d-none d-lg-inline btn " onClick={logout}
+              style={{backgroundColor: "white", color:"#11676d", border: "solid",  borderWidth:"0.5px" , borderRadius:"10px" , fontSize: '16px'}} 
+              >Logout</button>
+            </div>
+            }
         </div>
       </div>
     </nav>
