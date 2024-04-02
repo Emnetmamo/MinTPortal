@@ -8,10 +8,16 @@ function Admin2() {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
+  let email = "";
   if(!document.cookie){
     navigate('/');
   }
-  const email = document.cookie.split(';')[0].split('=')[1].replaceAll('"','');
+  try{
+    email = document.cookie.split(';')[0].split('=')[1].replaceAll('"','');
+  }
+  catch(err){
+    navigate('/');
+  }
   //console.log(email);
 
   useEffect(() => {
