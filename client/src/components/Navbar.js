@@ -56,7 +56,7 @@ const Navbar = () => {
   }
   return (
     <nav className="navbar navbar-expand-lg navbar-light shadow fixed-top">
-      <div className="container-fluid">
+      <div className="container-fluid ">
         <a className="navbar-brand mr-auto" href="/">
          
           <img src={Logo} alt="Logo" style={{ borderRadius: '90%', width: '95px',height:"90px",marginLeft:"55px" }} />
@@ -75,7 +75,7 @@ const Navbar = () => {
         </button>
 
         <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="navbarNav">
-        <div className="navbar-nav mx-auto" style={{marginTop:"50px"}}>
+        <div className="navbar-nav mx-auto" style={{marginTop:"20px"}}>
   <a className={`nav-link d-flex align-items-center ${window.location.pathname === '/' ? 'active' : ''}`} href="/" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}> <AiTwotoneHome/>Home</a>
   <a className={`nav-link ${window.location.pathname === '/announcements' ? 'active' : ''}`} href="/announcements" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}>Announcements</a>
   <div className={`nav-item dropdown ${isDropdownOpen ? 'show' : ''}`}>
