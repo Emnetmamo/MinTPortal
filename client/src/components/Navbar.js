@@ -95,6 +95,7 @@ const Navbar = () => {
     <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`} aria-labelledby="resourcesDropdown">
       <a className="dropdown-item" href="/resources/accepted-projects" onClick={closeDropdown}>Accepted Projects</a>
       <a className="dropdown-item" href="/resources/publications" onClick={closeDropdown}>Publications</a>
+      <a className="dropdown-item" href="/history" onClick={closeDropdown}>History</a>
     </div>
   </div>
   <a className={`nav-link ${window.location.pathname === '/institutes' ? 'active' : ''}`} href="/institutes" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}>Institutes</a>
