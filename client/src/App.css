@@ -4,7 +4,7 @@
   position: fixed;
   width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #11676d;
+  background-color: white;
 }
 
 
@@ -19,20 +19,27 @@
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
-  background-color: #FF8F00;
+  background-color: gray;
   color: white !important;
   border-radius: 10px;
 }
  
+.navbar-nav .nav-link.active {
+  background-color: gray;
+  color: white !important;
+  border-radius: 10px;
+}
+
+
 .btn:hover, .btn.active{
-  background-color: #FF8F00 !important;
+  background-color: lightgray !important;
   color: white !important;
 }
 
 
 /* Style the Resources dropdown link */
 .nav-item.dropdown:hover .nav-link {
-  background-color: #FF8F00 !important;
+  background-color: gray !important;
   color: white !important;
 }
 
@@ -51,7 +58,7 @@
 
 /* Style the dropdown items on hover */
 .nav-item.dropdown .dropdown-item:hover {
-  background-color: #FF8F00;
+  background-color: lightgray;
   color: #ffffff;
 }
 
@@ -168,8 +175,9 @@ body {
 
 
 /* institutes */
-.card1:hover{
-  background-color: orange;
+.card1:hover {
+  background-color: lightgray;
+  transform: scale(1.1);
 }
 
 

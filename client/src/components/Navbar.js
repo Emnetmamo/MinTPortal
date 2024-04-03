@@ -56,7 +56,7 @@ const Navbar = () => {
   }
   return (
     <nav className="navbar navbar-expand-lg navbar-light shadow fixed-top">
-      <div className="container-fluid">
+      <div className="nav-show container-fluid">
         <a className="navbar-brand mr-auto" href="/">
          
           <img src={Logo} alt="Logo" style={{ borderRadius: '90%', width: '95px',height:"90px",marginLeft:"55px" }} />
@@ -76,10 +76,10 @@ const Navbar = () => {
 
         <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="navbarNav">
         <div className="navbar-nav mx-auto" style={{marginTop:"50px"}}>
-  <a className={`nav-link d-flex align-items-center ${window.location.pathname === '/' ? 'active' : ''}`} href="/" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}> <AiTwotoneHome/>Home</a>
-  <a className={`nav-link ${window.location.pathname === '/announcements' ? 'active' : ''}`} href="/announcements" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}>Announcements</a>
-  <div className={`nav-item dropdown ${isDropdownOpen ? 'show' : ''}`}>
-    <a
+             <a className={`nav-link d-flex align-items-center ${window.location.pathname === '/' ? 'active' : ''}`} href="/" onClick={closeMenu} style={{marginRight: '10px', color: 'gray'}}> <AiTwotoneHome style={{marginRight:"7px"}}/>Home</a>
+             <a className={`nav-link ${window.location.pathname === '/announcements' ? 'active' : ''}`} href="/announcements" onClick={closeMenu} style={{marginRight: '10px', color: 'gray'}}>Announcements</a>
+        <div className={`nav-item dropdown ${isDropdownOpen ? 'show' : ''}`}>
+      <a
       className={`nav-link dropdown-toggle`}
       href="# "
       id="resourcesDropdown"
@@ -88,7 +88,7 @@ const Navbar = () => {
       aria-haspopup="true"
       aria-expanded={isDropdownOpen}
       onClick={toggleDropdown}
-      style={{color:"white"}}
+      style={{color:"gray"}}
     >
       Resources
     </a>
@@ -97,12 +97,12 @@ const Navbar = () => {
       <a className="dropdown-item" href="/resources/publications" onClick={closeDropdown}>Publications</a>
     </div>
   </div>
-  <a className={`nav-link ${window.location.pathname === '/institutes' ? 'active' : ''}`} href="/institutes" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}>Institutes</a>
-  <a className={`nav-link ${window.location.pathname === '/collaborations' ? 'active' : ''}`} href="/collaborations" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}>Collaborations</a>
-  <a className={`nav-link ${window.location.pathname === '/aboutus' ? 'active' : ''}`} href="/aboutus" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}>About Us</a>
-  <a className={`nav-link ${window.location.pathname === '/contactus' ? 'active' : ''}`} href="/contactus" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}>Contact Us</a>
-  <a className={`nav-link ${window.location.pathname === '/news' ? 'active' : ''}`} href="/news" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}>News</a>
-  <a className={`nav-link ${window.location.pathname === '/graph' ? 'active' : ''}`} href="/graph" onClick={closeMenu} style={{marginRight: '10px', color: 'white'}}>Reports</a>
+  <a className={`nav-link ${window.location.pathname === '/institutes' ? 'active' : ''}`} href="/institutes" onClick={closeMenu} style={{marginRight: '10px', color: 'gray'}}>Institutes</a>
+  <a className={`nav-link ${window.location.pathname === '/collaborations' ? 'active' : ''}`} href="/collaborations" onClick={closeMenu} style={{marginRight: '10px', color: 'gray'}}>Collaborations</a>
+  <a className={`nav-link ${window.location.pathname === '/aboutus' ? 'active' : ''}`} href="/aboutus" onClick={closeMenu} style={{marginRight: '10px', color: 'gray'}}>About Us</a>
+  <a className={`nav-link ${window.location.pathname === '/contactus' ? 'active' : ''}`} href="/contactus" onClick={closeMenu} style={{marginRight: '10px', color: 'gray'}}>Contact Us</a>
+  <a className={`nav-link ${window.location.pathname === '/news' ? 'active' : ''}`} href="/news" onClick={closeMenu} style={{marginRight: '10px', color: 'gray'}}>News</a>
+  <a className={`nav-link ${window.location.pathname === '/graph' ? 'active' : ''}`} href="/graph" onClick={closeMenu} style={{marginRight: '10px', color: 'gray'}}>Reports</a>
 </div>
 {isLoggedOut &&
           <div className="navbar-nav ml-auto" >

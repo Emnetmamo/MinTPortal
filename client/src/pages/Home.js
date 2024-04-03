@@ -13,9 +13,13 @@ const Home = () => {
 
     <div className="container py-5" >
       <Introduction />
+      <hr className="section-divider" style={{ border: "none", borderTop: "2px dashed black", marginTop: "10px", marginBottom: "10px" }} /> 
       <QuickLinks />
+      <hr className="section-divider" style={{ border: "none", borderTop: "2px dashed black", marginTop: "10px", marginBottom: "10px" }} /> 
       <DiscoverSectors />
+      <hr className="section-divider" style={{ border: "none", borderTop: "2px dashed black", marginTop: "10px", marginBottom: "10px" }} /> 
       <RegistrationSteps />
+      <hr className="section-divider" style={{ border: "none", borderTop: "2px dashed black", marginTop: "10px", marginBottom: "10px" }} /> 
       <LatestUpdates />
       
     </div>

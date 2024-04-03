@@ -57,7 +57,7 @@ const DiscoverSectors = () => {
         <div className="col-md-6">
           <h1 style={{fontSize: "70px"}}>Discover potential Research sectors</h1>
           <h3 style={{marginTop: "30px"}}>Connect with other research institutes like us...</h3>
-          <a href = "/institutes" style={{marginLeft: "250px", color: "white", backgroundColor:"orange", marginTop:"30px"}}  className="btn btn-warning  ">Connect with institutes</a>
+          <a href = "/institutes" style={{marginLeft: "250px", color: "white", backgroundColor:"gray", marginTop:"30px"}}  className="btn btn-warning  ">Connect with institutes</a>
         </div>
         </div>
     </div>

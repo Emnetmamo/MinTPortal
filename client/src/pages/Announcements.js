@@ -56,7 +56,7 @@ const Announcements = () => {
           }}
           onChange={(e) => setCategory(e.target.value)}
         >
-          <option value=" ">Select a Field</option>
+          <option value=" ">Select by Field</option>
           <option value="Agriculture">Agriculture</option>
           <option value="Industry">Industry</option>
           <option value="Health">Health</option>
