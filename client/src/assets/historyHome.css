@@ -1,0 +1,46 @@
+#class1{
+    background-color:#d3d3d3;
+    border-radius: 15px;
+}
+
+
+
+#h1{
+    font-size: 50px;
+    align-self: center;
+}
+#a1{
+    text-decoration: none;
+    color:white;
+    background-color: black;
+   align-self: center;
+   border-radius: 5px;
+}
+#image{
+width: 100%;
+height: auto;
+margin: 0;
+}
+#image1{
+    width: 100%;
+    height: auto;
+   
+}
+
+
+
+#class {
+    background-color: #d3d3d3;
+  }
+  
+  .col {
+    padding: 20px;
+    position: relative;
+  }
+  .card:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    transform: translateY(-5px);
+    background-color: #f0f0f0;
+  }
+  
+ 
