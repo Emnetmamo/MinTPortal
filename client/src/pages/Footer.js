@@ -14,7 +14,7 @@ const Footer = () => {
 
   return (
     //
-    <footer style={{background: 'linear-gradient(to top, black, #16676d )', color: 'white'}}>
+    <footer style={{background: 'linear-gradient(to top, black, #16676d )', color: 'white',padding:'10px'}}>
 
 
       <div className="container py-4">
@@ -28,14 +28,12 @@ const Footer = () => {
 
                   {/* Center Column */}
             <div className="col-md-4 mb-4 d-flex flex-column align-items-center text-center text-lg-start">
-            <a href= '/' className='d-flex '>
-        <img src={Logo} alt="Logo" style={{ borderRadius: '50%', maxWidth: '70px',marginBottom:'20px' }} />
-      </a>    
-              <div  style={{justifyContent:'center',alignContent:'center',marginLeft:'20px'}}>
-              <h5>Quick Links</h5>
+   
+              <div  style={{justifyContent:'center',alignContent:'center',marginLeft:'20px',marginTop:'5px'}}>
+              <h5 style={{marginBottom:'25px'}}>Quick Links</h5>
              
               <ul className="list-unstyled">
-                <li><a href="/" style={{color:"white"}}>Home</a></li>
+                <li><a href="/" style={{color:"white",marginTop:'40px'}}>Home</a></li>
                 <li><a href="/announcements" style={{color:"white"}}>Announcements</a></li>
                 <li><a href="/resources/accepted-projects" style={{color:"white"}}>Accepted Projects</a></li>
                 <li><a href="/resources/publications" style={{color:"white"}}>Publications</a></li>
@@ -49,6 +47,11 @@ const Footer = () => {
 
                 {/* Right Column */}
             <div className="col-md-4 mb-4 text-center">
+            <div style={{justifyContent:'center',alignItems:'center'}}>
+              <a href= '/' > 
+                <img src={Logo} alt="Logo" style={{ borderRadius: '50%', width:'100px',height:'100px',marginBottom:'10px' ,marginLeft:'20px'}} />
+              </a> 
+              </div>
               <h5 className="m-3">Contact Us</h5>
               <ul className="list-unstyled">
                 <li className='mb-2 mt-4'><FaPhone /> +25111265737</li>
@@ -59,7 +62,10 @@ const Footer = () => {
                   <a href="https://twitter.com/ministryofinno2?lang=en" className="me-2" style={{color:"orange"}} target="_blank"><FaTwitter /></a>
                   <a href="https://www.linkedin.com/company/ministry-of-innovation-and-technology-ethiopia/?originalSubdomain=et" className="me-2" style={{color:"orange"}} target="_blank"><FaLinkedin /></a>  
                 </div>
+         
+      
               </ul>
+
             </div>        
         </div>
         
