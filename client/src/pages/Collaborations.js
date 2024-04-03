@@ -49,7 +49,7 @@ const Collaborations = () => {
         <br /> <br /> 
         <h1 className="mb-4 font-weight-bold">Building Bridges to Innovation</h1>
         <br /> <br /> 
-        <h2 style={{  fontSize: "32px", color:'black'  }}> Ethiopian Ministry of Innovation and Technology's Remarkable Collaborations with Global Organizations</h2>
+        <h2 style={{  fontSize: "25px", color:'black'  }}> Ethiopian Ministry of Innovation and Technology's Remarkable Collaborations with Global Organizations</h2>
         </div>
         <div class="col-sm-8" > <img src={collaboration} className="d-block w-100" alt="Well-come Guide" style={{  width: '100px', height: '450px'}}/> </div>
      </div>
@@ -59,7 +59,7 @@ const Collaborations = () => {
       <Slider {...settings}>
         {collaborations.map((collaboration) => (
           <div key={collaboration._id} className="px-2">
-            <div className="card rounded" style={{  height: "350px"}}>
+            <div className="card rounded" style={{  height: "400px"}}>
               <img
                 src={collaboration.imagePath}
                 style={{ height: '200px'}}
