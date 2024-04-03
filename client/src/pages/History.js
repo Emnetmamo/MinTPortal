@@ -90,7 +90,7 @@ function getFileNameFromPath(filePath) {
           <h1 className="roll-in-left" style={{fontSize:"50px",textAlign:"center"}}>Our History</h1>
           <p style={{textAlign:"justify"}}> Embarking on a journey of digital transformation, the Ethiopian Ministry of Innovation and Technology (MinT) has
               witnessed a remarkable evolution from its establishment in 1975 to the present day. 
-         
+         <br /><br />
               The introduction of groundbreaking government initiatives marked a turning point, propelling the nation towards widespread
               adoption of information and communication technologies (ICT). With each passing year, the MinT's unwavering commitment to 
               innovation has paved the way for a brighter digital future, empowering Ethiopia to thrive in the digital age.</p>
