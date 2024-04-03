@@ -93,45 +93,19 @@ const History = () => {
   //   window.location.href = `/achivment/${id}`;
   // };
   return (
-    <div
-      className="d-flex flex-column align-items-center mt-3 ml-5 mr-5"
-      style={{ minHeight: "100vh" }}
-    >
-      <div
-        className=" row mt-5 "
-        style={{ backgroundColor: "#e4e8f0", borderRadius: "15px" }}
-      >
-        <div
-          className="col"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            textAlign: "center",
-            marginTop: "30px",
-            alignItems: "center",
-            height: "70vh",
-          }}
-        >
-          <h1
-            className="roll-in-left"
-            style={{ fontSize: "50px", textAlign: "center" }}
-          >
-            Our History
-          </h1>
-          <p style={{ textAlign: "justify" }}>
-            {" "}
-            Embarking on a journey of digital transformation, the Ethiopian
-            Ministry of Innovation and Technology (MinT) has witnessed a
-            remarkable evolution from its establishment in 1975 to the present
-            day. The introduction of groundbreaking government initiatives
-            marked a turning point, propelling the nation towards widespread
-            adoption of information and communication technologies (ICT). With
-            each passing year, the MinT's unwavering commitment to innovation
-            has paved the way for a brighter digital future, empowering Ethiopia
-            to thrive in the digital age.
-          </p>
-          <p className="btn" style={{ marginTop: "20px", fontSize: "20px" }}>
-            <a style={{ textDecoration: "none", borderRadius: "5px" }} href="#">
+    <div className="d-flex flex-column align-items-center mt-3 ml-5 mr-5" style={{ minHeight: '100vh' }}>
+      
+      <div className=" row mt-5 " style={{backgroundColor:"#e4e8f0",borderRadius:"15px" }}>
+        <div className="col" style={{display:"flex",flexDirection:"column",textAlign:'center',marginTop: "30px", alignItems:"center",height:"70vh" }}>
+          <h1 className="roll-in-left" style={{fontSize:"50px",textAlign:"center"}}>Our History</h1>
+          <p style={{textAlign:"justify"}}> Embarking on a journey of digital transformation, the Ethiopian Ministry of Innovation and Technology (MinT) has
+              witnessed a remarkable evolution from its establishment in 1975 to the present day. 
+         <br /><br />
+              The introduction of groundbreaking government initiatives marked a turning point, propelling the nation towards widespread
+              adoption of information and communication technologies (ICT). With each passing year, the MinT's unwavering commitment to 
+              innovation has paved the way for a brighter digital future, empowering Ethiopia to thrive in the digital age.</p>
+          <p className="btn" style={{marginTop: "20px", fontSize: "20px"}}>
+            <a style={{textDecoration:"none",borderRadius:"5px"}} href="#">
               Discover our past achievements
             </a>
           </p>
