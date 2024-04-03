@@ -26,13 +26,6 @@ const DiscoverSectors = () => {
   return (
     <div className="container shadow p-4 mb-5 mt-5" style={{ background: '#2b2b2b', color: "white" ,height: "580px"}}>
       <div className="row">
-      
-        <div className="col-md-6">
-          <h1 style={{fontSize: "70px"}}>Discover potential Research sectors</h1>
-          <h3 style={{marginTop: "30px"}}>Connect with other research institutes like us...</h3>
-          <a href = "/institutes" style={{marginLeft: "250px", color: "white", backgroundColor:"orange", marginTop:"30px"}}  className="btn btn-warning  ">Connect with institutes</a>
-        </div>
-
         <div className="col-md-6" style={{height:"600px"}}>
           
           <div style={videoContainerStyle}>
@@ -60,6 +53,11 @@ const DiscoverSectors = () => {
 
 
 
+        </div>
+        <div className="col-md-6">
+          <h1 style={{fontSize: "70px"}}>Discover potential Research sectors</h1>
+          <h3 style={{marginTop: "30px"}}>Connect with other research institutes like us...</h3>
+          <a href = "/institutes" style={{marginLeft: "250px", color: "white", backgroundColor:"orange", marginTop:"30px"}}  className="btn btn-warning  ">Connect with institutes</a>
         </div>
         </div>
     </div>

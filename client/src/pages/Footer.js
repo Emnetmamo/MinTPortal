@@ -13,7 +13,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer style={{background: 'linear-gradient(to top, black, #16676d)', color: 'white'}}>
+    <footer style={{ backgroundColor: '#052629', color: 'white' }}>
       <br/>
       <a href= '/' className='d-flex justify-content-center'>
         <img src={Logo} alt="Logo" style={{ borderRadius: '50%', maxWidth: '70px' }} />

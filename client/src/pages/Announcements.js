@@ -21,7 +21,7 @@ const Announcements = () => {
           <button
             className={`nav-link ${selectedTab === "national" ? "active" : ""}`}
             style={{
-              backgroundColor: selectedTab === "national" ? "goldenrod" : "",
+              backgroundColor: selectedTab === "national" ? "orange" : "",
               color: selectedTab === "national" ? "white" : "black",
               fontSize: "18px",
               fontWeight: "bold",
@@ -35,7 +35,7 @@ const Announcements = () => {
           <button
             className={`nav-link ${selectedTab === "foreign" ? "active" : ""}`}
             style={{
-              backgroundColor: selectedTab === "foreign" ? "goldenrod" : "",
+              backgroundColor: selectedTab === "foreign" ? "orange" : "",
               color: selectedTab === "foreign" ? "white" : "black",
               fontSize: "18px",
               fontWeight: "bold",
