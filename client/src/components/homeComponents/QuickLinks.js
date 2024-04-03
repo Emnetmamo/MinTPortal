@@ -6,7 +6,7 @@ import wellCome from '../../images/home/well-come.png';
 const QuickLinks = () => {
   
   return (
-<div class="row mt-5">
+<div class="row mt-3">
         {/* <div class="col-sm-8 card" style={{objectFit:'cover'}} > */}
         <div className='col-sm-8 card'style={{color: 'white', borderRadius: '40px bold',}} > 
       <div style={{padding:"10px", fontSize:"25px", marginTop: "13%"}}>
