@@ -10,7 +10,8 @@ import "../App.css";
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isLoggedOut = (document.cookie.split(';')[0] === "");
+  console.log(document.cookie);
+  const isLoggedOut = (document.cookie === "");
   const navigate = useNavigate();
   console.log("LoggedOut is " + isLoggedOut);
   console.log(document.cookie);
@@ -32,7 +33,9 @@ const Navbar = () => {
   };
   const logout = async () => {
     try {
-      await axios.get('http://localhost:5001/logout');
+      await axios.get('http://localhost:5001/logout')
+      .then(result => {console.log(result)})
+      .catch(err=>{console.log(err)})
       navigate('/login')
       //window.location.href = '/login'; 
     } catch (error) {
