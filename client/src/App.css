@@ -32,7 +32,7 @@
 
 
 .btn:hover, .btn.active{
-  background: linear-gradient(to right, #eed61f, #dbb21e) !important;
+  background: gray !important;
   color: white !important;
 }
 
@@ -94,7 +94,7 @@ body {
 
 .aboutBtn{
   background-color: white;
-  color: orange;
+  color: gray;
   border-color: black;
   border-width: 3px;
 }
@@ -246,10 +246,9 @@ body {
 .hero {
   position: relative;
   overflow: hidden;
-  height: 65vh;
+  height: 60vh;
   display: flex;
   align-items: center;
-  color: #fff;
   text-align: center;
   border-radius: 0px;
 }
