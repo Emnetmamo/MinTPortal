@@ -24,7 +24,7 @@ const DiscoverSectors = () => {
   };
 
   return (
-    <div className="container shadow p-4 mb-3 mt-3" style={{ background: 'gray', color: "white" ,height: "580px"}}>
+    <div className="container shadow p-4 mb-3 mt-3" style={{ background: '#2b2b2b', color: "white" ,height: "580px"}}>
       <div className="row">
 
       <div className="col-md-6">
