@@ -40,7 +40,6 @@ const Footer = () => {
                 <li><a href="/collaborations" style={{color:"white"}}>Collaborations</a></li>
                 <li><a href="/aboutus" style={{color:"white"}}>About Us</a></li>
                 <li><a href="/news" style={{color:"white"}}>News</a></li>
-                <li><a href="/history" style={{color:"white"}}>History</a></li>
               </ul>
             </div>
 

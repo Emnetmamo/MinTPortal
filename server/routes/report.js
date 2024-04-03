@@ -41,7 +41,7 @@ router.post('/upload/:id',upload.single('file') ,async function(req, res){
         const projectID1 = req.params.id.split('-')[1];
         const file = req.file;
         //console.log(req.body);
-        // console.log(req.file);
+        console.log(req.file);
        
         
         const today = new Date(Date.now()).toISOString();

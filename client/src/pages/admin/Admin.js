@@ -7,16 +7,10 @@ function Admin() {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
-  let email = "";
   if(!document.cookie){
     navigate('/');
   }
-  try{
-    email = document.cookie.split(';')[0].split('=')[1].replaceAll('"','');
-  }
-  catch(err){
-    navigate('/');
-  }
+  const email = document.cookie.split(';')[0].split('=')[1].replaceAll('"','');
   console.log(email);
   useEffect(() => {
     axios.defaults.withCredentials = true;

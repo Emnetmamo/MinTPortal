@@ -16,14 +16,13 @@ import axios from 'axios'
 import { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 const ProtectAdmin = () => {
-    const[role,setdata]=useState('');
-    const navigate = useNavigate();
+    const[role,setdata]=useState('')
     useEffect(()=>{
         axios.get('http://localhost:5001/authl/protect')
         .then(result=>{
             // console.log(result.data)
             setdata(result.data)})
-        .catch(error=>{console.log(error); navigate('/login')});
+        .catch(error=>{console.log(error)});
     },[])
     let isAuth = false;
 
