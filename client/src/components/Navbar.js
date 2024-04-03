@@ -59,7 +59,7 @@ const Navbar = () => {
       <div className="container-fluid">
         <a className="navbar-brand mr-auto" href="/">
          
-          <img src={Logo} alt="Logo" style={{ borderRadius: '90%', width: '95px',height:"90px",marginLeft:"55px" }} />
+        <img src={Logo} alt="Logo" style={{ borderRadius: '90%', width: '120px',height:"95px",marginLeft:"-5px" }} />
         </a>
         <button
           className="navbar-toggler"
@@ -107,12 +107,12 @@ const Navbar = () => {
 {isLoggedOut &&
           <div className="navbar-nav ml-auto" >
               <Link className="nav-link d-none d-lg-inline btn " to="/login" 
-              style={{backgroundColor: "white", color:"#11676d", border: "solid", borderWidth:"0.5px" , marginRight:'5px', borderRadius:"10px", fontSize: '16px' }} 
+               style={{backgroundColor: "white", color:"#11676d", border: "solid", borderWidth:"0.1px" , marginRight:'5px', borderRadius:"10px", fontSize: '16px' }}
               >Login</Link>
 
 
-              <Link className="nav-link d-none d-lg-inline btn " to="/register" 
-              style={{backgroundColor: "white", color:"#11676d", border: "solid",  borderWidth:"0.5px" , borderRadius:"10px" , fontSize: '16px'}} 
+            <Link className="nav-link d-none d-lg-inline reg"  to="/register" 
+              style={{background: "linear-gradient(to right, #ded61f, #dbb21e)", color:"#11676d", border: "solid" , borderWidth:"0.1px", borderRadius:"10px" , fontSize: '16px'}} 
               >Register</Link>
             </div>
             }
