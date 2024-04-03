@@ -13,7 +13,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer style={{ backgroundColor: '#052629', color: 'white' }}>
+    <footer style={{background: 'linear-gradient(to top, black, #16676d)', color: 'white'}}>
       <br/>
       <a href= '/' className='d-flex justify-content-center'>
         <img src={Logo} alt="Logo" style={{ borderRadius: '50%', maxWidth: '70px' }} />
@@ -40,7 +40,6 @@ const Footer = () => {
                 <li><a href="/collaborations" style={{color:"white"}}>Collaborations</a></li>
                 <li><a href="/aboutus" style={{color:"white"}}>About Us</a></li>
                 <li><a href="/news" style={{color:"white"}}>News</a></li>
-                <li><a href="/history" style={{color:"white"}}>History</a></li>
               </ul>
             </div>
 

@@ -21,7 +21,7 @@ const Announcements = () => {
           <button
             className={`nav-link ${selectedTab === "national" ? "active" : ""}`}
             style={{
-              backgroundColor: selectedTab === "national" ? "orange" : "",
+              backgroundColor: selectedTab === "national" ? "goldenrod" : "",
               color: selectedTab === "national" ? "white" : "black",
               fontSize: "18px",
               fontWeight: "bold",
@@ -35,7 +35,7 @@ const Announcements = () => {
           <button
             className={`nav-link ${selectedTab === "foreign" ? "active" : ""}`}
             style={{
-              backgroundColor: selectedTab === "foreign" ? "orange" : "",
+              backgroundColor: selectedTab === "foreign" ? "goldenrod" : "",
               color: selectedTab === "foreign" ? "white" : "black",
               fontSize: "18px",
               fontWeight: "bold",
@@ -56,7 +56,7 @@ const Announcements = () => {
           }}
           onChange={(e) => setCategory(e.target.value)}
         >
-          <option value=" ">Select a Field</option>
+          <option value=" ">Select by Field</option>
           <option value="Agriculture">Agriculture</option>
           <option value="Industry">Industry</option>
           <option value="Health">Health</option>

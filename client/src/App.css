@@ -4,13 +4,13 @@
   position: fixed;
   width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #11676d;
+  background-color: #ffffff;
 }
 
 
 
 .navbar-nav .nav-link {
-  color: white; /* Set the default color */
+  color: rgb(37, 36, 35) !important; /* Set the default color */
   font-size: 16.5px;
   font-weight: bold;
   margin-right: "15px"  !important;
@@ -19,20 +19,27 @@
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
-  background-color: #FF8F00;
+  background: linear-gradient(to right, #e5ddc3, #72aead) !important;
   color: white !important;
   border-radius: 10px;
 }
  
+.navbar-nav .nav-link.active {
+  background-color: gray;
+  color: white !important;
+  border-radius: 10px;
+}
+
+
 .btn:hover, .btn.active{
-  background-color: #FF8F00 !important;
+  background: linear-gradient(to right, #eed61f, #dbb21e) !important;
   color: white !important;
 }
 
 
 /* Style the Resources dropdown link */
 .nav-item.dropdown:hover .nav-link {
-  background-color: #FF8F00 !important;
+  background: linear-gradient(to right, #e5ddc3, #72aead) !important;
   color: white !important;
 }
 
@@ -45,13 +52,13 @@
 
 /* Style the dropdown items */
 .nav-item.dropdown .dropdown-item {
-  background-color: #11676d;
+  background: linear-gradient(to right, #eed61f, #dbb21e) !important;
   color: white;
 }
 
 /* Style the dropdown items on hover */
 .nav-item.dropdown .dropdown-item:hover {
-  background-color: #FF8F00;
+  background: linear-gradient(to right, #e5ddc3, #72aead) !important;
   color: #ffffff;
 }
 
@@ -90,6 +97,11 @@ body {
   color: orange;
   border-color: black;
   border-width: 3px;
+}
+
+/* register */
+.reg{
+  color: white !important;
 }
 
 
@@ -168,8 +180,9 @@ body {
 
 
 /* institutes */
-.card1:hover{
-  background-color: orange;
+.card1:hover {
+  background-color: lightgray;
+  transform: scale(1.1);
 }
 
 
@@ -214,6 +227,7 @@ body {
   height: 500px;
 }
 
+
 .card_history{
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
 
@@ -225,3 +239,113 @@ body {
     background-color: #f0f0f0;
   
 }
+
+
+/* HeroSection.css */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  height: 65vh;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  border-radius: 0px;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-content {
+  z-index: 1;
+  animation: slideUp 3s ease-out; 
+}
+
+.hero-title {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  animation: fadeInUp 2s ease-out; 
+}
+
+.hero-subtitle,
+.hero-description {
+  font-size: 2rem !important;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0; 
+  animation: fadeInUp 2s ease-out inf; 
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* quick link */
+
+.quick-links a {
+  color: #333;
+  text-decoration: none;
+  font-size: large;
+  transition: color 0.3s, text-shadow 0.3s; 
+}
+
+.quick-links a:hover {
+  color: #4e4d38; 
+  font-size: large;
+  padding: 10px;
+  background-color: #f4f7a0;
+  border-radius: 25px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); 
+}
+
+.quickCard {
+  background: linear-gradient(to right, #ffffff, #e8d3a5); 
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+
+
+/* Register home page  */
+
+.btn-link:hover{
+  background: linear-gradient(to right, #ded61f, #dbb21e);
+  }
+

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Logo from '../images/Logo.jpg';
+import login from '../images/login.png';
 import { VscEyeClosed, VscEye } from 'react-icons/vsc';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -96,12 +96,12 @@ const Login = () => {
         </Link>
       </div>
       <div className="row justify-content-between align-items-center">
-        <div className="col-md-4 text-center">
+        <div className="col-md-6 text-center">
           <img
-            src={Logo}
+            src={login}
             alt="Logo"
             className="img-fluid"
-            style={{ maxHeight: '200px' }}
+            style={{ height: '400px', width:'800px', marginBottom:"80px" }}
           />
         </div>
         <div className="col-xs-12 col-md-6">
@@ -109,7 +109,7 @@ const Login = () => {
           <form onSubmit={handleLogin}>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
-                Email
+                Email :
               </label>
               <input
                 type="email"
@@ -122,7 +122,7 @@ const Login = () => {
             </div>
             <div className="mb-3 password-input-container">
               <label htmlFor="password" className="form-label">
-                Password
+                Password :
               </label>
               <div className="input-group">
                 <input
@@ -149,7 +149,7 @@ const Login = () => {
                 style={{
                   marginBottom: '90px',
                   marginLeft: '5px',
-                  backgroundColor: 'orange',
+                  backgroundColor: 'gray',
                   border: 'none',
                   fontSize: '20px',
                 }}
