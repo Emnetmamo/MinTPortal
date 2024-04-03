@@ -16,7 +16,7 @@ const Introduction = () => {
     objectFit: 'cover', // Ensure the image covers the entire container
   };
   return (
-    <div className="row mt-3">
+    <div className="row mt-4">
       <div id="top"></div>
 
       <div className="col-md-6" style={{color: '#2b2b2b', borderRadius: '40px bold', backgroundColor: '#fff', marginBottom: "10px"}}>
