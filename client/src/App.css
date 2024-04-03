@@ -249,6 +249,7 @@ body {
   height: 65vh;
   display: flex;
   align-items: center;
+  justify-content: center !important;
   color: #fff;
   text-align: center;
   border-radius: 0px;
@@ -276,22 +277,13 @@ video {
 }
 
 .hero-title {
-  font-size: 30px;
-  text-align: center;
+  font-size: 35px;
+  text-align: center !important;
   margin-bottom: 20px;
   display: flex;
-  align-items: center;
   max-width: 600px;
+  margin-left: 300px;
   animation: fadeInUp 2s ease-out; 
-}
-
-.hero-subtitle,
-.hero-description {
-  font-size: 2rem !important;
-  max-width: 600px;
-  margin: 0 auto;
-  opacity: 0; 
-  animation: fadeInUp 2s ease-out inf; 
 }
 
 @keyframes slideUp {
