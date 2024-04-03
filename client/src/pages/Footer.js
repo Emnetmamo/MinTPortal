@@ -13,12 +13,11 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer style={{background: 'linear-gradient(to top, black, #16676d)', color: 'white'}}>
-      <br/>
-      <a href= '/' className='d-flex justify-content-center'>
-        <img src={Logo} alt="Logo" style={{ borderRadius: '50%', maxWidth: '70px' }} />
-      </a>
-      <div className="container py-5">
+    //
+    <footer style={{background: 'linear-gradient(to top, black, #16676d )', color: 'white'}}>
+
+
+      <div className="container py-4">
         <div className="row ">
                
           
@@ -29,6 +28,10 @@ const Footer = () => {
 
                   {/* Center Column */}
             <div className="col-md-4 mb-4 d-flex flex-column align-items-center text-center text-lg-start">
+            <a href= '/' className='d-flex '>
+        <img src={Logo} alt="Logo" style={{ borderRadius: '50%', maxWidth: '70px',marginBottom:'20px' }} />
+      </a>    
+              <div  style={{justifyContent:'center',alignContent:'center',marginLeft:'20px'}}>
               <h5>Quick Links</h5>
              
               <ul className="list-unstyled">
@@ -41,14 +44,15 @@ const Footer = () => {
                 <li><a href="/aboutus" style={{color:"white"}}>About Us</a></li>
                 <li><a href="/news" style={{color:"white"}}>News</a></li>
               </ul>
+              </div>
             </div>
 
                 {/* Right Column */}
             <div className="col-md-4 mb-4 text-center">
-              <h5 className="mt-3">Contact Us</h5>
+              <h5 className="m-3">Contact Us</h5>
               <ul className="list-unstyled">
-                <li><FaPhone /> +25111265737</li>
-                <li><RiMailFill /> contact@mint.gov.et</li>
+                <li className='mb-2 mt-4'><FaPhone /> +25111265737</li>
+                <li className='mb-2'><RiMailFill /> contact@mint.gov.et</li>
                 <li><RiMapPin2Fill /> Addis Ababa, Ethiopia</li>
                 <div className="mt-3">
                   <a href="https://www.facebook.com/MInT.Ethiopia/" className="me-2" style={{color:"orange"}} target="_blank"><FaFacebook /></a>
