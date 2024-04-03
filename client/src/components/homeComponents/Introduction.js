@@ -16,14 +16,20 @@ const Introduction = () => {
     objectFit: 'cover', // Ensure the image covers the entire container
   };
   return (
-    <div className="row mt-5">
+    <div className="row mt-3">
       <div id="top"></div>
 
-      <div className="col-md-4">
-        <h1 style={{fontSize: "60px"}}>Ethiopian National Research Portal</h1>  
-        <a href="/announcements" style={{background: "linear-gradient(to right, #ded61f, #dbb21e)", color: "white", border: 'none'}} className="btn btn-secondary  ms-2">See open Research Calls</a>
+      <div className="col-md-6" style={{color: '#2b2b2b', borderRadius: '40px bold', backgroundColor: '#fff', marginBottom: "10px"}}>
+        <h1 style={{fontSize: "28px"}}>Ethiopian National Research Portal</h1>  
+        <div style={{padding:"10px", fontSize:"22px"}}>
+       Science, Technology and Innovation (STI) is now universally regarded and recognized as fundamental to achieve sustainable development and economic growth for both developing and developed countries, thus acting as an important driver for poverty alleviation. To set effective STI policies, reliable indicators are needed to benchmark and monitor progress. Research and experimental development (R&D) is an important component of a country’s national innovation system. 
       </div>
-      <div className="col-md-8">
+      <div style={{marginLeft: "400px"}}>
+      <a href="/announcements" style={{background: "goldenrod", color: "white", border: 'none', marginLeft:"-380px", marginTop: "10px", marginBottom: "20px"}} className="btn btn-secondary">See open Research Calls</a>
+      </div>
+        
+      </div>
+      <div className="col-md-6">
         <div id="imageCarousel" className="carousel slide" data-bs-ride="carousel">
           <div className="carousel-inner">
             <div className="carousel-item active">

@@ -85,9 +85,10 @@ function getFileNameFromPath(filePath) {
   // };
   return (
     <div className="d-flex flex-column align-items-center" style={{ minHeight: '100vh' }}>
-      <div className=" row mt-5 " style={{backgroundColor:"#d3d3d3",borderRadius:"15px" }}>
+      //#d3d3d3"
+      <div className=" row mt-5 " style={{backgroundColor:"#e4e8f0",borderRadius:"15px" }}>
         <div className="col" style={{display:"flex",flexDirection:"column",textAlign:'center',justifyContent:'center', alignItems:"center",height:"70vh" }}>
-          <h1 style={{fontSize:"50px",textAlign:"center"}}>Our History</h1>
+          <h1 className="roll-in-left" style={{fontSize:"50px",textAlign:"center"}}>Our History</h1>
           <p className="btn">
             <a style={{textDecoration:"none",borderRadius:"5px"}} href="#">
               Discover our past achievements
@@ -95,7 +96,7 @@ function getFileNameFromPath(filePath) {
           </p>
         </div>
         <div className="col" >
-          <img
+          <img 
             style={{width:"100%",height:'100%'}}
             alt="history"
             src="https://pbs.twimg.com/media/GJnWGrcXMAAcKsp?format=jpg&name=large"
@@ -105,23 +106,23 @@ function getFileNameFromPath(filePath) {
   
       <div className="my-5">
         <h2 className="font-weight-bold text-center">Time line of Events</h2>
-        <p className="text-center">Some descriptions about Mint Time Line</p>
+        <p className="text-center">Transformation of MinRT history from past to present</p>
       </div>
   
-      <div className="card_history card mb-5" style={{ width: '60rem', height: '35rem' }}>
+      <div className="card_history card mb-5 m-1" style={{ width: '65rem', height: '30rem' }}>
         <div className="d-flex justify-content-center align-items-center h-100">
           {/* <img src={Logo} alt="Logo" style={{ maxWidth: '100%', maxHeight: '100%' }} /> */}
-          <img src="https://scontent.fadd2-1.fna.fbcdn.net/v/t39.30808-6/434727280_740806204906794_5669519378009709643_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=rMEqPCkE84wAX9p0vSg&_nc_ht=scontent.fadd2-1.fna&oh=00_AfCPdV29evCi7C6KQXaOhO_XroETHLFqiPRMH48qzHKz8A&oe=6612F4BE" style={{ maxWidth: '100%', maxHeight: '100%' }}/>
+          <img className="kenburns-top" src="https://scontent.fadd2-1.fna.fbcdn.net/v/t39.30808-6/434727280_740806204906794_5669519378009709643_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=rMEqPCkE84wAX9p0vSg&_nc_ht=scontent.fadd2-1.fna&oh=00_AfCPdV29evCi7C6KQXaOhO_XroETHLFqiPRMH48qzHKz8A&oe=6612F4BE" style={{ width: '100%', height: '100%' }}/>
         </div>
       </div>
     
       
 
  <h1 className="m-5">Research and Innovations</h1>
-      <div className="container m-5">
+      <div className="container mb-5">
         <div className="row">
           {acceptedProject.map((project, index) => (
-            <div className="col-md-4" key={index} style={{marginTop:'20px'}}>
+            <div className="col-md-4" key={index} style={{marginTop:'30px'}}>
               <div className="card-history_innovation card" id={`col${index + 1}`}>
                 <div className="card-body text-center">
                 <img
