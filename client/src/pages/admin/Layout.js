@@ -4,7 +4,13 @@ const Layout = () => {
 
   const location = useLocation();
   //const {email} = location.state;
-  const email = document.cookie.split(';')[0].split('=')[1].replaceAll('"','');
+  let email = "";
+  try{
+    email = document.cookie.split(';')[0].split('=')[1].replaceAll('"','');
+  }
+  catch(err){
+
+  }
   return (
     <>
      <br/> <br/> 

@@ -38,6 +38,11 @@ const adminUserStatus=async (req, res)=>{
             .then(result=>{ 
                console.log(result)})
             .catch(err=> res.json(err))
+
+            await ProjectModel.findOneAndUpdate({_id:id1}, {currentReviewer: "Technical Committee Member"})
+            .then(result=>{ 
+               console.log(result)})
+            .catch(err=> res.json(err))
         }
         catch(err){
             console.log(err);

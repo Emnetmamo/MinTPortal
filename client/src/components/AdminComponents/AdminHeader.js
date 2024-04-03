@@ -147,7 +147,7 @@ function AdminHeader() {
                        
                         <div>
                         <div className=" me-2" ><BsFillPersonFill  className='user-icon' style={{marginRight:"20px"}}/>
-                        <h3 style= {{color: 'white', display:"inline", marginRight:"20px"}} >Hi, {userName}</h3>
+                        <h3 style= {{color: 'green', display:"inline", marginRight:"20px"}} >Hi, {userName}</h3>
                         <button className="btn btn-warning" style= {{color: 'white', fontWeight:"bold"}} onClick={logout}>Logout</button>
                         </div>
                         </div>                                 

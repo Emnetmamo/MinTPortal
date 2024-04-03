@@ -178,6 +178,7 @@ else if (req.params.page === "submitProject") {
         // await ProjectModel.updateMany( {},{ $set: { grantedDate : nowDate} }, { multi: true });
         //console.log(email1);
         // const data={projectTitle:projectTitle,teamMembers:teamMembers,projectCategory:projectCategory,description:description,cvPath:cvPath,proposalPath:proposalPath}
+        //await ProjectModel.updateMany( {},{ $set: { currentReviewer : "MinT Research Sector Members"} }, { multi: true });
         Title=await ProjectModel.find({Title:projectTitle});
         if(Title.length>0){
           res.json('titlepresent')
@@ -198,7 +199,8 @@ else if (req.params.page === "submitProject") {
             grantedDate: nowDate,
             proposalPath2: " ",
             presentationPath: " ",
-            proposalPath3: " "
+            proposalPath3: " ",
+            currentReviewer: "Technical Committee Members"
           })
           .then((projects)=>{res.json('project is stored in database')+projects})
           .catch(error=>{res.json('error during created projects'+error)})
