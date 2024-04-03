@@ -160,12 +160,14 @@ const NewsAnnouncementsPublications = () => {
         <FontAwesomeIcon icon={faArrowRight} className="icon" style={{ fontSize: '24px', color: '#ded61f' , paddingRight: '8px'}} /> 
         <Link to="/announcements" style={{ textDecoration: "none" }}>Announcements</Link>
       </div>
-      <hr className="section-divider" style={{ border: "none", borderTop: "2px dashed black", marginTop: "10px", marginBottom: "10px" }} /> 
+      {/* <hr className="section-divider" style={{ border: "none", borderTop: "2px dashed black", marginTop: "10px", marginBottom: "10px" }} />  */}
       {/* <div className="quick-links"> 
         <FontAwesomeIcon icon={faArrowRight} className="icon" style={{ fontSize: '24px', color: '#ded61f', paddingRight: '8px' }} /> 
         <Link to="/startApplication" style={{ textDecoration: "none" }}>Register</Link>
       </div> */}
+      
       <hr className="section-divider" />
+      <h5 className='text-center'>Check Out Our New Collections</h5>
       <Slider {...settings}>
         <div className="card quickCard">
           <div className="section">
