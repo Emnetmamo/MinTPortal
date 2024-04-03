@@ -36,6 +36,7 @@ import UpdateUserStatus from './pages/admin/UpdateUserStatus'
 import PostCalls from './pages/admin3/PostCalls'
 import PostPublications from './pages/admin3/PostPublications'
 import PostAcceptedProjects from './pages/admin3/PostAcceptedProjects';
+import PostHistory from './pages/admin3/PostHistory';
 import PostInstitutes from './pages/admin3/PostInstitutes';
 import PostCollaborations from './pages/admin3/PostCollaborations.js'
 import PostNews from './pages/admin3/PostNews'
@@ -168,6 +169,7 @@ const RoutesComponent = () => {
         <Route path='/admin3/calls/add-call' element={<PostCalls/>}/>
         <Route path='/admin3/publications/add-publication' element={<PostPublications/>}/>
         <Route path='/admin3/accepted-projects/add-accepted-project' element={<PostAcceptedProjects/>}/>
+        <Route path='/admin3/history/add-history' element={<PostHistory/>}/>
         <Route path='/admin3/institutes/post-to-institutes' element={<PostInstitutes/>}/>
         <Route path='/admin3/collaboration/post-to-collaboration' element={<PostCollaborations/>}/>
       </Routes>

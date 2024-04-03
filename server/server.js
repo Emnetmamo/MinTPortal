@@ -19,6 +19,7 @@ import resources from './routes/resources.js'
 import adminAppointments from './routes/admin/adminAppointments.js'
 import adminPublications from './routes/admin/adminPublications.js'
 import adminAcceptedProjects from './routes/admin/adminAcceptedProjects.js'
+import adminHistory from './routes/admin/adminHistory.js'
 import adminInstitutes from './routes/admin/adminInstitutes.js'
 import login from './controller/login.js';
 import dashboardRoute from './middleware/dashboard.js';
@@ -86,6 +87,7 @@ app.use('/admin/appointments', adminAppointments);
 app.use('/admin/news', adminNews);
 app.use('/admin/publications', adminPublications)
 app.use('/admin/accepted-projects', adminAcceptedProjects)
+app.use('/admin/history', adminHistory)
 app.use('/admin/institutes', adminInstitutes)
 app.use('/footer', footerForm)
 

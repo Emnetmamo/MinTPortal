@@ -86,6 +86,16 @@ function Sidebar(props){
                 >
                   Post To Collaborations
                 </Link>
+                </li>
+              <br />
+              <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
+                <Link
+                  className="links"
+                  to="/admin3/history/add-history"
+                  state={{email:email}}
+                >
+                  Post History
+                </Link>
               </li>
               <br />
             </ul>

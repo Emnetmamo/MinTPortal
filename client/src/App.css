@@ -213,3 +213,15 @@ body {
 .custom-card {
   height: 500px;
 }
+
+.card_history{
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
+
+}
+.card-history_innovation:hover{
+ 
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    transform: translateY(-5px);
+    background-color: #f0f0f0;
+  
+}
