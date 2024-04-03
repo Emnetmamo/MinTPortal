@@ -46,6 +46,7 @@ const CheckStatus = ({email}) => {
                     </thead>
                       {getStatus(projects[j].status, projects[j])}
                   </table>
+                  <h4 style={{color:"white"}}>Currently being reviewed by: {projects[j].currentReviewer}</h4>
           </div>
       );
     }

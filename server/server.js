@@ -39,7 +39,7 @@ import admin2Reports from './routes/admin2Reports.js'
 import adminAppointment from './routes/admin/adminAppointment.js';
 import adminUserStatus from './routes/admin/adminUserStatus.js';
 import getName from './middleware/getName.js';
-
+import histroyRoute from './routes/historyForHome.js';
 const app = express();
 const CONNECTION_URL = process.env.CONNECTION_URL
  const PORT = process.env.PORT_2;
@@ -68,6 +68,7 @@ main()
 //mongoose.set('useFindAndModify', false)
    
 //user routes
+app.use('/history',histroyRoute)
 app.use('/auth/:page',register)
 app.use('/announcements/:page', announcementPost);
 app.use('/authl',login,ProtectAdmin)

@@ -56,7 +56,7 @@ const ContactUs = () => {
   return (
     <div>
     <div style={{boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', paddingBottom:"5%", marginTop:"60px"}}>
-        <h1 style={{marginLeft:"5%", color:'orange'}}>Contact Information</h1>
+        <h1 style={{marginLeft:"5%", color:'gray'}}>Contact Information</h1>
         <div  title="Click here to visit more" style={{ width: '100%', height: '40%', display:"inline" }}>
           <div style={{fontSize:"28px", display:"inline", marginLeft:"5%", color:'#11676d'}}><FaPhone/>+25111265737</div>
           <div style={{fontSize:"28px", display:"inline", marginLeft:"15%", color:'#11676d'}}><RiMailFill /> contact@mint.gov.et</div>
@@ -65,12 +65,12 @@ const ContactUs = () => {
         </div>
     </div>
     <div className="contact-container" style={{marginTop: "0px"}}>
-      <div className="contact-form">
+      <div className="contact-form" style={{width: "80%"}}>
         <h2>Contact Us</h2>
         <form method='POST'  onSubmit={handleSubmit} encType='multipart/form-data' >
           <div className="form-group">
-            <label htmlFor="name">Full Name:</label>
-            <input type="text" id="fullName" name="fullName" 
+            <label htmlFor="name" style={{fontSize: "25px"}}>Full Name:</label>
+            <input style={{fontSize: "22px"}} type="text" id="fullName" name="fullName" 
             required 
             placeholder='Full name'
             value={formData.fullName}
@@ -78,8 +78,8 @@ const ContactUs = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" 
+            <label htmlFor="email" style={{fontSize: "25px"}}>Email:</label>
+            <input style={{fontSize: "22px"}} type="email" id="email" name="email" 
             required 
             placeholder="Enter Your Email"
             value={formData.email}
@@ -87,26 +87,27 @@ const ContactUs = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="message">Your Message:</label>
+            <label htmlFor="message" style={{fontSize: "25px"}}>Your Message:</label>
             <textarea id="message" name="message" rows="4" 
             required
+            style={{fontSize: "25px"}}
             placeholder="Message"
             value={formData.message}
             onChange={handleChange}></textarea>
           </div>
           <button
   style={{
-    backgroundColor: '#ff8e2c',
+    backgroundColor: '#16676d',
     color: '#ffffff',
     padding: '12px 25px',
     borderRadius: '30px',
     border: "none",
-    fontSize: '16px',
+    fontSize: '24px',
     transition: 'background-color 0.3s ease', // Add transition for a smooth effect
   }}
   type="submit"
-  onMouseOver={(e) => (e.target.style.backgroundColor = '#16676d')}
-  onMouseOut={(e) => (e.target.style.backgroundColor = '#ff8e2c')}
+  onMouseOver={(e) => (e.target.style.backgroundColor = '#ff8e2c')}
+  onMouseOut={(e) => (e.target.style.backgroundColor = '#16676d')}
 >
   Send Message
 </button>

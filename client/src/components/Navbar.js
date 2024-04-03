@@ -108,12 +108,12 @@ const Navbar = () => {
 {isLoggedOut &&
           <div className="navbar-nav ml-auto" >
               <Link className="nav-link d-none d-lg-inline btn " to="/login" 
-               style={{backgroundColor: "white", color:"#11676d", border: "solid", borderWidth:"0.1px" , marginRight:'5px', borderRadius:"10px", fontSize: '16px' }}
+               style={{backgroundColor: "white", color:"#11676d",  marginRight:'5px', borderRadius:"10px", fontSize: '16px' }}
               >Login</Link>
 
 
             <Link className="nav-link d-none d-lg-inline reg"  to="/register" 
-              style={{background: "linear-gradient(to right, #ded61f, #dbb21e)", color:"#11676d", border: "solid" , borderWidth:"0.1px", borderRadius:"10px" , fontSize: '16px'}} 
+              style={{background: "white", color:"#11676d",   borderRadius:"10px" , fontSize: '16px'}} 
               >Register</Link>
             </div>
             }
