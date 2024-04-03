@@ -113,7 +113,7 @@ const Navbar = () => {
 
 
             <Link className="nav-link d-none d-lg-inline reg"  to="/register" 
-              style={{background: "linear-gradient(to right, #ded61f, #dbb21e)", color:"#11676d", border: "solid" , borderWidth:"0.1px", borderRadius:"10px" , fontSize: '16px'}} 
+              style={{background: "white", color:"#11676d", border: "solid" , borderWidth:"0.1px", borderRadius:"10px" , fontSize: '16px'}} 
               >Register</Link>
             </div>
             }
