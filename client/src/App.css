@@ -282,7 +282,7 @@ video {
   display: flex;
   align-items: center;
   margin-left: 300px;
-color: #fff !important;
+  color: #fff !important;
   max-width: 600px;
   animation: fadeInUp 2s ease-out; 
 }
