@@ -75,7 +75,7 @@ const EthicalEvaluation = ({ prevStep }) => {
     <div className="container mt-5">
       <div className="card">
         <div className="card-body">
-          <h1 style={{ backgroundColor: "orange", color:"white"}}  className="card-title  text-white p-2 rounded text-center mb-4">Ethical Evaluation Section</h1>
+          <h1 style={{ backgroundColor: "gray", color:"white"}}  className="card-title  text-white p-2 rounded text-center mb-4">Ethical Evaluation Section</h1>
           <div className="disclaimer mb-4">
             <p className="text-center">Please give focused attention to each question and onsider your project fullfill the createria</p>
           </div>
@@ -90,8 +90,8 @@ const EthicalEvaluation = ({ prevStep }) => {
               </div>
             ))}
             <div className="d-flex justify-content-end">
-              <button style={{ backgroundColor: "orange", color:"white"}}  type="button" className="btn  me-2" onClick={prevStep}>Previous</button>
-              <button style={{ backgroundColor: "orange", color:"white"}} type="submit" className="btn ">Submit</button>
+              <button style={{ backgroundColor: "gray", color:"white"}}  type="button" className="btn  me-2" onClick={prevStep}>Previous</button>
+              <button style={{ backgroundColor: "gray", color:"white"}} type="submit" className="btn ">Submit</button>
             </div>
           </form>
         </div>
