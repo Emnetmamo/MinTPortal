@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa'; // Importing the search icon
 import Logo from '../images/Logo.jpg';
+import { Button } from "react-bootstrap";
 
 axios.defaults.withCredentials=true
 
@@ -14,12 +15,14 @@ const History = () => {
     // Fetch data when the component mounts      axios.get('http://localhost:5001/resources/accepted-projects')
     axios.get('http://localhost:5001/resources/history')
       .then(response => {
+      
         const parsedData = typeof response.data === 'string' ? JSON.parse(response.data) : response.data;
 
         // Sort the publications by date before setting the state
         const sortedAcceptedProjects = parsedData.sort((a, b) => new Date(a.date) - new Date(b.date));
         
         setAcceptedProject( sortedAcceptedProjects ); // Update the state with the sorted publications
+      
       })
       .catch(error => {
         console.error('Error fetching accepted projects:', error);
@@ -76,6 +79,10 @@ function getFileNameFromPath(filePath) {
     })
   }
   
+  // const handleExploreClick = (id) => {
+  //  console.log(id)
+  //   window.location.href = `/achivment/${id}`;
+  // };
   return (
     <div className="d-flex flex-column align-items-center" style={{ minHeight: '100vh' }}>
       <div className=" row mt-5 " style={{backgroundColor:"#d3d3d3",borderRadius:"15px" }}>
@@ -108,39 +115,7 @@ function getFileNameFromPath(filePath) {
         </div>
       </div>
     
-       {/* <div className="row justify-content-center">
-        {acceptedProject.map((AcceptedProjectItem, index) => (
-          <div key={index} className="col-md-4 mb-5">
-            <div className="card rounded shadow grow-on-hover" style={{ width: '60rem' }}>
-              <img
-                src={`${AcceptedProjectItem.imagePath.replace(/\//g, '\\').split('public\\').join('')}`}
-                className="card-img-top rounded-top"
-                alt={`Accepted Project ${index + 1}`}
-                style={{ width: '100%', height: '200px', objectFit: 'cover' }} // Adjust image size here
-              />
-              <div className="card-body">
-                <h4 className="card-title my-3 text-primary fs-2">{AcceptedProjectItem.title}</h4>
-                <h6 className="card-Investigator my-2"><b>Principal Investigator</b>: {AcceptedProjectItem.p_investigator}</h6>
-                <p className="col card-text text-muted">{AcceptedProjectItem.description.substring(0,20)}</p>
-                <h6 className="card-Investigator my-2"><b>Funding Source(s):</b> {AcceptedProjectItem.funding_source}</h6>
-                <h6 className="card-Investigator my-2"><b>Author:</b> {AcceptedProjectItem.author}</h6>
-                <div className='d-flex align-items-end'>
-                  <h6 className='card-PublicationDate my-2 mx-1 ' style={{ color: '#ffa525' }}>{AcceptedProjectItem.date.split('T')[0]} </h6>
-                  <h6>|</h6>
-                  <h6 className='ms-1' style={{ color: '#ffa525' }}> {AcceptedProjectItem.field_of_study}</h6>
-                </div>
-                <Link
-                  to="#"
-                  onClick={() => handleDownload(AcceptedProjectItem.filePath.replace(/\//g, '\\').split('public\\').join(''), getFileNameFromPath(AcceptedProjectItem.filePath.replace(/\//g, '\\').split('public\\').join('')))}
-                  className="btn btn-primary my-2"
-                >
-                  Download
-                </Link>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>  */}
+      
 
  <h1 className="m-5">Research and Innovations</h1>
       <div className="container m-5">
@@ -160,10 +135,14 @@ function getFileNameFromPath(filePath) {
                   <p className="card-text">{project.description.substring(0, 20)}</p>
                   <h6 className="card-Investigator my-2"><b>Funding Source(s):</b> {project.funding_source}</h6>
                 <h6 className="card-Investigator my-2"><b>Author:</b> {project.author}</h6>
+               
                    Here, instead of linking directly to a file download,
                       you can open a modal or handle file download as per your requirements 
+                      
                    <a
-                    href="/achivment"
+                  href={`/achivment/${project._id}`}
+
+
                     // onClick={() => handleDownload(project.filePath, getFileNameFromPath(project.filePath))}
                     className="d-block mx-auto"
                     style={{ textDecoration: 'none', color: 'white', backgroundColor: 'black', alignSelf: 'center', borderRadius: '5px' }}

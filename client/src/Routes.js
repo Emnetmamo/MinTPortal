@@ -141,7 +141,8 @@ const RoutesComponent = () => {
         <Route path="/resources" element={<Resources />} />
         <Route  path='/resources/accepted-projects' element={<AcceptedProjects/>}/>
         <Route  path='/resources/history' element={<History/>}/>
-        <Route path='/achivment' element={<Achivments/>}/>
+        <Route path='/achivment/:id' element={<Achivments/>}/>
+
         <Route  path='/footer' element={<FooterForm/>}/>
         <Route  path='/resources/publications' element={<Publications/>}/>
         <Route  path='/institutes' element={<Institutes />}/>
