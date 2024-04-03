@@ -1,6 +1,8 @@
 import express from 'express'
 import projectFeedbackModel from '../models/projectFeedback.js';
 import UserModel from '../models/users.js';
+import ProjectModel from '../models/projects.js';
+import mongoose from 'mongoose';
 
 const router = express.Router();
 
@@ -14,6 +16,12 @@ router.post('/setFeedback', async function(req, res){
         await projectFeedbackModel.findOneAndUpdate({projectID:id}, {$addToSet:{feedback:[feedback]}})
         .then(result => console.log(result))
         .catch(err=>console.log(err))
+
+        const id1 = new mongoose.Types.ObjectId(id);
+        await ProjectModel.findOneAndUpdate({_id:id1}, {currentReviewer: "MinT Research Sector Members"})
+        .then(result=>{ 
+            console.log(result)})
+        .catch(err=> res.json(err))
     }
     else{
         await projectFeedbackModel.create({
@@ -24,6 +32,12 @@ router.post('/setFeedback', async function(req, res){
         })
         .then(result => console.log(result))
         .catch(err=>console.log(err))
+
+        const id1 = new mongoose.Types.ObjectId(id);
+        await ProjectModel.findOneAndUpdate({_id:id1}, {currentReviewer: "MinT Research Sector Members"})
+        .then(result=>{ 
+            console.log(result)})
+        .catch(err=> res.json(err))
     }
 });
 
