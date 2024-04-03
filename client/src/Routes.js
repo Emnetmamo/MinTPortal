@@ -63,6 +63,7 @@ import ConfirmAppointment from './pages/user/ConfirmAppointment';
 import CheckStatus from './pages/user/CheckStatus';
 
 import History from './pages/History.js';
+import Achivments from './components/history/Achivments.js';
 
 const ConditionalNavbar = () => {
   const navigate = useNavigate();
@@ -140,6 +141,7 @@ const RoutesComponent = () => {
         <Route path="/resources" element={<Resources />} />
         <Route  path='/resources/accepted-projects' element={<AcceptedProjects/>}/>
         <Route  path='/resources/history' element={<History/>}/>
+        <Route path='/achivment' element={<Achivments/>}/>
         <Route  path='/footer' element={<FooterForm/>}/>
         <Route  path='/resources/publications' element={<Publications/>}/>
         <Route  path='/institutes' element={<Institutes />}/>
