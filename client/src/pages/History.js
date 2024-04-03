@@ -133,7 +133,7 @@ function getFileNameFromPath(filePath) {
               />
                   <h5 className="card-title"  >{project.title}</h5>
                   <h6 className="card-Investigator my-2"><b>Principal Investigator</b>: {project.p_investigator}</h6>
-                  <p className="card-text">{project.description.substring(0, 20)}</p>
+                  <p className="card-text">{project.description.substring(0, 20)}...</p>
                   <h6 className="card-Investigator my-2"><b>Funding Source(s):</b> {project.funding_source}</h6>
                 <h6 className="card-Investigator my-2"><b>Author:</b> {project.author}</h6>
                

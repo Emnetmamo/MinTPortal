@@ -13,8 +13,9 @@ const Login = () => {
   useEffect(function(){
     async function checkIfLoggedIn(){
       try {
-        await axios.get('http://localhost:5001/logout');
-        //window.location.href = '/login'; 
+        document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        document.cookie = "role=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        await axios.get('http://localhost:5001/logout'); 
       } catch (error) {
         console.error('Logout failed:', error);
       }

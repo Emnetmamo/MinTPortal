@@ -67,6 +67,9 @@ async function main() {
 main()
 //mongoose.set('useFindAndModify', false)
    
+
+app.use('/public/history_files', express.static('public/history_files'));
+
 //user routes
 app.use('/history',histroyRoute)
 app.use('/auth/:page',register)
