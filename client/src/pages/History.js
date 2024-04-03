@@ -12,16 +12,15 @@ const History = () => {
   const [acceptedProject, setAcceptedProject] = useState([]);
 
   useEffect(() => {
-    // Fetch data when the component mounts      axios.get('http://localhost:5001/resources/accepted-projects')
+
     axios.get('http://localhost:5001/resources/history')
       .then(response => {
       
         const parsedData = typeof response.data === 'string' ? JSON.parse(response.data) : response.data;
 
-        // Sort the publications by date before setting the state
         const sortedAcceptedProjects = parsedData.sort((a, b) => new Date(a.date) - new Date(b.date));
         
-        setAcceptedProject( sortedAcceptedProjects ); // Update the state with the sorted publications
+        setAcceptedProject( sortedAcceptedProjects ); 
       
       })
       .catch(error => {
@@ -93,7 +92,7 @@ function getFileNameFromPath(filePath) {
 
 The introduction of groundbreaking government initiatives marked a turning point, propelling the nation towards widespread adoption of information and communication technologies (ICT). With each passing year, the MinT's unwavering commitment to innovation has paved the way for a brighter digital future, empowering Ethiopia to thrive in the digital age.</p>
           <p className="btn">
-            <a style={{textDecoration:"none",borderRadius:"5px"}} href="#">
+            <a style={{textDecoration:"none",borderRadius:"5px"}} href="#5">
               Discover our past achievements
             </a>
           </p>
@@ -109,7 +108,7 @@ The introduction of groundbreaking government initiatives marked a turning point
   
       <div className="my-5">
         <h2 className="font-weight-bold text-center">Time line of Events</h2>
-        <p className="text-center">Ministry of innovation and Technology enstablished with in 1975 as Ministry of Science and Technology</p>
+        
       </div>
   
       <div className="card_history card mb-5 m-1" style={{ width: '65rem', height: '30rem' }}>
@@ -121,7 +120,7 @@ The introduction of groundbreaking government initiatives marked a turning point
     
       
 
- <h1 className="m-5">Researches and Innovations</h1>
+ <h1 className="m-5"  id="5">Researches and Innovations</h1>
       <div className="container mb-5">
         <div className="row">
           {acceptedProject.map((project, index) => (

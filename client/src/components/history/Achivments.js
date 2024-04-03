@@ -20,22 +20,30 @@ const Achivments = () => {
   }, [id]);
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5" >
       {achievement && (
         <div className="card">
           <div className="card-body">
-            
-          <img src={achievement.imagePath} className="img-fluid" alt="Achievement"
-           style={{width:'70%', height:'auto',
+            <div className='row'>
+            <div className='col'>
+            <img src={achievement.imagePath} className="img-fluid" alt="Achievement"
+           style={{width:'100%', height:'auto',
            markerStart:'30px'
            }} />
-            <h5 className="card-title">{achievement.title}</h5>
-            <p className="card-text">Investigator: {achievement.p_investigator}</p>
-            <p className="card-text">Author: {achievement.author}</p>
-            <p className="card-text">Funding Source: {achievement.funding_source}</p>
-            <p className="card-text">Description: {achievement.description}</p>
-            <p className="card-text">Field of Study: {achievement.field_of_study}</p>
-            <p className="card-text">Deffence Date: {new Date(achievement.date).toLocaleDateString()}</p>
+            </div>
+            <div className='col'>
+            <h5 className="card-title" style={{color:'black',alignContent:'center' ,fontSize:'2pc'}}>{achievement.title}</h5>
+            <p className="card-text" style={{color:'black'}}>Investigator: {achievement.p_investigator}</p>
+            <p className="card-text" style={{color:'black'}}>Author: {achievement.author}</p>
+            <p className="card-text" style={{color:'black'}}>Funding Source: {achievement.funding_source}</p>
+            <p className="card-text" style={{color:'black'}}>Field of Study: {achievement.field_of_study}</p>
+            <p className="card-text" style={{color:'black'}}>Date: {new Date(achievement.date).toLocaleDateString()}</p>
+            </div>
+            </div>
+          
+         
+            <p className="card-text" style={{color:'black' ,fontSize:'1pc',}}> {achievement.description}</p>
+           
     
             <a href={achievement.filePath} className="btn btn-primary mt-3" target="_blank" rel="noopener noreferrer">View PDF</a>
           </div>
