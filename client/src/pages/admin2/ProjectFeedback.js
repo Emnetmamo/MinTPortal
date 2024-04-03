@@ -6,6 +6,7 @@ import AdminHeader from '../../components/AdminComponents/AdminHeader';
 import Sidebar from './Sidebar.js';
 import '../../images/assets/css/admin.css';
 import { Modal } from 'react-bootstrap';
+import { toast, ToastContainer } from 'react-toastify';
 
 function ProjectFeedback() {
   let i = 1;
@@ -171,7 +172,7 @@ function updateStatus(id, newStatus, title){
   axios.post('http://localhost:5001/admin2Feedback/setFeedback', {id: id, email: email, title: title, feedback: feedback})
   .then(result=>console.log(result))
   .catch(err=>console.log(err));
-  window.location.reload(false);
+  toast.success("Feedback submitted successfully");
 }
 function numToStatus(num){
   if(num === 1){
@@ -229,6 +230,7 @@ function buttonsDisplay(num){
           </div>
       </div>
     </div>
+    <ToastContainer/>
   </div>
    
   )

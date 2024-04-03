@@ -60,6 +60,10 @@ const projectIdea = new mongoose.Schema({
   proposalPath3:{
     type: String,
     required: true
+  },
+  currentReviewer:{
+    type: String,
+    required: true
   }
 });
 
