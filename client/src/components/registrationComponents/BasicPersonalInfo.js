@@ -97,7 +97,7 @@ const BasicPersonalInfo = ({ nextStep}) => {
 
 
   return (
-    <div className="container">
+    <div className="container" style={{width:"60%", marginBottom: "30px"}}>
       <div className="text-right mt-3">
         <Link
           style={{
@@ -114,26 +114,27 @@ const BasicPersonalInfo = ({ nextStep}) => {
       </div>
       <h1 className="text-center">Registration Form</h1>
       <div style={{ marginTop: "20px" }}>
-        <h5 style={{ color: "red" }}>
+        <h3 style={{ color: "red" }}>
           <b>Note</b>: There are 3 sections to this registration
-        </h5>
-        <h6 style={{ color: "red" }}>Fill out each section carefully</h6>
+        </h3>
+        <h3 style={{ color: "red" }}>Fill out each section carefully</h3>
       </div>
       <div className="card">
         <div className="card-body">
-          <h1
-            style={{ backgroundColor: "orange" }}
+          <h2
+            style={{ backgroundColor: "gray", textAlign: "center" }}
             className="card-title  text-white p-2 rounded"
           >
             Basic Personal Information
-          </h1>
+          </h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
-              <label htmlFor="owner" className="form-label">
+              <label htmlFor="owner" className="form-label" style={{fontSize: "25px"}}>
                 Project’s Owner*
               </label>
               <div className="d-flex">
                 <input
+                style={{fontSize: "22px"}}
                   type="text"
                   className="form-control me-2"
                   id="firstName"
@@ -147,6 +148,7 @@ const BasicPersonalInfo = ({ nextStep}) => {
                 />
 
                 <input
+                style={{fontSize: "22px"}}
                   type="text"
                   className="form-control"
                   id="lastName"
@@ -161,10 +163,11 @@ const BasicPersonalInfo = ({ nextStep}) => {
               </div>
             </div>
             <div className="mb-3">
-            <label htmlFor="sex" className="form-label">
+            <label htmlFor="sex" className="form-label" style={{fontSize: "25px"}}>
                 Sex*
               </label>
             <select
+            style={{fontSize: "22px"}}
                 className="form-select"
                 id="sex"
                 name="sex"
@@ -181,10 +184,11 @@ const BasicPersonalInfo = ({ nextStep}) => {
               <input type="password" className="form-control" id="password" name="password" placeholder="******" required  />
             </div> */}
           <div className="mb-3">
-              <label htmlFor="email" className="form-label">
+              <label htmlFor="email" className="form-label" style={{fontSize: "25px"}}>
                 Email*
               </label>
               <input
+              style={{fontSize: "22px"}}
                 type="email"
                 className="form-control"
                 id="email"
@@ -198,11 +202,12 @@ const BasicPersonalInfo = ({ nextStep}) => {
               />
             </div>
            <div className="mb-3">
-              <label htmlFor="password" className="form-label">
+              <label htmlFor="password" className="form-label" style={{fontSize: "25px"}}>
                 Password*
               </label>
               <div className="input-group">
                 <input
+                style={{fontSize: "22px"}}
                   type={showPassword ? "text" : "password"}
                   className="form-control"
                   id="password"
@@ -228,11 +233,12 @@ const BasicPersonalInfo = ({ nextStep}) => {
 
 
             <div className="mb-3">
-              <label htmlFor="confirmPassword" className="form-label">
+              <label htmlFor="confirmPassword" className="form-label" style={{fontSize: "25px"}}>
                 Confirm Password*
               </label>
               <div className="input-group">
                 <input
+                style={{fontSize: "22px"}}
                   type={showConfirmPassword ? "text" : "password"}
                   className="form-control"
                   id="confirmPassword"
@@ -258,10 +264,11 @@ const BasicPersonalInfo = ({ nextStep}) => {
 
 
             <div className="mb-3">
-              <label htmlFor="contactNumber" className="form-label">
+              <label htmlFor="contactNumber" className="form-label" style={{fontSize: "25px"}}>
                 Contact Number
               </label>
               <input
+              style={{fontSize: "22px"}}
                 type="tel"
                 className="form-control"
                 id="contactNumber"
@@ -275,10 +282,11 @@ const BasicPersonalInfo = ({ nextStep}) => {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="country" className="form-label">
+              <label htmlFor="country" className="form-label" style={{fontSize: "25px"}}>
                 Country
               </label>
               <select
+              style={{fontSize: "22px"}}
                 className="form-select"
                 id="country"
                 name="country"
@@ -288,7 +296,7 @@ const BasicPersonalInfo = ({ nextStep}) => {
                 }}
                 required
               >
-                <option value="" disabled selected>
+                <option value="" disabled selected style={{fontSize: "25px"}}>
                   Select a country
                 </option>
                 {countryOptions.map((country, index) => (
@@ -299,7 +307,7 @@ const BasicPersonalInfo = ({ nextStep}) => {
               </select>
             </div>
             <div className="mb-3">
-              <label htmlFor="address" className="form-label">
+              <label htmlFor="address" className="form-label" style={{fontSize: "25px"}}>
                 Address
               </label>
               <textarea
@@ -314,7 +322,7 @@ const BasicPersonalInfo = ({ nextStep}) => {
               ></textarea>
             </div>
             <button
-              style={{ backgroundColor: "orange", color: "white", float: "right" }}
+              style={{ backgroundColor: "gray", color: "white", float: "right" }}
               type="submit"
               className="btn "
             >

@@ -52,7 +52,7 @@
 
 /* Style the dropdown items */
 .nav-item.dropdown .dropdown-item {
-  background: linear-gradient(to right, #eed61f, #dbb21e) !important;
+  background: gray !important;
   color: white;
 }
 
