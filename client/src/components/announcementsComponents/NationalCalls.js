@@ -6,6 +6,7 @@ import axios from 'axios';
 // import { Link } from 'react-router-dom';
 
 
+
 const NationalCalls = (props) => {
   const[calls, setCalls] = useState([]);
   const[loaded, setLoaded] = useState(false);
@@ -44,7 +45,7 @@ const NationalCalls = (props) => {
       category === " "))
       {
       data.push(
-        <div className="card mb-3" key={calls[i]._id}>
+        <div className="card quickCard mb-3" key={calls[i]._id}>
         <div className="card-body">
 
         <h3 style={{ textTransform: 'uppercase' }} className="card-title">{calls[i].title}</h3>
@@ -55,31 +56,31 @@ const NationalCalls = (props) => {
                 Category: <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].callType} calls</span>
               </p> */}
 
-              <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className="card-text">
+              <p style={{ color: "black", fontWeight: "bold", fontSize: "18px" }} className="card-text">
                 Description: <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].description}</span>
               </p>
 
-              <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
+              <p style={{ color: "black", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
                 Field of Study: <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].field}</span>
               </p>
 
-              <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
+              <p style={{ color: "black", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
                 Start Date: <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].startDate.split("T")[0]}</span>
               </p>
 
-              <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
+              <p style={{ color: "black", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
                 End Date: <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].endDate.split("T")[0]}</span>
               </p>
 
-              <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
+              <p style={{ color: "black", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
                 Award(Monetary): <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].prizes}</span>
               </p>
 
-              <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
+              <p style={{ color: "black", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
                 Instructions: <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].instructions}</span>
               </p>
 
-              <p style={{ color: "green", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
+              <p style={{ color: "black", fontWeight: "bold", fontSize: "18px" }} className='card-text'>
                 Guidelines on how to fill the application: <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].guideline}</span>
               </p>
           </div>
@@ -119,7 +120,7 @@ const NationalCalls = (props) => {
       {loaded && pageLogic(display())}
       {(noOfPages===0 && loaded) && 
       <div>
-        <h3 style={{color:"green", marginBottom:"50%"}}>No calls in that category</h3>
+        <h3 style={{color:"black", marginBottom:"50%"}}>No calls in that category</h3>
       </div> }
       <div
         style={{

@@ -18,12 +18,12 @@ const Introduction = () => {
   return (
     <div className="row mt-5">
       <div id="top"></div>
-
-      <div className="col-md-6">
+      <div className="col-md-4">
         <h1 style={{fontSize: "60px"}}>Ethiopian National Research Portal</h1>  
-        <a href="/announcements" style={{background: "orange", color: "white", border: 'none'}} className="btn btn-secondary  ms-2">See open Research Calls</a>
+        <a href="/announcements" style={{background: "linear-gradient(to right, #ded61f, #dbb21e)", color: "white", border: 'none'}} className="btn btn-secondary  ms-2">See open Research Calls</a>
       </div>
-      <div className="col-md-6">
+     
+      <div className="col-md-8">
         <div id="imageCarousel" className="carousel slide" data-bs-ride="carousel">
           <div className="carousel-inner">
             <div className="carousel-item active">
@@ -53,6 +53,7 @@ const Introduction = () => {
           </button>
         </div>
       </div>
+     
     </div>
   );
 }
