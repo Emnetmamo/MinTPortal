@@ -7,11 +7,18 @@ function Admin() {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
+  let email = "";
   if(!document.cookie){
     navigate('/');
   }
-  const email = document.cookie.split(';')[0].split('=')[1].replaceAll('"','');
-  console.log(email);
+  try{
+    email = document.cookie.split(';')[0].split('=')[1].replaceAll('"','');
+    console.log(email);
+  }
+  catch(err){
+    navigate('/')
+  }
+
   useEffect(() => {
     axios.defaults.withCredentials = true;
     axios.get('http://localhost:5001/admind/dashboard') // Update the route path here
