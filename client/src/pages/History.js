@@ -106,7 +106,7 @@ function getFileNameFromPath(filePath) {
   
       <div className="my-5">
         <h2 className="font-weight-bold text-center">Time line of Events</h2>
-        <p className="text-center">Transformation of MinRT history from past to present</p>
+        <p className="text-center">Ministry of innovation and Technology enstablished with in 1975 as Ministry of Science and Technology</p>
       </div>
   
       <div className="card_history card mb-5 m-1" style={{ width: '65rem', height: '30rem' }}>
@@ -118,7 +118,7 @@ function getFileNameFromPath(filePath) {
     
       
 
- <h1 className="m-5">Research and Innovations</h1>
+ <h1 className="m-5">Researches and Innovations</h1>
       <div className="container mb-5">
         <div className="row">
           {acceptedProject.map((project, index) => (
@@ -131,7 +131,7 @@ function getFileNameFromPath(filePath) {
                 alt={`Accepted Project ${index + 1}`}
                 style={{ width: '100%', height: '200px', objectFit: 'cover' }} // Adjust image size here
               />
-                  <h5 className="card-title">{project.title}</h5>
+                  <h5 className="card-title"  >{project.title}</h5>
                   <h6 className="card-Investigator my-2"><b>Principal Investigator</b>: {project.p_investigator}</h6>
                   <p className="card-text">{project.description.substring(0, 20)}</p>
                   <h6 className="card-Investigator my-2"><b>Funding Source(s):</b> {project.funding_source}</h6>
