@@ -63,7 +63,7 @@ import ConfirmAppointment from './pages/user/ConfirmAppointment';
 import CheckStatus from './pages/user/CheckStatus';
 
 import History from './pages/History.js';
-import Achivments from './components/history/Achivments.js';
+import Achivments from './components/HistoryComponents/Achivments.js';
 
 const ConditionalNavbar = () => {
   const navigate = useNavigate();
