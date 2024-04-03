@@ -60,8 +60,14 @@ import UserHeader from './components/UserComponents/UserHeader';
 import UserDashboard from './pages/user/UserDashboard';
 import ConfirmAppointment from './pages/user/ConfirmAppointment';
 import CheckStatus from './pages/user/CheckStatus';
+<<<<<<< Updated upstream
 
 
+=======
+import History from './pages/History.js';
+import Awards from './components/history/Awards.js';
+import Achivments from './components/history/Achivments.js';
+>>>>>>> Stashed changes
 
 const ConditionalNavbar = () => {
   const navigate = useNavigate();
@@ -146,6 +152,13 @@ const RoutesComponent = () => {
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/news" element={<News />} />
         <Route path="/login" element={<Login />} />
+<<<<<<< Updated upstream
+=======
+        <Route path='/history' element={<History/>}/>
+        <Route path='/awards' element={<Awards/>}/>
+        <Route path='/achvments' element={<Achivments/>}/>
+
+>>>>>>> Stashed changes
         <Route path="/register" element={<Register />} />
         <Route  path='viewNews' element={<ViewNews/>}></Route>
         <Route path='/resources/publications/description' element={<ProjectDescription/>}/>
