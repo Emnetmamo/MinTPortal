@@ -12,7 +12,7 @@ const Laboratories = () => {
     // Fetch data when the component mounts
     const fetchLaboratories = async () => {
       try {
-        const response = await axios.get('http://localhost:5001/institutes/laboratories');
+        const response = await axios.get('https://min-t-portal-server.vercel.app/institutes/laboratories');
         const data = response.data;
         setLaboratories(data);
       } catch (error) {

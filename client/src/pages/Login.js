@@ -15,7 +15,7 @@ const Login = () => {
       try {
         document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
         document.cookie = "role=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-        await axios.get('http://localhost:5001/logout'); 
+        await axios.get('https://min-t-portal-server.vercel.app/logout'); 
       } catch (error) {
         console.error('Logout failed:', error);
       }
@@ -44,7 +44,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:5001/authl/login', { email, password })
+      .post('https://min-t-portal-server.vercel.app/authl/login', { email, password })
       .then((result) => {
         console.log(result.data);
         if(result.data.error==='User not found'){

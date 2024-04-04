@@ -7,7 +7,7 @@ function ViewNews(){
     const [news, setNews] = useState([]);
     const [loaded, setLoaded] = useState(false);
     useEffect(function(){
-        axios.get('http://localhost:5001/news')
+        axios.get('https://min-t-portal-server.vercel.app/news')
       .then((result)=>{
         setNews(result.data);
         setLoaded(true)

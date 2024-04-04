@@ -17,7 +17,7 @@ function ViewReports2() {
     const [reports, setReports] = useState([]);
     const [loaded, setLoaded] = useState(false);
     useEffect(function(){
-        axios.get('http://localhost:5001/report/getAll')
+        axios.get('https://min-t-portal-server.vercel.app/report/getAll')
         .then((result)=>{setReports(result.data); console.log(result)})
         .catch(err=>console.log(err))
         setLoaded(true);
@@ -62,7 +62,7 @@ function ViewReports2() {
         const reportID = id.split('-')[0];
         const projID = id.split('-')[1];
         const feedback = document.getElementById(reportID+"-input").value;
-        axios.post('http://localhost:5001/report/setMessage', {reportID:reportID, message: feedback})
+        axios.post('https://min-t-portal-server.vercel.app/report/setMessage', {reportID:reportID, message: feedback})
         .then((result)=>{console.log(result); toast.info("Feedback Submitted Successfully");})
         .catch(err=>console.log(err))
     }

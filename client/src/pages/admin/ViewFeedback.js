@@ -11,7 +11,7 @@ const ViewFeedback = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5001/footer');
+        const response = await axios.get('https://min-t-portal-server.vercel.app/footer');
         console.log('Feedback Data:', response.data); // Check if data is logged correctly
         setFeedbackData(response.data);
       } catch (error) {

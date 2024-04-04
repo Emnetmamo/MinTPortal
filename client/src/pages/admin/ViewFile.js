@@ -11,7 +11,7 @@ function ViewFile(){
         <br />
         <br />
         <iframe
-              src={'http:\\\\localhost:5001\\'+filePath}
+              src={'https:\\\\min-t-portal-server.vercel.app\\'+filePath}
               style={{width:"100%"}}
               height={800}
         />

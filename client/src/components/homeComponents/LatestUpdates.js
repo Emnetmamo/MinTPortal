@@ -23,7 +23,7 @@ const LatestUpdates = () => {
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
     axios
-      .get('http://localhost:5001/news')
+      .get('https://min-t-portal-server.vercel.app/news')
       .then(response => { setNews(response.data); setLoaded(true)})
       .catch(error => {
         console.error('Error fetching news:', error);

@@ -33,7 +33,7 @@ const Navbar = () => {
   };
   const logout = async () => {
     try {
-      await axios.get('http://localhost:5001/logout')
+      await axios.get('https://min-t-portal-server.vercel.app/logout')
       .then(result => {console.log(result)})
       .catch(err=>{console.log(err)})
       navigate('/login')

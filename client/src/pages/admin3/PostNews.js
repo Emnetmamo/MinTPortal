@@ -14,7 +14,7 @@ axios.defaults.withCredentials=true;
 
 function Post_News() {
   
-  const defaultImageURL = 'http://localhost:5001/images/noimage.png'
+  const defaultImageURL = 'https://min-t-portal-server.vercel.app/images/noimage.png'
   const [imagePreview, setImagePreview] = useState(defaultImageURL);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -102,7 +102,7 @@ function Post_News() {
       data.append('image', formData.image);
 
       try {
-        const response = axios.post('http://localhost:5001/admin/news/add-news', data);
+        const response = axios.post('https://min-t-portal-server.vercel.app/admin/news/add-news', data);
         console.log(response.data);
           alert('Do you want to submit')
           toast.info('News form submitted successfully!');

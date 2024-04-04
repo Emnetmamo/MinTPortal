@@ -16,7 +16,7 @@ const News = () => {
     const getNews = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://localhost:5001/news');
+        const response = await axios.get('https://min-t-portal-server.vercel.app/news');
         const parsedData =
           typeof response.data === 'string'
             ? JSON.parse(response.data)

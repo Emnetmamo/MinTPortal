@@ -32,7 +32,7 @@ function AdminHeader() {
 
         let response2 = null;
         if(role === "admin"){
-          axios.get('http://localhost:5001/admind/dashboard')
+          axios.get('https://min-t-portal-server.vercel.app/admind/dashboard')
           .then(result=> {response2 = result; console.log(result);})
           .catch(err=>console.log(err));
           if(path.startsWith('/admin2') || path.startsWith('/admin3')){
@@ -40,7 +40,7 @@ function AdminHeader() {
           }
         }
         else if(role === "admin2"){
-          axios.get('http://localhost:5001/admind2/dashboard')
+          axios.get('https://min-t-portal-server.vercel.app/admind2/dashboard')
           .then(result=> {response2 = result; console.log(result);})
           .catch(err=>console.log(err));
           if(!path.startsWith('/admin2')){
@@ -48,7 +48,7 @@ function AdminHeader() {
           }
         }
         else if(role === "admin3"){
-          axios.get('http://localhost:5001/admind3/dashboard')
+          axios.get('https://min-t-portal-server.vercel.app/admind3/dashboard')
           .then(result=> {response2 = result; console.log(result);})
           .catch(err=>console.log(err));
           if(!path.startsWith('/admin3')){
@@ -56,7 +56,7 @@ function AdminHeader() {
           }
         }
 
-        axios.post('http://localhost:5001/getName', {email:email})
+        axios.post('https://min-t-portal-server.vercel.app/getName', {email:email})
         .then(result=> {response = result; setUserName(result.data.name); console.log(result);})
         .catch(err=>console.log(err));
         
@@ -94,7 +94,7 @@ function AdminHeader() {
  
   const logout = async () => {
     try {
-      await axios.get('http://localhost:5001/logout');
+      await axios.get('https://min-t-portal-server.vercel.app/logout');
       setIsAuthenticated(false);
       navigate('/login')
       //window.location.href = '/login'; 

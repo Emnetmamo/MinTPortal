@@ -93,7 +93,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
     }
     try {
       const response = await axios.put(
-        "http://localhost:5001/auth/submitProject",
+        "https://min-t-portal-server.vercel.app/auth/submitProject",
         formData
       );
       console.log(response);

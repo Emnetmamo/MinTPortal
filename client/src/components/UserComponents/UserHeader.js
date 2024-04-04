@@ -21,7 +21,7 @@ function UserHeader() {
         // .catch(err=>console.log(err));
 
         const email1 = document.cookie.split(';')[0].split('=')[1].replaceAll('"','');
-        axios.post('http://localhost:5001/getName', {email:email1})
+        axios.post('https://min-t-portal-server.vercel.app/getName', {email:email1})
         .then(result=> {response = result; setUserName(result.data.name); console.log(result);})
         .catch(err=>console.log(err));
         //const isAuthenticated = response.data.isAuthenticated;
@@ -45,7 +45,7 @@ function UserHeader() {
   , []);
   const logout = async () => {
     try {
-      await axios.get('http://localhost:5001/logout');
+      await axios.get('https://min-t-portal-server.vercel.app/logout');
       setIsAuthenticated(false);
       navigate('/login')
       //window.location.href = '/login'; 

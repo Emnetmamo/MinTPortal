@@ -43,7 +43,7 @@ const BasicPersonalInfo = ({ nextStep}) => {
   
     if (password === confirmPassword && password.length >= 8 && /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!.])[A-Za-z\d@#$%^&*!.]{8,}/.test(password)) {
       axios
-        .post("http://localhost:5001/auth/register", {
+        .post("https://min-t-portal-server.vercel.app/auth/register", {
           fName,
           LName,
           password,

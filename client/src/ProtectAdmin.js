@@ -19,7 +19,7 @@ const ProtectAdmin = () => {
     const[role,setdata]=useState('');
     const navigate = useNavigate();
     useEffect(()=>{
-        axios.get('http://localhost:5001/authl/protect')
+        axios.get('https://min-t-portal-server.vercel.app/authl/protect')
         .then(result=>{
             // console.log(result.data)
             setdata(result.data)})

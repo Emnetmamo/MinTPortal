@@ -21,7 +21,7 @@ const navigate=useNavigate()
   function handleSubmit(e) {
     e.preventDefault();
     axios
-      .post("http://localhost:5001/announcements/addCall", {
+      .post("https://min-t-portal-server.vercel.app/announcements/addCall", {
         title,
         description,
         field,

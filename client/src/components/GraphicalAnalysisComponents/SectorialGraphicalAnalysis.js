@@ -10,7 +10,7 @@ const SectorialGraphicalAnalysis = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(('http://localhost:5001/resources/project-idea'));
+        const response = await axios.get(('https://min-t-portal-server.vercel.app/resources/project-idea'));
         setData(response.data);
         setLoading(false);
       } catch (error) {

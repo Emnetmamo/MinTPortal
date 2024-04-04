@@ -82,7 +82,7 @@ function FooterForm() {
      
 
       try {
-        const response = axios.post('http://localhost:5001/footer/add-footer', data);
+        const response = axios.post('https://min-t-portal-server.vercel.app/footer/add-footer', data);
         console.log(response.data);
           alert('Do you want to submit')
           toast.info('footer form submitted successfully!');

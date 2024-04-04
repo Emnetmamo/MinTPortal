@@ -18,7 +18,7 @@ function PostCollaborations() {
 
   });
 
-  const defaultImageURL = 'http://localhost:5001/images/noimage.png'
+  const defaultImageURL = 'https://min-t-portal-server.vercel.app/images/noimage.png'
   const [imagePreview, setImagePreview] = useState(defaultImageURL);
   
 
@@ -90,7 +90,7 @@ function PostCollaborations() {
      
 
       try {
-        const response = axios.post('http://localhost:5001/admin/collaboration/post-to-collaboration', data);
+        const response = axios.post('https://min-t-portal-server.vercel.app/admin/collaboration/post-to-collaboration', data);
         console.log(response.data);
           alert('Do you want to submit')
           toast.info('Institutes form submitted successfully!');

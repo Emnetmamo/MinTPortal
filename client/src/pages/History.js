@@ -12,7 +12,7 @@ const History = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5001/resources/history")
+      .get("https://min-t-portal-server.vercel.app/resources/history")
       .then((response) => {
         const parsedData =
           typeof response.data === "string"

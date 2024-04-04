@@ -12,7 +12,7 @@ const GovernmentAgencies = () => {
     // Fetch data when the component mounts
     const fetchAgencies = async () => {
       try {
-        const response = await axios.get('http://localhost:5001/institutes/agencies');
+        const response = await axios.get('https://min-t-portal-server.vercel.app/institutes/agencies');
         const data = response.data;
         setAgencies(data);
       } catch (error) {

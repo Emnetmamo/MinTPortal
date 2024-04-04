@@ -24,7 +24,7 @@ const Register = () => {
     }
     async function logout (){
       try {
-        await axios.get('http://localhost:5001/logout');
+        await axios.get('https://min-t-portal-server.vercel.app/logout');
         //window.location.href = '/login'; 
       } catch (error) {
         console.error('Logout failed:', error);

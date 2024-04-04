@@ -15,13 +15,13 @@ const SubmitReport = () => {
   //console.log(email);
   useEffect(
     function(){
-      axios.get('http://localhost:5001/admin/userStatus/getAll')
+      axios.get('https://min-t-portal-server.vercel.app/admin/userStatus/getAll')
       .then((result)=>{
         setProjects(result.data);
         //console.log(result);
       })
       .catch(err=>console.log(err))
-      axios.get('http://localhost:5001/admin2Reports/find/'+email)
+      axios.get('https://min-t-portal-server.vercel.app/admin2Reports/find/'+email)
       .then((result)=>{
         setUserID(result.data[0]._id);
         console.log(userID);
@@ -80,7 +80,7 @@ function SubmitReport(id){
     formData.append('file', file);
     console.log(file);
 
-    axios.post('http://localhost:5001/admin2Reports/upload/'+ userID + "-" +  id , formData, config)
+    axios.post('https://min-t-portal-server.vercel.app/admin2Reports/upload/'+ userID + "-" +  id , formData, config)
     .then((res)=>{console.log(res);})
     .catch(err=>console.log(err))
     toast.info("Report Submitted Successfully!")

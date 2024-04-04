@@ -14,13 +14,13 @@ function UpdateUserStatus() {
   const {email} = location.state;
   useEffect(
     function(){
-      axios.get('http://localhost:5001/admin/userStatus/getAll')
+      axios.get('https://min-t-portal-server.vercel.app/admin/userStatus/getAll')
       .then((result)=>{
         setProjects(result.data);
         //console.log(result);
       })
       .catch(err=>console.log(err))
-      axios.get('http://localhost:5001/admin2Feedback/getFeedback')
+      axios.get('https://min-t-portal-server.vercel.app/admin2Feedback/getFeedback')
       .then((result)=>{setFeedbacks(result.data); console.log(feedbacks)})
       .catch(err=>console.log(err))
       setLoaded(true);
@@ -87,7 +87,7 @@ function organizeFeedback(id, status){
 }
 function updateStatus(id, newStatus){
   console.log("Clicked!")
-  axios.get('http://localhost:5001/admin/userStatus/'+id+"-"+newStatus)
+  axios.get('https://min-t-portal-server.vercel.app/admin/userStatus/'+id+"-"+newStatus)
   .then(result=>console.log(result))
   .catch(err=>console.log(err));
   window.location.reload(false);

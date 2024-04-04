@@ -17,7 +17,7 @@ const NationalCalls = (props) => {
 
   console.log(category);
   useEffect(function(){
-    axios.get("http://localhost:5001/announcements/fetchCalls")
+    axios.get("https://min-t-portal-server.vercel.app/announcements/fetchCalls")
     .then(result=>setCalls(result.data))
     .then(result=>console.log(result))
     .catch(err=>console.log(err))
