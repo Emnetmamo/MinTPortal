@@ -115,10 +115,11 @@ app.get('/logout', (req, res) => {
   res.clearCookie('role');
   res.clearCookie('token').send('Logged out successfully.');
 });
-
+app.get('/', (req, res) => {
+  res.json('Hi');
+});
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-  res.json("Hi");
 });
 
 
