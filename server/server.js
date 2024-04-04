@@ -47,24 +47,25 @@ const CONNECTION_URL = process.env.CONNECTION_URL
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser())
-// app.use(cors({
-//   origin: "https://min-t-portal-frontend.vercel.app",
-//   methods: ['GET', 'POST',"PUT"],
-//   credentials: true
-// }));
-app.use((req, res, next) => {
-  res.header(
-  "Access-Control-Allow-Origin",
-  "https://min-t-portal-frontend.vercel.app"
-  );
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.header("Access-Control-Allow-Credentials", true);
+
+app.use(cors({
+  origin: "https://min-t-portal-frontend.vercel.app",
+  // methods: ['GET', 'POST',"PUT"],
+  credentials: true
+}));
+// app.use((req, res, next) => {
+//   res.header(
+//   "Access-Control-Allow-Origin",
+//   "https://min-t-portal-frontend.vercel.app"
+//   );
+//   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+//   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//   res.header("Access-Control-Allow-Credentials", true);
   
-  console.log("Request received:", req.method, req.url);
+//   console.log("Request received:", req.method, req.url);
   
-  next();
-  });
+//   next();
+//   });
 app.use(express.static(path.join('./', 'public')));
 
 
