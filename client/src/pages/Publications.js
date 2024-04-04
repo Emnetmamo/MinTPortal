@@ -14,10 +14,14 @@ const Publications = () => {
     axios.get('http://localhost:5001/resources/publications')
       .then(response => {
         const parsedData = typeof response.data === 'string' ? JSON.parse(response.data) : response.data;
-        setPublication(parsedData); // Update the state with fetched news
+
+        // Sort the publications by date before setting the state
+        const sortedPublications = parsedData.sort((a, b) => new Date(a.date) - new Date(b.date));
+        
+        setPublication(sortedPublications); // Update the state with the sorted publications
       })
       .catch(error => {
-        console.error('Error fetching news:', error);
+        console.error('Error fetching publications:', error);
       });
   }, []);
 // get file name
@@ -48,7 +52,28 @@ function getFileNameFromPath(filePath) {
         // Handle the error, maybe show a message to the user
       });
   };
-
+  function searchItem(e){
+    let searchText = e.value.toLowerCase();
+    let titles2 = Array.from(document.getElementsByClassName('card-title'));
+    let contents = Array.from(document.getElementsByClassName('card-text text-muted'));
+    let titles = titles2.concat(contents);
+    let parent = null;
+    Array.from(titles).forEach(function(title1){
+      if(title1.innerText.toLowerCase().indexOf(searchText) > -1){
+        title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "";
+        parent = title1.parentElement.parentElement.parentElement.parentElement.parentElement;
+        console.log(parent);
+      }
+      else{
+        if(parent === title1.parentElement.parentElement.parentElement.parentElement.parentElement){
+          title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "";
+        }
+        else{
+          title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "none";
+        }
+      }
+    })
+  }
   return (
     <div className="container m-10" >
       <br/><br/>
@@ -61,6 +86,7 @@ function getFileNameFromPath(filePath) {
           aria-label="Enter project title"
           aria-describedby="basic-addon2"
           style={{ maxWidth: '200px' }}
+          onChange={function(e){searchItem(e.target)}}
         />
         <div className="input-group-append mt-2">
           <span className="input-group-text bg-white border-0"><FaSearch /></span>
@@ -82,10 +108,10 @@ function getFileNameFromPath(filePath) {
                 </div>
                 <div className="col  mx-5 my-2 ">
                   <div className="card-body">
-                    <h4 className="card-title my-3 ">{PublicationItem.title}</h4>
-                    <h6 className="card-Investigator my-2 ">Principal Investigator: {PublicationItem.p_investigator}</h6>                    
+                    <h4 className="card-title my-3 text-primary fs-2">{PublicationItem.title}</h4>
+                    <h6 className="card-Investigator my-2 "><b>Principal Investigator:</b> {PublicationItem.p_investigator}</h6>                    
                     <p className="col card-text text-muted">{PublicationItem.description}</p> 
-                    <h6 className="card-Investigator my-2 ">Author: {PublicationItem.author}</h6>                     
+                    <h6 className="card-Investigator my-2 "><b>Author:</b> {PublicationItem.author}</h6>                     
                     <div className='d-flex align-items-end'>               
                     
                   <h6 className='card-PublicationDate my-2 mx-1 ' style={{color: '#ffa525'}}>{PublicationItem.date} </h6> <h6>| </h6> <h6 className='ms-1' style={{color: '#ffa525'}}> {PublicationItem.field_of_study}</h6>

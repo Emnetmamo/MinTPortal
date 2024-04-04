@@ -58,9 +58,9 @@ const Dropzone = ({className}) => {
       </div>
       <section className='mt-5'>
         <div className='mb-3 d-flex  '>
-          <h2 className='me-3   fw-bold text-secondary'>
+          <h4 className='me-3   fw-bold text-secondary'>
             Preview
-          </h2>
+          </h4>
             <button
             onClick={removeAll}
               className='ms-4 btn btn-white border border-secondary fw-bold text-secondary'
@@ -69,7 +69,7 @@ const Dropzone = ({className}) => {
             </button>
           
         </div>
-        <h2 class=" fw-bold text-secondary my- text-center">Accepted Files</h2>
+        <h4 class=" fw-bold text-secondary my- text-center">Accepted Files</h4>
         <ul className='mt-4 '>
           {files.map(file => (
             <li key={file.name} className=' p-2 position-relative  d-inline-flex flex-shrink-1 

@@ -1,73 +1,102 @@
-import React,{useState} from 'react';
-import { Container, ListGroup } from 'react-bootstrap';
-import { Link } from 'react-router-dom'; 
-const GovernmentAgencies = () => {
-  const [isClicked, setIsClicked] = useState(false);
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from 'react-router-dom';
+import { FaSearch } from 'react-icons/fa'; // Importing the search icon
 
-  const handleClick = () => {
-    setIsClicked(true);
+axios.defaults.withCredentials = true;
+
+const GovernmentAgencies = () => {
+  const [agencies, setAgencies] = useState([]);
+
+  useEffect(() => {
+    // Fetch data when the component mounts
+    const fetchAgencies = async () => {
+      try {
+        const response = await axios.get('http://localhost:5001/institutes/agencies');
+        const data = response.data;
+        setAgencies(data);
+      } catch (error) {
+        console.error('Error fetching institutes:', error);
+      }
+    };
+
+    fetchAgencies();
+  }, []);
+  function searchItem(e){
+    let searchText = e.value.toLowerCase();
+    let titles2 = Array.from(document.getElementsByClassName('card-title'));
+    let contents = Array.from(document.getElementsByClassName('card-text text-muted'));
+    let titles = titles2.concat(contents);
+    let parent = null;
+    Array.from(titles).forEach(function(title1){
+      if(title1.innerText.toLowerCase().indexOf(searchText) > -1){
+        title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "";
+        parent = title1.parentElement.parentElement.parentElement.parentElement.parentElement;
+        console.log(parent);
+      }
+      else{
+        if(parent === title1.parentElement.parentElement.parentElement.parentElement.parentElement){
+          title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "";
+        }
+        else{
+          title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "none";
+        }
+      }
+    })
   }
   return (
-    <Container>
-      <div className='row'>
-      <div className="col-sm-3 mt-5" >
-  <div className="menu" style={{ backgroundColor: '#11676d', marginBottom: '80px', borderRadius: '10px' }}>
-    <ul className=" list-group" style={{ listStyleType: 'none', padding: '40px' }}>
-      
-      <li className="list-group-item list-group-item-dark" data-content="research" style={{ width: '100%', marginBottom: '10px' ,backgroundColor: 'orange', borderRadius: '5px'}}>
-        <Link to='/institutes/research' style={{ textDecoration: 'none', width: '100%', color:'white'}} onClick={handleClick}>Research Institutes</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="labs" style={{ width: '100%', marginBottom: '10px',backgroundColor: 'orange', borderRadius: '5px' }}>
-        <Link to='/institutes/labs' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>Laboratories</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="ict" style={{ width: '100%', marginBottom: '10px',backgroundColor: 'orange', borderRadius: '5px' }}>
-        <Link to='/institutes/ict' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>ICT Partners</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="government" style={{ width: '100%', marginBottom: '10px' ,backgroundColor: 'orange', borderRadius: '5px'}}>
-        <Link to='/institutes/government' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>Government Agency</Link>
-      </li>
-    </ul>
-  </div>
-</div>
-        <div className='col' >
-        <br /><br />
-      <h1 style={{ color: 'orange'}}>Governmental Agencies</h1>
-
-      <p style={{ fontSize: '20px'}}>
-        On this page, you will find contact information for Ethiopian federal government departments and agencies including
-        websites, emails, phone numbers, addresses, summaries of the agency's work, and more.
-      </p>
-
-      <h2 style={{ color: 'orange'}}>Recommended Agency Websites</h2>
-      <p style={{ fontSize: '20px'}}>
-        The list below contains popular or important government agencies. The link sends you to that agency's page on
-        Ethiopian government where you can find their website, contact information, and a summary of the work conducted in theagency.
-      </p>
-
-      <ListGroup>
-      <ListGroup.Item> <a href="https://moa.gov.et/amh/" style={{ color: 'blue', textDecoration: 'none'}}>Ministry of Agriculture (MOA)</a></ListGroup.Item>
-        <ListGroup.Item><a href="/" style={{ color: 'blue', textDecoration: 'none'}}>Ministry of Commerce (MOC)</a></ListGroup.Item>
-        <ListGroup.Item><a href="/" style={{ color: 'blue', textDecoration: 'none'}}>Ministry of Defense (MOD)</a></ListGroup.Item>
-        <ListGroup.Item><a href="https://moe.gov.et/" style={{ color: 'blue', textDecoration: 'none'}}>Ministry of Education (MoE)</a></ListGroup.Item>
-        <ListGroup.Item><a href="/" style={{ color: 'blue', textDecoration: 'none'}}>Ministry of Energy (MOE)</a></ListGroup.Item>
-        {/* Add more items for other major departments */}
-      </ListGroup>
-
-<br/>
-      <h2 style={{ color: 'orange'}}>Other Agencies</h2>
-      <ListGroup>
-        <ListGroup.Item>Administration for Native Americans</ListGroup.Item>
-        <ListGroup.Item>Agency for International Development (USAID)</ListGroup.Item>
-        <ListGroup.Item>Alcohol, Tobacco, Firearms, and Explosives Bureau (ATF)</ListGroup.Item>
-        <ListGroup.Item>Americorps</ListGroup.Item>
-        <ListGroup.Item>Army Corps of Engineers</ListGroup.Item>
-        {/* Add more items for other agencies */}
-      </ListGroup>
-      <br/><br/>
+    <div className="container m-10">
+      <br /><br />
+      <h1 className="mb-4 mt-3 font-weight-bold text-center">Affiliate Institutes</h1>
+      <div className="input-group mb-3">
+        <input
+          type="text"
+          className="form-control rounded-pill text-center"
+          placeholder="Search Here"
+          aria-label="Enter institute title"
+          aria-describedby="basic-addon2"
+          style={{ maxWidth: '200px' }}
+          onChange={function(e){searchItem(e.target)}}
+        />
+        <div className="input-group-append mt-2">
+          <span className="input-group-text bg-white border-0"><FaSearch /></span>
         </div>
       </div>
-     
-    </Container>
+      <div className="row">
+        {agencies.map((agency, index) => (
+          <div key={index} className="mb-5">
+            <div className="card rounded shadow grow-on-hover d-flex">
+              <div className="row g-0">
+              <div className="col-lg-6 d-flex justify-content-center align-items-center">
+             <img
+             src={agency.imagePath}
+             className="card-img-top rounded-top"
+             alt={`Institute ${index + 1}`}
+            style={{ height: '200px', width: '300px' }}
+              />
+             </div>
+                <div className="col mx-5 my-2">
+                  <div className="card-body">
+                    <h4 className="card-title my-3 text-primary">
+                      <a href={agency.link} target="_blank" rel="noopener noreferrer">
+                        {agency.title}
+                      </a>
+                    </h4>
+                    <p className="col card-text text-muted">{agency.description}</p>
+                    <h6 className="my-2"><b>Category:</b> {agency.category}</h6>
+                    <h6 className="my-2"><b>Email:</b> {agency.email}</h6>
+                    <h6 className="my-2"><b>Phone:</b> {agency.phone}</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="text-left mt-3 mx-5">
+        <Link style={{ marginBottom: "30px" }} to="/view-more" className="btn btn-primary">View More</Link>
+      </div>
+    </div>
   );
 };
 

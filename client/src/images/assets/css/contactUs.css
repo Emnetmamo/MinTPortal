@@ -1,0 +1,65 @@
+/* ContactUs.css */
+.contact-container {
+ 
+    display: flex;
+    justify-content: space-around;
+    margin-top: -50px;
+    margin-bottom: 20px;
+    background-color: #f8f9fa; /* Light background color */
+    padding: 20px;
+  }
+  
+  .contact-form {
+    flex: 1;
+    height: auto; /* Revert to auto height */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
+  
+  .contact-form h2 {
+    font-size: 28px; /* Larger heading size */
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px; /* Revert to original margin */
+  }
+  
+  label {
+    display: block;
+    font-size: 16px; /* Revert to original font size */
+    font-weight: bold;
+    margin-bottom: 5px; /* Revert to original margin */
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px; /* Reduced padding */
+    font-size: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .contact-map {
+    flex: 1;
+    margin-left: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-container {
+      flex-direction: column;
+    }
+  
+    .contact-form,
+    .contact-map {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  

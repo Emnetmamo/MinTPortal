@@ -8,6 +8,8 @@ import image2 from "../../images/home/news8.jpeg";
 import image3 from "../../images/home/news9.webp";
 import image4 from "../../images/home/news6.jpeg";
 import image5 from "../../images/home/news5.jpeg";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 const LatestUpdates = () => {
@@ -16,10 +18,22 @@ const LatestUpdates = () => {
     objectFit: 'cover', // Ensure the image covers the entire container
   
   };
-  return (
-  <div>
-    <h1 className="text-center mb-4">Latest Updates</h1>
-      <Carousel>        
+
+  const [news, setNews] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    axios
+      .get('http://localhost:5001/news')
+      .then(response => { setNews(response.data); setLoaded(true)})
+      .catch(error => {
+        console.error('Error fetching news:', error);
+      });
+  }, []);
+
+  function displayNews(){
+    if(loaded){
+      if(news.length < 5){
+        <div>        
         <Carousel.Item>
           <a href="/news" >
             <img
@@ -108,6 +122,42 @@ const LatestUpdates = () => {
             </Carousel.Caption>
           </a>
         </Carousel.Item>
+      </div>
+      }
+      else{
+        let display = [];
+        console.log((news.length - 1) + ", "+(news.length - 5));
+        for (let i = (news.length - 1); i > (news.length - 6); i--) {
+          display.push(
+            <Carousel.Item>
+          <Link
+                  to='/viewNews'
+                  state={{id:news[i]._id}}
+          >
+            <img
+              className="d-block w-100"
+              src={news[i].imagePath}
+              alt="News slide"
+              style={carouselImageStyle}
+            />
+            <Carousel.Caption>
+              <h2>{news[i].title}</h2>
+              <p style={{color:"white", overflow:"hidden"}}>{news[i].content.substring(0, 200)}</p>
+            </Carousel.Caption>
+          </Link>
+        </Carousel.Item>
+          );
+        }
+        return display;
+      }
+    }
+  }
+
+  return (
+  <div>
+    <h1 className="text-center mb-4">Latest Updates</h1>
+      <Carousel>
+        {loaded && displayNews()}
       </Carousel>
     </div>
    

@@ -1,113 +1,106 @@
-import React,{useState} from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom'; 
-// import './ResearchInstitutes.css'
-import AHRI from '../../images/Institutes/AHRI.png';
-import ILRI from '../../images/Institutes/ILRI-CGIAR-logo.svg';
-import ethiopianBitech from '../../images/Institutes/ethipianBitech.png';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { FaSearch } from 'react-icons/fa'; // Importing the search icon
 
-  
-    
+axios.defaults.withCredentials = true;
 
+const ResearchInstitutes = () => {
+  const [research, setResearch] = useState([]);
 
-function ResearchInstitutes() {
-  const [isClicked, setIsClicked] = useState(false);
+  useEffect(() => {
+    // Fetch data when the component mounts
+    const fetchResearch = async () => {
+      try {
+        const response = await axios.get('http://localhost:5001/institutes/researchs');
+        const data = response.data;
+        setResearch(data);
+      } catch (error) {
+        console.error('Error fetching institutes:', error);
+      }
+    };
 
-  const handleClick = () => {
-    setIsClicked(true);
+    fetchResearch();
+  }, []);
+
+  const handleTitleClick = (link) => {
+    window.open(link, "_blank");
+  };
+  function searchItem(e){
+    let searchText = e.value.toLowerCase();
+    let titles2 = Array.from(document.getElementsByClassName('card-title'));
+    let contents = Array.from(document.getElementsByClassName('card-text text-muted'));
+    let titles = titles2.concat(contents);
+    let parent = null;
+    Array.from(titles).forEach(function(title1){
+      if(title1.innerText.toLowerCase().indexOf(searchText) > -1){
+        title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "";
+        parent = title1.parentElement.parentElement.parentElement.parentElement.parentElement;
+        console.log(parent);
+      }
+      else{
+        if(parent === title1.parentElement.parentElement.parentElement.parentElement.parentElement){
+          title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "";
+        }
+        else{
+          title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "none";
+        }
+      }
+    })
   }
   return (
-<container>
-<div className='row'>
-<div className="col-sm-3 mt-5" >
-  <div className="menu" style={{ backgroundColor: '#11676d', marginBottom: '80px', borderRadius: '10px' }}>
-    <ul className=" list-group" style={{ listStyleType: 'none', padding: '40px' }}>
-      
-      <li className="list-group-item list-group-item-dark" data-content="research" style={{ width: '100%', marginBottom: '10px' ,backgroundColor: 'orange', borderRadius: '5px'}}>
-        <Link to='/institutes/research' style={{ textDecoration: 'none', width: '100%', color:'white'}} onClick={handleClick}>Research Institutes</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="labs" style={{ width: '100%', marginBottom: '10px',backgroundColor: 'orange', borderRadius: '5px' }}>
-        <Link to='/institutes/labs' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>Laboratories</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="ict" style={{ width: '100%', marginBottom: '10px',backgroundColor: 'orange', borderRadius: '5px' }}>
-        <Link to='/institutes/ict' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>ICT Partners</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="government" style={{ width: '100%', marginBottom: '10px' ,backgroundColor: 'orange', borderRadius: '5px'}}>
-        <Link to='/institutes/government' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>Government Agency</Link>
-      </li>
-    </ul>
-  </div>
-</div>
-<div className='col'>
-<>
-    <br />
-    <br />
-    <Container>
-      
-      <Row className="align-items-center">
-        <Col>
-          <img src={AHRI} alt="Logo" className="img-fluid" />
-        </Col>
-        <Col xs={9} md={10}>
-          <hl  className="mb-2" style={{  textAlign: 'center', fontSize: '60px' }}> Research Institutes </hl>
-          <h2 className="mb-2"><a href='https://ahri.gov.et/' style={{textDecoration: 'none'}}>AHRI - Armauer Hansen Research Institute</a></h2>
-          <p className="mb-1">      AHRI is a Biomedical research Institute in Ethiopia which is working in tuberculosis, HIV, malaria, Leishmaniasis, training and research capacity building. AHRI is undergoing reform to transform itself to be an institute embracing research agenda which will have direct impact in development and transformation of population in Ethiopia and Africa.',
-          </p>
-          <p className="mb-1">Email:<span className="text-orange"> example@example.com</span></p>
-          <p className="mb-0">Phone: <span className="text-orange">+1 123-456-7890</span></p>
-        </Col>
-      </Row>
-    </Container>
-    <br /><br />
-    <Container>
-        <Row className="align-items-center">
-          <Col>
-            <img src={ILRI} alt="Logo" className="img-fluid" />
-          </Col>
-          <Col xs={9} md={10}>
-            <h2 className="mb-2"><a href='https://www.ilri.org/' style={{textDecoration: 'none'}}>International Livestock Research Institute</a></h2>
-            <p className="mb-1">    We work to improve food security and reduce poverty through research for better and more sustainable use of livestock  ,
-            </p>
-            <p className="mb-1">Email:<span className="text-orange"> example@example.com</span></p>
-            <p className="mb-0">Phone:<span className="text-orange"> +1 123-456-7890</span></p>
-          </Col>
-        </Row>
-      </Container>
+    <div className="container m-10">
       <br /><br />
-      <Container>
-        <Row className="align-items-center">
-          <Col>
-            <img src={ethiopianBitech} alt="Logo" className="img-fluid" />
-          </Col>
-          <Col xs={9} md={10}>
-            <h2 className="mb-2"><a href='https://www.betin.gov.et/' style={{textDecoration: 'none'}}>Ethiopia Biotechnology Institutes</a></h2>
-            <p className="mb-1">   AHRI is a Biomedical research Institute in Ethiopia which is working in tuberculosis, HIV, malaria, Leishmaniasis, training and research capacity building. AHRI is undergoing reform to transform itself to be an institute embracing research agenda which will have direct impact in development and transformation of population in Ethiopia and Africa.',
-            </p>
-            <p className="mb-1">Email: <span className="text-orange"> example@example.com</span> </p>
-            <p className="mb-0">Phone: <span className="text-orange">+1 123-456-7890</span></p>
-          </Col>
-        </Row>
-      </Container>
-      <br /><br />
-      <div className="d-flex justify-content-end me-5 mt-3">
-        <button className="btn btn-primary">
-          <a href="/" style={{ color: 'white', textDecoration: 'none'}}>Next Page</a>
-        </button>
-      
+      <h1 className="mb-4 mt-3 font-weight-bold text-center">Research Institutes</h1>
+      <div className="input-group mb-3">
+        <input
+          type="text"
+          className="form-control rounded-pill text-center"
+          placeholder="Search Here"
+          aria-label="Enter institute title"
+          aria-describedby="basic-addon2"
+          style={{ maxWidth: '200px' }}
+          onChange={function(e){searchItem(e.target)}}
+        />
+        <div className="input-group-append mt-2">
+          <span className="input-group-text bg-white border-0"><FaSearch /></span>
+        </div>
       </div>
-      </>
-
-
-</div>
-
-</div>
-<br/>
-</container>
-
-   
-     // Add more institutes as needed
-
+      <div className="row">
+        {research.map((researchInstitute, index) => (
+          <div key={index} className="mb-5">
+            <div className="card rounded shadow grow-on-hover d-flex">
+              <div className="row g-0">
+                <div className="col-lg-6 d-flex justify-content-center align-items-center">
+                  <img
+                    src={researchInstitute.imagePath}
+                    className="card-img-top rounded-top"
+                    alt={`Institute ${index + 1}`}
+                    style={{ height: '200px', width: '300px' }}
+                  />
+                </div>
+                <div className="col mx-5 my-2">
+                  <div className="card-body">
+                    <h4
+                      className="card-title my-3 text-primary"
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <a href={researchInstitute.link} target="_blank" rel="noopener noreferrer">
+                        {researchInstitute.title}
+                      </a>
+                    </h4>
+                    <p className="col card-text text-muted">{researchInstitute.description}</p>
+                    <h6 className="my-2"><b>Category:</b> {researchInstitute.category}</h6>
+                    <h6 className="my-2"><b>Email:</b> {researchInstitute.email}</h6>
+                    <h6 className="my-2"><b>Phone:</b> {researchInstitute.phone}</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
-}
+};
 
 export default ResearchInstitutes;

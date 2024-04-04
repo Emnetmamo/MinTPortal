@@ -1,97 +1,103 @@
-import React,{useState} from 'react';
-import { Container, Row, Col, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom'; 
-import AHRI from '../../images/Institutes/AHRI.png';
-import partner from '../../images/Institutes/Ict-partners.png';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from 'react-router-dom';
+import { FaSearch } from 'react-icons/fa'; // Importing the search icon
 
-function Laboratories() {
-  const [isClicked, setIsClicked] = useState(false);
+axios.defaults.withCredentials = true;
 
-  const handleClick = () => {
-    setIsClicked(true);
+const Laboratories = () => {
+  const [laboratories, setLaboratories] = useState([]);
+
+  useEffect(() => {
+    // Fetch data when the component mounts
+    const fetchLaboratories = async () => {
+      try {
+        const response = await axios.get('http://localhost:5001/institutes/laboratories');
+        const data = response.data;
+        setLaboratories(data);
+      } catch (error) {
+        console.error('Error fetching laboratories:', error);
+      }
+    };
+
+    fetchLaboratories();
+  }, []);
+  function searchItem(e){
+    let searchText = e.value.toLowerCase();
+    let titles2 = Array.from(document.getElementsByClassName('card-title'));
+    let contents = Array.from(document.getElementsByClassName('card-text text-muted'));
+    let titles = titles2.concat(contents);
+    let parent = null;
+    Array.from(titles).forEach(function(title1){
+      if(title1.innerText.toLowerCase().indexOf(searchText) > -1){
+        title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "";
+        parent = title1.parentElement.parentElement.parentElement.parentElement.parentElement;
+        console.log(parent);
+      }
+      else{
+        if(parent === title1.parentElement.parentElement.parentElement.parentElement.parentElement){
+          title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "";
+        }
+        else{
+          title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "none";
+        }
+      }
+    })
   }
-  const labs = [
-    {
-      id: 1,
-      name: 'Lab A',
-      image: AHRI,
-      description: 'Lab A is a research laboratory dedicated to advancing scientific discoveries in a specific field or discipline. It provides a controlled environment where researchers can conduct experiments, analyze data, and collaborate on innovative projects. The lab is equipped with state-of-the-art equipment and tools necessary for conducting experiments, making observations, and collecting data.Lab A focuses on studying and exploring various aspects of its specific field. It aims to address research questions, develop new methodologies, and contribute to the existing knowledge in the field. The lab may specialize in areas such as biotechnology, chemistry, physics, computer science, or any other scientific domain. Researchers in Lab 1 work on projects that can range from fundamental scientific research to applied research with practical implications.',
-      email: 'lab1@example.com',
-      phone: '+1 123-456-7890'
-    },
-    {
-      id: 2,
-      name: 'Lab B',
-      image: partner,
-      description: 'Lab B is a specialized laboratory dedicated to conducting research and experiments in a specific scientific field. It provides a controlled environment for scientists, researchers, and students to explore and investigate various phenomena, theories, and applications related to their area of focus. The lab is equipped with advanced equipment, instruments, and technologies necessary for carrying out experiments, data analysis, and research simulations. Lab 2 focuses on advancing knowledge and understanding in its specific scientific field. Lab B work on projects that encompass a wide range of topics, including but not limited to biology, environmental science, engineering, materials science, or neuroscience. The labs research activities may involve conducting experiments, analyzing data, developing new technologies, or exploring innovative approaches to solve complex problems in the field.',
-      email: 'lab2@example.com',
-      phone: '+1 234-567-8901'
-    }
-    // Add more labs as needed
-  ];
-
   return (
-<container>
-<div className='row'>
-<div className="col-sm-3 mt-5" >
-  <div className="menu" style={{ backgroundColor: '#11676d', marginBottom: '80px', borderRadius: '10px' }}>
-    <ul className=" list-group" style={{ listStyleType: 'none', padding: '40px' }}>
-      
-      <li className="list-group-item list-group-item-dark" data-content="research" style={{ width: '100%', marginBottom: '10px' ,backgroundColor: 'orange', borderRadius: '5px'}}>
-        <Link to='/institutes/research' style={{ textDecoration: 'none', width: '100%', color:'white'}} onClick={handleClick}>Research Institutes</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="labs" style={{ width: '100%', marginBottom: '10px',backgroundColor: 'orange', borderRadius: '5px' }}>
-        <Link to='/institutes/labs' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>Laboratories</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="ict" style={{ width: '100%', marginBottom: '10px',backgroundColor: 'orange', borderRadius: '5px' }}>
-        <Link to='/institutes/ict' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>ICT Partners</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="government" style={{ width: '100%', marginBottom: '10px' ,backgroundColor: 'orange', borderRadius: '5px'}}>
-        <Link to='/institutes/government' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>Government Agency</Link>
-      </li>
-    </ul>
-  </div>
+    <div className="container m-10">
+      <br /><br />
+      <h1 className="mb-4 mt-3 font-weight-bold text-center">Laboratories</h1>
+      <div className="input-group mb-3">
+        <input
+          type="text"
+          className="form-control rounded-pill text-center"
+          placeholder="Search Here"
+          aria-label="Enter institute title"
+          aria-describedby="basic-addon2"
+          style={{ maxWidth: '200px' }}
+          onChange={function(e){searchItem(e.target)}}
+        />
+        <div className="input-group-append mt-2">
+          <span className="input-group-text bg-white border-0"><FaSearch /></span>
+        </div>
+      </div>
+      <div className="row">
+        {laboratories.map((laboratory, index) => (
+          <div key={index} className="mb-5">
+            <div className="card rounded shadow grow-on-hover d-flex">
+              <div className="row g-0">
+              <div className="col-lg-6 d-flex justify-content-center align-items-center">
+  <img
+    src={laboratory.imagePath}
+    className="card-img-top rounded-top"
+    alt={`Institute ${index + 1}`}
+    style={{ height: '200px', width: '300px' }}
+  />
 </div>
-<div className='col'>
-<Container>
-      <h2>Laboratories</h2>
-      {labs.map(lab => (
-        <Row key={lab.id} className="mb-4">
-          <Col md={3}>
-            <img src={lab.image} alt={`${lab.name} Image`} className="img-fluid" />
-          </Col>
-          <Col md={9}>
-            <div className="lab-details">
-              <h3>{lab.name}</h3>
-              <p>{lab.description}</p>
-              <Form>
-                <Form.Group>
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control type="email" value={lab.email} disabled />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>Phone</Form.Label>
-                  <Form.Control type="text" value={lab.phone} disabled />
-                </Form.Group>
-              </Form>
+                <div className="col mx-5 my-2">
+                  <div className="card-body">
+                    <h4 className="card-title my-3 text-primary">
+                      <a href={laboratory.link} target="_blank" rel="noopener noreferrer">
+                        {laboratory.title}
+                      </a>
+                    </h4>
+                    <p className="col card-text text-muted">{laboratory.description}</p>
+                    <h6 className="my-2"><b>Category:</b> {laboratory.category}</h6>
+                    <h6 className="my-2"><b>Email:</b> {laboratory.email}</h6>
+                    <h6 className="my-2"><b>Phone:</b> {laboratory.phone}</h6>
+                  </div>
+                </div>
+              </div>
             </div>
-          </Col>
-        </Row>
-      ))}
-    </Container>
-
-</div>
-</div>
-<div className="d-flex justify-content-end" style={{ marginRight: '50px' }}>
-        <button className="btn btn-primary">
-          <a href="/" style={{ color: 'white', textDecoration: 'none' }}>Next Page</a>
-        </button>
-      </div> 
-      <br/> 
-</container>
-
-   
+          </div>
+        ))}
+      </div>
+      <div className="text-left mt-3 mx-5">
+        <Link style={{ marginBottom: "30px" }} to="/view-more" className="btn btn-primary">View More</Link>
+      </div>
+    </div>
   );
-}
+};
 
 export default Laboratories;

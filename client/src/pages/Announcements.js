@@ -1,12 +1,11 @@
-// src/components/pages/Announcements.js
-
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import NationalCalls from "../components/announcementsComponents/NationalCalls";
 import ForeignCalls from "../components/announcementsComponents/ForeignCalls";
 
+
 const Announcements = () => {
   const [selectedTab, setSelectedTab] = useState("national");
+  const [categorySelected, setCategory] = useState(" ");
 
   const handleTabChange = (tab) => {
     setSelectedTab(tab);
@@ -18,9 +17,15 @@ const Announcements = () => {
       <br />
       <br />
       <ul className="nav nav-tabs">
-        <li className="nav-item">
+        <li>
           <button
             className={`nav-link ${selectedTab === "national" ? "active" : ""}`}
+            style={{
+              backgroundColor: selectedTab === "national" ? "gray" : "",
+              color: selectedTab === "national" ? "white" : "black",
+              fontSize: "18px",
+              fontWeight: "bold",
+            }}
             onClick={() => handleTabChange("national")}
           >
             National Calls
@@ -29,6 +34,12 @@ const Announcements = () => {
         <li className="nav-item">
           <button
             className={`nav-link ${selectedTab === "foreign" ? "active" : ""}`}
+            style={{
+              backgroundColor: selectedTab === "foreign" ? "gray" : "",
+              color: selectedTab === "foreign" ? "white" : "black",
+              fontSize: "18px",
+              fontWeight: "bold",
+            }}
             onClick={() => handleTabChange("foreign")}
           >
             Foreign Calls
@@ -36,57 +47,31 @@ const Announcements = () => {
         </li>
       </ul>
       <div style={{ width: "100%", textAlign: "center", marginTop: "10px" }}>
-        <select name="category" id="category" style={{ borderRadius: "5px" }}>
+        <select
+          name="category"
+          id="category"
+          style={{
+            borderRadius: "5px",
+            fontSize: "16px",
+          }}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          <option value=" ">Select by Field</option>
           <option value="Agriculture">Agriculture</option>
-          <option value="Environment">Environment and Energy</option>
+          <option value="Industry">Industry</option>
           <option value="Health">Health</option>
-          <option value="Industrial">Industrial</option>
-          <option value="Other">Other</option>
+          <option value="Construction">Construction</option>
+          <option value="Mines and Water">Mines and Water</option>
+          <option value="Information Communication">Information Communication</option>
+          <option value="Energy">Energy </option>
+          <option value="Environment Protection">Environment Protection </option>
+          <option value="Other related Sectors">Other related Sectors</option>
+        
         </select>
       </div>
       <div className="tab-content mt-3">
-        {selectedTab === "national" && <NationalCalls />}
-        {selectedTab === "foreign" && <ForeignCalls />}
-      </div>
-      <div
-        style={{
-          width: "100%",
-          textAlign: "center",
-          marginTop: "10px",
-          marginBottom: "50px",
-        }}
-      >
-        <Link
-          style={{
-            backgroundColor: "#11676d",
-            color: "white",
-            marginRight: "20px",
-            width: "100px",
-          }}
-          to="/"
-          className="btn "
-        >
-          Previous
-        </Link>
-        <select name="pageNo" id="pageNo" style={{ borderRadius: "5px" }}>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <Link
-          style={{
-            backgroundColor: "#11676d",
-            color: "white",
-            marginLeft: "20px",
-            width: "100px",
-          }}
-          to="/"
-          className="btn "
-        >
-          Next
-        </Link>
+        {selectedTab === "national" && <NationalCalls category={categorySelected} />}
+        {selectedTab === "foreign" && <ForeignCalls category={categorySelected} />}
       </div>
     </div>
   );

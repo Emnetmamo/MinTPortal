@@ -1,12 +1,12 @@
 .user-icon{
-  width: 40px;
-  height: 40px;
-  color: #11676d;
+  width: 50px;
+  height: 50px;
+  color: white;
 
 }
 .user-name{
   font-size: 30px;
-  color: #11676d;
+  color: white;
   text-decoration: none;
 }
 .header{
@@ -20,20 +20,27 @@
 
 .logo{
   width: 120px; 
-  margin-left: 110px; 
+  margin-left: 10px; 
 }
 
 .post-links-container{
   background-color: #11676d;
   border-radius: 10px;
-  height: 410px;
+  height: 700px;
+  margin-bottom: 50px;
+}
+
+.list-group-item{
+  background-color: #ffa525;
 }
 .post-links{
   background-color: #ffa525;
-  border-radius: 10px;
+  border-radius: '10px';
   border: none;
 
 }
+
+
 .post-links:hover, .dropzone:hover{
   cursor: pointer;
   opacity: 0.8;
@@ -42,8 +49,8 @@
   opacity: 0.3;
 }
 .links{
-  text-decoration: none;
-  color: white;
+  text-decoration: none !important;
+  color: white !important;
   font-weight: 700;
 }
 
@@ -65,3 +72,25 @@ button.dropzone {
 li.rejected-list{
   min-width: auto;
 }
+/* .active{
+  background-color: rgb(108, 108, 141) !important;
+  
+} */
+
+
+
+
+/* login user */
+
+.login-user-icon{
+  width: 40px;
+  height: 40px;
+  color: orange;
+
+}
+.login-user-name{
+  font-size: 30px;
+  color: orange;
+  text-decoration: none;
+}
+

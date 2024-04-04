@@ -1,0 +1,9 @@
+.blink {
+    animation: blinker .75s linear infinite;
+    color: red;
+}
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}

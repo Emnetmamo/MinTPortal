@@ -1,154 +1,110 @@
-import React,{useState} from 'react';
-import { Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom'; 
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from 'react-router-dom';
+import { FaSearch } from 'react-icons/fa'; // Importing the search icon
 
-import partner from "../../images/Institutes/Ict-partners.png";
-import partner1 from "../../images/Institutes/Ict-partners1.png";
-import partner2 from "../../images/Institutes/Ict-partners2.png";
-import partner3 from "../../images/Institutes/Ict-partners3.png";
-import partner4 from "../../images/Institutes/Ict-partners4.png";
-import partner5 from "../../images/Institutes/Ict-partners5.png";
+axios.defaults.withCredentials = true;
 
 const IctPartners = () => {
-  const [isClicked, setIsClicked] = useState(false);
+  const [partners, setPartners] = useState([]);
 
-  const handleClick = () => {
-    setIsClicked(true);
-  }
-    return (
+  useEffect(() => {
+    // Fetch data when the component mounts
+    const fetchPartners = async () => {
+      try {
+        const response = await axios.get('http://localhost:5001/institutes/partners');
+        const data = response.data;
+        setPartners(data);
+      } catch (error) {
+        console.error('Error fetching institutes:', error);
+      }
+    };
 
-<container>
-<div className='row'>
-<div className="col-sm-3 mt-5" >
-  <div className="menu" style={{ backgroundColor: '#11676d', marginBottom: '80px', borderRadius: '10px' }}>
-    <ul className=" list-group" style={{ listStyleType: 'none', padding: '40px' }}>
-      
-      <li className="list-group-item list-group-item-dark" data-content="research" style={{ width: '100%', marginBottom: '10px' ,backgroundColor: 'orange', borderRadius: '5px'}}>
-        <Link to='/institutes/research' style={{ textDecoration: 'none', width: '100%', color:'white'}} onClick={handleClick}>Research Institutes</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="labs" style={{ width: '100%', marginBottom: '10px',backgroundColor: 'orange', borderRadius: '5px' }}>
-        <Link to='/institutes/labs' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>Laboratories</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="ict" style={{ width: '100%', marginBottom: '10px',backgroundColor: 'orange', borderRadius: '5px' }}>
-        <Link to='/institutes/ict' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>ICT Partners</Link>
-      </li>
-      <li className=" list-group-item list-group-item-dark" data-content="government" style={{ width: '100%', marginBottom: '10px' ,backgroundColor: 'orange', borderRadius: '5px'}}>
-        <Link to='/institutes/government' style={{ textDecoration: 'none', width: '100%', color:'white' }} onClick={handleClick}>Government Agency</Link>
-      </li>
-    </ul>
-  </div>
-</div>
-<div className='col'>
-<div >
-        <br /><br />
-         <Container className='w-60%'>
-      {/* Carousel */}
-      <div id="demo" className="carousel slide" data-bs-ride="carousel">
-        {/* Indicators/dots */}
-        <div className="carousel-indicators">
-          <button type="button" data-bs-target="#demo" data-bs-slide-to="0" className="active"></button>
-          <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-          <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-        </div>
+    fetchPartners();
+  }, []);
 
-        {/* The slideshow/carousel */}
-        <div className="carousel-inner">
-          <div className="carousel-item active">
-            <img src={partner} alt="Los Angeles" className="d-block w-100 " />
-            <div className="carousel-caption">
-              <h1 style={{ color: 'black', textAlign: 'center' }}>Dedicated On-site Time - ICT Partnerships offer a bespoke support solution for any client</h1>
-              {/* <p>Slide 1 Description</p> */}
-            </div>
-          </div>
-          <div className="carousel-item">
-            <img src={partner1} alt="Chicago" className="d-block w-100" />
-            <div className="carousel-caption">
-              <h1 style={{ color: 'black', textAlign: 'center' }}>Affordable - Our aim is to provide affordable solutions and services </h1>
-              {/* <p>Slide 2 Description</p> */}
-            </div>
-          </div>
-          <div className="carousel-item">
-            <img src={partner2} alt="New York" className="d-block w-100 " />
-            <div className="carousel-caption">
-              <h1 style={{ color: 'black', textAlign: 'center' }}>Reliable - Our team is highly skilled and highly professiona services </h1>
-              {/* <p>Slide 3 Description</p> */}
-            </div>
-          </div>
-        </div>
-
-        {/* Left and right controls/icons */}
-        <button className="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon"></span>
-        </button>
-        <button className="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-          <span className="carousel-control-next-icon"></span>
-        </button>
-      </div>
-
-    </Container>
-  
-        {/* Card form */}
-        <div className="container mt-3">
-          {/* <h2>Card Image</h2>
-          <p>Image at the top (card-img-top):</p> */} <br/><br/>
-          <div className="card" style={{ width: '100%' }}>
-            <img className="card-img-top" src={partner3} alt="Card image" style={{ width: '60%' }} />
-            <div className="card-body">
-              <h4 className="card-title">Dedicated On-site Time </h4>
-              <p className="card-text">ICT Partnerships offer a bespoke support solution for any client that we <br />
-               look after as we appreciate the varying needs of every organisation. We believe that in order to <br />
-               create the best ongoing partnership possible regular scheduled</p>
-              <a href="#" className="btn btn-primary">Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <div className="container mt-3">
-          {/* <h2>Card Image</h2>
-          <p>Image at the top (card-img-top):</p> */}<br/><br/>
-          <div className="card" style={{ width: '100%' }}>
-            <img className="card-img-top" src={partner4} alt="Card image" style={{ width: '60%' }} />
-            <div className="card-body">
-              <h4 className="card-title">Affordable</h4>
-              <p className="card-text">Our aim is to provide affordable solutions and a service level you <br />
-               would expect as a large enterprise to medium and small organisations. We can even spread the <br />
-                cost of your support to meet your budgeting needs.</p>
-              <a href="#" className="btn btn-primary">Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <div className="container mt-3 ">
-          {/* <h2>Card Image</h2>
-          <p>Image at the top (card-img-top):</p> */}<br/><br/>
-          <div className="card" style={{ width: '100%' }}>
-            <img className="card-img-top" src={partner5} alt="Card image" style={{ width: '60%' }} />
-            <div className="card-body">
-              <h4 className="card-title">Reliable</h4>
-              <p className="card-text">Our team is highly skilled and highly professional and if we <br />
-              can’t resolve your issue straight away we’ll attempt to provide an alternative option  <br />
-              until we can get you back up and running.</p>
-              <a href="#" className="btn btn-primary">Read More</a>
-            </div>
-          </div>
-        </div>
-        <br /><br />
-      <div className="d-flex justify-content-end" style={{ marginRight: '50px' }}>
-        <button className="btn btn-primary">
-          <a href="/" style={{ color: 'white', textDecoration: 'none' }}>Next Page</a>
-        </button>
-      </div>
-      <br />
-      </div>
-</div>
-
-</div>
-
-</container>
-
-
-     
-    );
+  const handleTitleClick = (link) => {
+    window.open(link, "_blank");
   };
-  
-  export default IctPartners;
+  function searchItem(e){
+    let searchText = e.value.toLowerCase();
+    let titles2 = Array.from(document.getElementsByClassName('card-title'));
+    let contents = Array.from(document.getElementsByClassName('card-text text-muted'));
+    let titles = titles2.concat(contents);
+    let parent = null;
+    Array.from(titles).forEach(function(title1){
+      if(title1.innerText.toLowerCase().indexOf(searchText) > -1){
+        title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "";
+        parent = title1.parentElement.parentElement.parentElement.parentElement.parentElement;
+        console.log(parent);
+      }
+      else{
+        if(parent === title1.parentElement.parentElement.parentElement.parentElement.parentElement){
+          title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "";
+        }
+        else{
+          title1.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = "none";
+        }
+      }
+    })
+  }
+  return (
+    <div className="container m-10">
+      <br /><br />
+      <h1 className="mb-4 mt-3 font-weight-bold text-center">ICT Partners</h1>
+      <div className="input-group mb-3">
+        <input
+          type="text"
+          className="form-control rounded-pill text-center"
+          placeholder="Search Here"
+          aria-label="Enter institute title"
+          aria-describedby="basic-addon2"
+          style={{ maxWidth: '200px' }}
+          onChange={function(e){searchItem(e.target)}}
+        />
+        <div className="input-group-append mt-2">
+          <span className="input-group-text bg-white border-0"><FaSearch /></span>
+        </div>
+      </div>
+      <div className="row">
+        {partners.map((partner, index) => (
+          <div key={index} className="mb-5">
+            <div className="card rounded shadow grow-on-hover d-flex">
+              <div className="row g-0">
+                <div className="col-lg-6 d-flex justify-content-center align-items-center">
+                  <img
+                    src={partner.imagePath}
+                    className="card-img-top rounded-top"
+                    alt={`Institute ${index + 1}`}
+                    style={{ height: '200px', width: '300px' }}
+                  />
+                </div>
+                <div className="col mx-5 my-2">
+                  <div className="card-body">
+                    <h4
+                      className="card-title my-3 text-primary"
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <Link to={partner.link} target="_blank" rel="noopener noreferrer">
+                        {partner.title}
+                      </Link>
+                    </h4>
+                    <p className="col card-text text-muted">{partner.description}</p>
+                    <h6 className="my-2"><b>Category:</b> {partner.category}</h6>
+                    <h6 className="my-2"><b>Email:</b> {partner.email}</h6>
+                    <h6 className="my-2"><b>Phone:</b> {partner.phone}</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="text-left mt-3 mx-5">
+        <Link style={{ marginBottom: "30px" }} to="/view-more" className="btn btn-primary">View More</Link>
+      </div>
+    </div>
+  );
+};
+
+export default IctPartners;
