@@ -32,7 +32,7 @@ const ContactUs = () => {
 
     try {
       const response = await axios.post(
-        'https://research-portal-server-9.onrender.com/footer/add-footer',
+        process.env.REACT_APP_SERVER+'footer/add-footer',
         data
       );
       console.log(response.data);

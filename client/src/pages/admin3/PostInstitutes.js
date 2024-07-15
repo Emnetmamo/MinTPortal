@@ -23,7 +23,7 @@ function PostInstitutes() {
   });
 
   const navigate = useNavigate();
-  const defaultImageURL = 'https://research-portal-server-9.onrender.com/images/noimage.png'
+  const defaultImageURL = process.env.REACT_APP_SERVER+'images/noimage.png'
   const [imagePreview, setImagePreview] = useState(defaultImageURL);
   const [isAuthenticated, setIsAuthenticated] = useState(null)
   
@@ -145,7 +145,7 @@ function PostInstitutes() {
      
 
       try {
-        const response = axios.post('https://research-portal-server-9.onrender.com/admin/institutes/post-to-institutes', data);
+        const response = axios.post(process.env.REACT_APP_SERVER+'admin/institutes/post-to-institutes', data);
         console.log(response.data);
           alert('Do you want to submit')
           toast.info('Institutes form submitted successfully!');

@@ -10,7 +10,7 @@ const ForgetPassowed = () => {
     function handleSubmit(e) {
         e.preventDefault();
     
-        axios.post('https://research-portal-server-9.onrender.com/password/forgot', {email:email} ) 
+        axios.post(process.env.REACT_APP_SERVER+'password/forgot', {email:email} ) 
           .then((result) => {
             console.log(result.data);
             if (result.data.message === 'success') {

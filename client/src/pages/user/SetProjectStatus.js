@@ -48,7 +48,7 @@ const SetProjectStatus = ({email}) => {
         else{
             navigate('/login'); 
         }
-      axios.get('https://research-portal-server-9.onrender.com/admin/userStatus/fetch-'+email1)
+      axios.get(process.env.REACT_APP_SERVER+'admin/userStatus/fetch-'+email1)
       .then((result)=>{
         console.log(result);
         setProjects(result.data);
@@ -62,7 +62,7 @@ const SetProjectStatus = ({email}) => {
   function submitStatus(id){
     const selectedStatus = parseInt(document.getElementById(id).value);
     if(loaded && projects[0]){
-        axios.get('https://research-portal-server-9.onrender.com/admin/userStatus/'+id+"-"+selectedStatus)
+        axios.get(process.env.REACT_APP_SERVER+'admin/userStatus/'+id+"-"+selectedStatus)
         .then(result=>console.log(result))
         .catch(err=>console.log(err));
     }

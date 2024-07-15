@@ -20,7 +20,7 @@ const History = () => {
 
   useEffect(() => {
     axios
-      .get("https://research-portal-server-9.onrender.com/resources/history")
+      .get(process.env.REACT_APP_SERVER+"resources/history")
       .then((response) => {
         const parsedData =
           typeof response.data === "string"

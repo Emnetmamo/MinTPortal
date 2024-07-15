@@ -330,7 +330,7 @@ if (cookies) {
       else{
         navigate('/login'); 
       }
-      axios.get('https://research-portal-server-9.onrender.com/admin/userStatus/fetch-'+email)
+      axios.get(process.env.REACT_APP_SERVER+'admin/userStatus/fetch-'+email)
       .then((result)=>{
         setProjects(result.data);
         console.log(result.data);

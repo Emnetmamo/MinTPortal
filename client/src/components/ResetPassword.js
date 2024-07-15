@@ -12,7 +12,7 @@ const RestPassowrd = () => {
     function handleSubmit(e) {
         e.preventDefault();
     
-        axios.post('https://research-portal-server-9.onrender.com/password/reset', { password: password,id:id })
+        axios.post(process.env.REACT_APP_SERVER+'password/reset', { password: password,id:id })
 
           .then((result) => {
             console.log(result.data);

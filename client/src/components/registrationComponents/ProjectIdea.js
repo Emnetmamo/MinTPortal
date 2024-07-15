@@ -96,7 +96,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
     try {
 
       const response = await axios.post(
-        "https://research-portal-server-9.onrender.com/auth/submitProject",
+        process.env.REACT_APP_SERVER+"auth/submitProject",
         formData
       );
       console.log(response);

@@ -52,7 +52,7 @@ const ConfirmAppointment = () => {
       else{
         navigate('/login'); 
       }
-      axios.get('https://research-portal-server-9.onrender.com/admin/appointment/load-'+email)
+      axios.get(process.env.REACT_APP_SERVER+'admin/appointment/load-'+email)
       .then((result)=>{
         setAppoint(result.data);
         //console.log(result);
@@ -108,7 +108,7 @@ async function updateStatus(id){
   const text = document.getElementById(projectID+"-Message");
   const message = {message:text.value};
   // axios.get('https://research-portal-server-9.onrender.com/admin/appointment/setStatus-'+id)
-  await axios.post('https://research-portal-server-9.onrender.com/admin/appointment/setStatus-'+id, message)
+  await axios.post(process.env.REACT_APP_SERVER+'admin/appointment/setStatus-'+id, message)
   .then(result=>console.log(result))
   .catch(err=>console.log(err));
   window.location.reload(false);

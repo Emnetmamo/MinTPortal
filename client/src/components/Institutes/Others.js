@@ -12,7 +12,7 @@ const Others = () => {
     // Fetch data when the component mounts
     const fetchAgencies = async () => {
       try {
-        const response = await axios.get('https://research-portal-server-9.onrender.com/institutes/others');
+        const response = await axios.get(process.env.REACT_APP_SERVER+'institutes/others');
         const data = response.data;
         setAgencies(data);
         setLoaded(true);

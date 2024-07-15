@@ -31,7 +31,7 @@ function ViewReports() {
           else{
             navigate('/login'); 
           }
-        axios.get('https://research-portal-server-9.onrender.com/report/getAll')
+        axios.get(process.env.REACT_APP_SERVER+'report/getAll')
         .then((result)=>{setReports(result.data); console.log(result)})
         .catch(err=>console.log(err))
         setLoaded(true);
@@ -96,7 +96,7 @@ function ViewReports() {
         const reportID = id.split('-')[0];
         const projID = id.split('-')[1];
         const feedback = document.getElementById(reportID+"-input").value;
-        axios.post('https://research-portal-server-9.onrender.com/report/setMessage', {reportID:reportID, message: feedback})
+        axios.post(process.env.REACT_APP_SERVER+'report/setMessage', {reportID:reportID, message: feedback})
         .then((result)=>{console.log(result); toast.info("Feedback Submitted Successfully");})
         .catch(err=>console.log(err))
     }

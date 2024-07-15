@@ -92,7 +92,7 @@ function AddAdmin() {
     
       if (password === confirmPassword && password.length >= 8 && /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!.])[A-Za-z\d@#$%^&*!.]{8,}/.test(password)) {
         axios
-          .post("https://research-portal-server-9.onrender.com/auth/register2", {
+          .post(process.env.REACT_APP_SERVER+"auth/register2", {
             fName,
             LName,
             password,

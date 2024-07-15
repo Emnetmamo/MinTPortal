@@ -14,8 +14,8 @@ function AdminHeader() {
   useEffect(() => {
       const checkAuthentication = async () => {
           try {
-            const response = await axios.get('https://research-portal-server-9.onrender.com/check-auth-status');
-            const response2 = await axios.get('https://research-portal-server-9.onrender.com/auth1/protect');
+            const response = await axios.get(process.env.REACT_APP_SERVER+'check-auth-status');
+            const response2 = await axios.get(process.env.REACT_APP_SERVER+'auth1/protect');
             const isAuthenticated = response.data.isAuthenticated;
             const userName = response2.data.name
             console.log(isAuthenticated)
@@ -49,7 +49,7 @@ function AdminHeader() {
   // Function to perform logout
  
   function logout() {
-      axios.get('https://research-portal-server-9.onrender.com/logout')
+      axios.get(process.env.REACT_APP_SERVER+'logout')
       // Clear the user identifier from session storage
      // sessionStorage.removeItem('user');
       // Redirect to the login page or perform other logout actions

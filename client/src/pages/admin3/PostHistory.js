@@ -26,7 +26,7 @@ function PostHistory() {
 
   const navigate = useNavigate();
   const defaultImageURL =
-    "https://research-portal-server-9.onrender.com/images/noimage.png";
+    process.env.REACT_APP_SERVER+"images/noimage.png";
   const [imagePreview, setImagePreview] = useState(defaultImageURL);
 
   useEffect(function(){
@@ -66,7 +66,7 @@ function PostHistory() {
   console.log('from hisotru ',data)
     try {
       const response = await axios.post(
-        "https://research-portal-server-9.onrender.com/admin/history/add-history",{title,p_investigator,author,funding_source,description,field_of_study,date,image,file}
+        process.env.REACT_APP_SERVER+"admin/history/add-history",{title,p_investigator,author,funding_source,description,field_of_study,date,image,file}
        
       );
   

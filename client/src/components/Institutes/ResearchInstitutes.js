@@ -11,7 +11,7 @@ const ResearchInstitutes = () => {
     // Fetch data when the component mounts
     const fetchResearch = async () => {
       try {
-        const response = await axios.get('https://min-t-portal-server.vercel.app/institutes/researchs');
+        const response = await axios.get(process.env.REACT_APP_SERVER+'institutes/researchs');
         const data = response.data;
         setResearch(data);
       } catch (error) {

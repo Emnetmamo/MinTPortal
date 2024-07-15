@@ -16,7 +16,7 @@ function ViewCommitteeReports() {
     const location = useLocation();
   const {email} = location.state;
     useEffect(function(){
-        axios.get('https://min-t-portal-server.vercel.app/admin2Reports/getAll')
+        axios.get(process.env.REACT_APP_SERVER+'admin2Reports/getAll')
         .then((result)=>{setReports(result.data); console.log(result)})
         .catch(err=>console.log(err))
         setLoaded(true);

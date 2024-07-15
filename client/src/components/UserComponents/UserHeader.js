@@ -14,8 +14,8 @@ function UserHeader() {
   useEffect(() => {
       const checkAuthentication = async () => {
           try {
-            const response = await axios.get('http://localhost:5001/check-auth-status');
-            const response2 = await axios.get('http://localhost:5001/userd/dashboard');
+            const response = await axios.get(process.env.REACT_APP_SERVER+'check-auth-status');
+            const response2 = await axios.get(process.env.REACT_APP_SERVER+'userd/dashboard');
             console.log(response2)
             const isAuthenticated = response.data.isAuthenticated;
             const userName = response2.data.decoded.name

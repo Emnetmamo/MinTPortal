@@ -153,7 +153,7 @@ function SetAppointmentDate() {
       else{
         navigate('/login'); 
       }
-      axios.get('https://research-portal-server-9.onrender.com/admin/appointment/getAll')
+      axios.get(process.env.REACT_APP_SERVER+'admin/appointment/getAll')
       .then((result)=>{
         setProjects(result.data);
         //console.log(result);
@@ -211,7 +211,7 @@ function updateStatus(id){
   const dateInput = document.getElementById(id);
   const newDate = new Date(dateInput.value).toISOString(); 
   console.log(newDate);
-  axios.get('https://research-portal-server-9.onrender.com/admin/appointment/setAppointment_'+id+"_"+newDate)
+  axios.get(process.env.REACT_APP_SERVER+'admin/appointment/setAppointment_'+id+"_"+newDate)
   .then((result)=>{
     console.log(result);
     if(result.data==="Already set"){

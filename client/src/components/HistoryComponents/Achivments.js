@@ -8,7 +8,7 @@ const Achivments = () => {
 
   useEffect(() => {
     
-    axios.post('https://research-portal-server-9.onrender.com/history/homehistory', { id })
+    axios.post(process.env.REACT_APP_SERVER+'history/homehistory', { id })
       .then(response => {
         
         setAchievement(response.data.data);

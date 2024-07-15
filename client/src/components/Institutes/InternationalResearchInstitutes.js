@@ -11,7 +11,7 @@ const InternationalResearchInstitutes = () => {
     // Fetch data when the component mounts
     const fetchResearch = async () => {
       try {
-        const response = await axios.get('https://research-portal-server-9.onrender.com/institutes/international-researchs');
+        const response = await axios.get(process.env.REACT_APP_SERVER+'institutes/international-researchs');
         const data = response.data;
         setResearch(data);
       } catch (error) {

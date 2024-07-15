@@ -16,7 +16,7 @@ axios.defaults.withCredentials=true;
 
 function Post_News() {
   
-  const defaultImageURL = 'https://research-portal-server-9.onrender.com/images/noimage.png'
+  const defaultImageURL = process.env.REACT_APP_SERVER+'images/noimage.png'
   const [imagePreview, setImagePreview] = useState(defaultImageURL);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -141,7 +141,7 @@ function Post_News() {
       data.append('image', formData.image);
 
       try {
-        const response = axios.post('https://research-portal-server-9.onrender.com/admin/news/add-news', data);
+        const response = axios.post(process.env.REACT_APP_SERVER+'admin/news/add-news', data);
         console.log(response.data);
           alert('Do you want to submit')
           toast.info('News form submitted successfully!');

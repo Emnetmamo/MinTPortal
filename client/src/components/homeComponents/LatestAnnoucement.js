@@ -12,7 +12,7 @@ const LatestAnnouncement = (props) => {
 
   useEffect(() => {
     axios
-      .get("https://research-portal-server-9.onrender.com/announcements/fetchCalls")
+      .get(process.env.REACT_APP_SERVER+"announcements/fetchCalls")
       .then(result => {
         const calls = result.data;
 

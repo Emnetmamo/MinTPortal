@@ -29,7 +29,7 @@ function ViewCommitteeReports() {
       else{
         navigate('/login'); 
       }
-        axios.get('https://research-portal-server-9.onrender.com/admin2Reports/getAll')
+        axios.get(process.env.REACT_APP_SERVER+'admin2Reports/getAll')
         .then((result)=>{setReports(result.data); console.log(result)})
         .catch(err=>console.log(err))
         setLoaded(true);

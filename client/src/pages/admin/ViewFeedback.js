@@ -75,7 +75,7 @@ const ViewFeedback = () => {
     }
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://research-portal-server-9.onrender.com/footer');
+        const response = await axios.get(process.env.REACT_APP_SERVER+'footer');
         console.log('Feedback Data:', response.data); // Check if data is logged correctly
         setFeedbackData(response.data);
       } catch (error) {

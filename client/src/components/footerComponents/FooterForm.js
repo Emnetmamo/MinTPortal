@@ -78,7 +78,7 @@ function FooterForm() {
     data.append('email', formData.email);
 
     try {
-        const response = await axios.post('https://research-portal-server-9.onrender.com/footer/add-footer', data);
+        const response = await axios.post(process.env.REACT_APP_SERVER+'footer/add-footer', data);
         console.log(response.data);
         alert('Do you want to submit');
         toast.info('footer form submitted successfully!');

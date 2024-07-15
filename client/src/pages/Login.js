@@ -172,7 +172,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     axios
-      .post('https://research-portal-server-9.onrender.com/authl/login', { email, password })
+      .post(process.env.REACT_APP_SERVER+'authl/login', { email, password })
       .then((result) => {
 
         console.log(result.data);

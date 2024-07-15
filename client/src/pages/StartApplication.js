@@ -4,7 +4,7 @@ import { useLocation, Link } from "react-router-dom";
 function StartApplication(){
     function downloadFile(){
         axios({
-            url: 'https://research-portal-server-9.onrender.com/templates/ProposalTemplate.docx',
+            url: process.env.REACT_APP_SERVER+'templates/ProposalTemplate.docx',
             method: 'GET',
             responseType: 'blob', // Ensure the response type is set to blob
           })

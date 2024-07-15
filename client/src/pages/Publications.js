@@ -11,7 +11,7 @@ const Publications = () => {
 
   useEffect(() => {
     // Fetch data when the component mounts
-    axios.get('https://research-portal-server-9.onrender.com/resources/publications')
+    axios.get(process.env.REACT_APP_SERVER+'resources/publications')
       .then(response => {
         const parsedData = typeof response.data === 'string' ? JSON.parse(response.data) : response.data;
 

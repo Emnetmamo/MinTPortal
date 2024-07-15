@@ -253,13 +253,13 @@ if (cookies) {
       else{
         navigate('/login'); 
       }
-      axios.get('https://research-portal-server-9.onrender.com/admin/userStatus/getAll')
+      axios.get(process.env.REACT_APP_SERVER+'admin/userStatus/getAll')
       .then((result)=>{
         setProjects(result.data);
         //console.log(result);
       })
       .catch(err=>console.log(err))
-      axios.post('https://research-portal-server-9.onrender.com/admin2Feedback/getField', {email:email})
+      axios.post(process.env.REACT_APP_SERVER+'admin2Feedback/getField', {email:email})
       .then((result)=>{
         setField(result.data.field);
         console.log(result);
@@ -412,7 +412,7 @@ async function updateStatus(id, newStatus, title){
   //console.log(title);
   const feedback = newStatus + "-" + feedback2 + "-" + feedback1;
   let message = "";
- await axios.post('https://research-portal-server-9.onrender.com/admin2Feedback/setFeedback', {id: id, email: email, title: title, feedback: feedback})
+ await axios.post(process.env.REACT_APP_SERVER+'admin2Feedback/setFeedback', {id: id, email: email, title: title, feedback: feedback})
   .then(result=>{console.log(result); message = "Feedback Uploaded"; console.log(message); toast.success(message);})
   .catch(err=>console.log(err));
   window.location.reload(false);

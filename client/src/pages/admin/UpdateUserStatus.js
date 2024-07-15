@@ -28,13 +28,13 @@ function UpdateUserStatus() {
       else{
         navigate('/login'); 
       }
-      axios.get('https://research-portal-server-9.onrender.com/admin/userStatus/getAll')
+      axios.get(process.env.REACT_APP_SERVER+'admin/userStatus/getAll')
       .then((result)=>{
         setProjects(result.data);
         //console.log(result);
       })
       .catch(err=>console.log(err))
-      axios.get('https://research-portal-server-9.onrender.com/admin2Feedback/getFeedback')
+      axios.get(process.env.REACT_APP_SERVER+'admin2Feedback/getFeedback')
       .then((result)=>{setFeedbacks(result.data); console.log(feedbacks)})
       .catch(err=>console.log(err))
       setLoaded(true);
@@ -86,7 +86,7 @@ function organizeFeedback(id, status){
 }
 function updateStatus(id, newStatus){
   console.log("Clicked!")
-  axios.get('https://research-portal-server-9.onrender.com/admin/userStatus/'+id+"-"+newStatus)
+  axios.get(process.env.REACT_APP_SERVER+'admin/userStatus/'+id+"-"+newStatus)
   .then(result=>console.log(result))
   .catch(err=>console.log(err));
   // window.location.reload(false);

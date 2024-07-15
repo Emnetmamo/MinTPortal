@@ -9,7 +9,7 @@ function ViewNews() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(function () {
-    axios.get('https://research-portal-server-9.onrender.com/news')
+    axios.get(process.env.REACT_APP_SERVER+'news')
       .then((result) => {
         setNews(result.data);
         setLoaded(true);

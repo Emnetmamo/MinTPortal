@@ -118,7 +118,7 @@ const FeedbackReport = () => {
       else{
         navigate('/login'); 
       }
-      axios.post('https://research-portal-server-9.onrender.com/report/find', {email})
+      axios.post(process.env.REACT_APP_SERVER+'report/find', {email})
       .then((result)=>{console.log(result.data); setReports(result.data);})
       .catch(err=>console.log(err))
     }

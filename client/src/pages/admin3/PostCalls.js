@@ -126,7 +126,7 @@ function PostCalls() {
     data.append('guideline', formData.guideline);
 
     try {
-      const response = axios.post("https://research-portal-server-9.onrender.com/announcements/addCall", data);
+      const response = axios.post(process.env.REACT_APP_SERVER+"announcements/addCall", data);
       console.log(response.data);
         alert('Do you want to submit')
         toast.info('Call form submitted successfully!');

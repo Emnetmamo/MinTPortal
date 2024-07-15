@@ -55,13 +55,13 @@ if (cookies) {
       else{
         navigate('/login'); 
       }
-      axios.get('https://research-portal-server-9.onrender.com/admin/userStatus/getAll')
+      axios.get(process.env.REACT_APP_SERVER+'admin/userStatus/getAll')
       .then((result)=>{
         setProjects(result.data);
         //console.log(result);
       })
       .catch(err=>console.log(err))
-      axios.get('https://research-portal-server-9.onrender.com/admin2Reports/find/'+email)
+      axios.get(process.env.REACT_APP_SERVER+'admin2Reports/find/'+email)
       .then((result)=>{
         setUserID(result.data[0]._id);
         console.log(userID);
@@ -138,7 +138,7 @@ function SubmitReport(id){
     formData.append('file', file);
     console.log(file);
 
-    axios.post('https://research-portal-server-9.onrender.com/admin2Reports/upload/'+ userID + "-" +  id , formData, config)
+    axios.post(process.env.REACT_APP_SERVER+'admin2Reports/upload/'+ userID + "-" +  id , formData, config)
     .then((res)=>{console.log(res);})
     .catch(err=>console.log(err))
     toast.info("Report Submitted Successfully!")
