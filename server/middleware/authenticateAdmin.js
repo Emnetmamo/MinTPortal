@@ -1,7 +1,11 @@
 import jwt from "jsonwebtoken";
 import express from 'express'
+import dotenv from 'dotenv'
+
 const adminAuthenticate=express.Router()
-const SECRET_KEY='miint'
+dotenv.config()
+
+const SECRET_KEY= process.env.SECRET_KEY
 function Verify(req, res, next) {
     const token = req.cookies.token;
     if (!token) {

@@ -16,10 +16,6 @@ const committeeReportSchema = new mongoose.Schema({
     reportPath:{
         type: String,
         required: true
-    },
-    uploadDate:{
-        type: Date,
-        required: true
     }
 });
 

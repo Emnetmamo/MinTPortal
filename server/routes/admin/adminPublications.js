@@ -46,19 +46,15 @@ router.post('/add-publication', (req, res) => {
        imagePath =  req.files['image'][0].path; 
        console.log(imagePath) }
 
-      const serverUrl = 'http://localhost:5001'; 
+      const serverUrl = 'https://research-portal-server-9.onrender.com'; 
 
       // Process image path
-      const partsImage = imagePath.split('public\\');
-      const cleanImagePath = partsImage.join('');
-      const imageUrl = serverUrl + '/' + cleanImagePath;
-      const imagePaths = imageUrl.replace(/\//g, '\\');
+      const cleanImagePath = imagePath.replace(/\\/g, '/').split('public/').pop();
+      const imagePaths = serverUrl + '/' + cleanImagePath;  
 
       // Process file path
-      const partsFile = filePath.split('public\\');
-      const cleanFilePath = partsFile.join('');
-      const fileUrl = serverUrl + '/' + cleanFilePath;
-      const filePaths = fileUrl.replace(/\//g, '\\');      
+      const cleanFilePath = filePath.replace(/\\/g, '/').split('public/').pop();
+      const filePaths = serverUrl + '/' + cleanFilePath;     
 
 
       try {

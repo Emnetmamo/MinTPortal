@@ -28,13 +28,17 @@ router.post('/setMessage', async function(req, res){
 router.post('/find', async function(req, res){
     const email = req.body.email;
     const proj = await ProjectModel.find({email:email});
-    const projID = proj[0]._id.toString();
-    //console.log(projID);
+    console.log(proj)
+    const projID = proj._id;
+    console.log(projID)
+    if(projID){
+    console.log(projID);
         await reportsModel.find({projectID: projID})
         .then((result)=>{
             // console.log(result);
             res.json(result);})
         .catch(err=> console.log(err))
+    }else {res.json({message: 'you have not uploaded report yet'})}
 })
 router.post('/upload/:id',upload.single('file') ,async function(req, res){
     const projectTitle1 = req.params.id.split('-')[0];
@@ -53,7 +57,6 @@ router.post('/upload/:id',upload.single('file') ,async function(req, res){
             message: " ",
             filePath: path
         });
-        res.json("Successful");
 })
 router.get('/getAll', async function(req,res){
     await reportsModel.find({})

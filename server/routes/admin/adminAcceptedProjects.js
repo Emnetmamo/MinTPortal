@@ -51,19 +51,16 @@ router.post('/add-accepted-project',(req, res) => {
        console.log(imagePath) }
 
 
-      const serverUrl = 'http://localhost:5001'; // Replace this with your server URL
+      const serverUrl = 'https://research-portal-server-9.onrender.com'; // Replace this with your server URL
 
       // Process image path
-      const partsImage = imagePath.split('public\\');
-      const cleanImagePath = partsImage.join('');
-      const imageUrl = serverUrl + '/' + cleanImagePath;
-      const imagePaths = imageUrl.replace(/\//g, '\\');
+      const cleanImagePath = imagePath.replace(/\\/g, '/').split('public/').pop();
+      const imagePaths = serverUrl + '/' + cleanImagePath;  
 
       // Process file path
-      const partsFile = filePath.split('public/');
-      const cleanFilePath = partsFile.join('');
-      const fileUrl = serverUrl + '/' + cleanFilePath;
-      const filePaths = fileUrl.replace(/\//g, '\\');
+      const cleanFilePath = filePath.replace(/\\/g, '/').split('public/').pop();
+      const filePaths = serverUrl + '/' + cleanFilePath;
+      
 
       try {
         const newPublication = new AcceptedProject({

@@ -4,9 +4,8 @@ import dotenv from 'dotenv'
 
 dotenv.config();
 
-
 const dashboardRoute = express.Router();
-const SECRET_KEY = process.env.SECRET_KEY
+const SECRET_KEY = process.env.SECRET_KEY;
 
 function Verify(req, res, next) {
   const token = req.cookies.token;
@@ -20,7 +19,7 @@ function Verify(req, res, next) {
       return res.status(401).json('Unauthorized: Error during token verification');
     }
 
-    if (decode.role === 'admin' ) {
+    if (decode.role === 'admin2' ) {
       req.decoded = decode
       next();
     } else {

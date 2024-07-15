@@ -56,7 +56,7 @@ const upload = multer({
 
 
 // POST add-news
-router.post('/add-news',Verify, (req, res) => {
+router.post('/add-news', (req, res) => {
   upload(req, res, async (err) => {
     if (err) {
       // Handle upload error
@@ -66,14 +66,16 @@ router.post('/add-news',Verify, (req, res) => {
       let imagePath = 'public\\images\\noimage.png'
       if (req.file){ imagePath = req.file.path; 
       console.log(imagePath)  }
-      const serverUrl = 'http://localhost:5001'; // Replace this with your server URL
+      const serverUrl = 'https://research-portal-server-9.onrender.com'; // Replace this with your server URL
       
       //   Remove 'public' from the path
       const parts = imagePath.split('public\\');
-      const cleanImagePath = parts.join('');
-      const imageUrl = serverUrl + '/' + cleanImagePath;      
-      const imagePaths = imageUrl.replace(/\//g, '\\')
-      console.log(imagePaths)
+      const cleanImagePath = imagePath.replace(/\\/g, '/').split('public/').pop();
+      const imagePaths = serverUrl + '/' + cleanImagePath;  
+      // const cleanImagePath = parts.join('');
+      // const imageUrl = serverUrl + '/' + cleanImagePath;      
+      // const imagePaths = imageUrl.replace(/\//g, '\\')
+      // console.log(imagePaths)
         
       // try {
           const newNews =  News.create({

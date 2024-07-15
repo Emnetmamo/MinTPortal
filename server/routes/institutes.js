@@ -4,12 +4,12 @@ import Institutes from "../models/institutes.js";
 const router = express.Router()
  
 //GET Research Institutes
-router.get('/researchs', async (req, res) => {
+router.get('/national-researchs', async (req, res) => {
   
   try {
 
     // Find documents by category
-    const institutesData = await Institutes.find({ category :'Research Institutes'});
+    const institutesData = await Institutes.find({ category :'National Research Institutes'});
 
   
     res.json(institutesData); // Do something with the retrieved data
@@ -18,6 +18,22 @@ router.get('/researchs', async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 });
+
+router.get('/international-researchs', async (req, res) => {
+  
+  try {
+
+    // Find documents by category
+    const institutesData = await Institutes.find({ category :'International Research Institutes'});
+
+  
+    res.json(institutesData); // Do something with the retrieved data
+  } catch (error) {
+    console.error('error2:', error)
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 
 
 

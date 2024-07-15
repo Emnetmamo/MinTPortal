@@ -20,7 +20,7 @@ router.post('/add-footer', async(req, res) => {
     } else{
        const { fullName, email, message,  } = req.body; 
       
-      const serverUrl = 'http://localhost:5001'; // Replace this with your server URL
+      const serverUrl = 'https://research-portal-server-9.onrender.com'; // Replace this with your server URL
       
       try {
           const newFooter =  new Footer({

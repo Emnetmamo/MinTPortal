@@ -32,17 +32,17 @@ const adminUserStatus=async (req, res)=>{
     {
         const id1 = new mongoose.Types.ObjectId(req.params.id.split('-')[0]);
         const newStatus = parseInt(req.params.id.split('-')[1]);
+        //await ProjectModel.updateMany( {},{ $set: { currentReviewer : "MinT Research Sector Members"} }, { multi: true });
         try{
-            console.log(id1)
+            console.log(id1);
             await ProjectModel.findOneAndUpdate({_id:id1}, {status: newStatus})
             .then(result=>{ 
                console.log(result)})
             .catch(err=> res.json(err))
-
-            await ProjectModel.findOneAndUpdate({_id:id1}, {currentReviewer: "Technical Committee Member"})
-            .then(result=>{ 
-               console.log(result)})
-            .catch(err=> res.json(err))
+          //  // await ProjectModel.findOneAndUpdate({_id:id1}, {currentReviewer: "Technical Committee Member"})
+          //   .then(result=>{ 
+          //      console.log(result)})
+          //   .catch(err=> res.json(err))
         }
         catch(err){
             console.log(err);
@@ -71,7 +71,7 @@ const adminUserStatus=async (req, res)=>{
         else if(newStatus < 3){
           const today = Date.now();
           const nowDate = (new Date(today)).toISOString();
-          await AppointmentModel.deleteMany({projectId:id1});
+          await AppointmentModel.findOneAndDelete({projectId:id1});
         }
     } 
     
