@@ -16,7 +16,7 @@ const ForeignCalls = (props) => {
 
   console.log(category);
   useEffect(function(){
-    axios.get("https://min-t-portal-server.vercel.app/fetchCalls")
+    axios.get("https://research-portal-server-9.onrender.com/announcements/fetchCalls")
     .then(result=>setCalls(result.data))
     .then(result=>console.log(result))
     .catch(err=>console.log(err))

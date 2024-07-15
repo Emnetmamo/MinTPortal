@@ -6,8 +6,6 @@ import ViewFeedback from './pages/admin/ViewFeedback'
 import ViewFile from './pages/admin/ViewFile'
 import ViewNews from './pages/ViewNews'
 import ViewReports from './pages/admin/ViewReports'
-import ViewCommitteeReports from './pages/admin/ViewCommitteeReports'
-import AddAdmin from './pages/admin/AddAdmin'
 import Home from './pages/Home'
 import {Routes,Route} from 'react-router-dom'
 
@@ -16,14 +14,13 @@ import axios from 'axios'
 import { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 const ProtectAdmin = () => {
-    const[role,setdata]=useState('');
-    const navigate = useNavigate();
+    const[role,setdata]=useState('')
     useEffect(()=>{
-        axios.get('https://min-t-portal-server.vercel.app/authl/protect')
+        axios.get('http://localhost:5001/authl/protect')
         .then(result=>{
-            // console.log(result.data)
+            console.log(result.data)
             setdata(result.data)})
-        .catch(error=>{console.log(error); navigate('/login')});
+        .catch(error=>{console.log(error)});
     },[])
     let isAuth = false;
 
@@ -42,8 +39,6 @@ const ProtectAdmin = () => {
           <Route  path='viewFile' element={<ViewFile/>}></Route>
           <Route  path='viewNews' element={<ViewNews/>}></Route>
           <Route  path='viewReports' element={<ViewReports/>}></Route>
-          <Route  path='viewCommitteeReports' element={<ViewCommitteeReports/>}></Route>
-          <Route  path='addAdmin' element={<AddAdmin/>}></Route>
         </Route>
         </Routes>
     ):(<Home/>)}

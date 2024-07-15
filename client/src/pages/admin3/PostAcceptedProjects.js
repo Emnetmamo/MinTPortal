@@ -1,11 +1,13 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import '../../images/assets/css/admin.css'
 import Sidebar from './Sidebar.js';
+import Logout from '../../components/Logout.js';
 import axios from 'axios';
 import DropzoneImage from '../../components/AdminComponents/Dropzone'
 import DropzoneText from '../../components/AdminComponents/DropzoneText'
+import { useNavigate } from 'react-router-dom';
 
 
 axios.defaults.withCredentials=true;
@@ -25,9 +27,46 @@ function PostAcceptedProjects() {
       
     });
 
-    const defaultImageURL = 'https://min-t-portal-server.vercel.app/images/noimage.png'
+    const navigate = useNavigate();
+    const defaultImageURL = 'https://research-portal-server-9.onrender.com/images/noimage.png'
     const [imagePreview, setImagePreview] = useState(defaultImageURL);
+    const [isAuthenticated, setIsAuthenticated] = useState(null)
+
+    // useEffect (() => {const checkAuthentication = async () => {
+    //   try {
+    //     const response = await axios.get('https://research-portal-server-9.onrender.com/check-auth-status');
+        
+    //     const isAuthenticated = response.data.isAuthenticated;
+    //     console.log(isAuthenticated)    
+    //     setIsAuthenticated(isAuthenticated)
+      
+
+      
+    //   } catch (error) {
+    //     console.error('Error checking authentication status:', error);
+    //     return false;
+    //   }
+    // };
     
+    // // Example usage
+    //  checkAuthentication();
+    // }, [])
+
+    useEffect(function(){
+      if(document.cookie){
+        if(document.cookie.split(';')[1].split('=')[1] === '"admin3"'){
+          
+        }
+        else{
+          navigate('/login');
+        }
+      }
+      else{
+        navigate('/login'); 
+      }
+    }
+      ,[])
+
     const handleFileSelect = (event) => {
       const selectedFile = event.target.files[0];
   
@@ -97,10 +136,10 @@ function PostAcceptedProjects() {
     data.append('file', formData.file);
        
     try {
-      const response =  axios.post('https://min-t-portal-server.vercel.app/admin/accepted-projects/add-accepted-project', data);
+      const response =  axios.post('https://research-portal-server-9.onrender.com/admin/accepted-projects/add-accepted-project', data);
        console.log(response.data);
       alert('Do you want to submit')
-      toast.info('News submitted successfully!');
+      toast.info('Accepted Project submitted successfully!');
       // await  window.location.reload()
     } catch (errors) {
       console.error('Error:', errors.message);
@@ -109,17 +148,11 @@ function PostAcceptedProjects() {
   };
 
   return (
-    <div className="">
-     
-      <div className='container mt-5'>       
-          <div class="row">
-            <div className="col-xs-12 col-md-3 my-5 post-links-container" >
-            <Sidebar/>
-            </div>
-          <div class="col-xs-12 col-md-2"></div>
-          <div class="col-xs-12 col-md-7 mb-5">
+    document.cookie ?
+    <div>
+                     
             <form method="POST" action="/admin/accepted-projects/add-accepted-project" onSubmit={handleSubmit} encType='multipart/form-data' >
-                <br/> <br/>
+               
                 <h1>Post an Accepted Project</h1>
                 <div class="form-group ">
                     <label className='form-label'>Project Title:</label>
@@ -159,36 +192,24 @@ function PostAcceptedProjects() {
                       <label className="form-check-label" htmlFor="agri">Agriculture</label>
                     </div>
                     <div className="d-flex align-items-center">
-                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="envnenergy" value="Industry" onChange={handleChange}   />                     
-                      <label className="form-check-label" htmlFor="envnenergy">Industry</label>
+                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="envnenergy" value="Environment and Energy" onChange={handleChange}   />                     
+                      <label className="form-check-label" htmlFor="envnenergy">Environment and Energy</label>
                     </div>
                     <div className="d-flex align-items-center">
                       <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="health" value="Health"  onChange={handleChange}  />                     
                       <label className="form-check-label" htmlFor="health">Health</label>
                     </div>
                     <div className="d-flex align-items-center">
-                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="industrial" value="Mines and Water" onChange={handleChange}   />                     
-                      <label className="form-check-label" htmlFor="industrial">Mines and Water</label>
+                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="industrial" value="Industrial" onChange={handleChange}   />                     
+                      <label className="form-check-label" htmlFor="industrial">Industrial</label>
                     </div>                  
                     <div className="d-flex align-items-center">
-                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="technology" value="Construction" onChange={handleChange}   />                     
-                      <label className="form-check-label" htmlFor="technology">Construction</label>
+                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="technology" value="Technology" onChange={handleChange}   />                     
+                      <label className="form-check-label" htmlFor="technology">Technology</label>
                     </div>
                     <div className="d-flex align-items-center">
-                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="other" value="Information Communication"  onChange={handleChange}  />                     
-                      <label className="form-check-label" htmlFor="other">Information Communication</label>
-                    </div>
-                    <div className="d-flex align-items-center">
-                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="other" value="Energy"  onChange={handleChange}  />                     
-                      <label className="form-check-label" htmlFor="other">Energy </label>
-                    </div>
-                    <div className="d-flex align-items-center">
-                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="other" value="Environment Protection"  onChange={handleChange}  />                     
-                      <label className="form-check-label" htmlFor="other">Environment Protection </label>
-                    </div>
-                    <div className="d-flex align-items-center">
-                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="other" value="Other related Sectors"  onChange={handleChange}  />                     
-                      <label className="form-check-label" htmlFor="other">Other related Sectors</label>
+                      <input className="form-check-input me-2" type="radio"  name="field_of_study"   id="other" value="other"  onChange={handleChange}  />                     
+                      <label className="form-check-label" htmlFor="other">Other</label>
                     </div>
                   </form>
                 </div>
@@ -231,12 +252,8 @@ function PostAcceptedProjects() {
             <DropzoneImage className='py-5 mt-10 border border-neutral-200'/>            
             <p>Upload Files</p>
             <DropzoneText className='py-5 mt-10 border border-neutral-200'/> */}
-          </div>
-      </div>
-      
-    </div>
-    
-  </div>
+          </div> : <Logout/>
+  
    
   )
 }

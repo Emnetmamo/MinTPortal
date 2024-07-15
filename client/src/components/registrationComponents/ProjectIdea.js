@@ -1,45 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from 'react-toastify';
+import FileBase from 'react-file-base64';
+import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
 
 const ProjectIdea = ({ nextStep, prevStep }) => {
   const navigate = useNavigate();
   const [projectTitle, setProjectTitle] = useState("");
   const [teamMembers, setTeamMembers] = useState([]);
-  const [newTeamMember, setNewTeamMember] = useState("");
+  const [newTeamMember, setNewTeamMember] = useState('');
   const [projectCategory, setProjectCategory] = useState("");
   const [description, setDescription] = useState("");
-  const [cvFile, setCvFile] = useState(null);
-  const [proposalFile, setProposalFile] = useState(null);
-  const [letter, setLetter] = useState(null);
+  const [cvFile, setCvFile] = useState('');
+  console.log(cvFile)
+  const [proposalFile, setProposalFile] = useState('');
+
+  const [letter, setLetter] = useState('');
+  console.log(letter)
   const [email, setEmail] = useState("");
-  const [institute, setInstitute] = useState("");
+  const [institute, setInstitute] = useState("")
+
 
   const MAX_FILE_SIZE = 3 * 1024 * 1024; // 3MB in bytes
-
-  useEffect(function(){
-    function checkEmail(){
-      try{
-        console.log(document.cookie.split(';')[1].split('=')[1]);
-        if(document.cookie.split(';')[1].split('=')[1] === '"user"'){
-          setEmail(document.cookie.split(';')[0].split('=')[1].replaceAll('"',''));
-        }
-      }
-      catch(err){
-
-      }
+  const config = {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
     }
-    checkEmail();
-  },[]);
-
+  };
+  
+ 
   const handleCVFileChange = (e) => {
     const file = e.target.files[0];
     if (file && file.size <= MAX_FILE_SIZE) {
       setCvFile(file);
     } else {
-      toast.error("CV file size should not exceed 3MB");
+      toast.error('CV file size should not exceed 3MB');
     }
   };
 
@@ -48,7 +45,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
     if (file && file.size <= MAX_FILE_SIZE) {
       setProposalFile(file);
     } else {
-      toast.error("Proposal file size should not exceed 3MB");
+      toast.error('Proposal file size should not exceed 3MB');
     }
   };
 
@@ -57,14 +54,14 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
     if (file && file.size <= MAX_FILE_SIZE) {
       setLetter(file);
     } else {
-      toast.error("Letter file size should not exceed 3MB");
+      toast.error('Letter file size should not exceed 3MB');
     }
   };
 
   const handleAddTeamMember = () => {
-    if (newTeamMember.trim() !== "") {
+    if (newTeamMember.trim() !== '') {
       setTeamMembers((prevMembers) => [...prevMembers, newTeamMember.trim()]);
-      setNewTeamMember("");
+      setNewTeamMember('');
     }
   };
 
@@ -83,46 +80,48 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
     formData.append("email", email);
     formData.append("institute", institute);
     if (cvFile) {
+      console.log('cvFile:', cvFile);
       formData.append("cvFile", cvFile);
     }
     if (proposalFile) {
+      console.log('proposalFile:', proposalFile);
       formData.append("proposalFile", proposalFile);
     }
     if (letter) {
+      console.log('letter:', letter);
       formData.append("letter", letter);
     }
+    console.log('FormData:', formData);
+    
     try {
-      const response = await axios.put(
-        "https://min-t-portal-server.vercel.app/auth/submitProject",
+
+      const response = await axios.post(
+        "https://research-portal-server-9.onrender.com/auth/submitProject",
         formData
       );
       console.log(response);
-      if (response.data === "titlepresent") {
-        toast.error(
-          "This project is already taken or done, please choose another topic."
-        );
+      console.log(cvFile)
+      console.log(formData)
+      if (response.data === 'titlepresent') {
+        toast.error('This project is already taken or done, please choose another topic.');
         setTimeout(() => {
-          navigate("/");
+          navigate('/');
         }, 7000);
       } else {
-        toast.success('Almost done!', {
-          position: toast.POSITION.TOP_CENTER, // Centered at the top
-          autoClose: 4000,
-        });
-        nextStep()
+        nextStep();
       }
-
     } catch (error) {
       console.error("Error occurred during project submission: ", error);
     }
   };
+ 
 
   return (
     <div className="container mt-3" style={{width:"60%", marginBottom: "30px"}}>
       <div className="card">
         <div className="card-body">
           <h1
-            style={{ backgroundColor: "gray", color: "white" }}
+            style={{ backgroundColor: "#2b2b2b", color: "white" }}
             className="card-title text-white p-2 rounded text-center mb-4"
           >
             Project Idea Section
@@ -215,28 +214,6 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
           <option value="Energy">Energy </option>
           <option value="Enviroment and Protection">Environment and Protection </option>
           <option value="Other related Sectors">Other related Sectors</option>
-                {/* <option value="Agriculture">Agriculture</option>
-                <option value="Industry">Industry</option>
-                <option value="Health">Health</option>
-                <option value="Construction">Construction</option>
-                <option value="Mines and Water">Mines and Water</option>
-                <option value="Information Communication">
-                  Information Communication
-                </option>
-                <option value="Energy">Energy </option>
-                <option value="Enviroment and Protection">
-                  Environment Protection{" "}
-                </option>
-                <option value="Other related Sectors">
-                  Other related Sectors
-                </option>
-                <option value="Agriculture">Agriculture</option>
-                <option value="Environment_Energy">
-                  Environment and Energy
-                </option>
-                <option value="Health">Health</option>
-                <option value="Industry">Industry</option>
-                <option value="Other">Other</option> */}
               </select>
             </div>
 
@@ -257,7 +234,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
 
             <div className="mb-3">
               <label htmlFor="email" className="form-label" style={{fontSize: "25px"}}>
-                Email Address*
+                Email Address(must be same as the registration email)*
               </label>
               <input
               style={{fontSize: "22px"}}
@@ -269,7 +246,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-            </div>
+            </div> 
 
             <div className="mb-3">
               <label htmlFor="institute" className="form-label" style={{fontSize: "25px"}}>
@@ -287,27 +264,36 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
               />
             </div>
 
-            <div className="mb-3">
-              <label htmlFor="cvFile" className="form-label" style={{fontSize: "25px"}}>
-                CV (PDF)*
-              </label>
-              <input
-              style={{fontSize: "22px"}}
-                type="file"
-                accept="application/pdf"
-                className="form-control"
-                id="cvFile"
-                name="cvFile"
-                onChange={handleCVFileChange}
-                required
+          <div className="mb-3">
+            
+            <label htmlFor="cvFile" className="form-label" style={{fontSize: "25px"}}>
+              CV (PDF)*
+            </label>
+            {/* <input
+            style={{fontSize: "22px"}}
+              type="file"
+              accept="application/pdf"
+              className="form-control"
+              id="cvFile"
+              name="cvFile"
+              onChange={handleCVFileChange}
+              required
+            /> */}
+            <FileBase className="form-control"           
+                      name="description"
+                      value={cvFile}                    
+                      required 
+                      type="file" 
+                      multiple={false} 
+                      onDone={({ base64 }) => setCvFile( base64 )} 
               />
-            </div>
+          </div>
 
             <div className="mb-3">
               <label htmlFor="proposalFile" className="form-label" style={{fontSize: "25px"}}>
                 Concept Note (PDF)*
               </label>
-              <input
+              {/* <input
               style={{fontSize: "22px"}}
                 type="file"
                 accept="application/pdf"
@@ -316,14 +302,23 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
                 name="proposalFile"
                 onChange={handleProposalFileChange}
                 required
+              /> */}
+               <FileBase className="form-control"           
+                      name="description"
+                      value={proposalFile}                    
+                      required 
+                      type="file" 
+                      multiple={false} 
+                      onDone={({ base64 }) => setProposalFile( base64 )} 
               />
+          
             </div>
 
             <div className="mb-3">
               <label htmlFor="letter" className="form-label" style={{fontSize: "25px"}}>
                 Letter from Host Institutions*
               </label>
-              <input
+              {/* <input
               style={{fontSize: "22px"}}
                 type="file"
                 accept="application/pdf"
@@ -332,6 +327,12 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
                 name="letter"
                 onChange={handleLetterFileChange}
                 required
+              /> */}
+                <FileBase className="form-control"           
+                      
+                      type="file" 
+                      multiple={false} 
+                      onDone={({ base64 }) => setLetter( base64 )} 
               />
             </div>
 
@@ -339,7 +340,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
               <button
                 style={{
                   fontSize: "25px",
-                  backgroundColor: "gray",
+                  backgroundColor: "#2b2b2b",
                   color: "white",
                   float: "left",
                 }}
@@ -352,7 +353,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
               <button
                 style={{
                   fontSize: "25px",
-                  backgroundColor: "gray",
+                  backgroundColor: "#2b2b2b",
                   color: "white",
                   float: "right",
                 }}

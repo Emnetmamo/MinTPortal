@@ -11,7 +11,7 @@ const Publications = () => {
 
   useEffect(() => {
     // Fetch data when the component mounts
-    axios.get('https://min-t-portal-server.vercel.app/resources/accepted-projects')
+    axios.get('https://research-portal-server-9.onrender.com/resources/accepted-projects')
       .then(response => {
         const parsedData = typeof response.data === 'string' ? JSON.parse(response.data) : response.data;
 

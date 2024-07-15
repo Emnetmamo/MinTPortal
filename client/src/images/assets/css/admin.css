@@ -37,7 +37,6 @@
   background-color: #ffa525;
   border-radius: '10px';
   border: none;
-
 }
 
 
@@ -72,10 +71,10 @@ button.dropzone {
 li.rejected-list{
   min-width: auto;
 }
-/* .active{
+.active{
   background-color: rgb(108, 108, 141) !important;
   
-} */
+}
 
 
 

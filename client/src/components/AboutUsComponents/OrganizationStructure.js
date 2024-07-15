@@ -6,12 +6,8 @@ import imgPath from "../../images/AboutUs/arm.png";
 const OrganizationStructureSection = () => {
   const [selectedButton, setSelectedButton] = useState(null);
 
-  const handleButtonHover = (button) => {
-    setSelectedButton(button);
-  };
-
-  const handleButtonLeave = () => {
-    setSelectedButton(null);
+  const handleButtonClick = (button) => {
+    setSelectedButton((prevState) => (prevState === button ? null : button));
   };
 
   const departments = [
@@ -47,10 +43,9 @@ const OrganizationStructureSection = () => {
       <h1 className="text-center font-weight-bold mb-4">Our Research and Innovation Organization Structure</h1>
       <div className="text-center mb-3">
         <button
-          className="btn"
-          style={{ backgroundColor: "#11475f", color: "white", fontWeight: "bold", fontSize: "28px" }}
-          onMouseEnter={() => handleButtonHover('viewDepartments')}
-          onMouseLeave={() => handleButtonLeave()}
+          className="btn quickCard"
+          style={{ color: "black", fontWeight: "bold", fontSize: "28px" }}
+          onClick={() => handleButtonClick('viewDepartments')}
         >
           Innovation and Research Sector
         </button>
@@ -62,18 +57,17 @@ const OrganizationStructureSection = () => {
       </div>
       <div className="row" style={{ marginTop: "60px" }}>
         {departments.map((department, index) => (
-          <div className="col-md-4" key={index} style={{ marginBottom: "20px" ,gap:'0px'}}>
+          <div className="col-md-4" key={index} style={{ marginBottom: "20px" }}>
             <button
               className="btn mb-2"
               style={{
-                backgroundColor: selectedButton === department.name ? 'orange' : '#11676d',
+                backgroundColor: selectedButton === department.name ? 'black' : 'goldenrod',
                 color: 'white',
                 fontSize: '20px', // Adjusted font size
                 width: "100%", // Set width to 100%
                 whiteSpace: "normal", // Allow text to wrap
               }}
-              onMouseEnter={() => handleButtonHover(department.name)}
-              onMouseLeave={() => handleButtonLeave()}
+              onClick={() => handleButtonClick(department.name)}
             >
               {department.name}
             </button>
@@ -84,11 +78,11 @@ const OrganizationStructureSection = () => {
                 ))}
               </ul>
             )}
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-export default OrganizationStructureSection;
+        );
+      }
+      
+      export default OrganizationStructureSection;

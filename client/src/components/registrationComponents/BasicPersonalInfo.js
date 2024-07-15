@@ -43,7 +43,7 @@ const BasicPersonalInfo = ({ nextStep}) => {
   
     if (password === confirmPassword && password.length >= 8 && /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!.])[A-Za-z\d@#$%^&*!.]{8,}/.test(password)) {
       axios
-        .post("https://min-t-portal-server.vercel.app/auth/register", {
+        .post("https://research-portal-server-9.onrender.com/auth/register", {
           fName,
           LName,
           password,
@@ -102,39 +102,40 @@ const BasicPersonalInfo = ({ nextStep}) => {
         <Link
           style={{
             marginBottom: "20px",
-            backgroundColor: "#11676d",
+            background: "linear-gradient(to right, black, #ccc)", 
             border: "none",
             fontSize: "20px",
+            color: "#fff"
           }}
           to="/"
-          className="btn btn-primary"
+          className="btn "
         >
           Back to Home
         </Link>
       </div>
       <h1 className="text-center">Registration Form</h1>
       <div style={{ marginTop: "20px" }}>
-        <h3 style={{ color: "red" }}>
+        <h5 style={{ color: "red" }}>
           <b>Note</b>: There are 3 sections to this registration
-        </h3>
-        <h3 style={{ color: "red" }}>Fill out each section carefully</h3>
+        </h5>
+        <h6 style={{ color: "red" }}>Fill out each section carefully</h6>
       </div>
       <div className="card">
         <div className="card-body">
-          <h2
-            style={{ backgroundColor: "gray", textAlign: "center" }}
+        <h2
+            style={{ backgroundColor: "#2b2b2b", textAlign: "center" }}
             className="card-title  text-white p-2 rounded"
           >
             Basic Personal Information
           </h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
-              <label htmlFor="owner" className="form-label" style={{fontSize: "25px"}}>
+            <label htmlFor="owner" className="form-label" style={{fontSize: "25px"}}>
                 Project’s Owner*
               </label>
               <div className="d-flex">
                 <input
-                style={{fontSize: "22px"}}
+                  style={{fontSize: "22px"}}
                   type="text"
                   className="form-control me-2"
                   id="firstName"
@@ -148,7 +149,7 @@ const BasicPersonalInfo = ({ nextStep}) => {
                 />
 
                 <input
-                style={{fontSize: "22px"}}
+                  style={{fontSize: "22px"}}
                   type="text"
                   className="form-control"
                   id="lastName"
@@ -167,7 +168,6 @@ const BasicPersonalInfo = ({ nextStep}) => {
                 Sex*
               </label>
             <select
-            style={{fontSize: "22px"}}
                 className="form-select"
                 id="sex"
                 name="sex"
@@ -188,7 +188,7 @@ const BasicPersonalInfo = ({ nextStep}) => {
                 Email*
               </label>
               <input
-              style={{fontSize: "22px"}}
+                style={{fontSize: "22px"}}
                 type="email"
                 className="form-control"
                 id="email"
@@ -207,7 +207,7 @@ const BasicPersonalInfo = ({ nextStep}) => {
               </label>
               <div className="input-group">
                 <input
-                style={{fontSize: "22px"}}
+                  style={{fontSize: "22px"}}
                   type={showPassword ? "text" : "password"}
                   className="form-control"
                   id="password"
@@ -296,7 +296,7 @@ const BasicPersonalInfo = ({ nextStep}) => {
                 }}
                 required
               >
-                <option value="" disabled selected style={{fontSize: "25px"}}>
+                <option value="" disabled selected>
                   Select a country
                 </option>
                 {countryOptions.map((country, index) => (
@@ -307,7 +307,7 @@ const BasicPersonalInfo = ({ nextStep}) => {
               </select>
             </div>
             <div className="mb-3">
-              <label htmlFor="address" className="form-label" style={{fontSize: "25px"}}>
+              <label htmlFor="address" className="form-label"style={{fontSize: "25px"}}>
                 Address
               </label>
               <textarea
@@ -322,7 +322,7 @@ const BasicPersonalInfo = ({ nextStep}) => {
               ></textarea>
             </div>
             <button
-              style={{ backgroundColor: "gray", color: "white", float: "right" }}
+              style={{ backgroundColor: "#2b2b2b", color: "white", float: "right" }}
               type="submit"
               className="btn "
             >

@@ -16,7 +16,7 @@ const News = () => {
   useEffect(() => {
     // Fetch data when the component mounts
     
-    axios.get('https://min-t-portal-server.vercel.app/news')
+    axios.get('http://localhost:5001/news')
       .then(response => {
         const parsedData = typeof response.data === 'string' ? JSON.parse(response.data) : response.data;
         console.log(parsedData.date)
@@ -53,7 +53,7 @@ const News = () => {
               
               <img className='card-img-top' src={`${newsItem.imagePath.replace(/\//g, '\\')}`} alt={newsItem.title} />               
               <div className="card-body text-center">
-                <h6 className="mb-0" style={{color: '#11676d', fontSize: '20px'}}
+                <h6 className="mb-0" style={{color: '#000', fontSize: '20px'}}
                 >Author:  {newsItem.author}</h6>
                 <div className='d-flex'>     
                           

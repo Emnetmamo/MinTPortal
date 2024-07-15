@@ -14,7 +14,7 @@ const Collaborations = () => {
 
   const fetchCollaborations = async () => {
     try {
-      const response = await axios.get('https://min-t-portal-server.vercel.app/collaboration/collaborations');
+      const response = await axios.get('https://research-portal-server-9.onrender.com/collaboration/collaborations');
       setCollaborations(response.data);
     } catch (error) {
       console.error('Error fetching collaborations:', error);

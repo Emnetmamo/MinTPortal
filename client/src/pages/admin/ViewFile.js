@@ -6,12 +6,14 @@ function ViewFile(){
     const location = useLocation();
     const {filePath} = location.state;
     console.log(filePath);
+   
+
     return(
         <div>
-        <br />
-        <br />
+       
         <iframe
-              src={'https:\\\\min-t-portal-server.vercel.app\\'+filePath}
+            //   src={'http:\\\\https://research-portal-server-9.onrender.com\\'+filePath}
+            src={filePath}
               style={{width:"100%"}}
               height={800}
         />

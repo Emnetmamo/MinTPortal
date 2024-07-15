@@ -1,25 +1,67 @@
+
+
+// export default ConfirmAppointment;
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Logout from '../../components/Logout';
 import AppointmnetImg from '../../images/user/appoint.png';
-import { toast, ToastContainer } from 'react-toastify';
+import { useAuthContext } from '../../AuthContext';
+import { useNavigate } from 'react-router-dom';
 
-const ConfirmAppointment = ({email}) => {
-  const email1 = email;
+const ConfirmAppointment = () => {
+  let email;
+  const cookies = document.cookie;
+  const navigate = useNavigate();
+
+  if (cookies) {
+    console.log(cookies)
+      const emailCookie = cookies.split(';')[0];
+      if (emailCookie) {
+          const emailValue = emailCookie.split('=')[1];
+          if (emailValue) {
+              email = emailValue.replaceAll('"', '');
+              // Now you can use the email variable safely
+              console.log(email);
+          } else {
+              console.error("Email value is undefined");
+          }
+      } else {
+          console.error("Email cookie is undefined");
+      }
+  } else {
+      console.error("No cookies found");
+  }
   const [appointments, setAppoint] = useState([]);
   const [loaded, setLoaded] = useState(false);
   let i = 1;
   //console.log(email1);
+  //const [isAuthenticated, setIsAuthenticated] = useState(null)
+  //const {isAuthenticated, login} = useAuthContext()
+    
+  
   useEffect(
     function(){
-      axios.get('http://localhost:5001/admin/appointment/load-'+email1)
+      if(document.cookie){
+        if(document.cookie.split(';')[1].split('=')[1] === '"user"'){
+          
+        }
+        else{
+          navigate('/login');
+        }
+      }
+      else{
+        navigate('/login'); 
+      }
+      axios.get('https://research-portal-server-9.onrender.com/admin/appointment/load-'+email)
       .then((result)=>{
         setAppoint(result.data);
         //console.log(result);
       })
       .catch(err=>console.log(err))
       setLoaded(true);
+     
     }
-  ,[email1]);
+  ,[email]);
   function displayAppoint(){
     const tableData = [];
     
@@ -31,6 +73,7 @@ const ConfirmAppointment = ({email}) => {
             <td>{new Date(appointments[j].appointmentDate).toLocaleString().split(',')[0]}</td>
             <td>{new Date(appointments[j].appointmentDate).toLocaleString().split(',')[1]}</td>
             <td>
+              <div style={{display: 'flex', flexDirection: 'column'}}>
               <button name={appointments[j].projectId + "-Accepted"} onClick={
                 function(e){
                 updateStatus(e.target.name);
@@ -40,7 +83,7 @@ const ConfirmAppointment = ({email}) => {
                 function(e){
                 rescheduleAppt(e.target.name);
               }} 
-                className='btn btn-primary'>Reschedule Appointment</button>
+                className='btn btn-primary'>Reschedule Appointment</button></div>
               </td>
               <td id={appointments[j].projectId + "-Input"} style={{display:"none"}}>
               <textarea name="" id={appointments[j].projectId + "-Message"} cols="30" rows="3" 
@@ -59,22 +102,23 @@ const ConfirmAppointment = ({email}) => {
   //console.log(tableData);
   return tableData;
 }
-function updateStatus(id){
+async function updateStatus(id){
   console.log("Clicked!");
   const projectID = id.split('-')[0];
   const text = document.getElementById(projectID+"-Message");
   const message = {message:text.value};
-  // axios.get('http://localhost:5001/admin/appointment/setStatus-'+id)
-  axios.post('http://localhost:5001/admin/appointment/setStatus-'+id, message)
+  // axios.get('https://research-portal-server-9.onrender.com/admin/appointment/setStatus-'+id)
+  await axios.post('https://research-portal-server-9.onrender.com/admin/appointment/setStatus-'+id, message)
   .then(result=>console.log(result))
   .catch(err=>console.log(err));
-  toast.success("Action Submitted");
+  window.location.reload(false);
 }
 function rescheduleAppt(id){
   const row = document.getElementById(id+"-Input");
   row.style.display = "inline";
 }
   return (
+    cookies? 
     <div>
     {(loaded && appointments.length > 0) && (
     <div className="card shadow p-3 mb-5 bg-white rounded">
@@ -136,7 +180,7 @@ function rescheduleAppt(id){
       </div>
     </div>
     )}
-    </div>
+    </div> : <Logout/>
   );
 };
 

@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {useNavigate}  from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 import "../../images/assets/css/admin.css";
 import AdminHeader from "../../components/AdminComponents/AdminHeader";
 import axios from "axios";
 import Sidebar from './Sidebar.js';
 import Dropzone from "../../components/AdminComponents/Dropzone";
+import Logout from "../../components/Logout.js";
 
 function PostCalls() {
   const [title, setTitle] = useState('');
@@ -14,56 +16,135 @@ function PostCalls() {
   const [callType, setCallType] = useState('');
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
-  const [prizes, setPrizes] = useState('');                      
+  const [Award, setAward] = useState('');                      
   const [instructions, setInstructions] = useState('');
   const [guideline, setGuideline] = useState('');
-const navigate=useNavigate()
-  function handleSubmit(e) {
-    e.preventDefault();
-    axios
-      .post("https://min-t-portal-server.vercel.app/announcements/addCall", {
-        title,
-        description,
-        field,
-        callType,
-        startDate,
-        endDate,
-        prizes,
-        instructions,
-        guideline,
-      })
-      .then((result) =>{
-        console.log(result)
-        navigate('/admin')
-      })
-      .catch((err) => console.log(err));
-    console.log({
-      title,
-      description,
-      field,
-      callType,
-      startDate,
-      endDate,
-      prizes,
-      instructions,
-      guideline,
-    });
+  const [isAuthenticated, setIsAuthenticated] = useState(null)
+  
+  const navigate=useNavigate();
+  // useEffect (() => {const checkAuthentication = async () => {
+  //   try {
+  //     const response = await axios.get('https://research-portal-server-9.onrender.com/check-auth-status');
+      
+  //     const isAuthenticated = response.data.isAuthenticated;
+  //     console.log(isAuthenticated)    
+  //     setIsAuthenticated(isAuthenticated)
+    
+
+    
+  //   } catch (error) {
+  //     console.error('Error checking authentication status:', error);
+  //     return false;
+  //   }
+  // };
+  
+  // // Example usage
+  //  checkAuthentication();
+  // }, [])
+ 
+  useEffect(function(){
+    if(document.cookie){
+      if(document.cookie.split(';')[1].split('=')[1] === '"admin3"'){
+        
+      }
+      else{
+        navigate('/login');
+      }
+    }
+    else{
+      navigate('/login'); 
+    }
   }
+    ,[]);
+
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    field: '',
+    callType: '',
+    startDate: '',
+    endDate: '',
+    Award: '',
+    instructions: '',
+    guideline: '',
+
+  });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   axios
+  //     .post("https://research-portal-server-9.onrender.com/announcements/addCall", {
+  //       title,
+  //       description,
+  //       field,
+  //       callType,
+  //       startDate,
+  //       endDate,
+  //       Award,
+  //       instructions,
+  //       guideline,
+  //     })
+  //     .then((result) =>{
+  //       console.log(result)
+  //       navigate('/admin')
+  //     })
+  //     .catch((err) => console.log(err));
+  //   console.log({
+  //     title,
+  //     description,
+  //     field,
+  //     callType,
+  //     startDate,
+  //     endDate,
+  //     Award,
+  //     instructions,
+  //     guideline,
+  //   });
+  // }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // dispatch(setNews(formData));
+    
+    const data = new FormData();
+
+    
+    data.append('title', formData.title);
+    data.append('description', formData.description);
+    data.append('field', formData.field);
+    data.append('callType', formData.callType);    
+    data.append('startDate', formData.startDate);
+    data.append('endDate', formData.endDate);
+    data.append('Award', formData.Award);
+    data.append('instructions', formData.instructions);
+    data.append('guideline', formData.guideline);
+
+    try {
+      const response = axios.post("https://research-portal-server-9.onrender.com/announcements/addCall", data);
+      console.log(response.data);
+        alert('Do you want to submit')
+        toast.info('Call form submitted successfully!');
+        // await  window.location.reload()
+    } catch (errors) {
+      console.error('Error:', errors.message);
+      toast.error('An error occurred while submitting news form.');
+    }
+    
+  
+};
+
   return (
-    <div className="">
-      <div className="container mt-5">
-        <div className="row">
-          <div
-            className="col-xs-12 col-md-3 post-links-container mt-5"
-            style={{ overflow: "hidden" }}
-          >
-            <Sidebar/>
-          </div>
-          <div className="col-xs-12 col-md-2"></div>
-          <div className="col-xs-12 col-md-7 mb-5">
+    document.cookie  ?
+    <div className="">          
            
             <form onSubmit={handleSubmit}>
-            <br/> <br/>
+       
               <h1>Post a Call</h1>             
               <div className="form-group">
                 <label htmlFor="title">Announcement Title:</label>
@@ -73,8 +154,9 @@ const navigate=useNavigate()
                   name="title"
                   className="form-control"
                   placeholder="Title"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
+                  value={formData.title}
+                  onChange={handleChange}
+                  required
                 />
               </div>
 
@@ -86,8 +168,9 @@ const navigate=useNavigate()
                   className="form-control"
                   rows="5"
                   placeholder="Description"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+                  value={formData.description}
+                  onChange={handleChange}
+                  required
                 ></textarea>
               </div>
 
@@ -97,19 +180,16 @@ const navigate=useNavigate()
                   id="field"
                   name="field"
                   className="form-control"
-                  value={field}
-                  onChange={(e) => setField(e.target.value)}
+                  value={formData.field}
+                  onChange={handleChange}
+                  required
                 >
                   <option >Select Field of Study</option>
                   <option value="Agriculture">Agriculture</option>
-          <option value="Environment-Energy">Industry</option>
-          <option value="Health">Health</option>
-          <option value="Construction">Construction</option>
-          <option value="Mines and Water">Mines and Water</option>
-          <option value="Information Communication">Information Communication</option>
-          <option value="Energy">Energy </option>
-          <option value="Environment Protection">Environment Protection </option>
-          <option value="Other related Sectors">Other related Sectors</option>
+                  <option value="Environment-Energy">Environment and Energy</option>
+                  <option value="Health">Health</option>
+                  <option value="Industry">Industry</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
 
@@ -119,8 +199,9 @@ const navigate=useNavigate()
                   id="callType"
                   name="callType"
                   className="form-control"
-                  value={callType}
-                  onChange={(e) => setCallType(e.target.value)}
+                  value={formData.callType}
+                  onChange={handleChange}
+                  required
                 >
                   <option >Select Type of Call</option>
                   <option value="National">National</option>
@@ -135,8 +216,9 @@ const navigate=useNavigate()
                   id="startDate"
                   name="startDate"
                   className="form-control"
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
+                  value={formData.startDate}
+                  onChange={handleChange}
+                  required
                 />
               </div>
 
@@ -147,21 +229,23 @@ const navigate=useNavigate()
                   id="endDate"
                   name="endDate"
                   className="form-control"
-                  value={endDate}
-                  onChange={(e) => setEndDate(e.target.value)}
+                  value={formData.endDate}
+                  onChange={handleChange}
+                  required
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="prizes">Award:</label>
+                <label htmlFor="Award">Award:</label>
                 <textarea
-                  id="prizes"
-                  name="prizes"
+                  id="Award"
+                  name="Award"
                   className="form-control"
                   rows="5"
-                  placeholder="Prizes"
-                  value={prizes}
-                  onChange={(e) => setPrizes(e.target.value)}
+                  placeholder="Award"
+                  value={formData.Award}
+                  onChange={handleChange}
+                  required
                 ></textarea>
               </div>
 
@@ -173,8 +257,9 @@ const navigate=useNavigate()
                   className="form-control"
                   rows="5"
                   placeholder="Submission Instructions"
-                  value={instructions}
-                  onChange={(e) => setInstructions(e.target.value)}
+                  value={formData.instructions}
+                  onChange={handleChange}
+                  required
                 ></textarea>
               </div>
 
@@ -186,8 +271,9 @@ const navigate=useNavigate()
                   className="form-control"
                   rows="5"
                   placeholder="Upload Guideline"
-                  value={guideline}
-                  onChange={(e) => setGuideline(e.target.value)}
+                  value={formData.guideline}
+                  onChange={handleChange}
+                  required
                 ></textarea>
               </div>
 
@@ -200,10 +286,9 @@ const navigate=useNavigate()
                 </button>
               </div>
             </form>
-          </div>
-        </div>
-      </div>
-    </div>
+            <ToastContainer/>   
+          </div> : <Logout/>
+   
   );
 }
 

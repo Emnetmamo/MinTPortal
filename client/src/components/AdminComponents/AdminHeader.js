@@ -1,81 +1,37 @@
 import React, {useState, useEffect} from "react";
-import { useLocation } from "react-router-dom";
 import axios from 'axios'
-// import { AppBar, Typography, Toolbar, Avatar, Button} from '@material-ui/core';
-//import Stack from '@mui/material/Stack';
-import { Link, useNavigate } from 'react-router-dom';
-//import { BsFillPersonFill } from "react-icons/bs";
+import { AppBar, Typography, Toolbar, Avatar, Button} from '@mui/material';
+import Stack from '@mui/material/Stack';
+import { Link } from 'react-router-dom';
+import { BsFillPersonFill } from "react-icons/bs";
 import '../../images/assets/css/admin.css';
 import logo from '../../images/Logo.jpg';
-import { BsFillPersonFill } from "react-icons/bs";
 
 function AdminHeader() {
 
-  const location = useLocation();
-  const navigate = useNavigate();
-  if(!document.cookie){
-    navigate('/');
-  }
-  const email = document.cookie.split(';')[0].split('=')[1].replaceAll('"','');
-  const role = document.cookie.split(';')[1].split('=')[1].replaceAll('"','');
-  console.log(email);
   const [isAuthenticated, setIsAuthenticated] = useState(null) ;
-  const [userName, setUserName] = useState('');
-  const path = window.location.pathname;
+  const [userName, setUserName] = useState('')
   useEffect(() => {
-    const checkAuthentication = async () => {
-      try {
-        let response = null;
-        // axios.get('http://localhost:5001/check-auth-status')
-        // .then(result=> {response = result; console.log(result);})
-        // .catch(err=>console.log(err));
+      const checkAuthentication = async () => {
+          try {
+            const response = await axios.get('https://research-portal-server-9.onrender.com/check-auth-status');
+            const response2 = await axios.get('https://research-portal-server-9.onrender.com/auth1/protect');
+            const isAuthenticated = response.data.isAuthenticated;
+            const userName = response2.data.name
+            console.log(isAuthenticated)
+            setIsAuthenticated(isAuthenticated)
+            setUserName(userName)
 
-        let response2 = null;
-        if(role === "admin"){
-          axios.get('https://min-t-portal-server.vercel.app/admind/dashboard')
-          .then(result=> {response2 = result; console.log(result);})
-          .catch(err=>console.log(err));
-          if(path.startsWith('/admin2') || path.startsWith('/admin3')){
-            navigate('/admin');
+          
+          } catch (error) {
+            console.error('Error checking authentication status:', error);
+            return false;
           }
-        }
-        else if(role === "admin2"){
-          axios.get('https://min-t-portal-server.vercel.app/admind2/dashboard')
-          .then(result=> {response2 = result; console.log(result);})
-          .catch(err=>console.log(err));
-          if(!path.startsWith('/admin2')){
-            navigate('/admin2');
-          }
-        }
-        else if(role === "admin3"){
-          axios.get('https://min-t-portal-server.vercel.app/admind3/dashboard')
-          .then(result=> {response2 = result; console.log(result);})
-          .catch(err=>console.log(err));
-          if(!path.startsWith('/admin3')){
-            navigate('/admin3');
-          }
-        }
-
-        axios.post('https://min-t-portal-server.vercel.app/getName', {email:email})
-        .then(result=> {response = result; setUserName(result.data.name); console.log(result);})
-        .catch(err=>console.log(err));
+        };
         
-        //const isAuthenticated = response.data.isAuthenticated;
-        // const userName1 = response.data.name
-        console.log(userName);
-        //console.log(isAuthenticated)
-        //setIsAuthenticated(isAuthenticated)
-        // setUserName(userName1)
-
-      
-      } catch (error) {
-        console.error('Error checking authentication status:', error);
-        return false;
-      }
-     }
-      
         // Example usage
          checkAuthentication();
+
       
   }
   , []);
@@ -92,73 +48,56 @@ function AdminHeader() {
   
   // Function to perform logout
  
-  const logout = async () => {
-    try {
-      await axios.get('https://min-t-portal-server.vercel.app/logout');
-      setIsAuthenticated(false);
-      navigate('/login')
-      //window.location.href = '/login'; 
-    } catch (error) {
-      console.error('Logout failed:', error);
-    }
-  };
+  function logout() {
+      axios.get('https://research-portal-server-9.onrender.com/logout')
+      // Clear the user identifier from session storage
+     // sessionStorage.removeItem('user');
+      // Redirect to the login page or perform other logout actions
+      window.location.href = '/login'; // Adjust the URL accordingly
+  }
   
   // Example usage:
-  // if (isLoggedIn()) {
+  if (isLoggedIn()) {
      
-  //     console.log('User is logged in');
-  // } else {
-  //     console.log(isAuthenticated)
-  //     console.log('User is not logged in');
-  // }
-
+      console.log('User is logged in');
+  } else {
+      console.log(isAuthenticated)
+      console.log('User is not logged in');
+  }
+  
 
   return (
-//     <div className='header  shadow'>
-//       <nav className="navbar navbar-expand-xxs ">
-//         <div className="container-fluid">
-//           <Link className="navbar-brand " to="/">
-//           <img src={logo} alt="Logo" style={{ borderRadius: '90%', width: '95px',height:"90px",marginLeft:"55px" }} />
-//           </Link>
-//           <div className="d-inline-flex  align-items-center">
-
-//             <div className=" me-2" ><BsFillPersonFill  className='user-icon'/></div>
-//             <Link to='/admin/news/add-news' className="me-3 user-name">Admin</Link>
-//           </div>
-          
-//         </div>
-//       </nav>
+    <div className='header  shadow'>
+      <nav className="navbar navbar-expand-xxs ">
+        <div className="container-fluid">
+          <Link className="navbar-brand " to="/">
+          <img src={logo} alt="Logo" style={{ borderRadius: '90%', width: '95px',height:"90px",marginLeft:"55px" }} />
+          </Link>
+          <div className="d-inline-flex  align-items-center">
+            {/* <div className=" me-2" ><BsFillPersonFill  className='user-icon'/></div>
+            <Link to='/admin/news/add-news' className="me-3 user-name">Admin</Link> */}
+            {isAuthenticated ? (
+                        <Stack direction="row" gap="16px" alignItems="center">
+                            {/* {user?.result.imageUrl && (
+                                 <Avatar  alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>
+                            )} */}
+                            {/* {user.result.name && */}
+                             
+                              <>
+                              <Typography  variant="h6">{userName}</Typography>
+                              <Button variant="contained"  color="secondary" onClick={logout}>Logout</Button>
+                              </>                                 
+                            
+                        </Stack>
+                    ): (
+                        <Button component={Link} to="/login" variant="contained" color="primary">Sign In</Button>
+                   )}
+          </div>
+        </div>
+      </nav>
       
-//     </div>
-//   );
-// }
-<div className='header  shadow'>
-<nav className="navbar navbar-expand-xxs ">
-  <div className="container-fluid">
-    <Link className="navbar-brand " to="/">
-    <img src={logo} alt="Logo" style={{ borderRadius: '90%', width: '95px',height:"90px",marginLeft:"55px" }} />
-    </Link>
-    <div className="d-inline-flex  align-items-center">
-                  <div style={{alignItems:"center"}}>
-                      {/* {user?.result.imageUrl && (
-                           <Avatar  alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>
-                      )} */}
-                      {/* {user.result.name && */}
-                       
-                        <div>
-                        <div className=" me-2" ><BsFillPersonFill  className='user-icon' style={{marginRight:"20px"}}/>
-                        <h3 style= {{color: 'green', display:"inline", marginRight:"20px"}} >Hi, {userName}</h3>
-                        <button className="btn btn-warning" style= {{color: 'white', fontWeight:"bold"}} onClick={logout}>Logout</button>
-                        </div>
-                        </div>                                 
-                      
-                  </div>
     </div>
-  </div>
-</nav>
-
-</div>
-);
+  );
 }
 
 export default AdminHeader

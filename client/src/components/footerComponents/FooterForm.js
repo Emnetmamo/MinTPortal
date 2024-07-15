@@ -72,27 +72,29 @@ function FooterForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
-      const data = new FormData();
+    const data = new FormData();
+    data.append('fullName', formData.fullName);
+    data.append('message', formData.message);  
+    data.append('email', formData.email);
 
-      
-      data.append('fullName', formData.fullName);
-      data.append('message', formData.message);  
-      data.append('email', formData.email);
-     
-
-      try {
-        const response = axios.post('https://min-t-portal-server.vercel.app/footer/add-footer', data);
+    try {
+        const response = await axios.post('https://research-portal-server-9.onrender.com/footer/add-footer', data);
         console.log(response.data);
-          alert('Do you want to submit')
-          toast.info('footer form submitted successfully!');
-          // await  window.location.reload()
-      } catch (errors) {
+        alert('Do you want to submit');
+        toast.info('footer form submitted successfully!');
+        
+        // Clear input fields after successful submission
+        setFormData({
+            fullName: '',
+            message: '',
+            email: ''
+        });
+    } catch (errors) {
         console.error('Error:', errors.message);
         toast.error('An error occurred while submitting footer form.');
-      }
-    
-  };
+    }
+};
+
 
   return (
 

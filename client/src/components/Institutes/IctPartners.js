@@ -12,7 +12,7 @@ const IctPartners = () => {
     // Fetch data when the component mounts
     const fetchPartners = async () => {
       try {
-        const response = await axios.get('https://min-t-portal-server.vercel.app/institutes/partners');
+        const response = await axios.get('https://research-portal-server-9.onrender.com/institutes/partners');
         const data = response.data;
         setPartners(data);
       } catch (error) {

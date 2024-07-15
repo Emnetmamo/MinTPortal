@@ -1,4 +1,3 @@
-
 // src/components/Footer.js
 
 import React from 'react';
@@ -7,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { FaPhone, FaFacebook, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { RiMapPin2Fill, RiMailFill } from 'react-icons/ri';
 import Logo from '../images/Logo.jpg';
+import GroupLogo from '../images/GroupLogo.png'; 
 import { FaRegCopyright } from 'react-icons/fa';
 
 const Footer = () => {
@@ -62,19 +62,23 @@ const Footer = () => {
                   <a href="https://twitter.com/ministryofinno2?lang=en" className="me-2" style={{color:"orange"}} target="_blank"><FaTwitter /></a>
                   <a href="https://www.linkedin.com/company/ministry-of-innovation-and-technology-ethiopia/?originalSubdomain=et" className="me-2" style={{color:"orange"}} target="_blank"><FaLinkedin /></a>  
                 </div>
-         
-      
               </ul>
-
             </div>        
         </div>
         
 
         {/* Copyright */}
         <div className="text-center">
-        <span> 
-            <FaRegCopyright /> {currentYear} MinT All rights Reserved.
-            </span>
+          <h5 className="text-center">Developed By</h5>
+          <br></br>
+          <br></br>
+          <span> 
+            <a href="OurWebsiteURL" target="_blank" > 
+              <img src={GroupLogo} alt="Group Logo" style={{ width: '250px', height: '250px',marginBottom: "-30px", marginTop:"-110px" }} />
+            </a>
+            <br />
+            <FaRegCopyright /> {currentYear} MinT in Collaboration with HexAmigos. All rights Reserved. 
+          </span>
         </div>
       </div>
     </footer>

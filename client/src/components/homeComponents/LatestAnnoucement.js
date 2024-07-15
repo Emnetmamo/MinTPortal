@@ -12,7 +12,7 @@ const LatestAnnouncement = (props) => {
 
   useEffect(() => {
     axios
-      .get("https://min-t-portal-server.vercel.app/announcements/fetchCalls")
+      .get("https://research-portal-server-9.onrender.com/announcements/fetchCalls")
       .then(result => {
         const calls = result.data;
 

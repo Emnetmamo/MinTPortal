@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import '../../images/assets/css/admin.css'
 import axios from 'axios';
+import TableContainer from '@mui/material/TableContainer';
 import DropzoneImage from '../../components/AdminComponents/Dropzone'
 import DropzoneText from '../../components/AdminComponents/DropzoneText'
 import Sidebar from './Sidebar.js';
+import Logout from '../../components/Logout.js';
+import { useNavigate } from 'react-router-dom';
 
 
 axios.defaults.withCredentials=true;
@@ -13,11 +16,43 @@ axios.defaults.withCredentials=true;
 function ViewReports() {
     const [reports, setReports] = useState([]);
     const [loaded, setLoaded] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(null)
+
+    const navigate = useNavigate();
     useEffect(function(){
-        axios.get('http://localhost:5001/report/getAll')
+        if(document.cookie){
+            if(document.cookie.split(';')[1].split('=')[1] === '"admin"'){
+              
+            }
+            else{
+              navigate('/login');
+            }
+          }
+          else{
+            navigate('/login'); 
+          }
+        axios.get('https://research-portal-server-9.onrender.com/report/getAll')
         .then((result)=>{setReports(result.data); console.log(result)})
         .catch(err=>console.log(err))
         setLoaded(true);
+        // const checkAuthentication = async () => {
+        //     try {
+        //       const response = await axios.get('https://research-portal-server-9.onrender.com/check-auth-status');
+              
+        //       const isAuthenticated = response.data.isAuthenticated;
+        //       console.log(isAuthenticated)    
+        //       setIsAuthenticated(isAuthenticated)
+            
+      
+            
+        //     } catch (error) {
+        //       console.error('Error checking authentication status:', error);
+        //       return false;
+        //     }
+        //   };
+          
+        //   // Example usage
+        //    checkAuthentication();
     }, [])
 
     function displayReports(){
@@ -27,6 +62,7 @@ function ViewReports() {
                 data.push(
                 <div>
                     <h4>Title: {reports[i].projectTitle}</h4>
+            <TableContainer  sx={{ maxHeight: 200 }}>
                 <table className="table">
                 <thead className="table-success" style={{color: '#11676d'}}>  
                   <tr>
@@ -49,6 +85,7 @@ function ViewReports() {
                     </tr>
                 </tbody>
                 </table>
+            </TableContainer>
                 </div>
                 )
             }
@@ -59,28 +96,22 @@ function ViewReports() {
         const reportID = id.split('-')[0];
         const projID = id.split('-')[1];
         const feedback = document.getElementById(reportID+"-input").value;
-        axios.post('http://localhost:5001/report/setMessage', {reportID:reportID, message: feedback})
+        axios.post('https://research-portal-server-9.onrender.com/report/setMessage', {reportID:reportID, message: feedback})
         .then((result)=>{console.log(result); toast.info("Feedback Submitted Successfully");})
         .catch(err=>console.log(err))
     }
   return (
-    <div className="">
-     
-      <div className='container mt-5'>       
-          <div class="row">
-            <div className="col-xs-12 col-md-3 my-5 post-links-container" >
-            <Sidebar/>
-            </div>
-          <div class="col-xs-12 col-md-2"></div>
+    document.cookie ?
+      
+          <div >                
           <div class="col-xs-12 col-md-7 mb-5">
                 {loaded && displayReports()}
           </div>
           <ToastContainer/>
-      </div>
+      </div> : <Logout/>
       
-    </div>
-    
-  </div>
+  
+
    
   )
 }

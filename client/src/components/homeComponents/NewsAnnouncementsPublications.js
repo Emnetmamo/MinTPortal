@@ -39,7 +39,7 @@ const NewsAnnouncementsPublications = () => {
   useEffect(() => {
     // Fetch news
     axios
-      .get('https://min-t-portal-server.vercel.app/news')
+      .get('https://research-portal-server-9.onrender.com/news')
       .then((response) => {
         const parsedData = typeof response.data === 'string' ? JSON.parse(response.data) : response.data;
         const sortedNews = parsedData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
@@ -52,7 +52,7 @@ const NewsAnnouncementsPublications = () => {
 
     // Fetch announcements
     axios
-      .get('https://min-t-portal-server.vercel.app/resources/announcements')
+      .get('https://research-portal-server-9.onrender.com/announcements/fetchCalls')
       .then((response) => {
         const recentAnnouncement = response.data.length > 0 ? response.data[0].title : '';
         setLatestAnnouncement(recentAnnouncement);
@@ -63,7 +63,7 @@ const NewsAnnouncementsPublications = () => {
 
     // Fetch publications
     axios
-      .get('https://min-t-portal-server.vercel.app/resources/publications')
+      .get('https://research-portal-server-9.onrender.com/resources/publications')
       .then((response) => {
         const parsedData = typeof response.data === 'string' ? JSON.parse(response.data) : response.data;
         const sortedPublications = parsedData.sort((a, b) => new Date(a.date) - new Date(b.date));

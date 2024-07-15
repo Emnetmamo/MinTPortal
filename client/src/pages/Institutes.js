@@ -10,7 +10,7 @@ import other from '../images/Institutes/linkage1.png';
 import GovernmentAgencies from '../components/Institutes/GovernmentAgencies';
 import IctPartners from '../components/Institutes/IctPartners';
 import Laboratories from '../components/Institutes/Laboratories';
-import ResearchInstitutes from '../components/Institutes/ResearchInstitutes';
+import ResearchInstitutes from '../components/Institutes/NationalResearchInstitutes';
 
 const Institutes = () => {
   const [showGovernmentAgencies, setShowGovernmentAgencies] = useState(false);
@@ -33,26 +33,35 @@ const Institutes = () => {
             {/* Pair 1: Research Institutes + Laboratories */}
             <div className="d-flex w-100 justify-content-between">
               <div className="card m-3 flex-grow-1 card1" title="Click here to visit more" style={{ width: '30%', height: '40%', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
-                <a href='/institutes/research' style={{ textDecoration: "none" }} onClick={() => setShowResearchInstitutes(true)}>
+                <a href='/institutes/national-research' style={{ textDecoration: "none" }} onClick={() => setShowResearchInstitutes(true)}>
                   <img src={research} className="card-img-top" alt="img research" style={{ height: '200px' }} />
                   <div className="card-body">
-                    <h5><a href='/institutes/research' className="card-title" style={{ color: 'black', fontSize: "17px", fontWeight: "bold", textDecoration: 'none' }}>Research Institutes</a></h5>
+                    <h5><a href='/institutes/national-research' className="card-title" style={{ color: 'black', fontSize: "17px", fontWeight: "bold", textDecoration: 'none' }}>National Research Institutes</a></h5>
                   </div>
                 </a>
               </div>
-
               <div className="card m-3 flex-grow-1 card1" title="Click here to visit more" style={{ width: '30%', height: '40%', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
-                <a href='/institutes/labs' style={{ textDecoration: "none" }} onClick={() => setShowLaboratories(true)}>
-                  <img src={lab} className="card-img-top" alt="img lab" style={{ height: '200px' }} />
+                <a href='/institutes/international-research' style={{ textDecoration: "none" }} onClick={() => setShowResearchInstitutes(true)}>
+                  <img src='https://www.shutterstock.com/image-photo/science-graphic-against-smiling-chemist-260nw-297272744.jpg'className="card-img-top" alt="img research" style={{ height: '200px' }} />
                   <div className="card-body">
-                    <h5><a href='/institutes/labs' className="card-title" style={{ color: 'black', fontSize: "17px", fontWeight: "bold", textDecoration: 'none' }}>Laboratories</a></h5>
+                    <h5><a href='/institutes/international-research' className="card-title" style={{ color: 'black', fontSize: "17px", fontWeight: "bold", textDecoration: 'none' }}>International Research Institutes</a></h5>
                   </div>
                 </a>
               </div>
+              
             </div>
+             {/* Pair 2: Research Institutes + Laboratories */}
 
-            {/* Pair 2: ICT Partners + Government Agencies */}
             <div className="d-flex w-100 justify-content-between">
+              <div className="card m-3 flex-grow-1 card1" title="Click here to visit more" style={{ width: '30%', height: '40%', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
+                  <a href='/institutes/labs' style={{ textDecoration: "none" }} onClick={() => setShowLaboratories(true)}>
+                    <img src={lab} className="card-img-top" alt="img lab" style={{ height: '200px' }} />
+                    <div className="card-body">
+                      <h5><a href='/institutes/labs' className="card-title" style={{ color: 'black', fontSize: "17px", fontWeight: "bold", textDecoration: 'none' }}>Laboratories</a></h5>
+                    </div>
+                  </a>
+                </div>
+
               <div className="card m-3 flex-grow-1 card1" title="Click here to visit more" style={{ width: '30%', height: '40%', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
                 <a href='/institutes/ict' style={{ textDecoration: "none" }} onClick={() => setShowIctPartners(true)}>
                   <img src={ict} className="card-img-top" alt="img-ict" style={{ height: '175px' }} />
@@ -61,6 +70,13 @@ const Institutes = () => {
                   </div>
                 </a>
               </div>
+            </div>
+
+            {/* Pair 3: ICT Partners + Government Agencies */}
+            <div className="d-flex w-100 justify-content-between">
+
+              
+           
 
               <div className="card m-3 flex-grow-1 card1" title="Click here to visit more" style={{ width: '30%', height: '40%', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
                 <a href='/institutes/government' style={{ textDecoration: "none" }} onClick={() => setShowGovernmentAgencies(true)}>

@@ -5,22 +5,61 @@ import '../../images/assets/css/admin.css'
 import axios from 'axios';
 import DropzoneImage from '../../components/AdminComponents/Dropzone'
 import DropzoneText from '../../components/AdminComponents/DropzoneText'
+import TableContainer from '@mui/material/TableContainer';
 import Sidebar from './Sidebar.js';
 import '../../images/assets/css/admin.css';
 import { useLocation } from 'react-router-dom';
+import Logout from '../../components/Logout.js';
+import { useAuthContext } from '../../AuthContext.js';
+import { useNavigate } from 'react-router-dom';
+
+
 
 
 axios.defaults.withCredentials=true;
 
 function ViewReports2() {
-    const {email} = useLocation().state;
+
     const [reports, setReports] = useState([]);
     const [loaded, setLoaded] = useState(false);
+    const [SidebarVisibility, setSiderVisibility] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(null);
+    const navigate = useNavigate();
+    
     useEffect(function(){
-        axios.get('https://min-t-portal-server.vercel.app/report/getAll')
+        if(document.cookie){
+            if(document.cookie.split(';')[1].split('=')[1] === '"admin2"'){
+              
+            }
+            else{
+              navigate('/login');
+            }
+          }
+          else{
+            navigate('/login'); 
+          }
+        axios.get('https://research-portal-server-9.onrender.com/report/getAll')
         .then((result)=>{setReports(result.data); console.log(result)})
         .catch(err=>console.log(err))
         setLoaded(true);
+        // const checkAuthentication = async () => {
+        //     try {
+        //       const response = await axios.get('https://research-portal-server-9.onrender.com/check-auth-status');
+              
+        //       const isAuthenticated = response.data.isAuthenticated;
+        //       console.log(isAuthenticated)    
+        //       setIsAuthenticated(isAuthenticated)
+            
+      
+            
+        //     } catch (error) {
+        //       console.error('Error checking authentication status:', error);
+        //       return false;
+        //     }
+        //   };
+          
+        //   // Example usage
+        //    checkAuthentication();
     }, [])
 
     function displayReports(){
@@ -30,6 +69,7 @@ function ViewReports2() {
                 data.push(
                 <div>
                     <h4>Title: {reports[i].projectTitle}</h4>
+              <TableContainer  sx={{ maxHeight: 440}}>
                 <table className="table">
                 <thead className="table-success" style={{color: '#11676d'}}>  
                   <tr>
@@ -52,6 +92,7 @@ function ViewReports2() {
                     </tr>
                 </tbody>
                 </table>
+                </TableContainer  >
                 </div>
                 )
             }
@@ -62,32 +103,24 @@ function ViewReports2() {
         const reportID = id.split('-')[0];
         const projID = id.split('-')[1];
         const feedback = document.getElementById(reportID+"-input").value;
-        axios.post('https://min-t-portal-server.vercel.app/report/setMessage', {reportID:reportID, message: feedback})
+        axios.post('https://research-portal-server-9.onrender.com/report/setMessage', {reportID:reportID, message: feedback})
         .then((result)=>{console.log(result); toast.info("Feedback Submitted Successfully");})
         .catch(err=>console.log(err))
     }
-  return (
-    <div className="">
-     
-      <div className='container mt-5'>       
-          <div class="row">
-          <div
-            className="col-xs-12 col-md-3 post-links-container mt-2"
-            style={{ overflow: "hidden" }}
-          >
-            <Sidebar email={email}/>
+  return ( 
+     document.cookie ?
+      <div >       
+          <div>
+         
+           
             </div>
-          <div class="col-xs-12 col-md-2"></div>
-          <div class="col-xs-12 col-md-7 mb-5">
+       
+          <div >
                 {loaded && displayReports()}
           </div>
           <ToastContainer/>
-      </div>
-      
-    </div>
-    
-  </div>
-   
+      </div> : <Logout/> 
+ 
   )
 }
 

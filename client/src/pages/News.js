@@ -2,71 +2,32 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { FaSearch } from 'react-icons/fa';
-import Skeleton  from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css'
-
 
 axios.defaults.withCredentials = true;
 
 const News = () => {
-  const [loading,setLoading]=useState(false);
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    const getNews = async () => {
-      setLoading(true);
-      try {
-        const response = await axios.get('https://min-t-portal-server.vercel.app/news');
+    axios
+      .get('https://research-portal-server-9.onrender.com/news')
+      .then(response => {
         const parsedData =
           typeof response.data === 'string'
             ? JSON.parse(response.data)
             : response.data;
         console.log(parsedData.createdAt);
-  
-        const sortedPublications = parsedData.sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-        );
-  
-        setNews(sortedPublications);
-      } catch (error) {
-        console.error('Error fetching news:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-  
-    getNews();
-  }, []);
-  
 
-  const Loading=()=>{
-    return(
-      <>
-      <div className='row' style={{marginLeft:'550px'}}>
-      <Skeleton height={60} width={150}/>
-      </div>
-      <div className='row' style={{marginBottom:'20px'}}>
-      <div className='col-sm-2'>
-      <Skeleton height={45} width={200} style={{borderRadius:'40px'}}/>
-      </div >
-      <div className='col-sm-2'>
-      <Skeleton height={45} width={40} style={{borderRadius:'15px'}}/>
-      </div >
-      </div>
-      <div className='row' style={{marginBottom:'25px'}}>
-      <div className='col-md-4'>
-      <Skeleton height={450} />
-      </div>
-      <div className='col-md-4'>
-      <Skeleton height={450} />
-      </div>
-      <div className='col-md-4'>
-      <Skeleton height={450} />
-      </div>
-      </div>
-      </>
-    )
-  }
+        const sortedPublications = parsedData.sort(
+          (a, b) =>new Date(b.createdAt)- new Date(a.createdAt) 
+        );
+
+        setNews(sortedPublications);
+      })
+      .catch(error => {
+        console.error('Error fetching news:', error);
+      });
+  }, []);
 
   function searchNews(e){
     let searchText = e.value.toLowerCase();
@@ -93,99 +54,76 @@ const News = () => {
 
   return (
     <div className="container mt-5">
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          {news.length === 0 ? (
-            <Loading />
-          ) : (
-            <>
-              <h1 className="mb-4 font-weight-bold text-center">News</h1>
-              <div className="input-group mb-3">
-                <input
-                  type="text"
-                  className="form-control rounded-pill text-center"
-                  placeholder="What's new?"
-                  aria-label="What's new?"
-                  aria-describedby="basic-addon2"
-                  style={{ maxWidth: '200px' }}
-                  onChange={function (e) {
-                    searchNews(e.target);
-                  }}
-                />
-                <div className="input-group-append">
-                  <span className="input-group-text bg-white border-0">
-                    <FaSearch />
-                  </span>
-                </div>
-              </div>
-              <div className="row">
-                {news.map((newsItem, index) => (
-                  <div key={index} className="col-md-4 mb-5">
-                    <div className="card rounded shadow grow-on-hover">
-                      <img
-                        className="card-img-top news"
-                        src={newsItem.imagePath}
-                        alt={newsItem.title}
-                      />
-                      <div className="card-body newsbody1 text-center">
-                        <h6
-                          className="mb-0"
-                          style={{ color: '#11676d', fontSize: '20px' }}
-                        >
-                          Author: {newsItem.author}
-                        </h6>
-                        <div
-                          className="d-flex"
-                          style={{ justifyContent: 'center' }}
-                        >
-                          <h6 className="mx-1" style={{ color: '#ffa525' }}>
-                            {newsItem.date &&
-                              newsItem.date.split('T')[0]}{' '}
-                          </h6>
-                          <h6>| </h6>
-                          <h6 className="ms-1" style={{ color: '#ffa525' }}>
-                            {newsItem.category}
-                          </h6>
-                        </div>
-                        <h5 className="card-title fw-bold fs-3">
-                          {newsItem.title}
-                        </h5>
-                        <p className="card-text text-muted">
-                          {newsItem.content}
-                        </p>
-                      </div>
-                      <div className="d-flex px-4 my-2">
-                        <Link
-                          to="/viewNews"
-                          state={{ id: newsItem._id }}
-                          className="btn btn-primary px-3"
-                        >
-                          Read More
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="text-right mt-3">
-                <Link
-                  style={{ marginBottom: '30px' }}
-                  to="/view-more"
-                  className="btn btn-primary"
+      <h1 className="mb-4 font-weight-bold text-center">News</h1>
+      <div className="input-group mb-3">
+        <input
+          type="text"
+          className="form-control rounded-pill text-center"
+          placeholder="What's new?"
+          aria-label="What's new?"
+          aria-describedby="basic-addon2"
+          style={{ maxWidth: '200px' }}
+          onChange={function(e){searchNews(e.target)}}
+        />
+        <div className="input-group-append">
+          <span className="input-group-text bg-white border-0">
+            <FaSearch />
+          </span>
+        </div>
+      </div>
+      <div className="row">
+        {news.map((newsItem, index) => (
+          <div key={index} className="col-md-4 mb-4">
+            <div className="card rounded shadow grow-on-hover">
+              <img
+                className="card-img-top news"
+                src={newsItem.imagePath}
+                alt={newsItem.title}
+              />
+              <div className="card-body newsbody1 text-center">
+                <h6
+                  className="mb-0"
+                  style={{ color: '#11676d', fontSize: '20px' }}
                 >
-                  View More
+                  Author: {newsItem.author}
+                </h6>
+                <div className="d-flex" style={{ justifyContent: 'center' }}>
+                  <h6 className="mx-1" style={{ color: '#ffa525' }}>
+                    {newsItem.date && newsItem.date.split('T')[0]}{' '}
+                  </h6>
+                  <h6>| </h6>
+                  <h6 className="ms-1" style={{ color: '#ffa525' }}>
+                    {newsItem.category}
+                  </h6>
+                </div>
+                <h5 className="card-title fw-bold fs-3">{newsItem.title}</h5>
+                <p className="card-text text-muted">{newsItem.content}</p>
+              </div>
+              <div className="d-flex px-4 my-2">
+                <Link
+                  to='/viewNews'
+                  style={{color: "#fff"}}
+                  state={{id:newsItem._id}}
+                  className="btn btn-primary px-3"
+                >
+                  Read More
                 </Link>
               </div>
-            </>
-          )}
-        </>
-      )}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="text-right mt-3">
+        <Link
+          style={{ marginBottom: '30px', color: "#fff", background: 'gray' }}
+          to="/viewNews"
+          className="btn "
+        >
+          View More
+        </Link>
+      </div>
     </div>
   );
-  
-  
 };
 
 export default News;

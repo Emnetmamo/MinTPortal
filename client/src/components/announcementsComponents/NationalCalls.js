@@ -17,7 +17,7 @@ const NationalCalls = (props) => {
 
   console.log(category);
   useEffect(function(){
-    axios.get("https://min-t-portal-server.vercel.app/announcements/fetchCalls")
+    axios.get("https://research-portal-server-9.onrender.com/announcements/fetchCalls")
     .then(result=>setCalls(result.data))
     .then(result=>console.log(result))
     .catch(err=>console.log(err))
@@ -83,8 +83,8 @@ const NationalCalls = (props) => {
                 Guidelines on how to fill the application: <span style={{ color: "black", fontWeight: "normal" }}>{calls[i].guideline}</span>
               </p>
           </div>
-          <a href='/startApplication' style={{ backgroundColor: "gray", color:"white", marginLeft:"900px"}}
-           className="btn ">
+          <a href='/startApplication' style={{ backgroundColor: "gray", color:"white"}}
+           className="btn apply-now-btn">
               APPLY NOW
             </a>
           </div>

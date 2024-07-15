@@ -11,7 +11,7 @@ const Publications = () => {
 
   useEffect(() => {
     // Fetch data when the component mounts
-    axios.get('https://min-t-portal-server.vercel.app/resources/publications')
+    axios.get('https://research-portal-server-9.onrender.com/resources/publications')
       .then(response => {
         const parsedData = typeof response.data === 'string' ? JSON.parse(response.data) : response.data;
 
@@ -114,7 +114,7 @@ function getFileNameFromPath(filePath) {
                     <h6 className="card-Investigator my-2 "><b>Author:</b> {PublicationItem.author}</h6>                     
                     <div className='d-flex align-items-end'>               
                     
-                  <h6 className='card-PublicationDate my-2 mx-1 ' style={{color: '#ffa525'}}>{PublicationItem.date} </h6> <h6>| </h6> <h6 className='ms-1' style={{color: '#ffa525'}}> {PublicationItem.field_of_study}</h6>
+                  <h6 className='card-PublicationDate my-2 mx-1 ' style={{color: '#ffa525'}}>{PublicationItem.date && PublicationItem.date.split('T')[0]}{' '}</h6> <h6>| </h6> <h6 className='ms-1' style={{color: '#ffa525'}}> {PublicationItem.field_of_study}</h6>
                 </div>
                 <Link
                   to="#"

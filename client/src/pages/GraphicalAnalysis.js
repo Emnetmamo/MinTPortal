@@ -24,7 +24,7 @@ const GraphicalAnalysis = () => {
           <button
             className={`nav-link ${selectedTab === "sector" ? "active" : ""}`}
             style={{
-              backgroundColor: selectedTab === "sector" ? "gray" : "",
+              backgroundColor: selectedTab === "sector" ? "orange" : "",
               color: selectedTab === "sector" ? "white" : "black",
               fontSize: "18px",
               fontWeight: "bold",
@@ -38,7 +38,7 @@ const GraphicalAnalysis = () => {
           <button
             className={`nav-link ${selectedTab === "gender" ? "active" : ""}`}
             style={{
-              backgroundColor: selectedTab === "gender" ? "gray" : "",
+              backgroundColor: selectedTab === "gender" ? "orange" : "",
               color: selectedTab === "gender" ? "white" : "black",
               fontSize: "18px",
               fontWeight: "bold",

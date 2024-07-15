@@ -1,27 +1,68 @@
 import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
+import Logout from '../../components/Logout';
+import { useAuthContext } from '../../AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const SetProjectStatus = ({email}) => {
   
   const [projects, setProjects] = useState([]);
   const[loaded, setLoaded] = useState(false);
-  const email1 = email;
+  const navigate = useNavigate();
+
+  //const {isAuthenticated, login} = useAuthContext()
+  let email1;
+  const cookies = document.cookie;
+  if (cookies) {
+      const emailCookie = cookies.split(';')[0];
+      if (emailCookie) {
+          const emailValue = emailCookie.split('=')[1];
+          if (emailValue) {
+              email1 = emailValue.replaceAll('"', '');
+              // Now you can use the email variable safely
+              console.log(email);
+          } else {
+              console.error("Email value is undefined");
+          }
+      } else {
+          console.error("Email cookie is undefined");
+      }
+  } else {
+      console.error("No cookies found");
+  }
+  //const [isAuthenticated, setIsAuthenticated] = useState(null)
+
+    
+ 
   useEffect(
     function(){
-      axios.get('http://localhost:5001/admin/userStatus/fetch-'+email1)
+        if(document.cookie){
+            if(document.cookie.split(';')[1].split('=')[1] === '"user"'){
+              
+            }
+            else{
+              navigate('/login');
+            }
+          }
+        else{
+            navigate('/login'); 
+        }
+      axios.get('https://research-portal-server-9.onrender.com/admin/userStatus/fetch-'+email1)
       .then((result)=>{
         console.log(result);
         setProjects(result.data);
+
       })
       .catch(err=>console.log(err))
       setLoaded(true);
+      
     }
   ,[email1]);
   function submitStatus(id){
     const selectedStatus = parseInt(document.getElementById(id).value);
     if(loaded && projects[0]){
-        axios.get('http://localhost:5001/admin/userStatus/'+id+"-"+selectedStatus)
+        axios.get('https://research-portal-server-9.onrender.com/admin/userStatus/'+id+"-"+selectedStatus)
         .then(result=>console.log(result))
         .catch(err=>console.log(err));
     }
@@ -43,12 +84,6 @@ const SetProjectStatus = ({email}) => {
                     onClick={function(e){submitStatus(e.target.name)}}>Submit Status</button>
                 </div>);
             }
-            else if(projects[i].status === 0){
-              return(
-              <div>
-                  <h3>Your project: {projects[i].projectTitle} has been rejected so you cannot update its status.</h3>
-              </div>);
-            }
             else{
                 return(
                 <div>
@@ -60,12 +95,13 @@ const SetProjectStatus = ({email}) => {
   }
 }
   return(
+    cookies ?
     <div>
         <div className='card shadow p-3 mb-5 bg-white rounded'>
             <h1>Update Project Status</h1>
             {loaded && displayDashboard()}
         </div>
-    </div>
+    </div> : <Logout/>
   );
 }
 export default SetProjectStatus;

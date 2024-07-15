@@ -8,13 +8,15 @@ import {setNews} from '../../actions/news'
 import '../../images/assets/css/admin.css';
 import Dropzone from '../../components/AdminComponents/Dropzone';
 import Sidebar from './Sidebar.js';
+import Logout from '../../components/Logout.js';
+import { useNavigate } from 'react-router-dom';
 
 
 axios.defaults.withCredentials=true;
 
 function Post_News() {
   
-  const defaultImageURL = 'https://min-t-portal-server.vercel.app/images/noimage.png'
+  const defaultImageURL = 'https://research-portal-server-9.onrender.com/images/noimage.png'
   const [imagePreview, setImagePreview] = useState(defaultImageURL);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -27,8 +29,30 @@ function Post_News() {
 
   });
 
+  const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(null)
+  // useEffect (() => {const checkAuthentication = async () => {
+  //   try {
+  //     const response = await axios.get('https://research-portal-server-9.onrender.com/check-auth-status');
+      
+  //     const isAuthenticated = response.data.isAuthenticated;
+  //     console.log(isAuthenticated)    
+  //     setIsAuthenticated(isAuthenticated)
+    
 
-  // const defaultImageURL = 'http://localhost:5001/images/noimage.png'
+    
+  //   } catch (error) {
+  //     console.error('Error checking authentication status:', error);
+  //     return false;
+  //   }
+  // };
+  
+  // // Example usage
+  //  checkAuthentication();
+  // }, [])
+
+
+  // const defaultImageURL = 'https://research-portal-server-9.onrender.com/images/noimage.png'
   // const [imagePreview, setImagePreview] = useState(defaultImageURL);
   
 
@@ -55,6 +79,21 @@ function Post_News() {
   //     });
   //   }
   // };
+
+  useEffect(function(){
+    if(document.cookie){
+      if(document.cookie.split(';')[1].split('=')[1] === '"admin3"'){
+        
+      }
+      else{
+        navigate('/login');
+      }
+    }
+    else{
+      navigate('/login'); 
+    }
+  }
+    ,[]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -102,7 +141,7 @@ function Post_News() {
       data.append('image', formData.image);
 
       try {
-        const response = axios.post('https://min-t-portal-server.vercel.app/admin/news/add-news', data);
+        const response = axios.post('https://research-portal-server-9.onrender.com/admin/news/add-news', data);
         console.log(response.data);
           alert('Do you want to submit')
           toast.info('News form submitted successfully!');
@@ -155,17 +194,10 @@ main()
   */
 
   return (
-    <div className= " mt-5 pt-5">
+    document.cookie ?
+    <div >
       
-      <div className='container  '>
-        <div className="row" >
-          <div className="col-xs-12 col-md-3 post-links-container  " style={{ overflow: 'hidden' }}>
-          <Sidebar/>
-            {/* ... Navigation links ... */}
-          </div>
-          <div className="col-xs-12 col-md-2"></div>        
-          
-          <div className="col-xs-12 col-md-7 mb-5" >                                  
+                                      
               <form method='POST' action='/admin/news/add-news' onSubmit={handleSubmit} encType='multipart/form-data' >
                 
                 <h1>Post a News</h1>
@@ -215,15 +247,30 @@ main()
                     required
                   >
                     <option value="">Select a category</option>
-                    <option value="Agriculture">Agriculture</option>
-          <option value="Environment-Energy">Industry</option>
-          <option value="Health">Health</option>
-          <option value="Construction">Construction</option>
-          <option value="Mines and Water">Mines and Water</option>
-          <option value="Information Communication">Information Communication</option>
-          <option value="Energy">Energy </option>
-          <option value="Enviroment Protection">Environment Protection </option>
-          <option value="Other related Sectors">Other related Sectors</option>
+                    <option value="National News" >
+                      National News
+                    </option>
+                    <option value="Foreign News" >
+                      Foreign News
+                    </option>
+                    <option value="Technology" >
+                      Technology
+                    </option>
+                    <option value="Science" >
+                      Science
+                    </option>
+                    <option value="Health" >
+                      Health
+                    </option>
+                    <option value="Entertainment" >
+                      Entertainment
+                    </option>
+                    <option value="Finance" >
+                      Finance
+                    </option>
+                    <option value="Sports" >
+                      Sports
+                    </option>
                   </select>
 
                 </div>
@@ -242,16 +289,16 @@ main()
                             
                 <div className="form-group">
                   <label className='form-label'>Upload Image:</label>
-                  <div  className="form-control form-input mb-2">
+                
                   {/* <FileBase
                     type="file" 
                     multiple = {false}                         
                     onDone={({base64}) => setFormData({...formData, imagePath: base64})}
                     
                   />             */}
-                  <input type="file" name="image" id="image" onChange={handleFileSelect}/>
+                  <input type="file" className="form-control form-input mb-2"  name="image" id="image" onChange={handleFileSelect}/>
                                                  
-                 </div>
+                
                  {imagePreview && (
                     <img src={imagePreview} alt="Preview" style={{ maxWidth: '100px', maxHeight: '100px' }} />
                   )}
@@ -268,11 +315,8 @@ main()
               <ToastContainer/>         
             {/* <p>Upload Images:</p>
             <Dropzone className='py-5 mt-10 border border-neutral-200' /> */}
-          </div>
-        </div>
-      </div>
+          </div> : <Logout/>
       
-    </div>
   );
 }
 

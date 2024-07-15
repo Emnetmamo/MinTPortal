@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import '../../images/assets/css/admin.css';
 import Sidebar from './Sidebar.js';
+import Logout from '../../components/Logout.js';
 
 axios.defaults.withCredentials=true;
 
@@ -21,9 +22,46 @@ function PostInstitutes() {
 
   });
 
-  const defaultImageURL = 'https://min-t-portal-server.vercel.app/images/noimage.png'
+  const navigate = useNavigate();
+  const defaultImageURL = 'https://research-portal-server-9.onrender.com/images/noimage.png'
   const [imagePreview, setImagePreview] = useState(defaultImageURL);
+  const [isAuthenticated, setIsAuthenticated] = useState(null)
   
+
+  // useEffect (() => {const checkAuthentication = async () => {
+  //   try {
+  //     const response = await axios.get('https://research-portal-server-9.onrender.com/check-auth-status');
+      
+  //     const isAuthenticated = response.data.isAuthenticated;
+  //     console.log(isAuthenticated)    
+  //     setIsAuthenticated(isAuthenticated)
+    
+
+    
+  //   } catch (error) {
+  //     console.error('Error checking authentication status:', error);
+  //     return false;
+  //   }
+  // };
+  
+  // // Example usage
+  //  checkAuthentication();
+  // }, [])
+
+  useEffect(function(){
+    if(document.cookie){
+      if(document.cookie.split(';')[1].split('=')[1] === '"admin3"'){
+        
+      }
+      else{
+        navigate('/login');
+      }
+    }
+    else{
+      navigate('/login'); 
+    }
+  }
+    ,[]);
 
   const handleFileSelect = (event) => {
     const selectedFile = event.target.files[0];
@@ -107,7 +145,7 @@ function PostInstitutes() {
      
 
       try {
-        const response = axios.post('https://min-t-portal-server.vercel.app/admin/institutes/post-to-institutes', data);
+        const response = axios.post('https://research-portal-server-9.onrender.com/admin/institutes/post-to-institutes', data);
         console.log(response.data);
           alert('Do you want to submit')
           toast.info('Institutes form submitted successfully!');
@@ -120,17 +158,10 @@ function PostInstitutes() {
   };
 
   return (
-    <div className= " mt-5 pt-5">
+    document.cookie ?
+    <div >
       
-      <div className='container  '>
-        <div className="row" >
-          <div className="col-xs-12 col-md-3 post-links-container  " style={{ overflow: 'hidden' }}>
-          <Sidebar/>
-            {/* ... Navigation links ... */}
-          </div>
-          <div className="col-xs-12 col-md-2"></div>        
-          
-          <div className="col-xs-12 col-md-7 mb-5" >                                  
+                                      
               <form method='POST' action='/admin/institutes/post-to-institutes' onSubmit={handleSubmit} encType='multipart/form-data' >
                 
                 <h1>Post To Institutes</h1>
@@ -180,8 +211,11 @@ function PostInstitutes() {
                     required
                   >
                     <option value="">Select a category</option>
-                    <option value="Research Institutes" >
-                      Research Institutes
+                    <option value="National Research Institutes" >
+                      National Research Institutes
+                    </option>
+                    <option value="International Research Institutes" >
+                      International Research Institutes
                     </option>
                     <option value="Laboratories" >
                       Laboratories
@@ -250,11 +284,7 @@ function PostInstitutes() {
               <ToastContainer/>         
             {/* <p>Upload Images:</p>
             <Dropzone className='py-5 mt-10 border border-neutral-200' /> */}
-          </div>
-        </div>
-      </div>
-      
-    </div>
+          </div>  : <Logout/>   
   );
 }
 

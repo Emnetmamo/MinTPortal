@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import TableContainer from '@mui/material/TableContainer';
 import Sidebar from './Sidebar.js';
+import Logout from '../../components/Logout.js';
+import { useAuthContext } from '../../AuthContext.js';
+
 
 const SubmitReport = () => {
   let i = 1;
@@ -11,23 +15,77 @@ const SubmitReport = () => {
   const[loaded, setLoaded] = useState(false);
   const[file, setFile] = useState(null);
   const location = useLocation();
-  const {email} = location.state;
+  const navigate = useNavigate();
+
+
+  const [SidebarVisibility, setSiderVisibility] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(null)
+  const {user} = useAuthContext()
+  let email;
+  const cookies = document.cookie;
+if (cookies) {
+    const emailCookie = cookies.split(';')[0];
+    if (emailCookie) {
+        const emailValue = emailCookie.split('=')[1];
+        if (emailValue) {
+             email = emailValue.replaceAll('"', '');
+            // Now you can use the email variable safely
+            console.log(email);
+        } else {
+            console.error("Email value is undefined");
+        }
+    } else {
+        console.error("Email cookie is undefined");
+    }
+} else {
+    console.error("No cookies found");
+}
+
   //console.log(email);
   useEffect(
     function(){
-      axios.get('https://min-t-portal-server.vercel.app/admin/userStatus/getAll')
+      if(document.cookie){
+        if(document.cookie.split(';')[1].split('=')[1] === '"admin2"'){
+          
+        }
+        else{
+          navigate('/login');
+        }
+      }
+      else{
+        navigate('/login'); 
+      }
+      axios.get('https://research-portal-server-9.onrender.com/admin/userStatus/getAll')
       .then((result)=>{
         setProjects(result.data);
         //console.log(result);
       })
       .catch(err=>console.log(err))
-      axios.get('https://min-t-portal-server.vercel.app/admin2Reports/find/'+email)
+      axios.get('https://research-portal-server-9.onrender.com/admin2Reports/find/'+email)
       .then((result)=>{
         setUserID(result.data[0]._id);
         console.log(userID);
       })
       .catch(err=>console.log(err))
       setLoaded(true);
+      // const checkAuthentication = async () => {
+      //   try {
+      //     const response = await axios.get('https://research-portal-server-9.onrender.com/check-auth-status');
+          
+      //     const isAuthenticated = response.data.isAuthenticated;
+      //     console.log(isAuthenticated)    
+      //     setIsAuthenticated(isAuthenticated)
+        
+  
+        
+      //   } catch (error) {
+      //     console.error('Error checking authentication status:', error);
+      //     return false;
+      //   }
+      // };
+      
+      // // Example usage
+      //  checkAuthentication();
     }
   ,[]);
   function displayProjects(){
@@ -80,7 +138,7 @@ function SubmitReport(id){
     formData.append('file', file);
     console.log(file);
 
-    axios.post('https://min-t-portal-server.vercel.app/admin2Reports/upload/'+ userID + "-" +  id , formData, config)
+    axios.post('https://research-portal-server-9.onrender.com/admin2Reports/upload/'+ userID + "-" +  id , formData, config)
     .then((res)=>{console.log(res);})
     .catch(err=>console.log(err))
     toast.info("Report Submitted Successfully!")
@@ -113,19 +171,18 @@ function buttonsDisplay(num){
     return "none";
   }
 }
-  return (
-    <div className=" ">
-     
-      <div className='container mt-5'>
+  return (  
+    document.cookie ?    
         
-          <div className="row ms-0">
-            <div className='col-xs-12 col-md-2 post-links-container-user-status mt-5' style={{backgroundColor:"#11676d"}} >
-            <Sidebar email={email}/>
-            </div>
-          <div className="col-xs-12 col-md-1"></div>
-          <div className="col-xs-12 col-md-9 mb-5">
-            <br/>
-            <h1 className='mb-3'>Give Feedback</h1>  
+          <div >
+            
+           
+            
+      
+          <div >
+       
+            <h1 className='mb-3'>Submit Report/s</h1>  
+            <TableContainer  sx={{ maxHeight: 440 }}>
               <table class="table">
                 <thead class="table-success" style={{color: '#11676d'}}>  
                   <tr>
@@ -142,11 +199,10 @@ function buttonsDisplay(num){
                   {loaded && displayProjects()}
                 </tbody>  
               </table>
+              </TableContainer>
           </div>
-      </div>
-    </div>
-    <ToastContainer/>
-  </div>
+          <ToastContainer/>
+      </div> : <Logout/>
    
   )
 }

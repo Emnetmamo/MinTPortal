@@ -19,13 +19,13 @@ const Introduction = () => {
     <div className="row mt-4">
       <div id="top"></div>
 
-      <div className="col-md-6" style={{color: '#2b2b2b', borderRadius: '40px bold', backgroundColor: '#fff', marginBottom: "10px"}}>
+      <div className="col-md-6" style={{color: '#2b2b2b', borderRadius: '40px bold', backgroundColor: '#F5F5F5', marginBottom: "10px"}}>
         <h1 style={{fontSize: "28px"}}>Ethiopian National Research Portal</h1>  
-        <div style={{padding:"10px", fontSize:"22px"}}>
+        <div style={{ padding: "10px", fontSize: "22px" }}>
        Science, Technology and Innovation (STI) is now universally regarded and recognized as fundamental to achieve sustainable development and economic growth for both developing and developed countries, thus acting as an important driver for poverty alleviation. To set effective STI policies, reliable indicators are needed to benchmark and monitor progress. Research and experimental development (R&D) is an important component of a country’s national innovation system. 
       </div>
       <div style={{marginLeft: "400px"}}>
-      <a href="/announcements" style={{background: "goldenrod", color: "white", border: 'none', marginLeft:"-380px", marginTop: "10px", marginBottom: "20px"}} className="btn btn-secondary">See open Research Calls</a>
+      <a href="/announcements" style={{background: "gray", color: "white", border: 'none', marginLeft:"-380px", marginTop: "10px", marginBottom: "20px"}} className="btn btn-secondary">See open Research Calls</a>
       </div>
         
       </div>

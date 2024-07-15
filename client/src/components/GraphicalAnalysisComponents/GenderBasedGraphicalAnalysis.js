@@ -20,7 +20,7 @@ const GenderBasedGraphicalAnalysis = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://min-t-portal-server.vercel.app/resources/gender-info');
+        const response = await axios.get('https://research-portal-server-9.onrender.com/resources/gender-info');
         setGraphData(response.data);
         setLoading(false);
       } catch (error) {

@@ -3,7 +3,7 @@ import '../../images/assets/css/admin.css';
 import { useLocation } from 'react-router-dom';
 
 function Sidebar(props){
-    const {email} = props;
+    //const {email} = props;
     //console.log(email);
     return(
             <ul class="list-group text-center fs-5 display-6">
@@ -16,7 +16,7 @@ function Sidebar(props){
                   borderRadius: "10px",
                 }}
               >
-                <Link className="links" to="/admin3/news/add-news" state={{email:email}}>
+                <Link className="links" to="/admin3/news/add-news">
                   Post News{" "}
                 </Link>
               </li>
@@ -29,7 +29,7 @@ function Sidebar(props){
                   borderRadius: "10px",
                 }}
               >
-                <Link className="links" to="/admin3/calls/add-call" state={{email:email}}>
+                <Link className="links" to="/admin3/calls/add-call">
                   Post Calls
                 </Link>
               </li>
@@ -45,7 +45,6 @@ function Sidebar(props){
                 <Link
                   className="links"
                   to="/admin3/publications/add-publication"
-                  state={{email:email}}
                 >
                   Post Publications
                 </Link>
@@ -62,7 +61,6 @@ function Sidebar(props){
                 <Link
                   className="links"
                   to="/admin3/accepted-projects/add-accepted-project"
-                  state={{email:email}}
                 >
                   Post Accepted Projects
                 </Link>
@@ -72,7 +70,6 @@ function Sidebar(props){
                 <Link
                   className="links"
                   to="/admin3/institutes/post-to-institutes"
-                  state={{email:email}}
                 >
                   Post To Institutes
                 </Link>
@@ -82,19 +79,8 @@ function Sidebar(props){
                 <Link
                   className="links"
                   to="/admin3/collaboration/post-to-collaboration"
-                  state={{email:email}}
                 >
                   Post To Collaborations
-                </Link>
-                </li>
-              <br />
-              <li class="list-group-item post-links " style={{backgroundColor: '#ffa525', border: 'none', borderRadius: '10px'}}>
-                <Link
-                  className="links"
-                  to="/admin3/history/add-history"
-                  state={{email:email}}
-                >
-                  Post History
                 </Link>
               </li>
               <br />

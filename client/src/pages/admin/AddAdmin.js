@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {useNavigate}  from "react-router-dom";
 import "../../images/assets/css/admin.css";
@@ -7,8 +7,10 @@ import axios from "axios";
 import Sidebar from './Sidebar.js';
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
 import { ToastContainer, toast } from 'react-toastify';
+import TableContainer from '@mui/material/TableContainer';
 import countryOptions from "../../components/registrationComponents/countryOptions.js";
 import Dropzone from "../../components/AdminComponents/Dropzone";
+import Logout from "../../components/Logout.js";
 
 function AddAdmin() {
     const [fName, SetFname] = useState("");
@@ -22,7 +24,49 @@ function AddAdmin() {
     const [country, SetCountry] = useState("");
     const [address, SetAddress] = useState("");
     const [adminType, setAdminType] = useState("");
+    const [fieldType, setField] = useState("");
+    const [isAdmin2, setIsAdmin2] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(null);
+
+    const navigate = useNavigate();
+    useEffect(function(){
+      if(document.cookie){
+        if(document.cookie.split(';')[1].split('=')[1] === '"admin"'){
+          
+        }
+        else{
+          navigate('/login');
+        }
+      }
+      else{
+        navigate('/login'); 
+      }
+    },[]);
+    
+    // useEffect(
+    //   function(){
+       
+    //     const checkAuthentication = async () => {
+    //       try {
+    //         const response = await axios.get('https://research-portal-server-9.onrender.com/check-auth-status');
+            
+    //         const isAuthenticated = response.data.isAuthenticated;
+    //         console.log(isAuthenticated)    
+    //         setIsAuthenticated(isAuthenticated)
+          
+    
+          
+    //       } catch (error) {
+    //         console.error('Error checking authentication status:', error);
+    //         return false;
+    //       }
+    //     };
+        
+    //     // Example usage
+    //      checkAuthentication();
+    //   }
+    // ,[]);
     const handleSubmit = (e) => {
       e.preventDefault();
       axios.defaults.withCredentials=true
@@ -48,7 +92,7 @@ function AddAdmin() {
     
       if (password === confirmPassword && password.length >= 8 && /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*!.])[A-Za-z\d@#$%^&*!.]{8,}/.test(password)) {
         axios
-          .post("https://min-t-portal-server.vercel.app/auth/register2", {
+          .post("https://research-portal-server-9.onrender.com/auth/register2", {
             fName,
             LName,
             password,
@@ -57,7 +101,8 @@ function AddAdmin() {
             country,
             address,
             sex,
-            adminType
+            adminType,
+            fieldType
           })
           .then((response) => {
             console.log(response.data);
@@ -101,17 +146,10 @@ function AddAdmin() {
     };
   
   return (
-    <div className="">
-      <div className="container mt-5">
-        <div className="row">
-          <div
-            className="col-xs-12 col-md-3 post-links-container mt-5"
-            style={{ overflow: "hidden" }}
-          >
-            <Sidebar/>
-          </div>
-          <div className="col-xs-12 col-md-2"></div>
-          <div className="col-xs-12 col-md-7 mb-5">
+    document.cookie ?
+    <div style = {{marginLeft: '0'}}>
+   
+         <div style = {{marginLeft: '0'}}>
             <h1>Add Admin</h1>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
@@ -248,7 +286,12 @@ function AddAdmin() {
                   name="type"
                   className="form-control"
                   value={adminType}
-                  onChange={(e) => setAdminType(e.target.value)}
+                  onChange={(e) => {
+                    setAdminType(e.target.value);
+                    if(e.target.value === "admin2"){
+                      setIsAdmin2(true);
+                    } 
+                  }}
                 >
                   <option >Select Admin Type</option>
                   <option value="admin">MinT Grant Admin (Part of Techincal Committee)</option>
@@ -256,6 +299,31 @@ function AddAdmin() {
                   <option value="admin3">MinT General Admin (Manages website)</option>
                   </select>
               </div>
+              {isAdmin2 && <div className="mb-3">
+              <label htmlFor="fieldType" className="form-label" style={{fontSize: "25px"}}>
+                Field*
+              </label>
+              <select
+              style={{fontSize: "22px"}}
+                className="form-select"
+                id="fieldType"
+                name="fieldType"
+                value={fieldType}
+                onChange={(e) => setField(e.target.value)}
+                required
+              >
+                <option value="" style={{fontSize: "22px"}}>Select a category</option>
+           <option value="Agriculture">Agriculture</option>
+          <option value="Industry">Industry</option>
+          <option value="Health">Health</option>
+          <option value="Construction">Construction</option>
+          <option value="Mines and Water">Mines and Water</option>
+          <option value="Information Communication">Information Communication</option>
+          <option value="Energy">Energy </option>
+          <option value="Enviroment and Protection">Environment and Protection </option>
+          <option value="Other related Sectors">Other related Sectors</option>
+              </select>
+            </div> }
             <div className="mb-3">
               <label htmlFor="contactNumber" className="form-label">
                 Contact Number
@@ -313,7 +381,7 @@ function AddAdmin() {
               ></textarea>
             </div>
             <button
-              style={{ backgroundColor: "orange", color: "white", float: "right" }}
+              style={{width: '100%', backgroundColor: "orange", color: "white", float: "right" }}
               type="submit"
               className="btn "
             >
@@ -321,10 +389,9 @@ function AddAdmin() {
             </button>
           </form>
           </div>
-        </div>
-      </div>
+     
       <ToastContainer/>
-    </div>
+    </div> : <Logout/>
   );
 }
 

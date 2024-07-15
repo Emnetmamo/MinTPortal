@@ -4,7 +4,7 @@ import { useLocation, Link } from "react-router-dom";
 function StartApplication(){
     function downloadFile(){
         axios({
-            url: 'https://min-t-portal-server.vercel.app/templates/ProposalTemplate.docx',
+            url: 'https://research-portal-server-9.onrender.com/templates/ProposalTemplate.docx',
             method: 'GET',
             responseType: 'blob', // Ensure the response type is set to blob
           })
@@ -44,7 +44,7 @@ function StartApplication(){
                 3. Significance<br />
 
               Beneficiaries Expected outputs Expected outcomes/ Benefits</p>
-              <p>Curriculum Vitae of applicants(Things to be included)</p>
+              <p>CV (Curriculum Vitae) of applicants(Things to be included)</p>
               <p style={{color: "black"}}>
             1.       Full name:<br />    
 
@@ -72,7 +72,7 @@ function StartApplication(){
               <br />
               <p>Once you have these documents you can click on the register button on the top right corner 
                 or use this button:</p>
-              <a href="/register" className="btn btn-primary">APPLY</a>
+              <a href="/auth/register" className="btn btn-primary">APPLY</a>
               <br />
             </div>
             <br />

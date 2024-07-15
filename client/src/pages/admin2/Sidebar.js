@@ -16,7 +16,7 @@ function Sidebar(props){
                   borderRadius: "10px",
                 }}
               >
-                <Link className="links" to="/admin2/projectFeedback" state={{email:email}}>
+                <Link className="links" to="/admin2/projectFeedback"   state={{email:email}}>
                   Give Project Feedback
                 </Link>
               </li>
