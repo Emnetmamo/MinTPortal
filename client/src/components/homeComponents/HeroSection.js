@@ -10,8 +10,8 @@ const HeroSection = () => {
         </video>
       </div>
       <div className="hero-content">
-        <h1 className="hero-title">Welcome to Ethiopia's National Research Portal</h1>
-        <h1 className="hero-subtitle">Where innovation meets purpose, and every milestone takes Ethiopia closer to a smarter future.</h1>
+        <h1 className="hero-title">Welcome to Ethiopia's National Research and Development Portal</h1>
+        <h1 className="hero-subtitle" style={{fontSize:"32px"}}>Where innovation meets purpose, and every milestone takes Ethiopia closer to a smarter future.</h1>
       </div>
     </section>
   );
