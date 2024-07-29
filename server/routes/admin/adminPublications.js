@@ -46,7 +46,7 @@ router.post('/add-publication', (req, res) => {
        imagePath =  req.files['image'][0].path; 
        console.log(imagePath) }
 
-      const serverUrl = 'https://research-portal-server-9.onrender.com'; 
+      const serverUrl = process.env.SERVER_URL; 
 
       // Process image path
       const cleanImagePath = imagePath.replace(/\\/g, '/').split('public/').pop();

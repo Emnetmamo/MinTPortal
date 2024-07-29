@@ -56,7 +56,7 @@ app.use(cookieParser())
 //     credentials:true,            //access-control-allow-credentials:true
 //     optionSuccessStatus:200
 // }
-app.use(cors({ origin:'http://localhost:3000', 
+app.use(cors({ origin: process.env.CLIENT_URL, 
     credentials:true,  } ));
 app.use(express.static(path.join('./', 'public')));
 dotenv.config();

@@ -229,14 +229,18 @@ function UpdateUserStatus() {
       else{
         navigate('/login'); 
       }
+
+      axios.get(process.env.REACT_APP_SERVER+'admin2Feedback/getFeedback')
+      .then((result)=>{setFeedbacks(result.data); 
+        console.log(result)
+      })
+      .catch(err=>console.log(err))
+      
       axios.get(process.env.REACT_APP_SERVER+'admin/userStatus/getAll')
       .then((result)=>{
         setProjects(result.data);
-        //console.log(result);
+        //console.log(projects);
       })
-      .catch(err=>console.log(err))
-      axios.get(process.env.REACT_APP_SERVER+'admin2Feedback/getFeedback')
-      .then((result)=>{setFeedbacks(result.data); console.log(feedbacks)})
       .catch(err=>console.log(err))
       setLoaded(true);
       // const checkAuthentication = async () => {
@@ -562,8 +566,8 @@ function buttonsDisplay(num){
     
             <h1 className='mb-3'>Update User Status</h1>  
             <TableContainer sx={{ maxHeight: 440 }}>
-              <table class="table">
-                <thead class="table-success" style={{color: '#11676d'}}>  
+              <table className="table">
+                <thead className="table-success" style={{color: '#11676d'}}>  
                   <tr>
                     <th>No.</th>
                     <th>User Id</th>

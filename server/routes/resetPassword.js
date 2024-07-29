@@ -34,7 +34,7 @@ routepassword.post('/forgot',(req,res)=>{
      from: 'adaneeshete560@gmail.com',
      to:email,
      subject:'reset forgot password',
-     text: `https://mint2024.netlify.app/reset/${idd}/${token}`,
+     text: process.env.CLIENT_URL + `/reset/${idd}/${token}`,
    };
  transporter.sendMail(mailOptions,function(error,info){
      if(error){

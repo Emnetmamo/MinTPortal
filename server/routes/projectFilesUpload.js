@@ -26,7 +26,7 @@ router.post('/upload/:id',upload.single('file') ,async function(req, res){
         console.log(req.file);
         const ID = new mongoose.Types.ObjectId(projectID1);
         const today = new Date(Date.now()).toISOString();
-        const path = "https://research-portal-server-9.onrender.com/uploads/"+fileName1;
+        const path = process.env.SERVER_URL+"/uploads/"+fileName1;
 
         if(projectStatus === "2"){
             await ProjectModel.findByIdAndUpdate({_id:ID}, {proposalPath2:path})

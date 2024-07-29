@@ -42,7 +42,7 @@ router.post('/add-publication', (req, res) => {
       const imagePath = req.files['image'][0].path; // Multer saves the image path
       const filePath = req.files['file'][0].path; // Multer saves the file path
 
-      const serverUrl = 'http://localhost:5001'; // Replace this with your server URL
+      const serverUrl = process.env.SERVER_URL; // Replace this with your server URL
 
       // Process image path
       const partsImage = imagePath.split('public/');

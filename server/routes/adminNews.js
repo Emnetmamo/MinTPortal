@@ -43,7 +43,7 @@ router.post('/add-news', (req, res) => {
     } else {
       const { title, author, content, category, date,  } = req.body;
       const imagePath = req.file.path; // Multer saves uploaded file path     
-      const serverUrl = 'http://localhost:5001'; // Replace this with your server URL
+      const serverUrl = process.env.SERVER_URL; // Replace this with your server URL
       
       //   Remove 'public' from the path
       const parts = imagePath.split('public\\');

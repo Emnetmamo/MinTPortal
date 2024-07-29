@@ -67,7 +67,7 @@ router.post('/post-to-collaboration', (req, res) => {
       if (req.file){ imagePath = req.file.path; 
       console.log(imagePath)  }
          
-      const serverUrl = 'https://research-portal-server-9.onrender.com'; // Replace this with your server URL
+      const serverUrl = process.env.SERVER_URL; // Replace this with your server URL
       
       //   Remove 'public' from the path
       const cleanImagePath = imagePath.replace(/\\/g, '/').split('public/').pop();
