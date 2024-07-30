@@ -5,13 +5,24 @@ import History from "../models/history.js";
 import Announcements from "../models/announcements.js"
 import UserModel from "../models/users.js"
 import ProjectModel from "../models/projects.js"
+import RDDocuments from "../models/rddocuments.js";
 
 const router = express.Router()
  
 //GET publications
 router.get('/publications', async (req, res) => {
   try {
-    const publicationData = await Publicaiton.find(); // Fetch all news from the MongoDB collection
+    const publicationData = await Publicaiton.find(); // Fetch all publications from the MongoDB collection
+    res.json(publicationData);
+  } catch (error) {
+    console.error('error2:', error)
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+router.get('/rddocuments', async (req, res) => {
+  try {
+    const publicationData = await RDDocuments.find(); // Fetch all R&D documents from the MongoDB collection
     res.json(publicationData);
   } catch (error) {
     console.error('error2:', error)
@@ -22,7 +33,7 @@ router.get('/publications', async (req, res) => {
 //GET accepted-projects 
 router.get('/accepted-projects', async (req, res) => {
   try {
-    const acceptedProjectData = await AcceptedProject.find(); // Fetch all news from the MongoDB collection
+    const acceptedProjectData = await AcceptedProject.find(); // Fetch all accepted project from the MongoDB collection
     res.json(acceptedProjectData);
   } catch (error) {
     console.error('error2:', error)
@@ -31,7 +42,7 @@ router.get('/accepted-projects', async (req, res) => {
 });
 router.get('/history', async (req, res) => {
   try {
-    const acceptedProjectData = await History.find(); // Fetch all news from the MongoDB collection
+    const acceptedProjectData = await History.find(); // Fetch all history from the MongoDB collection
     res.json(acceptedProjectData);
   } catch (error) {
     console.error('error2:', error)
@@ -41,7 +52,7 @@ router.get('/history', async (req, res) => {
 //GET Annnouncements 
 router.get('/announcements', async (req, res) => {
   try {
-    const AnnouncementstData = await Announcements.find(); // Fetch all news from the MongoDB collection
+    const AnnouncementstData = await Announcements.find(); // Fetch all announcements from the MongoDB collection
     res.json(AnnouncementstData);
   } catch (error) {
     console.error('error2:', error)

@@ -21,6 +21,7 @@ import GovernmentAgencies from './components/Institutes/GovernmentAgencies';
 import IctPartners from './components/Institutes/IctPartners';
 import Others from './components/Institutes/Others.js';
 import Publications from './pages/Publications';
+import RDDocuments from './pages/RDDocuments.js';
 import Institutes from './pages/Institutes';
 import ProjectDescription from './pages/ProjectDescription';
 import AcceptedProjects from './pages/AcceptedProjects';
@@ -61,7 +62,8 @@ import PostAcceptedProjects from './pages/admin3/PostAcceptedProjects.js';
 import PostInstitutes from './pages/admin3/PostInstitutes.js';
 import PostCollaborations from './pages/admin3/PostCollaborations.js'
 import PostHistory from './pages/admin3/PostHistory';
-import PostNews from './pages/admin3/PostNews.js'
+import PostNews from './pages/admin3/PostNews.js';
+import PostRDDocuments from './pages/admin3/PostRDDocuments.js';
 
 import ViewFile from './pages/admin/ViewFile.js';
 import ViewFeedback from "./pages/admin/ViewFeedback.js"
@@ -173,6 +175,11 @@ const admin3SidebarItems = [   {
   icon: <Group />,
   
 },
+{
+  label: 'Post R&D Documents',
+  path: '/admin3/RDDocuments/post-RDDocuments',
+  icon: <Description />,
+}
 ]
 
 
@@ -293,6 +300,7 @@ const RoutesComponent = () => {
         
         <Route p ath='/footer' element={<FooterForm/>}/>
         <Route path='/resources/publications' element={<Publications/>}/>
+        <Route path='/resources/rddocuments' element={<RDDocuments/>}/>
         <Route path='/institutes' element={<Institutes />}/>
         <Route path="/collaborations" element={<Collaborations />} />
         <Route path="/aboutus" element={<AboutUs />} />
@@ -413,6 +421,7 @@ const RoutesComponent = () => {
               <Route path='history/add-history' element={<PostHistory/>}/>
               <Route path='institutes/post-to-institutes' element={<PostInstitutes/>}/>
               <Route path='collaboration/post-to-collaboration' element={<PostCollaborations/>}/>
+              <Route path='RDDocuments/post-RDDocuments' element={<PostRDDocuments/>}/>
 
 
             </Route>

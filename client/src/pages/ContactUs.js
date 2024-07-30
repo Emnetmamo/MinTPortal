@@ -75,7 +75,7 @@ const ContactUs = () => {
             }}
           >
             <FaPhone />
-            <span style={{ marginLeft: '5px' }}>+25111265737</span>
+            <span style={{ marginLeft: '5px' }}>+25111265737 / +25191176534</span>
           </div>
           <div
             style={{
@@ -85,8 +85,17 @@ const ContactUs = () => {
               alignItems: 'center',
             }}
           >
+          </div>
+          <div
+          style={{
+            fontSize: '28px',
+            color: 'black',
+            display: 'flex',
+            alignItems: 'center',
+          }}>
             <RiMailFill />
-            <span style={{ marginLeft: '5px' }}>contact@mint.gov.et</span>
+            <span style={{ marginLeft: '5px' }}>contact@mint.gov.et,</span>
+            <span style={{ marginLeft: '5px' }}>Fax 6554, PO Box: 1094</span>
           </div>
           <div
             style={{
@@ -97,6 +106,7 @@ const ContactUs = () => {
             }}
           >
             <RiMapPin2Fill />
+            <span style={{ marginLeft: '5px' }}>Arada sub City, Beyond Lycee Gebremariam School,</span>
             <span style={{ marginLeft: '5px' }}>Addis Ababa, Ethiopia</span>
           </div>
         </div>

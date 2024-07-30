@@ -116,6 +116,7 @@ const Navbar = () => {
       <a className="dropdown-item" href="/resources/history" onClick={closeDropdown}>Success History</a>
       <a className="dropdown-item" href="/resources/accepted-projects" onClick={closeDropdown}>Accepted Projects</a>
       <a className="dropdown-item" href="/resources/publications" onClick={closeDropdown}>Publications</a>
+      <a className="dropdown-item" href="/resources/rddocuments" onClick={closeDropdown}>R&D Documents</a>
     </div>
   </div>
   <a className={`nav-link ${window.location.pathname === '/institutes' ? 'active' : ''}`} href="/institutes" onClick={closeMenu} style={{marginRight: '10px', color: 'gray'}}>Institutes</a>

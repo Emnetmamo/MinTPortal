@@ -41,6 +41,7 @@ import admin2Reports from './routes/admin2Reports.js'
 
 import adminAppointment from './routes/admin/adminAppointment.js';
 import adminUserStatus from './routes/admin/adminUserStatus.js';
+import adminRDDocuments from './routes/admin/adminRDDocuments.js'
 
 import routepassword from './routes/resetPassword.js';
 const app = express();
@@ -106,6 +107,7 @@ app.use('/admin/appointments', adminAppointments);
 app.use('/admin/news', adminNews);
 app.use('/admin/history',historyRouter)
 app.use('/admin/publications', adminPublications)
+app.use('/admin/RDDocuments', adminRDDocuments)
 app.use('/admin/accepted-projects', adminAcceptedProjects)
 app.use('/admin/institutes', adminInstitutes)
 app.use('/footer', footerForm)
