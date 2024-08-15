@@ -269,7 +269,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
             <label htmlFor="cvFile" className="form-label" style={{fontSize: "25px"}}>
               CV (PDF)*
             </label>
-            {/* <input
+            <input
             style={{fontSize: "22px"}}
               type="file"
               accept="application/pdf"
@@ -278,22 +278,22 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
               name="cvFile"
               onChange={handleCVFileChange}
               required
-            /> */}
-            <FileBase className="form-control"           
+            />
+            {/* <FileBase className="form-control"           
                       name="description"
                       value={cvFile}                    
                       required 
                       type="file" 
                       multiple={false} 
                       onDone={({ base64 }) => setCvFile( base64 )} 
-              />
+              /> */}
           </div>
 
             <div className="mb-3">
               <label htmlFor="proposalFile" className="form-label" style={{fontSize: "25px"}}>
                 Concept Note (PDF)*
               </label>
-              {/* <input
+              <input
               style={{fontSize: "22px"}}
                 type="file"
                 accept="application/pdf"
@@ -302,15 +302,15 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
                 name="proposalFile"
                 onChange={handleProposalFileChange}
                 required
-              /> */}
-               <FileBase className="form-control"           
+              />
+               {/* <FileBase className="form-control"           
                       name="description"
                       value={proposalFile}                    
                       required 
                       type="file" 
                       multiple={false} 
                       onDone={({ base64 }) => setProposalFile( base64 )} 
-              />
+              /> */}
           
             </div>
 
@@ -318,7 +318,7 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
               <label htmlFor="letter" className="form-label" style={{fontSize: "25px"}}>
                 Letter from Host Institutions*
               </label>
-              {/* <input
+              <input
               style={{fontSize: "22px"}}
                 type="file"
                 accept="application/pdf"
@@ -327,13 +327,13 @@ const ProjectIdea = ({ nextStep, prevStep }) => {
                 name="letter"
                 onChange={handleLetterFileChange}
                 required
-              /> */}
-                <FileBase className="form-control"           
+              />
+                {/* <FileBase className="form-control"           
                       
                       type="file" 
                       multiple={false} 
                       onDone={({ base64 }) => setLetter( base64 )} 
-              />
+              /> */}
             </div>
 
             <div className="d-flex justify-content-between">

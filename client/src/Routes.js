@@ -298,7 +298,7 @@ const RoutesComponent = () => {
         
         
         
-        <Route p ath='/footer' element={<FooterForm/>}/>
+        <Route path='/footer' element={<FooterForm/>}/>
         <Route path='/resources/publications' element={<Publications/>}/>
         <Route path='/resources/rddocuments' element={<RDDocuments/>}/>
         <Route path='/institutes' element={<Institutes />}/>
