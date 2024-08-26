@@ -79,7 +79,8 @@ historyRouter.post('/add-history', async(req, res) => {
           filePath: filePaths,
         });
       
-    res.json('History created', newPublication);
+    console.log(newPublication)
+    res.json("History Posted");
   } catch (error) {
     console.error('An error occurred while saving to the database:', error);
     res.status(500).json({ error: 'An error occurred while saving to the database' });

@@ -139,11 +139,11 @@ function PostHistory() {
       const response =  axios.post(process.env.REACT_APP_SERVER+'admin/history/add-history', data);
        console.log(response.data);
       alert('Do you want to submit')
-      toast.info('Accepted Project submitted successfully!');
+      toast.info('History submitted successfully!');
       // await  window.location.reload()
     } catch (errors) {
       console.error('Error:', errors.message);
-      toast.error('An error occurred while submitting news.');
+      toast.error('An error occurred while submitting history.');
     }
   };
 
