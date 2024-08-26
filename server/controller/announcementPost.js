@@ -12,13 +12,25 @@ const announcementPost=async (req, res)=>{
             prizes,
             instructions,
             guideline} = req.body;
+
+        console.log({title,
+            description,
+            field,
+            callType,
+            startDate,
+            endDate,
+            prizes,
+            instructions,
+            guideline});
         try{
             console.log("Posting")
             announcementModel.create({title, description, field, callType, startDate, endDate, prizes, instructions, guideline})
             .then(result=>{ 
                console.log(result)
                 res.json(result)})
-            .catch(err=> res.json(err))
+            .catch(err=> {
+                console.log(err)
+                res.json(err);})
         }
         catch(err){
             console.log(err);

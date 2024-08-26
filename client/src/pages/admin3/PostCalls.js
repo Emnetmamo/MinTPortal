@@ -64,7 +64,7 @@ function PostCalls() {
     callType: '',
     startDate: '',
     endDate: '',
-    Award: '',
+    prizes: '',
     instructions: '',
     guideline: '',
 
@@ -121,13 +121,23 @@ function PostCalls() {
     data.append('callType', formData.callType);    
     data.append('startDate', formData.startDate);
     data.append('endDate', formData.endDate);
-    data.append('Award', formData.Award);
+    data.append('prizes', formData.prizes);
     data.append('instructions', formData.instructions);
     data.append('guideline', formData.guideline);
 
     try {
-      const response = axios.post(process.env.REACT_APP_SERVER+"announcements/addCall", data);
-      console.log(response.data);
+      const response = axios.post(process.env.REACT_APP_SERVER+"announcements/addCall", formData);
+      console.log(
+        formData.title,
+        formData.description,
+        formData.field,
+        formData.callType,    
+        formData.startDate,
+        formData.endDate,
+        formData.prizes,
+        formData.instructions,
+        formData.guideline
+      );
         alert('Do you want to submit')
         toast.info('Call form submitted successfully!');
         // await  window.location.reload()
@@ -236,10 +246,10 @@ function PostCalls() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="Award">Award:</label>
+                <label htmlFor="prizes">Award:</label>
                 <textarea
-                  id="Award"
-                  name="Award"
+                  id="prizes"
+                  name="prizes"
                   className="form-control"
                   rows="5"
                   placeholder="Award"

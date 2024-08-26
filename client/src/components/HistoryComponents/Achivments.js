@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Achivments = () => {
@@ -19,6 +19,32 @@ const Achivments = () => {
         console.error('Error fetching data:', error);
       });
   }, [id]);
+
+  const handleDownload = (event, fileUrl, fileName) => {
+    event.preventDefault();
+    axios({
+      url: fileUrl,
+      method: "GET",
+      responseType: "blob", // Ensure the response type is set to blob
+    })
+      .then((response) => {
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", fileName); // Set the file name and extension
+        document.body.appendChild(link);
+        link.click();
+      })
+      .catch((error) => {
+        console.error("Error downloading file:", error);
+        // Handle the error, maybe show a message to the user
+      });
+  };
+
+  function getFileNameFromPath(filePath) {
+    const parts = filePath.split(/[\\/]/); // Split the path using either / or \
+    return parts[parts.length - 1]; // Get the last part, which is the file name
+  }
 
   return (
     <div className="container mt-5" >
@@ -46,7 +72,10 @@ const Achivments = () => {
             <p className="card-text" style={{color:'black' ,fontSize:'1pc',}}> {achievement.description}</p>
            
     
-            <a href={achievement.filePath} className="btn btn-primary mt-3" target="_blank" rel="noopener noreferrer">View PDF</a>
+            <Link to="#" className="btn btn-primary mt-3" target="_blank" rel="noopener noreferrer"
+            onClick={(e) => {handleDownload(e,achievement.filePath.replace(/\//g, '\\').split('public\\').join(''), getFileNameFromPath(achievement.filePath.replace(/\//g, '\\').split('public\\').join('')))
+            }}>
+              Download PDF</Link>
           </div>
         </div>
       )}
