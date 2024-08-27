@@ -71,6 +71,10 @@ const register = async (req, res) => {
 
   if (req.params.page === "register2") {
     const { fName, LName, password, email, phone, country, address, sex, adminType } = req.body;
+    let fieldType = "";
+    if(adminType === "admin2"){
+      fieldType = req.body.fieldType;
+    }
     try {
       user = await UserModel.find({ email: email }); // Assign user
 
@@ -82,22 +86,54 @@ const register = async (req, res) => {
       const nowDate = new Date(Date.now()).toISOString();
       // await UserModel.updateMany( {},{ $set: { sex : 'Male'} }, { multi: true });
       // await UserModel.updateMany( {},{ $set: { registeredDate : nowDate} }, { multi: true });
-      const newUser = await UserModel.create({
-        fName,
-        LName,
-        password: hash,
-        email,
-        phone,
-        country,
-        address,
-        uniqueID,
-        sex,
-        registeredDate: nowDate,
-        role: adminType
-      });
+      if(adminType === "admin2"){
+        // console.log({
+        //   fName,
+        //   LName,
+        //   password: hash,
+        //   email,
+        //   phone,
+        //   country,
+        //   address,
+        //   uniqueID,
+        //   sex,
+        //   nowDate,
+        //   adminType,
+        //   fieldType
+        // });
+        const newUser = await UserModel.create({
+          fName,
+          LName,
+          password: hash,
+          email,
+          phone,
+          country,
+          address,
+          uniqueID,
+          sex,
+          registeredDate: nowDate,
+          role: adminType,
+          field: fieldType
+        });
+      }
+      else{
+        const newUser = await UserModel.create({
+          fName,
+          LName,
+          password: hash,
+          email,
+          phone,
+          country,
+          address,
+          uniqueID,
+          sex,
+          registeredDate: nowDate,
+          role: adminType
+        });
+      }
      
-      const token = jwt.sign({ user: newUser }, SECRET_KEY, { expiresIn: '1h' });
-      res.cookie('token', token, { httpOnly: true }); 
+      //const token = jwt.sign({ user: newUser }, SECRET_KEY, { expiresIn: '1h' });
+      //res.cookie('token', token, { httpOnly: true }); 
       
       res.json('Userregistered' );
     } catch (error) {

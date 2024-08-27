@@ -272,7 +272,7 @@ if (cookies) {
     const tableData = [];
     
     for (let j = (projects.length-1); j > -1; j--) {
-      if(projects[j].status > 0) /*&& projects[j].projectCategory === field)*/{
+      if(projects[j].status > 0 && projects[j].projectCategory === field){
       tableData.push(
           generateRow(projects[j])
       );

@@ -14,6 +14,7 @@ const SubmitReport = () => {
   const [userID, setUserID] = useState("")
   const[loaded, setLoaded] = useState(false);
   const[file, setFile] = useState(null);
+  const[field, setField] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -61,6 +62,14 @@ if (cookies) {
         //console.log(result);
       })
       .catch(err=>console.log(err))
+
+      axios.post(process.env.REACT_APP_SERVER+'admin2Feedback/getField', {email:email})
+      .then((result)=>{
+        setField(result.data.field);
+        console.log(result);
+      })
+      .catch(err=>console.log(err))
+      
       axios.get(process.env.REACT_APP_SERVER+'admin2Reports/find/'+email)
       .then((result)=>{
         setUserID(result.data[0]._id);
@@ -92,7 +101,7 @@ if (cookies) {
     const tableData = [];
     
     for (let j = (projects.length-1); j > -1; j--) {
-      if(projects[j].status > 0){
+      if(projects[j].status > 0 && projects[j].projectCategory === field){
       tableData.push(
           generateRow(projects[j])
       );
